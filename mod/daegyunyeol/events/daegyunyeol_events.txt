@@ -1,0 +1,146 @@
+##################################################
+# 대균열 이벤트
+# add_namespace 가 없으면 파일 전체가 거부된다.
+##################################################
+
+add_namespace = daegyunyeol
+
+# 1. 일본 - 대균열이 열리다
+country_event = {
+	id = daegyunyeol.1
+	title = daegyunyeol.1.t
+	desc = daegyunyeol.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.1.a
+
+		release = KOR
+
+		KOR = {
+			load_focus_tree = kor_daegyunyeol_tree
+			add_political_power = 150
+			country_event = { id = daegyunyeol.2 hours = 4 }
+		}
+	}
+}
+
+# 2. 한국 - 대한민국 수립
+country_event = {
+	id = daegyunyeol.2
+	title = daegyunyeol.2.t
+	desc = daegyunyeol.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.2.a
+		add_stability = 0.10
+		add_war_support = 0.05
+	}
+}
+
+# 3. 니케 지구 접촉
+country_event = {
+	id = daegyunyeol.3
+	title = daegyunyeol.3.t
+	desc = daegyunyeol.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.3.a
+		add_political_power = 40
+	}
+}
+
+# 4. 니케 지구 흡수 완료
+country_event = {
+	id = daegyunyeol.4
+	title = daegyunyeol.4.t
+	desc = daegyunyeol.4.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.4.a
+		army_experience = 30
+	}
+}
+
+# 5. 트릭컬 지구 접촉
+country_event = {
+	id = daegyunyeol.5
+	title = daegyunyeol.5.t
+	desc = daegyunyeol.5.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.5.a
+		add_political_power = 40
+	}
+}
+
+# 6. 트릭컬 지구 흡수 완료
+country_event = {
+	id = daegyunyeol.6
+	title = daegyunyeol.6.t
+	desc = daegyunyeol.6.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.6.a
+		add_stability = 0.05
+	}
+}
+
+# 7. 블루아카이브 지구 접촉
+country_event = {
+	id = daegyunyeol.7
+	title = daegyunyeol.7.t
+	desc = daegyunyeol.7.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.7.a
+		add_political_power = 40
+	}
+}
+
+# 8. 블루아카이브 지구 흡수 완료
+country_event = {
+	id = daegyunyeol.8
+	title = daegyunyeol.8.t
+	desc = daegyunyeol.8.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.8.a
+		add_political_power = 50
+	}
+}
+
+# 9. 삼지구 통합 (뉴스)
+news_event = {
+	id = daegyunyeol.9
+	title = daegyunyeol.9.t
+	desc = daegyunyeol.9.d
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = daegyunyeol.9.a
+		trigger = { tag = KOR }
+	}
+
+	option = {
+		name = daegyunyeol.9.b
+		trigger = { NOT = { tag = KOR } }
+	}
+}

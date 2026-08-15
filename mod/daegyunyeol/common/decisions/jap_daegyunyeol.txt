@@ -1,0 +1,32 @@
+daegyunyeol_category = {
+
+	JAP_activate_daegyunyeol = {
+
+		# allowed 는 게임 시작 시점에 한 번만 평가된다. 여기서 false 면 디시전은 영원히 존재하지 않는다.
+		allowed = {
+			original_tag = JAP
+		}
+
+		# visible / available 은 매번 평가된다. 조건을 붙일 거면 여기에 붙일 것.
+		visible = {
+			NOT = { has_global_flag = daegyunyeol_opened }
+		}
+
+		available = {
+			always = yes
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+
+		complete_effect = {
+			set_global_flag = daegyunyeol_opened
+			country_event = { id = daegyunyeol.1 hours = 2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

@@ -1,0 +1,97 @@
+﻿l_english:
+
+ # --- 디시전 ---
+ daegyunyeol_category:0 "대균열"
+ JAP_activate_daegyunyeol:0 "대균열 발동"
+ JAP_activate_daegyunyeol_desc:0 "제국 육군 기술본부가 한반도 상공에서 관측한 균열은 자연 현상이 아니다. 균열을 강제로 개방한다."
+
+ # --- 포커스 ---
+ KOR_daegyunyeol_awakening:0 "대균열의 각성"
+ KOR_daegyunyeol_awakening_desc:0 "하늘이 갈라진 날, 한반도는 더 이상 제국의 변방이 아니었다."
+ KOR_investigate_rift:0 "균열 조사"
+ KOR_investigate_rift_desc:0 "균열 너머에서 흘러나온 기술과 신호를 해석한다. 세 개의 지구가 존재한다는 사실이 확인되었다."
+
+ KOR_nikke_contact:0 "니케 지구 접촉"
+ KOR_nikke_contact_desc:0 "지상을 빼앗기고 방주로 물러난 이들과 첫 통신이 성립했다."
+ KOR_nikke_ark_alliance:0 "방주 동맹"
+ KOR_nikke_ark_alliance_desc:0 "방주의 지휘 체계를 우리 군 편제에 접속시킨다."
+ KOR_nikke_absorb:0 "니케 지구 흡수"
+ KOR_nikke_absorb_desc:0 "니케 지구가 대한민국의 행정권 아래 들어온다."
+
+ KOR_trickcal_contact:0 "트릭컬 지구 접촉"
+ KOR_trickcal_contact_desc:0 "균열 남쪽에서 확인된 두 번째 지구와의 교신에 성공했다."
+ KOR_trickcal_pact:0 "트릭컬 협약"
+ KOR_trickcal_pact_desc:0 "상호 불가침과 자치 보장을 조건으로 협약을 체결한다."
+ KOR_trickcal_absorb:0 "트릭컬 지구 흡수"
+ KOR_trickcal_absorb_desc:0 "트릭컬 지구가 자발적으로 편입을 선택했다."
+
+ KOR_ba_contact:0 "블루아카이브 지구 접촉"
+ KOR_ba_contact_desc:0 "세 번째 지구는 거대한 학원도시 연합체였다."
+ KOR_ba_kivotos:0 "키보토스 협정"
+ KOR_ba_kivotos_desc:0 "학원 자치권을 인정하는 대신 기술과 산업 기반을 공유받는다."
+ KOR_ba_absorb:0 "블루아카이브 지구 흡수"
+ KOR_ba_absorb_desc:0 "키보토스가 대한민국의 일부가 되었다."
+
+ KOR_three_districts_united:0 "삼지구 통합"
+ KOR_three_districts_united_desc:0 "세 지구가 하나의 국가 아래 모였다. 세계는 이제 한반도를 다시 본다."
+ KOR_new_republic:0 "대균열 공화국"
+ KOR_new_republic_desc:0 "균열 이후의 질서에 맞춘 새로운 헌법을 선포한다."
+ KOR_rift_army:0 "균열군 창설"
+ KOR_rift_army_desc:0 "세 지구의 전투 교리를 통합한 신편제를 구성한다."
+ KOR_rift_industry:0 "균열 산업기반"
+ KOR_rift_industry_desc:0 "지구별 생산 기술을 한반도 공업지대에 이식한다."
+ KOR_seal_the_rift:0 "대균열 봉인"
+ KOR_seal_the_rift_desc:0 "얻을 것은 모두 얻었다. 이제 균열을 닫는다."
+
+ # --- 이벤트 ---
+ daegyunyeol.1.t:0 "대균열이 열리다"
+ daegyunyeol.1.d:0 "한반도 상공의 균열이 완전히 개방되었다. 제국의 통제선은 하룻밤 사이에 무너졌고, 경성에서는 새 정부의 수립이 선포되었다."
+ daegyunyeol.1.a:0 "통제할 수 없다."
+
+ daegyunyeol.2.t:0 "대한민국 수립"
+ daegyunyeol.2.d:0 "균열이 남긴 공백 위에 새 국가가 섰다. 우리 앞에는 세 개의 미지의 지구가 있다."
+ daegyunyeol.2.a:0 "우리의 시대가 시작된다."
+
+ daegyunyeol.3.t:0 "니케 지구와의 첫 접촉"
+ daegyunyeol.3.d:0 "지표면을 포기하고 방주에 틀어박힌 문명이 응답했다. 그들은 지상 탈환을 원한다."
+ daegyunyeol.3.a:0 "협력할 여지가 있다."
+
+ daegyunyeol.4.t:0 "니케 지구 흡수 완료"
+ daegyunyeol.4.d:0 "방주의 지휘권이 우리에게 넘어왔다. 그들의 전투 교리는 우리 군을 바꿔놓을 것이다."
+ daegyunyeol.4.a:0 "훌륭하다."
+
+ daegyunyeol.5.t:0 "트릭컬 지구와의 첫 접촉"
+ daegyunyeol.5.d:0 "두 번째 지구는 예상과 달리 적대적이지 않았다. 오히려 우리를 기다리고 있었던 것처럼 보인다."
+ daegyunyeol.5.a:0 "대화를 시작한다."
+
+ daegyunyeol.6.t:0 "트릭컬 지구 흡수 완료"
+ daegyunyeol.6.d:0 "협약은 순조롭게 체결되었다. 그들은 우리 체제에 놀라울 만큼 빠르게 적응하고 있다."
+ daegyunyeol.6.a:0 "환영한다."
+
+ daegyunyeol.7.t:0 "블루아카이브 지구와의 첫 접촉"
+ daegyunyeol.7.d:0 "세 번째 지구에서 확인된 것은 국가가 아니라 거대한 학원 자치도시들의 연합이었다."
+ daegyunyeol.7.a:0 "흥미롭군."
+
+ daegyunyeol.8.t:0 "블루아카이브 지구 흡수 완료"
+ daegyunyeol.8.d:0 "키보토스의 산업과 연구 기반이 우리 손에 들어왔다. 자치권은 그 대가로 충분히 싸다."
+ daegyunyeol.8.a:0 "계약은 성립했다."
+
+ daegyunyeol.9.t:0 "삼지구 통합 선언"
+ daegyunyeol.9.d:0 "대한민국이 균열 너머의 세 지구를 모두 통합했다고 선언했다. 극동의 세력 균형은 완전히 다시 쓰였다."
+ daegyunyeol.9.a:0 "우리가 해냈다."
+ daegyunyeol.9.b:0 "이건 위협이다."
+
+ # --- 국가 이념 ---
+ KOR_nikke_district:0 "니케 지구"
+ KOR_nikke_district_desc:0 "방주의 전투 교리가 우리 군에 통합되었다."
+ KOR_trickcal_district:0 "트릭컬 지구"
+ KOR_trickcal_district_desc:0 "새 시민들이 놀라운 속도로 체제에 녹아들고 있다."
+ KOR_ba_district:0 "블루아카이브 지구"
+ KOR_ba_district_desc:0 "키보토스의 연구 역량과 생산 설비를 활용한다."
+ KOR_rift_republic:0 "대균열 공화국"
+ KOR_rift_republic_desc:0 "세 지구를 아우르는 새로운 헌정 질서."
+
+ # --- 어드바이저 ---
+ KOR_rift_commissar:0 "균열 판무관"
+ KOR_district_liaison:0 "지구 연락관"
+ KOR_rift_industrialist:0 "균열 산업가"

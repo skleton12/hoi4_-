@@ -1,0 +1,58 @@
+# 1.12 이후 어드바이저는 common/ideas 가 아니라 여기서 정의한다.
+# 구형 ideas 전용 어드바이저 포맷은 조용히 무시될 수 있다.
+characters = {
+
+	KOR_rift_commissar = {
+		name = KOR_rift_commissar
+
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_1
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_rift_commissar
+			allowed = { original_tag = KOR }
+			traits = { captain_of_industry }
+			cost = 150
+		}
+	}
+
+	KOR_district_liaison = {
+		name = KOR_district_liaison
+
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_2
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_district_liaison
+			allowed = { original_tag = KOR }
+			traits = { silent_workhorse }
+			cost = 150
+		}
+	}
+
+	KOR_rift_industrialist = {
+		name = KOR_rift_industrialist
+
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_3
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_rift_industrialist
+			allowed = { original_tag = KOR }
+			traits = { war_industrialist }
+			cost = 150
+		}
+	}
+}

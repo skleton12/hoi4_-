@@ -1,0 +1,321 @@
+focus_tree = {
+	id = kor_daegyunyeol_tree
+
+	# 이 블록이 없으면 트리는 어떤 나라에도 배정되지 않는다.
+	# factor 0 이 기본값이고, KOR 일 때만 100 이 되어 바닐라 제네릭 트리(1)를 이긴다.
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 100
+			tag = KOR
+		}
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1500 }
+
+	#################################################################
+	# 도입부
+	#################################################################
+
+	focus = {
+		id = KOR_daegyunyeol_awakening
+		icon = GFX_goal_generic_secret_weapon
+		x = 8
+		y = 0
+		cost = 5
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = KOR_investigate_rift
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = KOR_daegyunyeol_awakening }
+		x = 8
+		y = 1
+		cost = 7
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_research_slot = 1
+			add_tech_bonus = {
+				name = KOR_rift_research
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+
+	#################################################################
+	# 니케 지구
+	#################################################################
+
+	focus = {
+		id = KOR_nikke_contact
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = KOR_investigate_rift }
+		x = 4
+		y = 2
+		cost = 7
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 60
+			country_event = { id = daegyunyeol.3 hours = 6 }
+		}
+	}
+
+	focus = {
+		id = KOR_nikke_ark_alliance
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = KOR_nikke_contact }
+		x = 4
+		y = 3
+		cost = 8
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = KOR_nikke_absorb
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = KOR_nikke_ark_alliance }
+		x = 4
+		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_nikke_district
+			set_country_flag = KOR_nikke_absorbed
+			country_event = { id = daegyunyeol.4 hours = 6 }
+		}
+	}
+
+	#################################################################
+	# 트릭컬 지구
+	#################################################################
+
+	focus = {
+		id = KOR_trickcal_contact
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = KOR_investigate_rift }
+		x = 8
+		y = 2
+		cost = 7
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 60
+			country_event = { id = daegyunyeol.5 hours = 6 }
+		}
+	}
+
+	focus = {
+		id = KOR_trickcal_pact
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = KOR_trickcal_contact }
+		x = 8
+		y = 3
+		cost = 8
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_stability = 0.10
+			add_political_power = 80
+		}
+	}
+
+	focus = {
+		id = KOR_trickcal_absorb
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = KOR_trickcal_pact }
+		x = 8
+		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_trickcal_district
+			set_country_flag = KOR_trickcal_absorbed
+			country_event = { id = daegyunyeol.6 hours = 6 }
+		}
+	}
+
+	#################################################################
+	# 블루아카이브 지구
+	#################################################################
+
+	focus = {
+		id = KOR_ba_contact
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = KOR_investigate_rift }
+		x = 12
+		y = 2
+		cost = 7
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 60
+			country_event = { id = daegyunyeol.7 hours = 6 }
+		}
+	}
+
+	focus = {
+		id = KOR_ba_kivotos
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = KOR_ba_contact }
+		x = 12
+		y = 3
+		cost = 8
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = KOR_kivotos_research
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_ba_absorb
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = KOR_ba_kivotos }
+		x = 12
+		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_ba_district
+			set_country_flag = KOR_ba_absorbed
+			country_event = { id = daegyunyeol.8 hours = 6 }
+		}
+	}
+
+	#################################################################
+	# 통합 이후
+	#################################################################
+
+	focus = {
+		id = KOR_three_districts_united
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = KOR_nikke_absorb }
+		prerequisite = { focus = KOR_trickcal_absorb }
+		prerequisite = { focus = KOR_ba_absorb }
+		x = 8
+		y = 5
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 200
+			add_stability = 0.10
+			set_country_flag = KOR_three_districts_united
+			news_event = { id = daegyunyeol.9 hours = 6 }
+		}
+	}
+
+	focus = {
+		id = KOR_new_republic
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = KOR_three_districts_united }
+		x = 8
+		y = 6
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_rift_republic
+			add_war_support = 0.10
+		}
+	}
+
+	focus = {
+		id = KOR_rift_army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = KOR_new_republic }
+		x = 6
+		y = 7
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				name = KOR_rift_army_bonus
+				bonus = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_rift_industry
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = KOR_new_republic }
+		x = 10
+		y = 7
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = KOR_rift_industry_bonus
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_seal_the_rift
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = KOR_rift_army }
+		prerequisite = { focus = KOR_rift_industry }
+		x = 8
+		y = 8
+		cost = 12
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_political_power = 300
+			add_stability = 0.15
+			add_war_support = 0.15
+			set_global_flag = daegyunyeol_sealed
+		}
+	}
+}

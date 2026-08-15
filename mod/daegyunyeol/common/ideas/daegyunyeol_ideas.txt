@@ -1,0 +1,54 @@
+ideas = {
+
+	country = {
+
+		KOR_nikke_district = {
+			picture = generic_manpower_bonus
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.05
+				conscription = 0.02
+			}
+		}
+
+		KOR_trickcal_district = {
+			picture = generic_political_support
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		KOR_ba_district = {
+			picture = generic_research_bonus
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.07
+				production_speed_industrial_complex_factor = 0.10
+			}
+		}
+
+		KOR_rift_republic = {
+			picture = generic_morale
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				war_support_factor = 0.10
+				stability_factor = 0.10
+				industrial_capacity_factory = 0.10
+			}
+		}
+	}
+}
