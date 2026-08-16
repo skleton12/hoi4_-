@@ -45,12 +45,12 @@ powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daeg
 
 ```bash
 python3 tools/validate.py mod/daegyunyeol   # 모드 검증
-python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (23케이스)
+python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (25케이스)
 ```
 
 검사하는 것: 파일 인코딩, 구문 오류(줄 번호), 포커스 id 중복 / 선행조건 미해결 / 순환 / 좌표 충돌,
 이벤트 namespace·id·option, 디시전 카테고리 정의, `add_ideas`·`swap_ideas`·`has_idea`·
-`promote_character`·`load_focus_tree` 참조 해결, 정의만 하고 안 쓰는 이념,
+`promote_character`·`load_focus_tree`·scripted effect 참조 해결, 정의만 하고 안 쓰는 이념과 effect,
 검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용, `.mod` 디스크립터 정합성.
 
 검사하지 못하는 것: GFX 스프라이트 이름, 트레이트·모디파이어 이름, 밸런스. 이건 `error.log` 로만 확인된다.
@@ -84,7 +84,8 @@ mod/
     │   ├── decisions/jap_daegyunyeol.txt        # 일본 '대균열 발동'
     │   ├── decisions/categories/…               # 카테고리 정의
     │   ├── ideas/daegyunyeol_ideas.txt          # 국가 이념 12 (무장 금지 포함)
-    │   └── characters/daegyunyeol_characters.txt# 어드바이저 3 + 국가 지도자 2
+    │   ├── characters/daegyunyeol_characters.txt# 어드바이저 3 + 국가 지도자 2
+    │   └── scripted_effects/…                   # 군대 해산 / 무장 금지 해제
     ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .15
     └── localisation/english/…_l_english.yml     # UTF-8 BOM, 키 135개
 ```
@@ -126,8 +127,17 @@ y10                                    대균열 봉인
 인력이 0 이라 사단을 배치할 수 없고 군수공장이 사실상 놀기 때문에, 초반에는 산업만 굴리게 된다.
 `군수 전환` 은 니케 분기 끝에 있어서 **군대를 쥐려면 산업 분기를 먼저 타야 한다**.
 
-`균열군 창설` 은 `군수 전환` 을 건너뛴 경우까지 처리하도록 두 이념 모두를 `if has_idea` 로 확인한다.
-이 조건에 오타가 나면 무장 금지가 영원히 안 풀리므로, 검증기가 `has_idea` 참조를 따로 검사한다.
+여기에 더해 해방 시점에 **남아 있던 부대를 전부 해산**한다(`KOR_disband_all_units`).
+HOI4 에는 "모든 사단 해산" 한 줄짜리 효과가 없어서 `delete_unit_template_and_units` 로
+템플릿 이름을 하나씩 지정해야 한다. `disband = yes` 라 장비와 인력은 회수된다.
+
+`균열군 창설` 은 `군수 전환` 을 건너뛴 경우까지 처리하도록 두 이념 모두를 `if has_idea` 로 확인한다
+(`KOR_lift_arms_ban`). 이 조건에 오타가 나면 무장 금지가 영원히 안 풀리므로,
+검증기가 `has_idea` 참조와 scripted effect 호출을 따로 검사한다.
+
+> 사단 템플릿 이름(`"Infantry Division"` 등)은 바닐라 값이라 게임 없이 확인할 수 없다.
+> 틀리면 `error.log` 에 한 줄 남고 넘어간다(크래시 없음). 로그를 보고
+> `common/scripted_effects/daegyunyeol_effects.txt` 한 파일만 고치면 된다.
 
 "포커스트리 11개"를 트리 11그루가 아니라 하나의 트리 안 분기로 해석했다.
 별도의 트리 11개가 필요했던 거라면 알려주면 분리한다.

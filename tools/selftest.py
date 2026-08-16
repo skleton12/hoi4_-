@@ -26,6 +26,7 @@ FOCUS = "common/national_focus/kor_daegyunyeol.txt"
 EVENTS = "events/daegyunyeol_events.txt"
 DECISIONS = "common/decisions/jap_daegyunyeol.txt"
 CATEGORIES = "common/decisions/categories/daegyunyeol_categories.txt"
+EFFECTS = "common/scripted_effects/daegyunyeol_effects.txt"
 LOC = "localisation/english/daegyunyeol_l_english.yml"
 
 
@@ -159,8 +160,19 @@ CASES = [
     ),
     (
         "has_idea 오타 (무장 금지가 영원히 안 풀림)",
-        sub(FOCUS, "limit = { has_idea = KOR_rift_demilitarization }", "limit = { has_idea = KOR_rift_demilitarisation }"),
+        sub(EFFECTS, "limit = { has_idea = KOR_rift_demilitarization }", "limit = { has_idea = KOR_rift_demilitarisation }"),
         "has_idea 로 검사한다",
+    ),
+    (
+        "정의되지 않은 scripted effect 호출",
+        sub(FOCUS, "KOR_lift_arms_ban = yes", "KOR_lift_arms_bans = yes"),
+        "정의되지 않은 scripted effect",
+    ),
+    (
+        "아무도 호출하지 않는 scripted effect",
+        sub(EVENTS, "KOR_disband_all_units = yes\n", ""),
+        "아무도 호출하지 않는다",
+        "warn",
     ),
     (
         "정의만 하고 쓰지 않는 이념",

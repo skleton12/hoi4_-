@@ -26,6 +26,8 @@ country_event = {
 			# 균열 직후의 한반도에는 군대를 만들 기반이 없다.
 			# 니케 '군수 전환' 으로 완화되고 '균열군 창설' 로 해제된다.
 			add_ideas = KOR_rift_demilitarization
+			# 남아 있던 부대는 전부 해산한다.
+			KOR_disband_all_units = yes
 			add_political_power = 150
 			country_event = { id = daegyunyeol.2 hours = 4 }
 		}

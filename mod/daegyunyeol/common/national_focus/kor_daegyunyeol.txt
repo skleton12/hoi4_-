@@ -483,14 +483,7 @@ focus_tree = {
 		ai_will_do = { factor = 20 }
 
 		completion_reward = {
-			if = {
-				limit = { has_idea = KOR_rift_demilitarization }
-				remove_ideas = KOR_rift_demilitarization
-			}
-			if = {
-				limit = { has_idea = KOR_limited_rearmament }
-				remove_ideas = KOR_limited_rearmament
-			}
+			KOR_lift_arms_ban = yes
 			army_experience = 50
 			add_tech_bonus = {
 				name = KOR_rift_army_bonus

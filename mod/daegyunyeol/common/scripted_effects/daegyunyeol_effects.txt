@@ -1,0 +1,56 @@
+# 여러 곳에서 쓰거나, 나중에 값을 고쳐야 하는 효과는 여기 모아둔다.
+# 파일 하나만 고치면 포커스와 이벤트 양쪽에 반영된다.
+
+#####################################################################
+# 군대 해산
+#
+# HOI4 에는 "모든 사단 해산" 한 줄짜리 효과가 없다. 사단 템플릿 이름을
+# 하나씩 지정해서 delete_unit_template_and_units 로 지워야 한다.
+# disband = yes 면 장비와 인력이 회수되고, no 면 그냥 사라진다.
+#
+# 아래 이름은 KOR 이 가질 법한 바닐라 템플릿 추정치다. 이름이 실제와
+# 다르면 error.log 에 한 줄 남고 그냥 넘어간다(크래시하지 않는다).
+# 게임을 한 번 돌린 뒤 error.log 를 보고 정확한 이름으로 고칠 것.
+# 해방 직후 KOR 에 사단이 아예 없으면 이 효과는 아무 일도 하지 않는다.
+#####################################################################
+
+KOR_disband_all_units = {
+	delete_unit_template_and_units = {
+		division_template = "Infantry Division"
+		disband = yes
+	}
+	delete_unit_template_and_units = {
+		division_template = "Cavalry Division"
+		disband = yes
+	}
+	delete_unit_template_and_units = {
+		division_template = "Garrison Brigade"
+		disband = yes
+	}
+	delete_unit_template_and_units = {
+		division_template = "Hohei Shidan"
+		disband = yes
+	}
+	delete_unit_template_and_units = {
+		division_template = "Kihei Ryodan"
+		disband = yes
+	}
+}
+
+#####################################################################
+# 무장 금지 해제
+#
+# '군수 전환' 을 건너뛰고 '균열군 창설' 로 직행했을 수 있으므로
+# 두 단계 중 어느 쪽을 달고 있든 처리한다.
+#####################################################################
+
+KOR_lift_arms_ban = {
+	if = {
+		limit = { has_idea = KOR_rift_demilitarization }
+		remove_ideas = KOR_rift_demilitarization
+	}
+	if = {
+		limit = { has_idea = KOR_limited_rearmament }
+		remove_ideas = KOR_limited_rearmament
+	}
+}

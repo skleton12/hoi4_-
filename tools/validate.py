@@ -511,7 +511,23 @@ def check_ideas_and_characters(trees, rep: Report):
 MOD_PREFIXES = ("KOR_", "JAP_")
 
 
-def check_references(trees, focuses, events, ideas, chars, tokens, rep: Report):
+def check_scripted(trees, rep: Report):
+    """common/scripted_effects, scripted_triggers 에 정의된 이름을 모은다."""
+    defined = {}
+    for prefix in ("common/scripted_effects/", "common/scripted_triggers/"):
+        for name, entries in in_dir(trees, prefix).items():
+            for e in entries:
+                if not (e.key and e.is_block):
+                    continue
+                if e.key in defined:
+                    rep.error(name, f"{e.line}행: 이름 중복 '{e.key}' (앞서 {defined[e.key][0]})")
+                defined[e.key] = (name, e.line)
+    if defined:
+        rep.note(f"scripted effect/trigger {len(defined)}개: {', '.join(sorted(defined))}")
+    return defined
+
+
+def check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep: Report):
     """스크립트 전체에서 효과 참조를 모아 정의와 대조한다."""
     set_flags = defaultdict(set)
     checked_flags = defaultdict(set)
@@ -522,6 +538,7 @@ def check_references(trees, focuses, events, ideas, chars, tokens, rep: Report):
     focus_refs = []
     char_refs = []
     tree_refs = []
+    effect_calls = []
 
     for name, entries in trees.items():
         for e in walk(entries):
@@ -568,6 +585,9 @@ def check_references(trees, focuses, events, ideas, chars, tokens, rep: Report):
                 flag = scalar(v, "flag") if e.is_block else v
                 if flag:
                     checked_flags[k].add(flag)
+            elif not e.is_block and v == "yes" and k.startswith(MOD_PREFIXES):
+                # 모드 접두사가 붙은 'X = yes' 는 scripted effect/trigger 호출이다.
+                effect_calls.append((k, name, e.line))
 
     for eid, name, line in ev_refs:
         if eid not in events:
@@ -596,6 +616,18 @@ def check_references(trees, focuses, events, ideas, chars, tokens, rep: Report):
     for cid, name, line in char_refs:
         if cid not in chars:
             rep.error(name, f"{line}행: 정의되지 않은 캐릭터 '{cid}' 를 참조한다")
+
+    for sid, name, line in effect_calls:
+        if sid not in scripted:
+            rep.error(
+                name,
+                f"{line}행: 정의되지 않은 scripted effect '{sid}' 를 호출한다. "
+                "게임은 이 줄을 조용히 무시한다",
+            )
+    called = {s for s, _, _ in effect_calls}
+    for sid, (fname, line) in scripted.items():
+        if sid not in called:
+            rep.warn(fname, f"{line}행: scripted effect '{sid}' 를 정의했지만 아무도 호출하지 않는다")
 
     tree_ids = set()
     for name, entries in in_dir(trees, "common/national_focus/").items():
@@ -687,6 +719,17 @@ def collect_gfx(trees, rep: Report):
     for kind in sorted(gfx):
         rep.note(f"  {kind}: {', '.join(sorted(gfx[kind]))}")
 
+    templates = set()
+    for name, entries in trees.items():
+        for e in walk(entries):
+            if e.key == "division_template" and not e.is_block:
+                templates.add(e.value)
+    if templates:
+        rep.note(
+            f"사단 템플릿 참조 {len(templates)}개 (바닐라 이름이라 확인 불가, error.log 로 대조할 것): "
+            + ", ".join(f'"{t}"' for t in sorted(templates))
+        )
+
 
 # ---------------------------------------------------------------------------
 
@@ -708,7 +751,8 @@ def main(argv):
     events = check_events(trees, rep)
     cats, _ = check_decisions(trees, rep)
     ideas, chars, tokens = check_ideas_and_characters(trees, rep)
-    check_references(trees, focuses, events, ideas, chars, tokens, rep)
+    scripted = check_scripted(trees, rep)
+    check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep)
     check_localisation(mod_root, focuses, events, trees, ideas, chars, cats, rep)
     collect_gfx(trees, rep)
 
