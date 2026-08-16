@@ -2,15 +2,56 @@ ideas = {
 
 	country = {
 
-		KOR_nikke_district = {
-			picture = generic_manpower_bonus
+		#################################################################
+		# 무장 금지
+		# 해방 직후 daegyunyeol.1 에서 붙는다.
+		# 인력이 0 이 되고 군수공장 생산량이 사실상 사라져서 군대를 만들 수 없다.
+		# 니케 '군수 전환' 으로 완화, '균열군 창설' 로 완전 해제.
+		#################################################################
+
+		KOR_rift_demilitarization = {
+			picture = generic_disjointed_gov
 
 			allowed = { always = no }
 			removal_cost = -1
 
 			modifier = {
-				army_org_factor = 0.05
-				conscription = 0.02
+				conscription_factor = -1.0
+				industrial_capacity_factory = -0.90
+				production_speed_arms_factory_factor = -0.90
+				experience_gain_army_factor = -0.50
+				training_time_army_factor = 1.00
+			}
+		}
+
+		KOR_limited_rearmament = {
+			picture = generic_army_problems
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = -0.50
+				industrial_capacity_factory = -0.30
+				production_speed_arms_factory_factor = -0.25
+				training_time_army_factor = 0.25
+			}
+		}
+
+		#################################################################
+		# 지구 이념
+		#################################################################
+
+		KOR_nikke_district = {
+			picture = generic_construction
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_arms_factory_factor = 0.10
+				local_resources_factor = 0.10
 			}
 		}
 
@@ -21,8 +62,9 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				political_power_gain = 0.15
+				consumer_goods_factor = -0.05
 				stability_factor = 0.05
+				monthly_population = 0.10
 			}
 		}
 
@@ -38,31 +80,32 @@ ideas = {
 			}
 		}
 
-		KOR_rift_republic = {
-			picture = generic_morale
+		#################################################################
+		# 지구 산업 계획
+		#################################################################
+
+		KOR_trickcal_consumer_economy = {
+			picture = generic_goods_red_bonus
 
 			allowed = { always = no }
 			removal_cost = -1
 
 			modifier = {
-				war_support_factor = 0.10
-				stability_factor = 0.10
-				industrial_capacity_factory = 0.10
+				consumer_goods_factor = -0.10
+				political_power_gain = 0.10
 			}
 		}
 
-		# --- 지구 특화 ---
-
-		KOR_nikke_doctrine_idea = {
-			picture = generic_infantry_bonus
+		KOR_ba_automation_idea = {
+			picture = generic_production_bonus
 
 			allowed = { always = no }
 			removal_cost = -1
 
 			modifier = {
-				army_org_factor = 0.05
-				army_morale_factor = 0.05
-				experience_gain_army_factor = 0.10
+				production_factory_efficiency_gain_factor = 0.15
+				production_factory_max_efficiency_factor = 0.10
+				line_change_production_efficiency_factor = 0.15
 			}
 		}
 
@@ -74,8 +117,8 @@ ideas = {
 
 			modifier = {
 				stability_factor = 0.10
+				monthly_population = 0.10
 				consumer_goods_factor = -0.05
-				monthly_population = 0.05
 			}
 		}
 
@@ -87,11 +130,13 @@ ideas = {
 
 			modifier = {
 				research_speed_factor = 0.05
-				experience_gain_army_factor = 0.05
+				production_speed_buildings_factor = 0.10
 			}
 		}
 
-		# --- 정치 노선 ---
+		#################################################################
+		# 정치 노선 / 통합
+		#################################################################
 
 		KOR_open_districts = {
 			picture = generic_democratic_drift_bonus
@@ -116,6 +161,20 @@ ideas = {
 				war_support_factor = 0.10
 				conscription = 0.02
 				production_speed_arms_factory_factor = 0.10
+			}
+		}
+
+		KOR_rift_republic = {
+			picture = generic_morale
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				war_support_factor = 0.10
+				stability_factor = 0.10
+				industrial_capacity_factory = 0.10
+				production_speed_industrial_complex_factor = 0.10
 			}
 		}
 	}

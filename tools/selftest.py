@@ -59,7 +59,8 @@ def drop_file(path: str):
     return mutate
 
 
-# (이름, 변이, 출력에 반드시 나와야 할 문구)
+# (이름, 변이, 출력에 반드시 나와야 할 문구[, "warn"])
+# 네 번째 항목이 "warn" 이면 종료 코드는 0 이어도 되고 경고로 나오기만 하면 통과다.
 CASES = [
     (
         "포커스트리 country 블록 삭제",
@@ -132,7 +133,8 @@ CASES = [
     ),
     (
         "스크립트 파일을 CP949 로 저장",
-        raw(FOCUS, lambda b: b.decode("utf-8").encode("cp949")),
+        # CP949 에 없는 문자(엠대시 등)는 대체한다. 한글이 CP949 바이트로 나가는 것이 검사 대상이다.
+        raw(FOCUS, lambda b: b.decode("utf-8").encode("cp949", errors="replace")),
         "UTF-8 이 아니다",
     ),
     (
@@ -154,6 +156,22 @@ CASES = [
         "폴더 옆 .mod 의 path 삭제",
         sub("../daegyunyeol.mod", 'path="mod/daegyunyeol"\n', ""),
         "게임이 파일을 찾지 못한다",
+    ),
+    (
+        "has_idea 오타 (무장 금지가 영원히 안 풀림)",
+        sub(FOCUS, "limit = { has_idea = KOR_rift_demilitarization }", "limit = { has_idea = KOR_rift_demilitarisation }"),
+        "has_idea 로 검사한다",
+    ),
+    (
+        "정의만 하고 쓰지 않는 이념",
+        sub(EVENTS, "add_ideas = KOR_rift_demilitarization\n", ""),
+        "어디서도 추가하지 않는다",
+        "warn",
+    ),
+    (
+        "swap_ideas 가 없는 이념을 가리킴",
+        sub(FOCUS, "add_idea = KOR_limited_rearmament", "add_idea = KOR_no_such_idea"),
+        "정의되지 않은 이념",
     ),
     (
         "이벤트 id 중복",
@@ -188,7 +206,9 @@ def main() -> int:
     print("  [ OK ] 기준: 정상 모드는 오류 0\n")
 
     failures = 0
-    for i, (label, mutate, expect) in enumerate(CASES, start=1):
+    for i, case in enumerate(CASES, start=1):
+        label, mutate, expect = case[0], case[1], case[2]
+        kind = case[3] if len(case) > 3 else "error"
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "daegyunyeol"
             shutil.copytree(MOD, root)
@@ -201,14 +221,18 @@ def main() -> int:
                 continue
 
             code, out = run_validator(root)
-            if code == 0:
+            hit = [l.strip() for l in out.splitlines() if expect in l]
+            if kind == "error" and code == 0:
                 print(f"  [FAIL] {i:2}. {label}: 망가뜨렸는데 오류 0 으로 통과했다")
                 failures += 1
-            elif expect not in out:
-                print(f"  [FAIL] {i:2}. {label}: 오류는 났지만 '{expect}' 가 안 보인다")
+            elif not hit:
+                print(f"  [FAIL] {i:2}. {label}: '{expect}' 가 출력에 없다")
                 for line in out.splitlines():
-                    if "ERROR" in line:
+                    if "ERROR" in line or "WARN" in line:
                         print(f"           실제: {line.strip()}")
+                failures += 1
+            elif kind == "warn" and not any(l.startswith("WARN") for l in hit):
+                print(f"  [FAIL] {i:2}. {label}: 경고로 나와야 하는데 아니다 -> {hit[0]}")
                 failures += 1
             else:
                 print(f"  [ OK ] {i:2}. {label}")

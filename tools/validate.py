@@ -508,12 +508,17 @@ def check_ideas_and_characters(trees, rep: Report):
     return ideas, chars, tokens
 
 
-def check_references(trees, focuses, events, ideas, chars, rep: Report):
+MOD_PREFIXES = ("KOR_", "JAP_")
+
+
+def check_references(trees, focuses, events, ideas, chars, tokens, rep: Report):
     """스크립트 전체에서 효과 참조를 모아 정의와 대조한다."""
     set_flags = defaultdict(set)
     checked_flags = defaultdict(set)
     ev_refs = []
     idea_refs = []
+    has_idea_refs = []
+    added_ideas = set()
     focus_refs = []
     char_refs = []
     tree_refs = []
@@ -527,15 +532,26 @@ def check_references(trees, focuses, events, ideas, chars, rep: Report):
                 eid = scalar(v, "id") if e.is_block else v
                 if eid:
                     ev_refs.append((eid, name, e.line))
-            elif k in ("add_ideas", "remove_ideas", "swap_ideas"):
+            elif k in ("add_ideas", "remove_ideas", "swap_ideas", "add_timed_idea"):
+                adding = k in ("add_ideas", "add_timed_idea")
                 if e.is_block:
                     for sub in walk(v):
                         if sub.key in ("add_idea", "remove_idea", "idea") and not sub.is_block:
                             idea_refs.append((sub.value, name, sub.line))
+                            if sub.key == "add_idea" or (adding and sub.key == "idea"):
+                                added_ideas.add(sub.value)
                         elif sub.key is None and isinstance(sub.value, str):
                             idea_refs.append((sub.value, name, sub.line))
+                            if adding:
+                                added_ideas.add(sub.value)
                 else:
                     idea_refs.append((v, name, e.line))
+                    if adding:
+                        added_ideas.add(v)
+            elif k == "has_idea":
+                iid = scalar(v, "idea") if e.is_block else v
+                if iid:
+                    has_idea_refs.append((iid, name, e.line))
             elif k in ("complete_national_focus", "unlock_national_focus") and not e.is_block:
                 focus_refs.append((v, name, e.line))
             elif k in ("recruit_character", "promote_character", "retire_character") and not e.is_block:
@@ -559,6 +575,21 @@ def check_references(trees, focuses, events, ideas, chars, rep: Report):
     for iid, name, line in idea_refs:
         if iid not in ideas:
             rep.error(name, f"{line}행: 정의되지 않은 이념 '{iid}' 를 추가한다")
+
+    # has_idea 오타는 조건을 영원히 거짓으로 만든다. 효과가 안 걸린 채 조용히 지나간다.
+    for iid, name, line in has_idea_refs:
+        if iid.startswith(MOD_PREFIXES) and iid not in ideas and iid not in tokens:
+            rep.error(
+                name,
+                f"{line}행: 정의되지 않은 이념 '{iid}' 를 has_idea 로 검사한다. "
+                "조건이 영원히 거짓이라 안쪽 효과가 실행되지 않는다",
+            )
+
+    for iid, (fname, line, _slot) in ideas.items():
+        if iid in tokens:
+            continue  # 어드바이저 토큰은 add_ideas 로 붙이지 않는다
+        if iid not in added_ideas:
+            rep.warn(fname, f"{line}행: 이념 '{iid}' 를 정의했지만 어디서도 추가하지 않는다")
     for fid, name, line in focus_refs:
         if fid not in focuses:
             rep.error(name, f"{line}행: 존재하지 않는 포커스 '{fid}' 를 참조한다")
@@ -677,7 +708,7 @@ def main(argv):
     events = check_events(trees, rep)
     cats, _ = check_decisions(trees, rep)
     ideas, chars, tokens = check_ideas_and_characters(trees, rep)
-    check_references(trees, focuses, events, ideas, chars, rep)
+    check_references(trees, focuses, events, ideas, chars, tokens, rep)
     check_localisation(mod_root, focuses, events, trees, ideas, chars, cats, rep)
     collect_gfx(trees, rep)
 

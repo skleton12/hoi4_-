@@ -14,7 +14,7 @@ focus_tree = {
 
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1900 }
+	continuous_focus_position = { x = 50 y = 2100 }
 
 	#################################################################
 	# 도입부
@@ -57,7 +57,7 @@ focus_tree = {
 	}
 
 	#################################################################
-	# 니케 지구
+	# 니케 지구 — 중공업
 	#################################################################
 
 	focus = {
@@ -77,8 +77,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = KOR_nikke_ark_alliance
-		icon = GFX_goal_generic_alliance
+		id = KOR_nikke_ark_foundries
+		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = KOR_nikke_contact }
 		x = 2
 		y = 3
@@ -87,17 +87,43 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 
 		completion_reward = {
-			add_war_support = 0.05
-			army_experience = 25
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_tech_bonus = {
+				name = KOR_nikke_foundry_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_nikke_heavy_industry
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = KOR_nikke_ark_foundries }
+		x = 2
+		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_tech_bonus = {
+				name = KOR_nikke_heavy_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
 		}
 	}
 
 	focus = {
 		id = KOR_nikke_absorb
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = KOR_nikke_ark_alliance }
+		prerequisite = { focus = KOR_nikke_heavy_industry }
 		x = 2
-		y = 4
+		y = 5
 		cost = 10
 
 		ai_will_do = { factor = 10 }
@@ -109,30 +135,29 @@ focus_tree = {
 		}
 	}
 
+	# 무장 금지를 처음으로 완화하는 포커스.
 	focus = {
-		id = KOR_nikke_doctrine
+		id = KOR_nikke_arms_conversion
 		icon = GFX_goal_generic_small_arms
 		prerequisite = { focus = KOR_nikke_absorb }
 		x = 1
-		y = 5
-		cost = 10
+		y = 6
+		cost = 12
 
-		ai_will_do = { factor = 5 }
+		ai_will_do = { factor = 15 }
 
 		completion_reward = {
-			add_ideas = KOR_nikke_doctrine_idea
-			army_experience = 40
-			add_tech_bonus = {
-				name = KOR_nikke_doctrine_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
+			swap_ideas = {
+				remove_idea = KOR_rift_demilitarization
+				add_idea = KOR_limited_rearmament
 			}
+			add_offsite_building = { type = arms_factory level = 2 }
+			country_event = { id = daegyunyeol.14 hours = 6 }
 		}
 	}
 
 	#################################################################
-	# 트릭컬 지구
+	# 트릭컬 지구 — 경공업 / 소비재
 	#################################################################
 
 	focus = {
@@ -152,8 +177,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = KOR_trickcal_pact
-		icon = GFX_goal_generic_national_unity
+		id = KOR_trickcal_light_industry
+		icon = GFX_goal_generic_production
 		prerequisite = { focus = KOR_trickcal_contact }
 		x = 6
 		y = 3
@@ -162,7 +187,23 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 
 		completion_reward = {
-			add_stability = 0.10
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = KOR_trickcal_consumer_goods
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = KOR_trickcal_light_industry }
+		x = 6
+		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_trickcal_consumer_economy
 			add_political_power = 80
 		}
 	}
@@ -170,9 +211,9 @@ focus_tree = {
 	focus = {
 		id = KOR_trickcal_absorb
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = KOR_trickcal_pact }
+		prerequisite = { focus = KOR_trickcal_consumer_goods }
 		x = 6
-		y = 4
+		y = 5
 		cost = 10
 
 		ai_will_do = { factor = 10 }
@@ -186,10 +227,10 @@ focus_tree = {
 
 	focus = {
 		id = KOR_trickcal_welfare
-		icon = GFX_goal_generic_consumer_goods
+		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = KOR_trickcal_absorb }
 		x = 5
-		y = 5
+		y = 6
 		cost = 10
 
 		ai_will_do = { factor = 5 }
@@ -201,7 +242,7 @@ focus_tree = {
 	}
 
 	#################################################################
-	# 블루아카이브 지구
+	# 블루아카이브 지구 — 연구 / 설비
 	#################################################################
 
 	focus = {
@@ -221,8 +262,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = KOR_ba_kivotos
-		icon = GFX_goal_generic_construct_civilian
+		id = KOR_ba_kivotos_labs
+		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = KOR_ba_contact }
 		x = 10
 		y = 3
@@ -241,11 +282,27 @@ focus_tree = {
 	}
 
 	focus = {
-		id = KOR_ba_absorb
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = KOR_ba_kivotos }
+		id = KOR_ba_automation
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = KOR_ba_kivotos_labs }
 		x = 10
 		y = 4
+		cost = 10
+
+		ai_will_do = { factor = 10 }
+
+		completion_reward = {
+			add_ideas = KOR_ba_automation_idea
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+
+	focus = {
+		id = KOR_ba_absorb
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = KOR_ba_automation }
+		x = 10
+		y = 5
 		cost = 10
 
 		ai_will_do = { factor = 10 }
@@ -262,7 +319,7 @@ focus_tree = {
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = KOR_ba_absorb }
 		x = 9
-		y = 5
+		y = 6
 		cost = 10
 
 		ai_will_do = { factor = 5 }
@@ -383,7 +440,7 @@ focus_tree = {
 		prerequisite = { focus = KOR_trickcal_absorb }
 		prerequisite = { focus = KOR_ba_absorb }
 		x = 6
-		y = 6
+		y = 7
 		cost = 10
 
 		ai_will_do = { factor = 10 }
@@ -402,7 +459,7 @@ focus_tree = {
 		prerequisite = { focus = KOR_three_districts_united }
 		prerequisite = { focus = KOR_district_assembly }
 		x = 6
-		y = 7
+		y = 8
 		cost = 10
 
 		ai_will_do = { factor = 10 }
@@ -413,17 +470,27 @@ focus_tree = {
 		}
 	}
 
+	# 무장 금지를 완전히 해제하는 포커스.
+	# 니케 군수 전환을 건너뛰었을 수도 있으므로 두 이념 모두를 확인한다.
 	focus = {
 		id = KOR_rift_army
 		icon = GFX_goal_generic_army_doctrines
 		prerequisite = { focus = KOR_new_republic }
 		x = 4
-		y = 8
-		cost = 10
+		y = 9
+		cost = 12
 
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 20 }
 
 		completion_reward = {
+			if = {
+				limit = { has_idea = KOR_rift_demilitarization }
+				remove_ideas = KOR_rift_demilitarization
+			}
+			if = {
+				limit = { has_idea = KOR_limited_rearmament }
+				remove_ideas = KOR_limited_rearmament
+			}
 			army_experience = 50
 			add_tech_bonus = {
 				name = KOR_rift_army_bonus
@@ -431,6 +498,7 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
+			country_event = { id = daegyunyeol.15 hours = 6 }
 		}
 	}
 
@@ -439,12 +507,13 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = KOR_new_republic }
 		x = 8
-		y = 8
+		y = 9
 		cost = 10
 
 		ai_will_do = { factor = 10 }
 
 		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
 			add_tech_bonus = {
 				name = KOR_rift_industry_bonus
 				bonus = 0.5
@@ -460,7 +529,7 @@ focus_tree = {
 		prerequisite = { focus = KOR_rift_army }
 		prerequisite = { focus = KOR_rift_industry }
 		x = 6
-		y = 9
+		y = 10
 		cost = 12
 
 		ai_will_do = { factor = 10 }

@@ -45,12 +45,13 @@ powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daeg
 
 ```bash
 python3 tools/validate.py mod/daegyunyeol   # 모드 검증
-python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (20케이스)
+python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (23케이스)
 ```
 
 검사하는 것: 파일 인코딩, 구문 오류(줄 번호), 포커스 id 중복 / 선행조건 미해결 / 순환 / 좌표 충돌,
-이벤트 namespace·id·option, 디시전 카테고리 정의, `add_ideas`·`promote_character`·`load_focus_tree`
-참조 해결, 검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용, `.mod` 디스크립터 정합성.
+이벤트 namespace·id·option, 디시전 카테고리 정의, `add_ideas`·`swap_ideas`·`has_idea`·
+`promote_character`·`load_focus_tree` 참조 해결, 정의만 하고 안 쓰는 이념,
+검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용, `.mod` 디스크립터 정합성.
 
 검사하지 못하는 것: GFX 스프라이트 이름, 트레이트·모디파이어 이름, 밸런스. 이건 `error.log` 로만 확인된다.
 
@@ -79,39 +80,61 @@ mod/
 └── daegyunyeol/
     ├── descriptor.mod                           # 폴더 안 디스크립터
     ├── common/
-    │   ├── national_focus/kor_daegyunyeol.txt   # 포커스 24개, country 블록으로 KOR 배정
+    │   ├── national_focus/kor_daegyunyeol.txt   # 포커스 27개, country 블록으로 KOR 배정
     │   ├── decisions/jap_daegyunyeol.txt        # 일본 '대균열 발동'
     │   ├── decisions/categories/…               # 카테고리 정의
-    │   ├── ideas/daegyunyeol_ideas.txt          # 국가 이념 9
+    │   ├── ideas/daegyunyeol_ideas.txt          # 국가 이념 12 (무장 금지 포함)
     │   └── characters/daegyunyeol_characters.txt# 어드바이저 3 + 국가 지도자 2
-    ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .13
-    └── localisation/english/…_l_english.yml     # UTF-8 BOM, 키 117개
+    ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .15
+    └── localisation/english/…_l_english.yml     # UTF-8 BOM, 키 135개
 ```
 
-포커스트리 배치 (총 24개):
+포커스트리 배치 (총 27개). 세 지구 분기는 **산업 트리**다.
 
 ```
-y0                          대균열의 각성
-y1                          균열 조사
-y2   니케 접촉    트릭컬 접촉    블아 접촉    임시정부
-y3   방주 동맹    트릭컬 협약    키보토스     균열 헌정
-y4   니케 흡수    트릭컬 흡수    블아 흡수    열린 지구 ↔ 닫힌 지구
-y5   니케 교리    복지 계획      학원 연구망  삼지구 의회
-y6                          삼지구 통합   (세 흡수 필요)
-y7                          대균열 공화국 (통합 + 의회 필요)
-y8            균열군          균열 산업기반
-y9                          대균열 봉인
+y0                                     대균열의 각성
+y1                                     균열 조사
+y2   니케 접촉      트릭컬 접촉     블아 접촉        임시정부
+y3   방주 주조창    경공업 단지     키보토스 연구단지  균열 헌정
+y4   중공업 이관    소비재 개편     학원 자동화       열린 지구 ↔ 닫힌 지구
+y5   니케 흡수      트릭컬 흡수     블아 흡수         삼지구 의회
+y6   군수 전환      복지 계획       학원 연구망
+y7                                     삼지구 통합   (세 흡수 필요)
+y8                                     대균열 공화국 (통합 + 의회 필요)
+y9            균열군            균열 산업기반
+y10                                    대균열 봉인
 ```
+
+세 지구의 성격이 다르다. **니케 = 중공업**(공장, 자원, 병기 생산 속도),
+**트릭컬 = 경공업/소비재**(소비재 감소, 인구, 안정도), **블아 = 연구/설비**
+(연구 속도, 공장 숙련도 회복). 산업 포커스는 `add_offsite_building` 으로 실제 공장을 준다 —
+주 ID 를 건드리지 않아 깨질 여지가 없다.
 
 정치 분기의 **열린 지구 / 닫힌 지구**는 상호배타다. 각각 이념과 국가 지도자가 다르게 붙고,
 `대균열 공화국`은 삼지구 통합과 삼지구 의회를 **둘 다** 요구해서 두 축이 마지막에 합류한다.
 
+### 무장 금지 (국가 정신)
+
+해방 직후 KOR 은 `무장 금지` 국가 정신을 달고 시작한다. 균열이 남긴 건 공장이지 군대가 아니다.
+
+| 단계 | 국가 정신 | 효과 |
+|---|---|---|
+| 해방 직후 | `무장 금지` | 징집 인력 −100%, 군수공장 생산량 −90%, 병기공장 건설 −90%, 육군 경험 −50% |
+| 니케 `군수 전환` | `제한적 재무장` | 징집 인력 −50%, 군수공장 생산량 −30% |
+| `균열군 창설` | (해제) | 제약 없음 |
+
+인력이 0 이라 사단을 배치할 수 없고 군수공장이 사실상 놀기 때문에, 초반에는 산업만 굴리게 된다.
+`군수 전환` 은 니케 분기 끝에 있어서 **군대를 쥐려면 산업 분기를 먼저 타야 한다**.
+
+`균열군 창설` 은 `군수 전환` 을 건너뛴 경우까지 처리하도록 두 이념 모두를 `if has_idea` 로 확인한다.
+이 조건에 오타가 나면 무장 금지가 영원히 안 풀리므로, 검증기가 `has_idea` 참조를 따로 검사한다.
+
 "포커스트리 11개"를 트리 11그루가 아니라 하나의 트리 안 분기로 해석했다.
 별도의 트리 11개가 필요했던 거라면 알려주면 분리한다.
 
-흐름: 일본 디시전 → `daegyunyeol.1` → `release = KOR` + `load_focus_tree` + 지도자 영입 →
-`daegyunyeol.2` 수립 → 세 지구 접촉/흡수(`.3`~`.8`) → 삼지구 통합 뉴스(`.9`) →
-정치 분기(`.10`~`.12`) → 대균열 봉인 뉴스(`.13`).
+흐름: 일본 디시전 → `daegyunyeol.1` → `release = KOR` + `load_focus_tree` + 지도자 영입
++ 무장 금지 부여 → `daegyunyeol.2` 수립 → 세 지구 접촉/흡수(`.3`~`.8`) → 삼지구 통합 뉴스(`.9`) →
+정치 분기(`.10`~`.12`) → 군수 전환(`.14`) → 균열군 창설(`.15`) → 대균열 봉인 뉴스(`.13`).
 
 세 지구는 **새 국가가 아니라 포커스 분기 + 이념 + 이벤트**로 구현했다.
 새 tag 를 만들면 `common/country_tags`, `history/countries`, 그리고 `.tga` 깃발 3종이
