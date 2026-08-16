@@ -75,6 +75,9 @@ powershell -ExecutionPolicy Bypass -File .\tools\Test-Mod.ps1 -Collect
 | `Japan [DAEGYUNYEOL OK]` | 모드가 로드되고 있다 → 문제는 콘텐츠 쪽 |
 | `Japan` / `일본` | 모드가 전혀 로드되지 않았다 → 문제는 설치·런처 쪽 |
 
+마커가 필요 없으면 설치 시 `-NoMarker` 를 붙이거나
+`localisation/replace/daegyunyeol_marker_l_english.yml` 파일만 지우면 된다.
+
 마커는 일부러 ASCII 로만 썼다. 한글 폰트가 없어도 무조건 보인다.
 그래서 **마커는 보이는데 포커스 이름이 네모/빈칸이면 그건 폰트 문제**이고 로딩 문제가 아니다.
 두 원인이 이 한 줄로 갈린다. 확인이 끝나면

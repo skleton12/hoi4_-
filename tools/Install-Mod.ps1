@@ -17,7 +17,8 @@
 param(
     [string]$Source,
     [switch]$Enable,
-    [string]$RemoveOld
+    [string]$RemoveOld,
+    [switch]$NoMarker
 )
 
 $ErrorActionPreference = "Stop"
@@ -105,6 +106,18 @@ if (Test-Path -LiteralPath $target) {
 }
 Copy-Item -LiteralPath $Source -Destination $target -Recurse -Force
 Ok "복사 완료: $target"
+
+# 로딩 확인용 마커. 일본 국가명을 'Japan [DAEGYUNYEOL OK]' 로 바꾼다.
+$marker = Join-Path $target 'localisation\replace\daegyunyeol_marker_l_english.yml'
+if ($NoMarker) {
+    if (Test-Path -LiteralPath $marker) {
+        Remove-Item -LiteralPath $marker -Force
+        Ok "로딩 마커 제외 (-NoMarker)"
+    }
+} elseif (Test-Path -LiteralPath $marker) {
+    Info "로딩 마커 포함. 국가 선택 화면의 일본 이름으로 로드 여부를 판정할 수 있다."
+    Info "  빼려면 -NoMarker 를 붙여 다시 실행할 것."
+}
 
 # .mod 두 개(폴더 옆 + 폴더 안)를 모두 쓴다. 폴더형 모드는 둘 다 필요하다.
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
