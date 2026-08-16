@@ -717,7 +717,14 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
                 required |= {dec.key, dec.key + "_desc"}
 
     missing = sorted(required - set(keys))
-    unused = sorted(set(keys) - required)
+    # localisation/replace/ 는 바닐라 키를 의도적으로 덮어쓰는 곳이라 '미사용' 이 정상이다.
+    unused = sorted(
+        k for k in set(keys) - required
+        if not keys[k].startswith("localisation/replace/")
+    )
+    overrides = sorted(k for k in keys if keys[k].startswith("localisation/replace/"))
+    if overrides:
+        rep.note(f"바닐라 로컬라이제이션 덮어쓰기 {len(overrides)}개: {', '.join(overrides)}")
     for k in missing:
         rep.error("localisation", f"키 누락: {k}")
     for k in unused:

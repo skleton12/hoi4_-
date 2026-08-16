@@ -26,17 +26,36 @@ powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -Enable
 
 ## 확인 절차
 
-1. `문서\Paradox Interactive\Hearts of Iron IV\logs\error.log` 삭제
-2. 런처에서 **대균열** 체크 → [플레이]
-3. **1936 새 게임**(세이브 불러오기 아님), 일본 선택
-4. 디시전 탭 → `대균열` 카테고리 → **대균열 발동**
-5. 콘솔(`~`)에서 `tag KOR` → 포커스트리 확인
-
-안 되면 진단 스크립트 출력을 그대로 전달하면 된다.
+한 방 스크립트가 있다. 설치 + 로그 정리 + 결과 수집을 다 한다.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daegyunyeol | Tee-Object -FilePath report.txt
+powershell -ExecutionPolicy Bypass -File .\tools\Test-Mod.ps1
+# 게임을 켜서 확인하고 종료한 뒤
+powershell -ExecutionPolicy Bypass -File .\tools\Test-Mod.ps1 -Collect
 ```
+
+`-Collect` 를 붙이면 `daegyunyeol-report.txt` 하나에 진단 결과와 `error.log`, `game.log` 가 모인다.
+
+### 1초 판정: 로딩 마커
+
+`localisation/replace/` 에 바닐라 로컬라이제이션을 덮어쓰는 마커를 넣어뒀다.
+**국가 선택 화면에서 일본 이름만 보면 된다.**
+
+| 보이는 것 | 뜻 |
+|---|---|
+| `Japan [DAEGYUNYEOL OK]` | 모드가 로드되고 있다 → 문제는 콘텐츠 쪽 |
+| `Japan` / `일본` | 모드가 전혀 로드되지 않았다 → 문제는 설치·런처 쪽 |
+
+마커는 일부러 ASCII 로만 썼다. 한글 폰트가 없어도 무조건 보인다.
+그래서 **마커는 보이는데 포커스 이름이 네모/빈칸이면 그건 폰트 문제**이고 로딩 문제가 아니다.
+두 원인이 이 한 줄로 갈린다. 확인이 끝나면
+`localisation/replace/daegyunyeol_marker_l_english.yml` 만 지우면 된다.
+
+### 마커가 보인 다음
+
+1. **1936 새 게임**(세이브 불러오기 아님), 일본 선택
+2. 디시전 탭 → `대균열` 카테고리 → **대균열 발동**
+3. 콘솔(`~`)에서 `tag KOR` → 포커스트리 확인
 
 ## 검증 (게임 없이)
 
