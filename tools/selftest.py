@@ -154,6 +154,11 @@ CASES = [
         "실제 폴더명과 다르다",
     ),
     (
+        "두 디스크립터의 supported_version 불일치",
+        sub("descriptor.mod", 'supported_version="1.19.*"', 'supported_version="1.16.*"'),
+        "supported_version 가",
+    ),
+    (
         "폴더 옆 .mod 의 path 삭제",
         sub("../daegyunyeol.mod", 'path="mod/daegyunyeol"\n', ""),
         "게임이 파일을 찾지 못한다",

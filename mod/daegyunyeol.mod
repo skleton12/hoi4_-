@@ -6,5 +6,5 @@ tags={
 	"Gameplay"
 }
 name="대균열"
-supported_version="1.16.*"
+supported_version="1.19.*"
 path="mod/daegyunyeol"

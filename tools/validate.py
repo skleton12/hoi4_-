@@ -240,6 +240,7 @@ def check_descriptors(mod_root: Path, outer_mod: Path, rep: Report):
         rep.error(outer_mod.name, "폴더 옆 .mod 파일이 없다")
         return
 
+    fields = {}
     for path, need_path in ((outer_mod, True), (inner, False)):
         if not path.exists():
             continue
@@ -252,6 +253,7 @@ def check_descriptors(mod_root: Path, outer_mod: Path, rep: Report):
         for field in ("name", "supported_version"):
             if scalar(entries, field) is None:
                 rep.error(name, f'{field}="..." 항목이 없다')
+        fields[name] = {f: scalar(entries, f) for f in ("name", "version", "supported_version")}
         p = scalar(entries, "path")
         if p is None:
             if need_path:
@@ -268,6 +270,21 @@ def check_descriptors(mod_root: Path, outer_mod: Path, rep: Report):
                 rep.warn(name, "폴더 안 descriptor.mod 에는 path= 가 없는 편이 안전하다")
         if scalar(entries, "archive") is not None and p is not None:
             rep.error(name, "archive= 와 path= 를 동시에 쓸 수 없다")
+
+    # 두 디스크립터가 어긋나면 런처와 게임이 다른 값을 보게 된다.
+    # 특히 supported_version 이 어긋나면 런처가 목록에는 띄우면서 플레이세트에서 조용히 뺀다.
+    if len(fields) == 2:
+        (n1, f1), (n2, f2) = fields.items()
+        for field in ("name", "version", "supported_version"):
+            if f1[field] != f2[field]:
+                rep.error(
+                    n1,
+                    f"{field} 가 {n1}({f1[field]!r}) 과 {n2}({f2[field]!r}) 에서 다르다. "
+                    "두 디스크립터는 같아야 한다",
+                )
+    sv = next((f["supported_version"] for f in fields.values() if f["supported_version"]), None)
+    if sv:
+        rep.note(f"supported_version = {sv} (게임 버전과 맞는지 launcher-settings.json 의 rawVersion 으로 확인)")
 
 
 def load_scripts(mod_root: Path, rep: Report):

@@ -45,13 +45,14 @@ powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daeg
 
 ```bash
 python3 tools/validate.py mod/daegyunyeol   # 모드 검증
-python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (25케이스)
+python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (26케이스)
 ```
 
 검사하는 것: 파일 인코딩, 구문 오류(줄 번호), 포커스 id 중복 / 선행조건 미해결 / 순환 / 좌표 충돌,
 이벤트 namespace·id·option, 디시전 카테고리 정의, `add_ideas`·`swap_ideas`·`has_idea`·
 `promote_character`·`load_focus_tree`·scripted effect 참조 해결, 정의만 하고 안 쓰는 이념과 effect,
-검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용, `.mod` 디스크립터 정합성.
+검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용,
+두 `.mod` 디스크립터의 `name`·`version`·`supported_version` 일치 여부.
 
 검사하지 못하는 것: GFX 스프라이트 이름, 트레이트·모디파이어 이름, 밸런스. 이건 `error.log` 로만 확인된다.
 
@@ -65,7 +66,7 @@ python3 tools/selftest.py                   # 검증기가 실제로 잡는지 �
 | 항목 | 이전 | 지금 |
 |---|---|---|
 | 폴더/파일명 | `대균열` (한글) | `daegyunyeol` (영문). `name="대균열"` 은 런처 표시용으로 유지 |
-| `supported_version` | 불명 | 설치 시 게임 버전에서 자동 생성 |
+| `supported_version` | 불명 | 저장소 기본값 `1.19.*`. 설치 시 게임 버전에서 자동 재생성 |
 | `.mod` 파일 | 불명 | 폴더 옆 + 폴더 안 **양쪽** 작성, `path="mod/daegyunyeol"` 슬래시 |
 | 인코딩 | 불명 (메모장 기본 저장 시 CP949) | `.txt` = BOM 없는 UTF-8, `.yml` = BOM 포함 UTF-8 로 커밋 |
 | 신규 국가 태그 | 불명 | 없음. 새 tag/깃발(.tga)이 없으므로 실패 지점 자체가 없다 |
