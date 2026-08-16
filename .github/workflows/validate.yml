@@ -1,0 +1,22 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 검증기 자체 테스트
+        run: python3 tools/selftest.py
+
+      - name: 모드 검증
+        run: python3 tools/validate.py mod/daegyunyeol

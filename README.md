@@ -38,6 +38,25 @@ powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -Enable
 powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daegyunyeol | Tee-Object -FilePath report.txt
 ```
 
+## 검증 (게임 없이)
+
+`tools/validate.py` 는 Paradox 스크립트를 실제로 파싱해서, 게임을 켜지 않고 잡을 수 있는 건 전부 잡는다.
+푸시할 때마다 GitHub Actions 가 자동으로 돌린다.
+
+```bash
+python3 tools/validate.py mod/daegyunyeol   # 모드 검증
+python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (20케이스)
+```
+
+검사하는 것: 파일 인코딩, 구문 오류(줄 번호), 포커스 id 중복 / 선행조건 미해결 / 순환 / 좌표 충돌,
+이벤트 namespace·id·option, 디시전 카테고리 정의, `add_ideas`·`promote_character`·`load_focus_tree`
+참조 해결, 검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용, `.mod` 디스크립터 정합성.
+
+검사하지 못하는 것: GFX 스프라이트 이름, 트레이트·모디파이어 이름, 밸런스. 이건 `error.log` 로만 확인된다.
+
+`selftest.py` 는 정상 모드를 복사해 한 군데씩 고의로 망가뜨린 뒤 그 오류가 잡히는지 본다.
+"오류 0" 이 검사를 통과한 결과인지 아무것도 안 본 결과인지 구분하기 위한 것이다.
+
 ---
 
 ## 이전 실패와 무엇이 다른가
@@ -60,21 +79,39 @@ mod/
 └── daegyunyeol/
     ├── descriptor.mod                           # 폴더 안 디스크립터
     ├── common/
-    │   ├── national_focus/kor_daegyunyeol.txt   # 포커스 16개, country 블록으로 KOR 배정
+    │   ├── national_focus/kor_daegyunyeol.txt   # 포커스 24개, country 블록으로 KOR 배정
     │   ├── decisions/jap_daegyunyeol.txt        # 일본 '대균열 발동'
     │   ├── decisions/categories/…               # 카테고리 정의
-    │   ├── ideas/daegyunyeol_ideas.txt          # 지구 이념 3 + 공화국 이념 1
-    │   └── characters/daegyunyeol_characters.txt# 어드바이저 3
-    ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .9
-    └── localisation/english/…_l_english.yml     # UTF-8 BOM
+    │   ├── ideas/daegyunyeol_ideas.txt          # 국가 이념 9
+    │   └── characters/daegyunyeol_characters.txt# 어드바이저 3 + 국가 지도자 2
+    ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .13
+    └── localisation/english/…_l_english.yml     # UTF-8 BOM, 키 117개
 ```
 
-포커스트리는 도입 2 → 세 지구 각 3 → 통합/공화국/군·산업/봉인 5, 총 16개다.
+포커스트리 배치 (총 24개):
+
+```
+y0                          대균열의 각성
+y1                          균열 조사
+y2   니케 접촉    트릭컬 접촉    블아 접촉    임시정부
+y3   방주 동맹    트릭컬 협약    키보토스     균열 헌정
+y4   니케 흡수    트릭컬 흡수    블아 흡수    열린 지구 ↔ 닫힌 지구
+y5   니케 교리    복지 계획      학원 연구망  삼지구 의회
+y6                          삼지구 통합   (세 흡수 필요)
+y7                          대균열 공화국 (통합 + 의회 필요)
+y8            균열군          균열 산업기반
+y9                          대균열 봉인
+```
+
+정치 분기의 **열린 지구 / 닫힌 지구**는 상호배타다. 각각 이념과 국가 지도자가 다르게 붙고,
+`대균열 공화국`은 삼지구 통합과 삼지구 의회를 **둘 다** 요구해서 두 축이 마지막에 합류한다.
+
 "포커스트리 11개"를 트리 11그루가 아니라 하나의 트리 안 분기로 해석했다.
 별도의 트리 11개가 필요했던 거라면 알려주면 분리한다.
 
-흐름: 일본 디시전 → `daegyunyeol.1` → `release = KOR` + `load_focus_tree` →
-`daegyunyeol.2` 수립 → 세 지구 접촉/흡수(`.3`~`.8`) → 삼지구 통합 뉴스(`.9`) → 대균열 봉인.
+흐름: 일본 디시전 → `daegyunyeol.1` → `release = KOR` + `load_focus_tree` + 지도자 영입 →
+`daegyunyeol.2` 수립 → 세 지구 접촉/흡수(`.3`~`.8`) → 삼지구 통합 뉴스(`.9`) →
+정치 분기(`.10`~`.12`) → 대균열 봉인 뉴스(`.13`).
 
 세 지구는 **새 국가가 아니라 포커스 분기 + 이념 + 이벤트**로 구현했다.
 새 tag 를 만들면 `common/country_tags`, `history/countries`, 그리고 `.tga` 깃발 3종이

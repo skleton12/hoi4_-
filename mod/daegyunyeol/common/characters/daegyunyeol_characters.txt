@@ -38,6 +38,30 @@ characters = {
 		}
 	}
 
+	# --- 국가 지도자 ---
+	# daegyunyeol.1 에서 recruit_character 로 영입한 뒤, 정치 노선 포커스가 promote_character 로 승격시킨다.
+	# 초상(portraits)은 일부러 비워뒀다. 바닐라 스프라이트 이름을 잘못 쓰면 error.log 만 늘어난다.
+
+	KOR_leader_democratic = {
+		name = KOR_leader_democratic
+
+		country_leader = {
+			ideology = liberalism
+			expire = "1965.1.1.1"
+			traits = { }
+		}
+	}
+
+	KOR_leader_authoritarian = {
+		name = KOR_leader_authoritarian
+
+		country_leader = {
+			ideology = despotism
+			expire = "1965.1.1.1"
+			traits = { }
+		}
+	}
+
 	KOR_rift_industrialist = {
 		name = KOR_rift_industrialist
 

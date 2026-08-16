@@ -32,6 +32,24 @@
  KOR_ba_absorb:0 "블루아카이브 지구 흡수"
  KOR_ba_absorb_desc:0 "키보토스가 대한민국의 일부가 되었다."
 
+ KOR_nikke_doctrine:0 "니케 교리 도입"
+ KOR_nikke_doctrine_desc:0 "방주의 소대 단위 교전 교리를 육군 전 제대에 적용한다."
+ KOR_trickcal_welfare:0 "트릭컬 복지 계획"
+ KOR_trickcal_welfare_desc:0 "새 시민들을 위한 정착 지원 체계를 세운다. 인구가 빠르게 늘고 있다."
+ KOR_ba_academy:0 "학원 연구망"
+ KOR_ba_academy_desc:0 "키보토스의 학원들을 국가 연구망에 편입한다."
+
+ KOR_provisional_government:0 "임시정부 수립"
+ KOR_provisional_government_desc:0 "균열 직후의 공백을 메울 임시 행정기구를 세운다."
+ KOR_rift_constitution:0 "균열 헌정"
+ KOR_rift_constitution_desc:0 "세 지구를 어떤 원칙으로 통치할 것인가. 헌법 초안이 올라왔다."
+ KOR_path_democratic:0 "열린 지구"
+ KOR_path_democratic_desc:0 "각 지구에 자치권과 선거를 보장한다. 통합은 느리지만 무너지지 않는다."
+ KOR_path_authoritarian:0 "닫힌 지구"
+ KOR_path_authoritarian_desc:0 "지구 자치를 정지하고 중앙이 직접 관할한다. 반발은 있겠지만 속도는 우리 편이다."
+ KOR_district_assembly:0 "삼지구 의회"
+ KOR_district_assembly_desc:0 "세 지구의 대표가 한자리에 모인다. 형식이든 실질이든, 이것으로 국가는 완성된다."
+
  KOR_three_districts_united:0 "삼지구 통합"
  KOR_three_districts_united_desc:0 "세 지구가 하나의 국가 아래 모였다. 세계는 이제 한반도를 다시 본다."
  KOR_new_republic:0 "대균열 공화국"
@@ -81,6 +99,25 @@
  daegyunyeol.9.a:0 "우리가 해냈다."
  daegyunyeol.9.b:0 "이건 위협이다."
 
+ daegyunyeol.10.t:0 "임시정부"
+ daegyunyeol.10.d:0 "총독부가 무너진 자리에 임시 행정위원회가 들어섰다. 균열 너머의 지구들을 어떤 자격으로 상대할 것인지부터 정해야 한다."
+ daegyunyeol.10.a:0 "우리는 국가다."
+ daegyunyeol.10.b:0 "우선 질서부터."
+
+ daegyunyeol.11.t:0 "균열 헌정 초안"
+ daegyunyeol.11.d:0 "헌법 초안은 두 갈래로 갈렸다. 지구별 자치를 인정할 것인가, 중앙이 직접 통할할 것인가."
+ daegyunyeol.11.a:0 "선택의 시간이다."
+
+ daegyunyeol.12.t:0 "삼지구 의회 개회"
+ daegyunyeol.12.d:0 "세 지구의 대표단이 경성에 모였다. 균열 이후 처음으로, 이곳의 모든 세력이 같은 탁자에 앉았다."
+ daegyunyeol.12.a:0 "의회는 우리의 것이다."
+ daegyunyeol.12.b:0 "형식은 갖췄다."
+
+ daegyunyeol.13.t:0 "대균열, 닫히다"
+ daegyunyeol.13.d:0 "한반도 상공의 균열이 완전히 봉인되었다. 넘어온 것들은 남았고, 길은 사라졌다. 세계는 이제 이 나라를 어떻게 다뤄야 할지 모른다."
+ daegyunyeol.13.a:0 "이제 우리 힘으로 간다."
+ daegyunyeol.13.b:0 "저들은 무엇을 얻었나."
+
  # --- 국가 이념 ---
  KOR_nikke_district:0 "니케 지구"
  KOR_nikke_district_desc:0 "방주의 전투 교리가 우리 군에 통합되었다."
@@ -91,7 +128,20 @@
  KOR_rift_republic:0 "대균열 공화국"
  KOR_rift_republic_desc:0 "세 지구를 아우르는 새로운 헌정 질서."
 
- # --- 어드바이저 ---
+ KOR_nikke_doctrine_idea:0 "니케 교리"
+ KOR_nikke_doctrine_idea_desc:0 "소대 단위 교전 교리가 육군 전반에 자리잡았다."
+ KOR_trickcal_welfare_idea:0 "트릭컬 복지 계획"
+ KOR_trickcal_welfare_idea_desc:0 "정착 지원이 자리를 잡으면서 인구가 빠르게 늘고 있다."
+ KOR_ba_academy_idea:0 "학원 연구망"
+ KOR_ba_academy_idea_desc:0 "키보토스의 학원들이 국가 연구 계획에 참여한다."
+ KOR_open_districts:0 "열린 지구"
+ KOR_open_districts_desc:0 "각 지구가 자치권을 유지한 채 연방에 참여한다."
+ KOR_sealed_districts:0 "닫힌 지구"
+ KOR_sealed_districts_desc:0 "지구 자치는 정지되었고 모든 결정은 중앙에서 내려온다."
+
+ # --- 어드바이저 / 지도자 ---
  KOR_rift_commissar:0 "균열 판무관"
  KOR_district_liaison:0 "지구 연락관"
  KOR_rift_industrialist:0 "균열 산업가"
+ KOR_leader_democratic:0 "삼지구 연방 대통령"
+ KOR_leader_authoritarian:0 "균열 통제위원장"
