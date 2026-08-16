@@ -90,7 +90,7 @@ CASES = [
     ),
     (
         "존재하지 않는 포커스트리 로드",
-        sub(EVENTS, "load_focus_tree = kor_daegyunyeol_tree", "load_focus_tree = wrong_tree_id"),
+        sub(EFFECTS, "load_focus_tree = kor_daegyunyeol_tree", "load_focus_tree = wrong_tree_id"),
         "존재하지 않는 포커스트리",
     ),
     (
@@ -175,13 +175,13 @@ CASES = [
     ),
     (
         "아무도 호출하지 않는 scripted effect",
-        sub(EVENTS, "KOR_disband_all_units = yes\n", ""),
+        sub(EFFECTS, "KOR_disband_all_units = yes\n", ""),
         "아무도 호출하지 않는다",
         "warn",
     ),
     (
         "정의만 하고 쓰지 않는 이념",
-        sub(EVENTS, "add_ideas = KOR_rift_demilitarization\n", ""),
+        sub(EFFECTS, "add_ideas = KOR_rift_demilitarization\n", ""),
         "어디서도 추가하지 않는다",
         "warn",
     ),

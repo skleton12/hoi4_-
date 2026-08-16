@@ -24,6 +24,35 @@ powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -Enable
 
 예전 한글 이름 모드를 같이 정리하려면 `-RemoveOld "대균열"` 을 추가한다.
 
+### 손으로 복사하는 경우
+
+스크립트를 못 쓰면 최종 결과가 **정확히** 아래 모양이어야 한다.
+
+```
+문서\Paradox Interactive\Hearts of Iron IV\mod\
+├── daegyunyeol.mod        ← 폴더가 아니라 파일. 이게 없으면 게임은 폴더를 못 찾는다
+└── daegyunyeol\
+    ├── descriptor.mod
+    ├── common\
+    ├── events\
+    └── localisation\
+```
+
+자주 나오는 실수:
+
+- **저장소의 `mod` 폴더를 통째로 복사** → `mod\mod\daegyunyeol` 이 된다. 한 겹 더 들어가 있으면 안 된다.
+- **`daegyunyeol.mod` 파일을 빼먹음** → 폴더만 있으면 로드되지 않는다. 폴더 옆 `.mod` 와 폴더 안 `descriptor.mod` 가 **둘 다** 필요하다.
+- **복사 후 런처를 안 엶** → 손으로 복사한 모드는 런처를 한 번 열어 플레이세트에서 체크해야 `dlc_load.json` 에 등록된다. 등록 안 되면 게임은 모드를 모른 채 실행된다.
+- **스팀에서 바로 실행** → 반드시 런처의 [플레이] 버튼으로 실행할 것.
+
+복사 후 확인:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\Check-Hoi4Mod.ps1 -ModName daegyunyeol
+```
+
+`dlc_load.json` 의 `enabled_mods` 에 `mod/daegyunyeol.mod` 가 있는지가 핵심이다.
+
 ## 확인 절차
 
 한 방 스크립트가 있다. 설치 + 로그 정리 + 결과 수집을 다 한다.

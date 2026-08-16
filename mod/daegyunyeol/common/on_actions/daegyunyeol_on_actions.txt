@@ -1,0 +1,16 @@
+# 안전망.
+#
+# 대한민국이 일본 디시전이 아닌 다른 경로로 생겨도(바닐라 해방, 콘솔 release,
+# 일본 붕괴) 대균열 포커스트리와 초기 설정을 받게 한다.
+#
+# KOR_daegyunyeol_setup 안쪽에 플래그 검사가 있어서 실제 작업은 딱 한 번만 돈다.
+# 그 뒤로는 하루에 한 번 플래그만 확인하고 끝난다.
+
+on_actions = {
+
+	on_daily_KOR = {
+		effect = {
+			KOR_daegyunyeol_setup = yes
+		}
+	}
+}
