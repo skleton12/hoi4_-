@@ -121,6 +121,31 @@
       ]
     },
     {
+      "id": "com_adv",
+      "title": "혁명 간부",
+      "after": "com_gov",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "정치위원 제도",
+          "effect": "정치위원 고문 영입, 사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "계획 전문가 영입",
+          "effect": "경제 고문 영입",
+          "days": 35
+        },
+        {
+          "name": "붉은 장성 기용",
+          "effect": "육군 장성 2명 영입",
+          "days": 35
+        }
+      ]
+    },
+    {
       "id": "com_stalin",
       "title": "스탈린형",
       "after": "com_gov",
@@ -395,7 +420,7 @@
       "title": "아나키스트",
       "after": "com_gov",
       "exclusive": "com_model",
-      "condition": null,
+      "condition": "무장 봉기로 집권",
       "target": 1,
       "focuses": [
         {
@@ -685,6 +710,31 @@
           "name": "평화적 정권교체",
           "effect": "안정도 +5%",
           "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_adv",
+      "title": "개혁 내각",
+      "after": "dem_gov",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "기술 관료 등용",
+          "effect": "산업 고문 영입",
+          "days": 35
+        },
+        {
+          "name": "의회 연정 구성",
+          "effect": "정치력 +50, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "시민군 장교단",
+          "effect": "육군 장성 1명, 방어 교리 비용 -10%",
+          "days": 35
         }
       ]
     },
@@ -1077,6 +1127,31 @@
       ]
     },
     {
+      "id": "fas_adv",
+      "title": "운동 간부",
+      "after": "fas_gov",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "당 이론가 영입",
+          "effect": "선전 고문 영입",
+          "days": 35
+        },
+        {
+          "name": "군수 장관 임명",
+          "effect": "군수공장 +1, 산업 고문 영입",
+          "days": 35
+        },
+        {
+          "name": "충성파 장성 기용",
+          "effect": "육군 장성 2명 영입",
+          "days": 35
+        }
+      ]
+    },
+    {
       "id": "fas_franco",
       "title": "프랑코형 국가주의",
       "after": "fas_gov",
@@ -1465,11 +1540,36 @@
       ]
     },
     {
+      "id": "neu_adv",
+      "title": "실무 내각",
+      "after": "neu_gov",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "재무 전문가 기용",
+          "effect": "소비재 공장 -3%, 경제 고문 영입",
+          "days": 35
+        },
+        {
+          "name": "경찰청장 임명",
+          "effect": "방첩 +15%",
+          "days": 35
+        },
+        {
+          "name": "원로 장성 기용",
+          "effect": "육군 장성 1명, 육군 경험 +30",
+          "days": 35
+        }
+      ]
+    },
+    {
       "id": "neu_junta",
       "title": "군사 독재",
       "after": "neu_gov",
       "exclusive": "neu_model",
-      "condition": null,
+      "condition": "군부 쿠데타로 집권",
       "target": 1,
       "focuses": [
         {
@@ -1911,6 +2011,31 @@
           "name": "행운의 고양이 장관",
           "effect": "안정도 +2%, 전쟁 지원 +2%",
           "days": 35
+        }
+      ]
+    },
+    {
+      "id": "hid_crisis",
+      "title": "정권 위기",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 중 전쟁 지원 30% 미만",
+      "target": 3,
+      "focuses": [
+        {
+          "name": "내각 총사퇴",
+          "effect": "정치력 +50, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "거국 내각 구성",
+          "effect": "안정도 +10%, 일일 정치력 -0.1",
+          "days": 35
+        },
+        {
+          "name": "국민 신임 투표",
+          "effect": "전쟁 지원 +10%",
+          "days": 70
         }
       ]
     }
