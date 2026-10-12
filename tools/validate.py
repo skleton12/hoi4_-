@@ -669,10 +669,12 @@ LOC_LINE = re.compile(r'^\s*([\w.\-]+):\s*\d*\s*"(.*)"\s*$')
 
 def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cats, rep: Report):
     keys = {}
+    language_keys = {}
     for path in sorted((mod_root / "localisation").rglob("*.yml")):
         name = rel(path, mod_root)
         text = path.read_bytes().decode("utf-8-sig")
         lines = text.splitlines()
+        language = lines[0].strip().rstrip(":") if lines else ""
         if not lines or not re.match(r"^\s*l_\w+:\s*$", lines[0]):
             rep.error(name, f"첫 줄이 'l_english:' 형태가 아니다: {lines[0][:40] if lines else '(빈 파일)'}")
         if not re.search(r"_l_\w+\.yml$", path.name):
@@ -685,8 +687,10 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
                 rep.error(name, f"{i}행: 해석 불가. 형식은 ' KEY:0 \"값\"' 이다 -> {line.strip()[:50]}")
                 continue
             key, val = m.group(1), m.group(2)
-            if key in keys:
-                rep.error(name, f"{i}행: 로컬라이제이션 키 중복 '{key}' (앞서 {keys[key]})")
+            scoped_key = (language, key)
+            if scoped_key in language_keys:
+                rep.error(name, f"{i}행: 로컬라이제이션 키 중복 '{key}' (앞서 {language_keys[scoped_key]})")
+            language_keys[scoped_key] = f"{name}:{i}"
             keys[key] = f"{name}:{i}"
             if not val.strip():
                 rep.warn(name, f"{i}행: '{key}' 의 값이 비어 있다")
