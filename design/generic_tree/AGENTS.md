@@ -43,13 +43,13 @@ python3 design/generic_tree/render.py   # img/ 그림 갱신 (Pillow 필요)
 
 | 파일 | 갈래 | 칸 | 담당 |
 |---|---|---:|---|
-| `01_start.json` | 공통 시작 | 10 || Claude |
-| `02_industry.json` | 산업 | 100 || Claude |
-| `03_military.json` | 군사 | 140 || Claude |
-| `04_politics.json` | 정치 | 200 || GPT |
-| `05_diplomacy.json` | 외교·첩보 | 90 || GPT |
-| `06_terrain.json` | 지형 특화 | 40 || Claude |
-| `07_independence.json` | 괴뢰국 / 독립 | 40 || GPT |
-| `08_culture.json` | 문화권 특화 | 80 || GPT |
-| `09_late.json` | 후반부 | 20 || Claude |
+| `01_start.json` | 공통 시작 | 10 | Claude |
+| `02_industry.json` | 산업 | 100 | Claude |
+| `03_military.json` | 군사 | 140 | Claude |
+| `04_politics.json` | 정치 | 200 | GPT |
+| `05_diplomacy.json` | 외교·첩보 | 90 | GPT |
+| `06_terrain.json` | 지형 특화 | 40 | Claude |
+| `07_independence.json` | 괴뢰국 / 독립 | 40 | GPT |
+| `08_culture.json` | 문화권 특화 | 80 | GPT |
+| `09_late.json` | 후반부 | 20 | Claude |
 | | **합계** | **720** | Claude 310 · GPT 410 |
