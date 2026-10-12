@@ -21,14 +21,14 @@ MOD = HERE.parent.parent / "mod" / "gibon_jungjeom"
 PREFIX = "GJ"
 
 ICONS = {
-    "start": "GFX_goal_generic_political_pressure",
-    "industry": "GFX_goal_generic_construct_civ_factory",
-    "military": "GFX_goal_generic_army_doctrines",
-    "politics": "GFX_goal_generic_political_pressure",
-    "diplomacy": "GFX_goal_generic_major_alliance",
-    "terrain": "GFX_goal_generic_construct_infrastructure",
-    "independence": "GFX_goal_generic_political_pressure",
-    "late": "GFX_goal_generic_production",
+    "start": "GFX_GJ_political_pressure",
+    "industry": "GFX_GJ_construct_civ_factory",
+    "military": "GFX_GJ_army_doctrines",
+    "politics": "GFX_GJ_political_pressure",
+    "diplomacy": "GFX_GJ_major_alliance",
+    "terrain": "GFX_GJ_construct_infrastructure",
+    "independence": "GFX_GJ_political_pressure",
+    "late": "GFX_GJ_production",
 }
 
 # 조건 문구 → (allow_branch | available, 트리거). allow_branch 는 트리를 처음 불러올 때 한 번만 보므로
