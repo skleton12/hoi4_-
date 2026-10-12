@@ -39,17 +39,17 @@ python3 design/generic_tree/render.py   # img/ 그림 갱신 (Pillow 필요)
 
 ## 분담표
 
-사람이 정한다. 비어 있으면 맡기 전에 묻는다.
+사람이 정한다. 아래 담당 외의 파일은 맡기 전에 묻는다.
 
 | 파일 | 갈래 | 칸 | 담당 |
 |---|---|---:|---|
-| `01_start.json` | 공통 시작 | 10 | |
-| `02_industry.json` | 산업 | 100 | |
-| `03_military.json` | 군사 | 140 | |
-| `04_politics.json` | 정치 | 200 | |
-| `05_diplomacy.json` | 외교·첩보 | 90 | |
-| `06_terrain.json` | 지형 특화 | 40 | |
-| `07_independence.json` | 괴뢰국 / 독립 | 40 | |
-| `08_culture.json` | 문화권 특화 | 80 | |
-| `09_late.json` | 후반부 | 20 | |
-| | **합계** | **720** | |
+| `01_start.json` | 공통 시작 | 10 || Claude |
+| `02_industry.json` | 산업 | 100 || Claude |
+| `03_military.json` | 군사 | 140 || Claude |
+| `04_politics.json` | 정치 | 200 || GPT |
+| `05_diplomacy.json` | 외교·첩보 | 90 || GPT |
+| `06_terrain.json` | 지형 특화 | 40 || Claude |
+| `07_independence.json` | 괴뢰국 / 독립 | 40 || GPT |
+| `08_culture.json` | 문화권 특화 | 80 || GPT |
+| `09_late.json` | 후반부 | 20 || Claude |
+| | **합계** | **720** | Claude 310 · GPT 410 |
