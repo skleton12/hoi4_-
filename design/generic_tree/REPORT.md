@@ -37,7 +37,13 @@
 - 버그 수정: `정치력 +10%` 를 `add_political_power = 1` 로 잘못 읽던 정규식.
 - 조건 `전쟁 중` 추가.
 
-### 2-3. 도구
+### 2-3. 아이콘 (GPT, `f73cf58`·`b30dcc6`)
+
+- 바닐라 기본 포커스 아이콘 6종을 모드 안(`gfx/interface/gj_goals/`)에 복사하고 `GFX_GJ_` 스프라이트로 정의해
+  모든 포커스에 연결했다. 생성기의 `ICONS` 도 이 이름을 쓴다. 게임 화면 확인은 아직이다.
+- GPT 측 통합 보고서: `tools/JOINT_REPORT.md`.
+
+### 2-4. 도구
 
 - `tools/validate.py`: 동적 수정자의 로컬라이제이션 키를 필요 키로 인식.
 - 시험판 설치 파일 `install.ps1`: 같은 `name` 의 다른 `.mod` 를 `mod\_gj_backup\` 으로 **옮긴다**(삭제하지 않음).
@@ -88,6 +94,6 @@
 | `design/generic_tree/data/*.json` | 설계 648칸 |
 | `design/generic_tree/img/*.png` | 갈래별 트리 그림 |
 | `design/generic_tree/build_mod.py` | 설계 → 모드 변환기 |
-| `mod/gibon_jungjeom/` | 생성된 모드 (포커스·동적 수정자·로컬라이제이션 영어/한국어·로딩 마커) |
+| `mod/gibon_jungjeom/` | 생성된 모드 (포커스·동적 수정자·아이콘·로컬라이제이션 영어/한국어·로딩 마커) |
 | `tools/MOD_LOADING.md`, `design/generic_tree/POSTMORTEM.md` | 로드 문제 조사 기록 |
 | `기본중점변경모드_시험판_0.2.0.zip` | 시험판(설치 파일 포함), 채팅으로 전달 |
