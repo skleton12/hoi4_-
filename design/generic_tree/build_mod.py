@@ -45,6 +45,9 @@ CONDITIONS = {
     "국교 국가": ("available", "always = yes"),
     "숨은 조건": ("available", "always = yes"),
     "종주국 보유": ("available", "is_subject = yes"),
+    # 자치도 단계 이름은 1.19.3 게임 파일(common/autonomous_states/)에서 확인 필요. 틀리면 그 칸만 열리지 않는다.
+    "판무관부": ("available", "has_autonomy_state = autonomy_reichskommissariat"),
+    "협력정부": ("available", "has_autonomy_state = autonomy_collaboration_government"),
     "독립 달성 후": ("available", "is_subject = no"),
     "전쟁 종료 후": ("available", "has_war = no"),
     "전쟁 중": ("available", "has_war = yes"),

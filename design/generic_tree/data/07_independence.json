@@ -391,6 +391,126 @@
           "days": 70
         }
       ]
+    },
+    {
+      "id": "sub_rk",
+      "title": "판무관부 통치",
+      "after": "sub_root",
+      "exclusive": null,
+      "condition": "판무관부",
+      "target": 5,
+      "focuses": [
+        {
+          "name": "현지 행정 위원회",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "강제 징발 완화",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "현지 경찰 창설",
+          "effect": "방첩 +10%",
+          "days": 35
+        },
+        {
+          "name": "노동 징용 협상",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "판무관 권한 축소",
+          "effect": "자치도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "sub_rk_b",
+      "title": "저항과 협조",
+      "after": "sub_rk",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "저항 조직 접촉",
+          "effect": "종주국 내 저항 +10%",
+          "days": 35
+        },
+        {
+          "name": "이중 행정 체제",
+          "effect": "정치력 +50, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "해방의 날 준비",
+          "effect": "독립 노선 기간 -30%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "sub_collab",
+      "title": "협력정부",
+      "after": "sub_root",
+      "exclusive": null,
+      "condition": "협력정부",
+      "target": 5,
+      "focuses": [
+        {
+          "name": "협력 각료 회의",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "점령 비용 협상",
+          "effect": "민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "포로 귀환 협정",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "협력 국민군",
+          "effect": "보병 사단 2개 생성",
+          "days": 35
+        },
+        {
+          "name": "협력 자치 헌장",
+          "effect": "자치도 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "sub_collab_b",
+      "title": "지하 정부",
+      "after": "sub_collab",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "지하 정부 연락",
+          "effect": "정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "이중 첩보망",
+          "effect": "방첩 +15%",
+          "days": 35
+        },
+        {
+          "name": "정권 전복 계획",
+          "effect": "무장 독립 기간 -30%",
+          "days": 70
+        }
+      ]
     }
   ]
 }

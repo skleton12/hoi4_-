@@ -7831,7 +7831,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_root_1
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 306
 		y = 0
 		cost = 5
 		available = { is_subject = yes }
@@ -7844,7 +7844,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_root_2
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 306
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_1 }
@@ -7859,7 +7859,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_root_3
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 306
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_2 }
@@ -8527,6 +8527,229 @@ focus_tree = {
 			add_to_variable = { var = GJ_army_defence_factor value = 0.1 }
 		}
 	}
+	focus = {
+		id = GJ_sub_rk_1
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_3 }
+		available = { has_autonomy_state = autonomy_reichskommissariat }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_1_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_political_power_gain value = 0.1 }
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_2
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_sub_rk_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_2_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_3
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_rk_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_4
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_sub_rk_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_4_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_conscription value = 0.02 }
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_5
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_sub_rk_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_5_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_b_1
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_sub_rk_5 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_b_2
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_sub_rk_b_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_b_2_tt
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_sub_rk_b_3
+		icon = GFX_GJ_political_pressure
+		x = 316
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_sub_rk_b_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_rk_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_1
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_3 }
+		available = { has_autonomy_state = autonomy_collaboration_government }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_1_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_political_power_gain value = 0.1 }
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_2
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_sub_collab_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_3
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_collab_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_3_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_conscription value = 0.03 }
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_4
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_sub_collab_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_4_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_5
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_sub_collab_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_5_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_b_1
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_sub_collab_5 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_b_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_b_2
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_sub_collab_b_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_collab_b_3
+		icon = GFX_GJ_political_pressure
+		x = 318
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_sub_collab_b_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_collab_b_3_tt
+		}
+	}
 
 	############################################################
 	# 후반부
@@ -8534,7 +8757,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_1
 		icon = GFX_GJ_production
-		x = 321
+		x = 325
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -8548,7 +8771,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_2
 		icon = GFX_GJ_production
-		x = 321
+		x = 325
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_total_1 }
@@ -8562,7 +8785,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_3
 		icon = GFX_GJ_production
-		x = 321
+		x = 325
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_total_2 }
@@ -8576,7 +8799,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_4
 		icon = GFX_GJ_production
-		x = 321
+		x = 325
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_total_3 }
@@ -8590,7 +8813,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_5
 		icon = GFX_GJ_production
-		x = 321
+		x = 325
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_total_4 }
@@ -8605,7 +8828,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_1
 		icon = GFX_GJ_production
-		x = 325
+		x = 329
 		y = 0
 		cost = 5
 		available = { has_war = no }
@@ -8619,7 +8842,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_2
 		icon = GFX_GJ_production
-		x = 325
+		x = 329
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_1 }
@@ -8637,7 +8860,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_3
 		icon = GFX_GJ_production
-		x = 325
+		x = 329
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_2 }
@@ -8651,7 +8874,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_4
 		icon = GFX_GJ_production
-		x = 325
+		x = 329
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_3 }
@@ -8664,7 +8887,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_5
 		icon = GFX_GJ_production
-		x = 325
+		x = 329
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_4 }
@@ -8678,7 +8901,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_1
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 0
 		cost = 5
 		available = { has_war = yes }
@@ -8691,7 +8914,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_2
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_war_1 }
@@ -8704,7 +8927,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_3
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_war_2 }
@@ -8719,7 +8942,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_4
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 3
 		cost = 10
 		prerequisite = { focus = GJ_late_war_3 }
@@ -8735,7 +8958,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_1
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_late_war_4 }
@@ -8751,7 +8974,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_2
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_war_b_1 }
@@ -8765,7 +8988,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_3
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_war_b_2 }
@@ -8779,7 +9002,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_4
 		icon = GFX_GJ_production
-		x = 328
+		x = 332
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_late_war_b_3 }
@@ -8792,7 +9015,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_1
 		icon = GFX_GJ_production
-		x = 330
+		x = 334
 		y = 0
 		cost = 5
 		available = { has_war = yes }
@@ -8806,7 +9029,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_2
 		icon = GFX_GJ_production
-		x = 330
+		x = 334
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_peace_1 }
@@ -8820,7 +9043,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_3
 		icon = GFX_GJ_production
-		x = 330
+		x = 334
 		y = 2
 		cost = 10
 		prerequisite = { focus = GJ_late_peace_2 }
@@ -8833,7 +9056,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_1
 		icon = GFX_GJ_production
-		x = 320
+		x = 324
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_total_5 }
@@ -8848,7 +9071,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_2
 		icon = GFX_GJ_production
-		x = 320
+		x = 324
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_total_b_1 }
@@ -8861,7 +9084,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_3
 		icon = GFX_GJ_production
-		x = 320
+		x = 324
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_total_b_2 }
@@ -8874,7 +9097,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_1
 		icon = GFX_GJ_production
-		x = 322
+		x = 326
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_total_5 }
@@ -8888,7 +9111,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_2
 		icon = GFX_GJ_production
-		x = 322
+		x = 326
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_partisan_1 }
@@ -8901,7 +9124,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_3
 		icon = GFX_GJ_production
-		x = 322
+		x = 326
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_partisan_2 }
@@ -8915,7 +9138,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_1
 		icon = GFX_GJ_production
-		x = 332
+		x = 336
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -8927,7 +9150,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_2
 		icon = GFX_GJ_production
-		x = 332
+		x = 336
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_1 }
@@ -8940,7 +9163,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_3
 		icon = GFX_GJ_production
-		x = 332
+		x = 336
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_2 }
@@ -8953,7 +9176,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_4
 		icon = GFX_GJ_production
-		x = 332
+		x = 336
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_3 }
@@ -8966,7 +9189,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_5
 		icon = GFX_GJ_production
-		x = 332
+		x = 336
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_tech_4 }
@@ -8980,7 +9203,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_1
 		icon = GFX_GJ_production
-		x = 324
+		x = 328
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_5 }
@@ -8995,7 +9218,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_2
 		icon = GFX_GJ_production
-		x = 324
+		x = 328
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_b_1 }
@@ -9008,7 +9231,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_3
 		icon = GFX_GJ_production
-		x = 324
+		x = 328
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_b_2 }
@@ -9021,7 +9244,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_4
 		icon = GFX_GJ_production
-		x = 324
+		x = 328
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_b_3 }
@@ -9035,7 +9258,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_1
 		icon = GFX_GJ_production
-		x = 326
+		x = 330
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_5 }
@@ -9049,7 +9272,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_2
 		icon = GFX_GJ_production
-		x = 326
+		x = 330
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_c_1 }
@@ -9063,7 +9286,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_3
 		icon = GFX_GJ_production
-		x = 326
+		x = 330
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_c_2 }
@@ -9077,7 +9300,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_4
 		icon = GFX_GJ_production
-		x = 326
+		x = 330
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_c_3 }
