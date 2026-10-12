@@ -137,6 +137,17 @@ $outerPath = Join-Path $modRoot "$ModFolderName.mod"
 [System.IO.File]::WriteAllText($outerPath, $modText, $utf8NoBom)
 Ok "작성: $outerPath"
 
+# 같은 name 을 쓰는 다른 .mod 가 있으면 경고한다. 위키: 이름이 같으면 먼저 읽힌 쪽(파일 이름 순)만 쓰인다.
+# 예전 설치·수동 복사가 남긴 .mod 가 폴더 없이 남아 있으면 새 모드를 가린다.
+$myName = [regex]::Match($modText, '(?m)^\s*name\s*=\s*"([^"]*)"').Groups[1].Value
+foreach ($other in Get-ChildItem -LiteralPath $modRoot -Filter '*.mod' -File) {
+    if ($other.FullName -eq $outerPath) { continue }
+    $otherText = [System.IO.File]::ReadAllText($other.FullName, [System.Text.Encoding]::UTF8)
+    if ([regex]::Match($otherText, '(?m)^\s*name\s*=\s*"([^"]*)"').Groups[1].Value -eq $myName) {
+        Warn "같은 이름(name=`"$myName`")의 다른 디스크립터가 있다: $($other.Name). 이 모드를 가릴 수 있으니 옮기거나 지울 것."
+    }
+}
+
 $innerText = [regex]::Replace($modText, '(?m)^\s*path\s*=\s*"[^"]*"\r?\n', '')
 $innerPath = Join-Path $target 'descriptor.mod'
 [System.IO.File]::WriteAllText($innerPath, $innerText, $utf8NoBom)
