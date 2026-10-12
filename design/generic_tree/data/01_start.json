@@ -9,7 +9,28 @@
       "exclusive": null,
       "condition": null,
       "target": 4,
-      "focuses": []
+      "focuses": [
+        {
+          "name": "국가 재정비 회의",
+          "effect": "정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "국정 조사",
+          "effect": "인프라 +1 (수도)",
+          "days": 35
+        },
+        {
+          "name": "예산 재편",
+          "effect": "소비재 공장 -3%",
+          "days": 35
+        },
+        {
+          "name": "국민 통합 선언",
+          "effect": "안정도 +5%",
+          "days": 35
+        }
+      ]
     },
     {
       "id": "start_ind",
@@ -18,7 +39,13 @@
       "exclusive": "first_choice",
       "condition": null,
       "target": 1,
-      "focuses": []
+      "focuses": [
+        {
+          "name": "산업 우선 선언",
+          "effect": "산업 포커스 기간 -20%",
+          "days": 35
+        }
+      ]
     },
     {
       "id": "start_mil",
@@ -27,7 +54,13 @@
       "exclusive": "first_choice",
       "condition": null,
       "target": 1,
-      "focuses": []
+      "focuses": [
+        {
+          "name": "군비 우선 선언",
+          "effect": "군사 포커스 기간 -20%",
+          "days": 35
+        }
+      ]
     },
     {
       "id": "start_dip",
@@ -36,7 +69,13 @@
       "exclusive": "first_choice",
       "condition": null,
       "target": 1,
-      "focuses": []
+      "focuses": [
+        {
+          "name": "외교 우선 선언",
+          "effect": "외교 포커스 기간 -20%",
+          "days": 35
+        }
+      ]
     },
     {
       "id": "start_end",
@@ -45,7 +84,23 @@
       "exclusive": null,
       "condition": null,
       "target": 3,
-      "focuses": []
+      "focuses": [
+        {
+          "name": "행정 개혁",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "국가 비전 선포",
+          "effect": "안정도 +5%, 전쟁 지원 +5%",
+          "days": 35
+        },
+        {
+          "name": "5개년 국가 계획",
+          "effect": "민간공장 +1, 군수공장 +1",
+          "days": 70
+        }
+      ]
     }
   ]
 }
