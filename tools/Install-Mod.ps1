@@ -162,7 +162,8 @@ if (Test-Path -LiteralPath $dlc) {
     } elseif ($Enable) {
         Copy-Item -LiteralPath $dlc -Destination "$dlc.bak" -Force
         $json.enabled_mods = @($mods + $entry)
-        ($json | ConvertTo-Json -Depth 10) | Set-Content -LiteralPath $dlc -Encoding UTF8
+        # Windows PowerShell 5.1 의 Set-Content -Encoding UTF8 은 BOM 을 붙인다. 게임이 읽는 파일이라 BOM 없이 쓴다.
+        [System.IO.File]::WriteAllText($dlc, ($json | ConvertTo-Json -Depth 10), $utf8NoBom)
         Ok "dlc_load.json 에 추가했다 (백업: $dlc.bak)"
         Warn "런처를 열면 플레이세트가 이 값을 덮어쓸 수 있다. 런처에서도 체크되어 있는지 확인할 것."
     } else {

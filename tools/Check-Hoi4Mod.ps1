@@ -122,6 +122,12 @@ foreach ($d in $userDirs) {
     if (-not (Test-Path -LiteralPath $dlcPath)) { Write-Warn "없음: $dlcPath"; continue }
     $stamp = (Get-Item -LiteralPath $dlcPath).LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss")
     Write-Info "$dlcPath  (최종 수정 $stamp)"
+    $dlcEnc = Get-FileEncodingInfo $dlcPath
+    if ($dlcEnc.HasBom) {
+        Write-Fail "  dlc_load.json 앞에 BOM(EF BB BF)이 있다. 게임이 목록을 못 읽어 모드 0개로 시작할 수 있다. BOM 없는 UTF-8 로 다시 저장할 것."
+    } elseif ($dlcEnc.Encoding -ne 'utf8') {
+        Write-Fail "  dlc_load.json 인코딩이 $($dlcEnc.Encoding) 다. BOM 없는 UTF-8 이어야 한다."
+    }
     try {
         $json = Get-Content -LiteralPath $dlcPath -Raw -Encoding UTF8 | ConvertFrom-Json
         $mods = @($json.enabled_mods)
