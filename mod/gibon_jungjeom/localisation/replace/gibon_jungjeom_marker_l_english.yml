@@ -1,0 +1,20 @@
+﻿l_english:
+
+ # 로딩 확인용 마커 (대균열과 같은 방식).
+ #
+ # localisation/replace/ 는 바닐라 로컬라이제이션을 덮어쓴다. 이 파일이 먹히면 국가 선택 화면에서
+ # 기본 트리 나라 이름 뒤에 [GJ OK] 가 붙는다.
+ #
+ #   "Guatemala [GJ OK]"  -> 모드가 로드되고 있다 (기본 트리가 그대로면 다른 모드가 generic.txt 를 덮어쓰는 것)
+ #   "Guatemala"          -> 모드가 전혀 로드되지 않았다 (설치·런처 문제)
+ #
+ # 한글 폰트가 없어도 보이도록 ASCII 로만 썼다. 확인이 끝나면 이 파일만 지우면 된다.
+
+ GUA:0 "Guatemala [GJ OK]"
+ GUA_DEF:0 "Guatemala [GJ OK]"
+ HON:0 "Honduras [GJ OK]"
+ HON_DEF:0 "Honduras [GJ OK]"
+ PAR:0 "Paraguay [GJ OK]"
+ PAR_DEF:0 "Paraguay [GJ OK]"
+ BOL:0 "Bolivia [GJ OK]"
+ BOL_DEF:0 "Bolivia [GJ OK]"
