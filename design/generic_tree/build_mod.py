@@ -63,15 +63,49 @@ def num(text, pattern):
     return int(m.group(1)) if m else None
 
 
+def fnum(text, pattern):
+    m = re.search(pattern, text)
+    return float(m.group(1)) if m else None
+
+
+# 퍼센트형 효과는 국가 정신 수백 개 대신 동적 수정자 하나(GJ_reforms)에 변수로 쌓는다.
+# (효과 문구 패턴, 수정자 이름, 값 배율)
+MODIFIERS = [
+    (r"징집 인력 \+(\d+)%", "conscription", 0.01),
+    (r"일일 정치력 ([+-][\d.]+)", "political_power_gain", 1),
+    (r"정치력 획득 \+(\d+)%", "political_power_factor", 0.01),
+    (r"(?<!획득 )정치력 \+(\d+)%", "political_power_factor", 0.01),
+    (r"공장 생산량 \+(\d+)%", "industrial_capacity_factory", 0.01),
+    (r"소비재 공장 ([+-]\d+)%", "consumer_goods_factor", 0.01),
+    (r"연구 속도 \+(\d+)%", "research_speed_factor", 0.01),
+    (r"생산 효율 상한 \+(\d+)%", "production_factory_max_efficiency_factor", 0.01),
+    (r"생산 효율 증가 \+(\d+)%", "production_factory_efficiency_gain_factor", 0.01),
+    (r"민간공장 건설 속도 \+(\d+)%", "production_speed_industrial_complex_factor", 0.01),
+    (r"(?<!강철·텅스텐 )자원 추출 \+(\d+)%", "local_resources_factor", 0.01),
+    (r"보급 소모 (-\d+)%", "supply_consumption_factor", 0.01),
+    (r"방어전 \+(\d+)%", "army_defence_factor", 0.01),
+    (r"사단 조직력 \+(\d+)%", "army_org_factor", 0.01),
+]
+DYNAMIC = "GJ_reforms"
+RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
+
+
+def state_count(effect, word):
+    m = re.search(word + r" \+\d+ \((\d+)개 주\)", effect)
+    return int(m.group(1)) if m else 1
+
+
 def rewards(effect):
     """효과 요약에서 확실한 것만 실제 효과로 바꾼다."""
     out = []
-    if (n := num(effect, r"(?<!일일 )정치력 \+(\d+)(?!%)")):
+    if (n := num(effect, r"(?<!일일 )(?<!획득 )정치력 \+(\d+)(?![\d%])")):
         out.append(f"add_political_power = {n}")
-    if (n := num(effect, r"민간공장 \+(\d+)(?!%)")) and "건설" not in effect.split("민간공장")[1][:4]:
+    if (n := num(effect, r"민간공장 \+(\d+)(?![\d%])")):
         out.append(f"add_offsite_building = {{ type = industrial_complex level = {n} }}")
-    if (n := num(effect, r"군수공장 \+(\d+)")):
+    if (n := num(effect, r"군수공장 \+(\d+)(?![\d%])")):
         out.append(f"add_offsite_building = {{ type = arms_factory level = {n} }}")
+    if (n := num(effect, r"해군 조선소 \+(\d+)")):
+        out.append(f"add_offsite_building = {{ type = dockyard level = {n} }}")
     if (n := num(effect, r"안정도 \+(\d+)%")):
         out.append(f"add_stability = {n / 100:.2f}")
     if (n := num(effect, r"전쟁 지원 \+(\d+)%")):
@@ -84,11 +118,48 @@ def rewards(effect):
         out.append(f"air_experience = {n}")
     if (n := num(effect, r"연구 슬롯 \+(\d+)")):
         out.append(f"add_research_slot = {n}")
+    if (n := num(effect, r"보병 장비 (\d+) 획득")):
+        out.append(f"add_equipment_to_stockpile = {{ type = infantry_equipment amount = {n} }}")
+    if (n := num(effect, r"수송선 \+(\d+)(?![\d%])")):
+        out.append(f"add_equipment_to_stockpile = {{ type = convoy amount = {n} }}")
+    if num(effect, r"인프라 \+(\d+)"):
+        if "(수도)" in effect:
+            out.append("capital_scope = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }")
+        else:
+            for _ in range(state_count(effect, "인프라")):
+                out.append("random_owned_controlled_state = { limit = { infrastructure < 5 } "
+                           "add_building_construction = { type = infrastructure level = 1 instant_build = yes } }")
+    if (n := num(effect, r"건물 슬롯 \+(\d+)")):
+        for _ in range(state_count(effect, "건물 슬롯")):
+            out.append(f"random_owned_controlled_state = {{ add_extra_state_shared_building_slots = {n} }}")
+    for word, res in RESOURCES.items():
+        if (n := num(effect, word + r" \+(\d+)(?![\d%])")):
+            out.append(f"random_owned_controlled_state = {{ add_resource = {{ type = {res} amount = {n} }} }}")
     m = re.search(r"정부를 (공산주의|민주주의|파시즘|비동맹)(?:으)?로 교체", effect)
     if m:
         elections = "yes" if m.group(1) == "민주주의" else "no"
         out.append(f"set_politics = {{ ruling_party = {IDEOLOGY[m.group(1)]} elections_allowed = {elections} }}")
+
+    adds = []
+    for pattern, modifier, scale in MODIFIERS:
+        v = fnum(effect, pattern)
+        if v:
+            adds.append(f"add_to_variable = {{ var = GJ_{modifier} value = {v * scale:g} }}")
+    if adds:
+        out.append(f"if = {{ limit = {{ NOT = {{ has_dynamic_modifier = {{ modifier = {DYNAMIC} }} }} }} "
+                   f"add_dynamic_modifier = {{ modifier = {DYNAMIC} }} }}")
+        out += adds
     return out
+
+
+def dynamic_modifier_file():
+    seen = []
+    for _, modifier, _ in MODIFIERS:
+        if modifier not in seen:
+            seen.append(modifier)
+    body = "\n".join(f"\t{m} = GJ_{m}" for m in seen)
+    return ("# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 한꺼번에 반영된다.\n"
+            f"{DYNAMIC} = {{\n\ticon = GFX_idea_generic_political_pressure\n\tenable = {{ always = yes }}\n{body}\n}}\n")
 
 
 def rows_for(groups):
@@ -194,6 +265,12 @@ def build():
     lines.append("}")
     if unknown:
         raise SystemExit(f"CONDITIONS 에 없는 조건 문구: {sorted(unknown)}")
+
+    loc.append(f' {DYNAMIC}:0 "기본 중점 개혁"')
+    loc.append(f' {DYNAMIC}_desc:0 "기본 중점에서 쌓은 개혁의 누적 효과."')
+    dyn = MOD / "common" / "dynamic_modifiers" / "gibon_jungjeom_modifiers.txt"
+    dyn.parent.mkdir(parents=True, exist_ok=True)
+    dyn.write_text(dynamic_modifier_file(), encoding="utf-8")
 
     out = MOD / "common" / "national_focus" / "generic.txt"
     out.parent.mkdir(parents=True, exist_ok=True)

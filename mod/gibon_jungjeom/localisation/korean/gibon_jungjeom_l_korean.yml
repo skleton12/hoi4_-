@@ -1943,3 +1943,5 @@
  GJ_late_rebuild_c_4:0 "경제 기적"
  GJ_late_rebuild_c_4_desc:0 "후반부 · 경제 재건"
  GJ_late_rebuild_c_4_tt:0 "설계 효과: 공장 생산량 +10%"
+ GJ_reforms:0 "기본 중점 개혁"
+ GJ_reforms_desc:0 "기본 중점에서 쌓은 개혁의 누적 효과."
