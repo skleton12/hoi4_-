@@ -93,18 +93,41 @@ def load():
 
 # ---------------------------------------------------------------- 배치
 
+def parents_of(g):
+    """after 는 id 하나이거나, '이 중 하나 완료' 를 뜻하는 id 목록이다."""
+    a = g["after"]
+    return [] if not a else ([a] if isinstance(a, str) else list(a))
+
+
+def size(g):
+    return len(g["focuses"]) or g["target"]
+
+
 def layout(groups):
-    """소갈래마다 (가운데 열, 머리 y) 를 정한다. 자식 소갈래는 부모 아래에 나란히 놓는다."""
+    """소갈래마다 (가운데 열, 머리 y) 를 정한다. 자식 소갈래는 부모 아래에 나란히 놓는다.
+
+    after 가 목록인 소갈래(합류)는 그 부모들의 공통 부모 밑에 두되,
+    부모들이 모두 끝난 높이 아래 줄에 따로 놓는다.
+    """
+    by_id = {g["id"]: g for g in groups}
     children = {g["id"]: [] for g in groups}
+    joins = {g["id"]: [] for g in groups}
     roots = []
     for g in groups:
-        (children[g["after"]] if g["after"] else roots).append(g)
+        ps = parents_of(g)
+        if not ps:
+            roots.append(g)
+        elif len(ps) == 1:
+            children[ps[0]].append(g)
+        else:
+            joins[by_id[ps[0]]["after"]].append(g)
 
     span = {}
 
     def measure(g):
-        kids = children[g["id"]]
-        span[g["id"]] = max(1, sum(measure(k) for k in kids))
+        normal = sum(measure(k) for k in children[g["id"]])
+        joined = sum(measure(k) for k in joins[g["id"]])
+        span[g["id"]] = max(1, normal, joined)
         return span[g["id"]]
 
     for r in roots:
@@ -112,13 +135,19 @@ def layout(groups):
 
     pos = {}
 
+    def end_y(g):
+        return pos[g["id"]][1] + HEADER + size(g) * ROW + 10
+
     def place(g, left, y):
-        n = len(g["focuses"]) or g["target"]
         pos[g["id"]] = (left + (span[g["id"]] - 1) / 2, y)
-        child_y = y + HEADER + n * ROW + 10
-        x = left
+        child_y = y + HEADER + size(g) * ROW + 10
+        x = left + (span[g["id"]] - sum(span[k["id"]] for k in children[g["id"]])) / 2
         for k in children[g["id"]]:
             place(k, x, child_y)
+            x += span[k["id"]]
+        x = left
+        for k in joins[g["id"]]:
+            place(k, x, max(end_y(by_id[p]) for p in parents_of(k)) + 14)
             x += span[k["id"]]
 
     left = 0
@@ -205,22 +234,24 @@ def render_branch(branch):
             focus = g["focuses"][i] if g["focuses"] else None
             draw_node(d, node_box(col, ny), focus, color, i + 1, n)
 
-        if g["after"]:
-            parent = by_id[g["after"]]
-            pcol, py = pos[parent["id"]]
-            pn = len(parent["focuses"]) or parent["target"]
-            pbottom = py + HEADER + (pn - 1) * ROW + NODE_H
+        ps = parents_of(g)
+        for pid in ps:
+            parent = by_id[pid]
+            pcol, py = pos[pid]
+            pbottom = py + HEADER + (size(parent) - 1) * ROW + NODE_H
             pcx = MARGIN + pcol * COL + NODE_W / 2
-            mid = pbottom + 6
+            mid = pbottom + 6 if len(ps) == 1 else y - 8
             d.line((pcx, pbottom, pcx, mid), fill=LINE, width=2)
             d.line((pcx, mid, cx, mid), fill=LINE, width=2)
             d.line((cx, mid, cx, y), fill=LINE, width=2)
+        if len(ps) > 1:
+            d.text((cx + 6, y - 26), "둘 중 하나", font=F_SMALL, fill=MUTED)
 
     # 상호배타: 같은 태그를 가진 형제 소갈래의 머리를 빨간 선으로 묶는다
     tags = {}
     for g in groups:
         if g["exclusive"]:
-            tags.setdefault((g["exclusive"], g["after"]), []).append(g)
+            tags.setdefault((g["exclusive"], str(g["after"])), []).append(g)
     for members in tags.values():
         if len(members) < 2:
             continue
@@ -250,10 +281,11 @@ def summary_rows(groups):
     가장 가까운 보이는 조상의 칸 수에 합친다. (그룹, 깊이, 작성 칸, 목표 칸) 목록.
     """
     by_id = {g["id"]: g for g in groups}
-    parents = {g["after"] for g in groups if g["after"]}
+    parents = {p for g in groups for p in parents_of(g)}
     depth = {}
     for g in groups:
-        depth[g["id"]] = depth[g["after"]] + 1 if g["after"] else 0
+        ps = parents_of(g)
+        depth[g["id"]] = depth[ps[0]] + 1 if ps else 0
 
     def shown(g):
         return depth[g["id"]] <= 1 or g["exclusive"] or g["id"] in parents
@@ -262,7 +294,7 @@ def summary_rows(groups):
     for g in groups:
         o = g
         while not shown(o):
-            o = by_id[o["after"]]
+            o = by_id[parents_of(o)[0]]
         owner[g["id"]] = o["id"]
 
     rows = []

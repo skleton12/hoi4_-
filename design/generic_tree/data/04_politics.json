@@ -28,18 +28,61 @@
       ]
     },
     {
-      "id": "com_gov",
-      "title": "인민 정부",
+      "id": "com_legal",
+      "title": "합법 집권",
       "after": "com_root",
-      "exclusive": null,
+      "exclusive": "com_route",
       "condition": null,
-      "target": 3,
+      "target": 2,
       "focuses": [
+        {
+          "name": "인민 전선 결성",
+          "effect": "공산주의 지지율 +10%",
+          "days": 35
+        },
         {
           "name": "인민 정부 수립",
           "effect": "정부를 공산주의로 교체",
           "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_war",
+      "title": "무장 봉기",
+      "after": "com_root",
+      "exclusive": "com_route",
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "적위대 조직",
+          "effect": "민병 사단 2개, 보병 장비 500",
+          "days": 35
         },
+        {
+          "name": "노동자 무장 봉기",
+          "effect": "공산주의 내전 발발",
+          "days": 70
+        },
+        {
+          "name": "혁명 정부 선포",
+          "effect": "내전 승리 시 안정도 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "com_gov",
+      "title": "인민 정부",
+      "after": [
+        "com_legal",
+        "com_war"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
         {
           "name": "생산 수단 국유화",
           "effect": "군수공장 +1, 민간공장 +1",
@@ -387,7 +430,7 @@
       "focuses": [
         {
           "name": "헌법 재정비",
-          "effect": "안정도 +5%, 민주주의 지지율 +10%",
+          "effect": "안정도 +5%",
           "days": 35
         },
         {
@@ -403,18 +446,61 @@
       ]
     },
     {
-      "id": "dem_gov",
-      "title": "민주 정부",
+      "id": "dem_legal",
+      "title": "선거 승리",
       "after": "dem_root",
-      "exclusive": null,
+      "exclusive": "dem_route",
       "condition": null,
-      "target": 3,
+      "target": 2,
       "focuses": [
+        {
+          "name": "자유 선거 보장",
+          "effect": "민주주의 지지율 +10%",
+          "days": 35
+        },
         {
           "name": "민주 정부 수립",
           "effect": "정부를 민주주의로 교체",
           "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_war",
+      "title": "민주 혁명",
+      "after": "dem_root",
+      "exclusive": "dem_route",
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "시민 민병대",
+          "effect": "민병 사단 2개 생성",
+          "days": 35
         },
+        {
+          "name": "민주 혁명 봉기",
+          "effect": "민주주의 내전 발발",
+          "days": 70
+        },
+        {
+          "name": "독재 청산",
+          "effect": "내전 승리 시 안정도 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "dem_gov",
+      "title": "민주 정부",
+      "after": [
+        "dem_legal",
+        "dem_war"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
         {
           "name": "국제 사회 신뢰",
           "effect": "민주 강대국 우호 +25",
@@ -648,18 +734,61 @@
       ]
     },
     {
-      "id": "fas_gov",
-      "title": "국민 정부",
+      "id": "fas_legal",
+      "title": "합법 집권",
       "after": "fas_root",
-      "exclusive": null,
+      "exclusive": "fas_route",
       "condition": null,
-      "target": 3,
+      "target": 2,
       "focuses": [
+        {
+          "name": "국민 연합 선거",
+          "effect": "파시즘 지지율 +10%",
+          "days": 35
+        },
         {
           "name": "국민 정부 수립",
           "effect": "정부를 파시즘으로 교체",
           "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_war",
+      "title": "수도 행진",
+      "after": "fas_root",
+      "exclusive": "fas_route",
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "돌격대 무장",
+          "effect": "보병 장비 1000 획득",
+          "days": 35
         },
+        {
+          "name": "수도 진군",
+          "effect": "파시즘 내전 발발",
+          "days": 70
+        },
+        {
+          "name": "국민 혁명 완수",
+          "effect": "내전 승리 시 안정도 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "fas_gov",
+      "title": "국민 정부",
+      "after": [
+        "fas_legal",
+        "fas_war"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
         {
           "name": "국가 재무장 계획",
           "effect": "군수공장 +2",
@@ -893,17 +1022,65 @@
       ]
     },
     {
+      "id": "neu_legal",
+      "title": "비상 통치",
+      "after": "neu_root",
+      "exclusive": "neu_route",
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "국민 화합 연설",
+          "effect": "전쟁 지원 +5%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "권위주의 헌법",
+          "effect": "선거 폐지, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_war",
+      "title": "군부 쿠데타",
+      "after": "neu_root",
+      "exclusive": "neu_route",
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "장교단 불만",
+          "effect": "쿠데타 준비 디시전 해금",
+          "days": 35
+        },
+        {
+          "name": "수도 진입 작전",
+          "effect": "군사 정권 수립, 정치력 +100",
+          "days": 70
+        },
+        {
+          "name": "혁명 평의회",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        }
+      ]
+    },
+    {
       "id": "neu_gov",
       "title": "권위주의 정부",
-      "after": "neu_root",
+      "after": [
+        "neu_legal",
+        "neu_war"
+      ],
       "exclusive": null,
       "condition": null,
       "target": 2,
       "focuses": [
         {
-          "name": "권위주의 헌법",
-          "effect": "선거 폐지, 안정도 +5%",
-          "days": 70
+          "name": "실용주의 내각",
+          "effect": "고문 영입 비용 -25%",
+          "days": 35
         },
         {
           "name": "통치 노선 결정",
@@ -1173,41 +1350,6 @@
       ]
     },
     {
-      "id": "hid_coup",
-      "title": "군부 쿠데타",
-      "after": null,
-      "exclusive": null,
-      "condition": "안정도 30% 미만",
-      "target": 5,
-      "focuses": [
-        {
-          "name": "장교단 불만",
-          "effect": "군부 쿠데타 이벤트 해금",
-          "days": 35
-        },
-        {
-          "name": "수도 진입 작전",
-          "effect": "군사 정권으로 정부 교체",
-          "days": 70
-        },
-        {
-          "name": "혁명 평의회",
-          "effect": "일일 정치력 +0.15",
-          "days": 35
-        },
-        {
-          "name": "숙군 작업",
-          "effect": "육군 경험 +30",
-          "days": 35
-        },
-        {
-          "name": "군부의 나라",
-          "effect": "전쟁 지원 +10%, 징집 인력 +2%",
-          "days": 35
-        }
-      ]
-    },
-    {
       "id": "hid_exile",
       "title": "망명 정부",
       "after": null,
@@ -1239,41 +1381,6 @@
           "name": "조국 해방 작전",
           "effect": "본토 수복 전쟁 목표",
           "days": 70
-        }
-      ]
-    },
-    {
-      "id": "hid_civil",
-      "title": "내전 선동",
-      "after": null,
-      "exclusive": null,
-      "condition": "타 이념 지지율 40% 이상",
-      "target": 5,
-      "focuses": [
-        {
-          "name": "이념 갈등 격화",
-          "effect": "정치력 +50, 안정도 -10%",
-          "days": 35
-        },
-        {
-          "name": "무기고와 군벌 포섭",
-          "effect": "보병 장비 1000, 내전 시 사단 +20%",
-          "days": 35
-        },
-        {
-          "name": "내전 개시",
-          "effect": "내전 발발",
-          "days": 70
-        },
-        {
-          "name": "승자의 정의",
-          "effect": "안정도 +15%",
-          "days": 35
-        },
-        {
-          "name": "국가 재통합",
-          "effect": "정치력 +100, 전쟁 지원 +10%",
-          "days": 35
         }
       ]
     },

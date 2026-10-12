@@ -46,8 +46,10 @@ def main():
             if gid in group_ids:
                 errors.append(f"{where}: 소갈래 id 중복 ({group_ids[gid]})")
             group_ids[gid] = path.name
-            if g.get("after") is not None and g["after"] not in local_ids:
-                errors.append(f"{where}: after '{g['after']}' 가 같은 파일에 없음")
+            after = g.get("after")
+            for a in ([] if after is None else [after] if isinstance(after, str) else after):
+                if a not in local_ids:
+                    errors.append(f"{where}: after '{a}' 가 같은 파일에 없음")
 
             if g.get("target", 0) > MAX_CHAIN:
                 errors.append(f"{where}: 소갈래가 {g['target']}칸. 트리가 아래로 늘어지지 않게 {MAX_CHAIN}칸 이하로 쪼갠다")
