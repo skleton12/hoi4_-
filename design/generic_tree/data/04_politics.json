@@ -759,6 +759,71 @@
       ]
     },
     {
+      "id": "dem_conserv",
+      "title": "보수 민주",
+      "after": "dem_gov",
+      "exclusive": "dem_model",
+      "condition": null,
+      "target": 1,
+      "focuses": [
+        {
+          "name": "국민 보수당 집권",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_order",
+      "title": "질서 있는 개혁",
+      "after": "dem_conserv",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "재정 균형 법안",
+          "effect": "정치력 +50, 소비재 공장 -3%",
+          "days": 35
+        },
+        {
+          "name": "지방 명망가 연합",
+          "effect": "안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "헌정 수호 선언",
+          "effect": "공산·파시즘 지지율 -10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_defense",
+      "title": "국가 방위",
+      "after": "dem_conserv",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "방위 공채 발행",
+          "effect": "군수공장 +1",
+          "days": 35
+        },
+        {
+          "name": "국민 방위 협회",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "민주 안보 체제",
+          "effect": "방어 교리 비용 -15%",
+          "days": 70
+        }
+      ]
+    },
+    {
       "id": "fas_root",
       "title": "파시즘",
       "after": null,
@@ -1067,6 +1132,71 @@
         {
           "name": "추축 동맹 접근",
           "effect": "추축국 가입 가능",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical",
+      "title": "성직자 국가주의",
+      "after": "fas_gov",
+      "exclusive": "fas_model",
+      "condition": null,
+      "target": 1,
+      "focuses": [
+        {
+          "name": "교회 국가 선언",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_church",
+      "title": "교회와 국가",
+      "after": "fas_clerical",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "교구 조직 동원",
+          "effect": "파시즘 지지율 +5%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "가톨릭 행동대",
+          "effect": "민병 사단 1개 생성",
+          "days": 35
+        },
+        {
+          "name": "교권 헌법",
+          "effect": "일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_guild",
+      "title": "신분제 국가",
+      "after": "fas_clerical",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "신분 대표 의회",
+          "effect": "안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "기독교 조합 체제",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "반공 십자 동맹",
+          "effect": "공산국 상대 방어 +10%",
           "days": 35
         }
       ]
@@ -1446,6 +1576,266 @@
           "name": "질서와 진보",
           "effect": "공장 생산량 +5%, 민간공장 +1",
           "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal",
+      "title": "근대화 개혁 독재",
+      "after": "neu_gov",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 1,
+      "focuses": [
+        {
+          "name": "근대화 개혁 선언",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_reform",
+      "title": "세속 개혁",
+      "after": "neu_kemal",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "세속 국가 선포",
+          "effect": "연구 속도 +3%, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "문자·복식 개혁",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "국민 교육 운동",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_state",
+      "title": "국가 주도 산업",
+      "after": "neu_kemal",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국영 은행 설립",
+          "effect": "민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "철도 국유화 계획",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "국가 공업 5개년",
+          "effect": "민간공장 +2, 군수공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo",
+      "title": "카우디요 통치",
+      "after": "neu_gov",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 1,
+      "focuses": [
+        {
+          "name": "카우디요 등장",
+          "effect": "안정도 +5%, 정치력 +50",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_patron",
+      "title": "후견 정치",
+      "after": "neu_caudillo",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "지방 유력자 포섭",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "사병 정규군 편입",
+          "effect": "징집 인력 +2%, 육군 장성 1명",
+          "days": 35
+        },
+        {
+          "name": "대농장주 동맹",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_power",
+      "title": "1인 통치",
+      "after": "neu_caudillo",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "개인 경호 연대",
+          "effect": "방첩 +15%",
+          "days": 35
+        },
+        {
+          "name": "헌법 정지",
+          "effect": "선거 폐지, 정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "영원한 지도자",
+          "effect": "전쟁 지원 +10%, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian",
+      "title": "농민 민중주의",
+      "after": "neu_gov",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 1,
+      "focuses": [
+        {
+          "name": "농민당 집권",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_land",
+      "title": "토지 개혁",
+      "after": "neu_agrarian",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "대토지 분할",
+          "effect": "징집 인력 +3%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "농민 신용조합",
+          "effect": "민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "농업 수출 진흥",
+          "effect": "무역 자원 획득 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_people",
+      "title": "민중 동원",
+      "after": "neu_agrarian",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "농민 방위대",
+          "effect": "민병 사단 2개 생성",
+          "days": 35
+        },
+        {
+          "name": "녹색 인터내셔널",
+          "effect": "농업국 우호 +25",
+          "days": 35
+        },
+        {
+          "name": "농민 공화국 선포",
+          "effect": "안정도 +10%, 전쟁 지원 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy",
+      "title": "종교 지도자 통치",
+      "after": "neu_gov",
+      "exclusive": "neu_model",
+      "condition": "국교 국가",
+      "target": 1,
+      "focuses": [
+        {
+          "name": "성직자 평의회",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_faith",
+      "title": "신앙 국가",
+      "after": "neu_theocracy",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "종교법 시행",
+          "effect": "안정도 +5%, 외래 이념 지지율 -10%",
+          "days": 35
+        },
+        {
+          "name": "성지 수호대",
+          "effect": "정예 사단 1개 생성",
+          "days": 35
+        },
+        {
+          "name": "신앙 교육 확대",
+          "effect": "안정도 +5%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_rule",
+      "title": "신정 통치",
+      "after": "neu_theocracy",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "성직자 내각",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "신자 의용군",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "신앙의 수호자 칭호",
+          "effect": "전쟁 지원 +15%",
+          "days": 70
         }
       ]
     },
