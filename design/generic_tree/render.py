@@ -243,13 +243,44 @@ def render_branch(branch):
 
 # ---------------------------------------------------------------- 전체 지도
 
+def summary_rows(groups):
+    """전체 지도에 띄울 소갈래만 고른다.
+
+    뿌리·1단계·상호배타·자식이 있는 소갈래만 한 줄씩 보이고, 나머지 잎 소갈래는
+    가장 가까운 보이는 조상의 칸 수에 합친다. (그룹, 깊이, 작성 칸, 목표 칸) 목록.
+    """
+    by_id = {g["id"]: g for g in groups}
+    parents = {g["after"] for g in groups if g["after"]}
+    depth = {}
+    for g in groups:
+        depth[g["id"]] = depth[g["after"]] + 1 if g["after"] else 0
+
+    def shown(g):
+        return depth[g["id"]] <= 1 or g["exclusive"] or g["id"] in parents
+
+    owner = {}
+    for g in groups:
+        o = g
+        while not shown(o):
+            o = by_id[o["after"]]
+        owner[g["id"]] = o["id"]
+
+    rows = []
+    for g in groups:
+        if not shown(g):
+            continue
+        members = [x for x in groups if owner[x["id"]] == g["id"]]
+        rows.append((g, depth[g["id"]], sum(len(x["focuses"]) for x in members), sum(x["target"] for x in members)))
+    return rows
+
+
 def render_overview(branches):
     card_w, pad = 420, 28
     cols = 3
     line_h = 22
     cards = []
     for b in branches:
-        h = 96 + line_h * len(b["groups"]) + 20
+        h = 96 + line_h * len(summary_rows(b["groups"])) + 20
         cards.append((b, h))
     rows = [cards[i:i + cols] for i in range(0, len(cards), cols)]
     row_h = [max(h for _, h in r) for r in rows]
@@ -284,11 +315,9 @@ def render_overview(branches):
                 d.rectangle((x + 16, y + 64, x + 16 + (card_w - 32) * bd / bt, y + 72), fill=color)
 
             gy = y + 86
-            depth = {}
-            for g in b["groups"]:
-                depth[g["id"]] = depth[g["after"]] + 1 if g["after"] else 0
-                gx = x + 18 + depth[g["id"]] * 18
-                prefix = "└ " if depth[g["id"]] else "· "
+            for g, level, done_n, target_n in summary_rows(b["groups"]):
+                gx = x + 18 + level * 18
+                prefix = "└ " if level else "· "
                 d.text((gx, gy), prefix + g["title"], font=F_SMALL, fill=TEXT)
                 tx = gx + F_SMALL.getlength(prefix + g["title"]) + 8
                 if g["exclusive"]:
@@ -296,7 +325,7 @@ def render_overview(branches):
                     tx += 16
                 if g["condition"]:
                     d.text((tx, gy), g["condition"], font=F_SMALL, fill=COND)
-                count = f"{len(g['focuses'])}/{g['target']}"
+                count = f"{done_n}/{target_n}"
                 d.text((x + card_w - 18 - F_SMALL.getlength(count), gy), count, font=F_SMALL, fill=MUTED)
                 gy += line_h
             x += card_w + pad

@@ -13,6 +13,7 @@ from pathlib import Path
 DATA = Path(__file__).parent / "data"
 GROUP_KEYS = {"id", "title", "after", "exclusive", "condition", "target", "focuses"}
 FOCUS_KEYS = {"name", "effect", "days"}
+MAX_CHAIN = 5  # 한 소갈래의 최대 칸 수. 넓고 얕은 트리를 유지한다
 
 
 def pad(text, width):
@@ -47,6 +48,9 @@ def main():
             group_ids[gid] = path.name
             if g.get("after") is not None and g["after"] not in local_ids:
                 errors.append(f"{where}: after '{g['after']}' 가 같은 파일에 없음")
+
+            if g.get("target", 0) > MAX_CHAIN:
+                errors.append(f"{where}: 소갈래가 {g['target']}칸. 트리가 아래로 늘어지지 않게 {MAX_CHAIN}칸 이하로 쪼갠다")
 
             focuses = g.get("focuses", [])
             target += g.get("target", 0)
