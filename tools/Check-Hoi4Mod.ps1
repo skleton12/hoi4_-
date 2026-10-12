@@ -164,6 +164,17 @@ if ($primary) {
         $modFiles = @(Get-ChildItem -LiteralPath $modRoot -Filter '*.mod' -File -ErrorAction SilentlyContinue)
         Write-Info ".mod 파일 $($modFiles.Count)개 발견"
         foreach ($f in $modFiles) { Write-Info "  - $($f.Name)" }
+        # 위키: 이름(name)이 같은 모드가 둘이면 먼저 읽힌 쪽 파일만 쓰인다.
+        $byName = @{}
+        foreach ($f in $modFiles) {
+            $n = Get-ModField (Read-ScriptText $f.FullName) 'name'
+            if ($n) { if (-not $byName.ContainsKey($n)) { $byName[$n] = @() }; $byName[$n] += $f.Name }
+        }
+        foreach ($k in $byName.Keys) {
+            if ($byName[$k].Count -gt 1) {
+                Write-Fail "  name=`"$k`" 를 쓰는 .mod 가 여러 개다: $($byName[$k] -join ', '). 이름은 모드마다 달라야 한다."
+            }
+        }
         $modFile = $modFiles | Where-Object { $_.BaseName -eq $ModName } | Select-Object -First 1
         if (-not $modFile) { $modFile = $modFiles | Where-Object { $_.Name -like "*$ModName*" } | Select-Object -First 1 }
         if (-not $modFile) {
@@ -264,6 +275,26 @@ if ($gameDir) {
             $lj = Get-Content -LiteralPath $ls -Raw -Encoding UTF8 | ConvertFrom-Json
             $gameVersion = $lj.rawVersion
             Write-Ok "게임 버전: $gameVersion"
+            # 위키: 게임의 사용자 폴더는 이 파일의 gameDataPath 로 정해진다 (userdir.txt 가 아니다).
+            $gdp = $lj.gameDataPath
+            if ($gdp) {
+                Write-Info "gameDataPath: $gdp"
+                $resolved = $gdp -replace '%USER_DOCUMENTS%', [Environment]::GetFolderPath('MyDocuments')
+                $resolved = [Environment]::ExpandEnvironmentVariables($resolved) -replace '/', '\'
+                Write-Info "  -> 게임이 쓰는 사용자 폴더: $resolved"
+                if ($primary -and ($resolved.TrimEnd('\') -ne $primary.TrimEnd('\'))) {
+                    Write-Fail "  게임의 사용자 폴더($resolved)와 모드·dlc_load.json 이 있는 폴더($primary)가 다르다. 게임은 다른 폴더의 dlc_load.json 을 읽는다."
+                } elseif (-not (Test-Path -LiteralPath $resolved)) {
+                    Write-Fail "  gameDataPath 가 가리키는 폴더가 없다."
+                } else {
+                    Write-Ok "  gameDataPath 와 사용 중인 사용자 폴더가 같다."
+                }
+                if ($resolved -match '[^\x00-\x7F]') {
+                    Write-Fail "  사용자 폴더 경로에 ASCII 가 아닌 글자가 있다. 위키에 따르면 이 경우 모드가 로드되지 않을 수 있다."
+                }
+            } else {
+                Write-Warn "launcher-settings.json 에 gameDataPath 가 없다."
+            }
         } catch { Write-Warn "launcher-settings.json 파싱 실패" }
     }
 } else {
