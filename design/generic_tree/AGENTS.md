@@ -1,6 +1,6 @@
 # 작업 안내 — Claude · GPT(Codex) 공동 작업
 
-이 폴더는 HOI4 기본 중점 확장 모드(약 370칸)의 **설계 자료**다. 사람 한 명이 Claude 와 GPT 에게 갈래를 나눠 맡긴다.
+이 폴더는 HOI4 기본 중점 확장 모드(434칸)의 **설계 자료**다. 사람 한 명이 Claude 와 GPT 에게 갈래를 나눠 맡긴다.
 두 AI 는 서로 대화하지 않고 **이 저장소의 파일로만** 협업한다.
 
 - 저장소: `skleton12/hoi4_-`
@@ -42,6 +42,8 @@ python3 design/generic_tree/render.py   # img/ 그림 갱신 (Pillow 필요)
 사람이 정한다. 아래 담당 외의 파일은 맡기 전에 묻는다.
 
 2차 정리에서 Claude 가 사람의 요청으로 전체를 넓고 얕은 틀로 바꾸고 비슷한 칸을 합쳤다(720 → 331). 이후 정치를 154칸으로 늘리고 이념마다 합법 집권 ↔ 내전 경로를 넣었다(합계 374).
+사용자의 정치 확장 협업 요청으로 GPT가 기존 그룹을 보존하면서 `gpt_` 그룹 60칸을 추가했다(정치 214, 합계 434).
+정치 공동 작업의 변경 범위와 검토 요청은 `POLITICS_COLLAB.md`에 기록한다.
 GPT 담당 갈래는 GPT 가 지은 이름을 최대한 살려 합치고 효과를 다시 붙였다. 그림은 모두 render.py 하나로 그린다.
 
 | 파일 | 갈래 | 칸 | 담당 |
@@ -49,9 +51,9 @@ GPT 담당 갈래는 GPT 가 지은 이름을 최대한 살려 합치고 효과�
 | `01_start.json` | 공통 시작 | 6 | Claude |
 | `02_industry.json` | 산업 | 48 | GPT |
 | `03_military.json` | 군사 | 60 | GPT |
-| `04_politics.json` | 정치 | 154 | Claude |
+| `04_politics.json` | 정치 | 214 | Claude 기존 154 · GPT 추가 60 |
 | `05_diplomacy.json` | 외교·첩보 | 55 | Claude |
 | `06_terrain.json` | 지형 특화 | 20 | GPT |
 | `07_independence.json` | 괴뢰국 / 독립 | 21 | GPT |
 | `09_late.json` | 후반부 | 10 | GPT |
-| | **합계** | **374** | Claude 215 · GPT 159 |
+| | **합계** | **434** | Claude 215 · GPT 219 |
