@@ -71,6 +71,236 @@
           "days": 70
         }
       ]
+    },
+    {
+      "id": "late_war",
+      "title": "전쟁 목표",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 중",
+      "target": 4,
+      "focuses": [
+        {
+          "name": "영토 요구서",
+          "effect": "이웃국 영유권 주장",
+          "days": 35
+        },
+        {
+          "name": "전쟁 목표 정당화",
+          "effect": "정당화 기간 -25%",
+          "days": 35
+        },
+        {
+          "name": "점령지 행정청",
+          "effect": "점령지 저항 -15%",
+          "days": 35
+        },
+        {
+          "name": "점령지 코어화",
+          "effect": "점령 주 코어 디시전 해금",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_war_b",
+      "title": "전쟁 수행",
+      "after": "late_war",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "전시 내각 구성",
+          "effect": "일일 정치력 +0.1, 전쟁 지원 +5%",
+          "days": 35
+        },
+        {
+          "name": "전선 선전부",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "전쟁 채권 발행",
+          "effect": "군수공장 +1, 안정도 -3%",
+          "days": 35
+        },
+        {
+          "name": "끝까지 싸운다",
+          "effect": "항복 한계 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_peace",
+      "title": "강화 외교",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 중",
+      "target": 3,
+      "focuses": [
+        {
+          "name": "중재국 접촉",
+          "effect": "정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "휴전 협상",
+          "effect": "안정도 +5%, 전쟁 지원 -5%",
+          "days": 35
+        },
+        {
+          "name": "명예로운 강화",
+          "effect": "평화 협상 디시전 해금",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_total_b",
+      "title": "전시 보급",
+      "after": "late_total",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "배급 통제 강화",
+          "effect": "보급 소모 -10%",
+          "days": 35
+        },
+        {
+          "name": "연료 비축령",
+          "effect": "연료 비축 +20%",
+          "days": 35
+        },
+        {
+          "name": "전시 철도 사령부",
+          "effect": "보급 처리량 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "late_partisan",
+      "title": "유격 항전",
+      "after": "late_total",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "지하 무기고",
+          "effect": "보병 장비 2000 획득",
+          "days": 35
+        },
+        {
+          "name": "유격대 편성",
+          "effect": "민병 사단 3개 생성",
+          "days": 35
+        },
+        {
+          "name": "국토 수복 결의",
+          "effect": "전쟁 지원 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "late_tech",
+      "title": "후반 기술",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "로켓 연구소",
+          "effect": "로켓 연구 +20%",
+          "days": 35
+        },
+        {
+          "name": "원자 연구 계획",
+          "effect": "핵 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "제트기 개발",
+          "effect": "제트 엔진 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "전자 계산기 연구",
+          "effect": "전자 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "비밀 무기 계획",
+          "effect": "연구 슬롯 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_rebuild_b",
+      "title": "전후 질서",
+      "after": "late_rebuild",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "전범 재판",
+          "effect": "안정도 +5%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "평화 조약 체결",
+          "effect": "세계 긴장도 -5%",
+          "days": 35
+        },
+        {
+          "name": "국제기구 가입",
+          "effect": "민주국 우호 +25",
+          "days": 35
+        },
+        {
+          "name": "새 시대 선언",
+          "effect": "안정도 +10%, 전쟁 지원 -10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_rebuild_c",
+      "title": "경제 재건",
+      "after": "late_rebuild",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "해외 원조 수용",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "화폐 개혁",
+          "effect": "안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "군수 감축",
+          "effect": "군수공장 -2, 민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "경제 기적",
+          "effect": "공장 생산량 +10%",
+          "days": 70
+        }
+      ]
     }
   ]
 }
