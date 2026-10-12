@@ -71,6 +71,7 @@ $gameVersion = $null
 $gameDirs = @()
 foreach ($base in @($env:ProgramFiles, ${env:ProgramFiles(x86)}, 'D:\Steam', 'E:\Steam')) {
     if (-not $base) { continue }
+    if (-not (Test-Path -LiteralPath $base)) { continue }
     $gameDirs += (Join-Path $base 'Steam\steamapps\common\Hearts of Iron IV')
     $gameDirs += (Join-Path $base 'steamapps\common\Hearts of Iron IV')
 }
@@ -173,9 +174,13 @@ Ok "설치 완료."
 Write-Host ""
 Write-Host "  다음 순서로 확인할 것:"
 Write-Host "   1) logs\error.log 를 삭제"
-Write-Host "   2) 런처에서 '대균열' 체크 -> [플레이]"
-Write-Host "   3) 1936 새 게임, 일본 선택"
-Write-Host "   4) 디시전 탭 -> '대균열' 카테고리 -> '대균열 발동'"
-Write-Host "   5) 콘솔(~) 에서  tag KOR  -> 포커스트리 확인"
+Write-Host "   2) 런처 플레이세트에서 '$ModFolderName' 모드를 활성화 -> [플레이]"
+if ($ModFolderName -eq 'daegyunyeol') {
+    Write-Host "   3) 1936 새 게임, 일본 선택"
+    Write-Host "   4) 디시전 탭 -> '대균열' 카테고리 -> '대균열 발동'"
+    Write-Host "   5) 콘솔(~) 에서  tag KOR  -> 포커스트리 확인"
+} else {
+    Write-Host "   3) 새 게임에서 해당 모드의 중점과 콘텐츠 확인"
+}
 Write-Host "   6) 안 되면  tools\Check-Hoi4Mod.ps1 -ModName $ModFolderName  실행 후 출력 전달"
 Write-Host ""
