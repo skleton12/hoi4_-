@@ -88,3 +88,19 @@
 | 0개 | 0개 | **런처 밖**: 게임이 읽는 사용자 폴더(OneDrive), `.mod` 파일 위치·`path`, `dlc_load.json` 자체 |
 | 로드됨 | – | 이전 실패는 설치 시점 문제였다. 마커와 트리를 확인한다 |
 
+## 확인 기록
+
+- **BOM 배제 (GPT 확인).** `dlc_load.json` 첫 바이트 `7B 22 65`(BOM 없음). 22:01:12 저장, `new_focus` 항목 있음.
+  게임은 22:01:41 에 `Active Mod Count: 0` 기록. `userdir.txt` 없음.
+  → 런처는 목록에 모드를 넣었는데 **게임이 그 항목을 받아들이지 않았다.** 다음 후보는 "항목이 가리키는 파일·폴더를
+  게임이 못 찾거나 못 읽는 경우"다.
+
+| 후보 | 확인 |
+|---|---|
+| 사용자 폴더 경로에 **한글**(윈도우 사용자 이름, OneDrive 의 `문서`) | 게임 로그가 있는 폴더의 **전체 경로**에 ASCII 가 아닌 글자가 있는가 |
+| `.mod` 파일의 실제 이름이 `new_focus.mod.txt` (확장자 숨김) | `Get-ChildItem mod \| Select Name, Extension, Length` |
+| `.mod` 의 `path` 가 실제 폴더와 다름 · 역슬래시 · 절대 경로 오타 | `path` 값과 `Test-Path` 결과 대조 |
+| `.mod` 인코딩이 UTF-16 (PowerShell 5.1 `Out-File` 기본값) | 첫 바이트가 `FF FE` 인가 |
+| 로그의 거절 사유 | `game.log`·`error.log`·`system.log` 에서 `mod` 가 들어간 줄 전부, `Active Mod Count` 앞뒤 |
+| 환경 자체 문제 | ASCII 이름·ASCII 경로의 **마커만 든 1파일 모드**도 0개인가 |
+
