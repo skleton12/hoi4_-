@@ -1,0 +1,6099 @@
+# 「기본 중점 변경 모드」 — design/generic_tree/build_mod.py 가 만든 파일이다. 직접 고치지 말 것.
+# 바닐라 common/national_focus/generic.txt 를 같은 경로로 덮어써 기본 트리를 바꾼다.
+focus_tree = {
+	id = generic_focus
+
+	country = {
+		factor = 1
+	}
+
+	default = yes
+
+	continuous_focus_position = { x = 50 y = 1600 }
+
+	############################################################
+	# 공통 시작
+	############################################################
+	focus = {
+		id = GJ_start_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_root_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_start_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_start_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_root_2_tt
+		}
+	}
+	focus = {
+		id = GJ_start_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_start_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_root_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_start_vision_1
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_start_root_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_vision_1_tt
+		}
+	}
+	focus = {
+		id = GJ_start_vision_2
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_start_vision_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_vision_2_tt
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GJ_start_vision_3
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_start_vision_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_start_vision_3_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+
+	############################################################
+	# 산업
+	############################################################
+	focus = {
+		id = GJ_ind_base_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_base_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_base_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_base_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_base_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_base_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 2
+		cost = 10
+		prerequisite = { focus = GJ_ind_base_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_base_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_labor_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 6
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_base_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_labor_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_labor_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 6
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_labor_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_labor_2_tt
+			add_political_power = 50
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_light_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 9
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_base_3 }
+		mutually_exclusive = { focus = GJ_ind_heavy_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_light_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 9
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_light_a_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 8
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_a_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_light_a_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 8
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_light_a_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 8
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_light_a_4
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 8
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_ind_light_a_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_a_4_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_ind_light_b_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_b_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_light_b_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_ind_light_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_b_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_ind_light_b_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_light_b_4
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_ind_light_b_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_light_b_4_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 13
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_base_3 }
+		mutually_exclusive = { focus = GJ_ind_light_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_1_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 13
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_2_tt
+			add_political_power = 50
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_a_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 12
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_a_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 12
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_a_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 12
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_a_3_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_a_4
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 12
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_a_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_a_4_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_b_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 14
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_b_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 14
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_b_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 14
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_ind_heavy_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_b_3_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_ind_heavy_b_4
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 14
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_ind_heavy_b_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_heavy_b_4_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 17
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 17
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_a_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 16
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_a_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 16
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_a_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 16
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_b_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 18
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_b_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 18
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_res_b_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 18
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_res_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_res_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_war_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_war_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_war_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_war_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_war_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_war_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_war_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_war_4
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_war_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_war_4_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_war_5
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_ind_war_4 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_war_5_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 1
+		cost = 10
+		prerequisite = { focus = GJ_ind_sci_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_2_tt
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_sci_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_a_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 22
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_sci_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_a_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 22
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_sci_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_sci_a_3
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 22
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_ind_sci_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_sci_a_3_tt
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = GJ_ind_urban_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_sci_3 }
+		mutually_exclusive = { focus = GJ_ind_rural_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_urban_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = GJ_ind_urban_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_urban_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_urban_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_rural_1
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 26
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_sci_3 }
+		mutually_exclusive = { focus = GJ_ind_urban_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_rural_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ind_rural_2
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 26
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_rural_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_rural_2_tt
+			add_stability = 0.05
+		}
+	}
+
+	############################################################
+	# 군사
+	############################################################
+	focus = {
+		id = GJ_army_base_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_base_1_tt
+			army_experience = 25
+		}
+	}
+	focus = {
+		id = GJ_army_base_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_army_base_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_base_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_base_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_army_base_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_base_3_tt
+		}
+	}
+	focus = {
+		id = GJ_army_modern_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_army_base_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_modern_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_modern_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_army_modern_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_modern_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_modern_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_army_modern_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_modern_3_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 35
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_army_base_3 }
+		mutually_exclusive = { focus = GJ_army_exp_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 35
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_army_def_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 34
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_army_def_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 34
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_army_def_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 34
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_army_def_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_a_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 34
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_army_def_a_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_a_4_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_b_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_army_def_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_b_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_army_def_b_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_b_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_army_def_b_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_army_def_b_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 36
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_army_def_b_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_def_b_4_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 39
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_army_base_3 }
+		mutually_exclusive = { focus = GJ_army_def_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_1_tt
+			army_experience = 25
+		}
+	}
+	focus = {
+		id = GJ_army_exp_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 39
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 38
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 38
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 38
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_a_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 38
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_a_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_a_4_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_b_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 40
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_b_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 40
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_b_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_army_exp_b_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 40
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_army_exp_b_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_b_3_tt
+			army_experience = 30
+		}
+	}
+	focus = {
+		id = GJ_army_exp_b_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 40
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_army_exp_b_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_army_exp_b_4_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_base_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 0
+		cost = 5
+		allow_branch = { any_owned_state = { is_coastal = yes } }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_base_1_tt
+			navy_experience = 25
+		}
+	}
+	focus = {
+		id = GJ_navy_base_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_navy_base_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_base_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_base_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_navy_base_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_base_3_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_modern_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 42
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_navy_base_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_modern_1_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_modern_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 42
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_navy_modern_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_modern_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_modern_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 42
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_navy_modern_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_modern_3_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_navy_base_3 }
+		mutually_exclusive = { focus = GJ_navy_blue_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_1_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_navy_coast_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_navy_coast_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_navy_coast_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_navy_coast_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_coast_a_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 44
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_navy_coast_a_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_coast_a_4_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_navy_base_3 }
+		mutually_exclusive = { focus = GJ_navy_coast_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_1_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_navy_blue_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_navy_blue_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_navy_blue_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_navy_blue_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_navy_blue_a_4
+		icon = GFX_goal_generic_army_doctrines
+		x = 46
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_navy_blue_a_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_navy_blue_a_4_tt
+			navy_experience = 50
+		}
+	}
+	focus = {
+		id = GJ_air_base_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_base_1_tt
+			air_experience = 25
+		}
+	}
+	focus = {
+		id = GJ_air_base_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_air_base_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_base_2_tt
+		}
+	}
+	focus = {
+		id = GJ_air_base_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_air_base_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_base_3_tt
+		}
+	}
+	focus = {
+		id = GJ_air_modern_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 48
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_air_base_3 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_modern_1_tt
+		}
+	}
+	focus = {
+		id = GJ_air_modern_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 48
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_air_modern_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_modern_2_tt
+		}
+	}
+	focus = {
+		id = GJ_air_modern_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 48
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_air_modern_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_modern_3_tt
+		}
+	}
+	focus = {
+		id = GJ_air_def_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_air_base_3 }
+		mutually_exclusive = { focus = GJ_air_cas_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_def_1_tt
+		}
+	}
+	focus = {
+		id = GJ_air_def_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_air_def_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_def_2_tt
+		}
+	}
+	focus = {
+		id = GJ_air_def_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_air_def_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_def_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_air_def_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_air_def_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_def_a_2_tt
+			air_experience = 30
+		}
+	}
+	focus = {
+		id = GJ_air_def_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 50
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_air_def_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_def_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_air_cas_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_air_base_3 }
+		mutually_exclusive = { focus = GJ_air_def_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_cas_1_tt
+		}
+	}
+	focus = {
+		id = GJ_air_cas_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_air_cas_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_cas_2_tt
+		}
+	}
+	focus = {
+		id = GJ_air_cas_a_1
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_air_cas_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_cas_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_air_cas_a_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_air_cas_a_1 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_cas_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_air_cas_a_3
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_air_cas_a_2 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_air_cas_a_3_tt
+		}
+	}
+
+	############################################################
+	# 정치
+	############################################################
+	focus = {
+		id = GJ_com_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 73
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = GJ_dem_root_1 focus = GJ_fas_root_1 focus = GJ_neu_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_root_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 73
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_com_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_root_2_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_com_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 73
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_com_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_root_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_com_legal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 72
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_com_root_3 }
+		mutually_exclusive = { focus = GJ_com_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_legal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_legal_2
+		icon = GFX_goal_generic_political_pressure
+		x = 72
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_com_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_legal_2_tt
+			set_politics = { ruling_party = communism elections_allowed = no }
+		}
+	}
+	focus = {
+		id = GJ_com_war_1
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_com_root_3 }
+		mutually_exclusive = { focus = GJ_com_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_war_2
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_com_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_war_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_war_3
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_com_war_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_war_3_tt
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		id = GJ_com_gov_1
+		icon = GFX_goal_generic_political_pressure
+		x = 73
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_com_legal_2 focus = GJ_com_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_gov_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_com_gov_2
+		icon = GFX_goal_generic_political_pressure
+		x = 73
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_gov_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_adv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 58
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_adv_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_adv_2
+		icon = GFX_goal_generic_political_pressure
+		x = 58
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_adv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_adv_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_adv_3
+		icon = GFX_goal_generic_political_pressure
+		x = 58
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_com_adv_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_adv_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_1
+		icon = GFX_goal_generic_political_pressure
+		x = 62
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_2 }
+		mutually_exclusive = { focus = GJ_com_trotsky_1 focus = GJ_com_bukharin_1 focus = GJ_com_anarchy_1 focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_gpt_com_stalin_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 60
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_stalin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_com_stalin_institutions_1_tt
+			add_political_power = 1
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_econ_1
+		icon = GFX_goal_generic_political_pressure
+		x = 62
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_stalin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_econ_1_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_econ_2
+		icon = GFX_goal_generic_political_pressure
+		x = 62
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_stalin_econ_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_econ_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_econ_3
+		icon = GFX_goal_generic_political_pressure
+		x = 62
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_stalin_econ_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_econ_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_party_1
+		icon = GFX_goal_generic_political_pressure
+		x = 64
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_stalin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_party_1_tt
+			add_stability = 0.05
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_party_2
+		icon = GFX_goal_generic_political_pressure
+		x = 64
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_stalin_party_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_party_2_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_com_stalin_party_3
+		icon = GFX_goal_generic_political_pressure
+		x = 64
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_stalin_party_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_stalin_party_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_1
+		icon = GFX_goal_generic_political_pressure
+		x = 68
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_2 }
+		mutually_exclusive = { focus = GJ_com_stalin_1 focus = GJ_com_bukharin_1 focus = GJ_com_anarchy_1 focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_gpt_com_trotsky_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 66
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_trotsky_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_com_trotsky_institutions_1_tt
+			add_stability = 0.05
+			army_experience = 5
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_export_1
+		icon = GFX_goal_generic_political_pressure
+		x = 68
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_trotsky_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_export_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_export_2
+		icon = GFX_goal_generic_political_pressure
+		x = 68
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_trotsky_export_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_export_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_export_3
+		icon = GFX_goal_generic_political_pressure
+		x = 68
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_trotsky_export_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_export_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_world_1
+		icon = GFX_goal_generic_political_pressure
+		x = 70
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_trotsky_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_world_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_world_2
+		icon = GFX_goal_generic_political_pressure
+		x = 70
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_trotsky_world_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_world_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_trotsky_world_3
+		icon = GFX_goal_generic_political_pressure
+		x = 70
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_com_trotsky_world_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_trotsky_world_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_1
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_2 }
+		mutually_exclusive = { focus = GJ_com_stalin_1 focus = GJ_com_trotsky_1 focus = GJ_com_anarchy_1 focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_com_bukharin_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 72
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_bukharin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_com_bukharin_institutions_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_market_1
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_market_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_market_2
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_market_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_market_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_market_3
+		icon = GFX_goal_generic_political_pressure
+		x = 74
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_market_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_market_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_mild_1
+		icon = GFX_goal_generic_political_pressure
+		x = 76
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_mild_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_mild_2
+		icon = GFX_goal_generic_political_pressure
+		x = 76
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_mild_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_mild_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_bukharin_mild_3
+		icon = GFX_goal_generic_political_pressure
+		x = 76
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_bukharin_mild_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_bukharin_mild_3_tt
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_1
+		icon = GFX_goal_generic_political_pressure
+		x = 80
+		y = 8
+		cost = 10
+		prerequisite = { focus = GJ_com_gov_2 }
+		mutually_exclusive = { focus = GJ_com_stalin_1 focus = GJ_com_trotsky_1 focus = GJ_com_bukharin_1 focus = GJ_com_indep_1 }
+		available = { has_completed_focus = GJ_com_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_com_anarchy_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 78
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_anarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_com_anarchy_institutions_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_labor_1
+		icon = GFX_goal_generic_political_pressure
+		x = 80
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_labor_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_labor_2
+		icon = GFX_goal_generic_political_pressure
+		x = 80
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_labor_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_labor_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_labor_3
+		icon = GFX_goal_generic_political_pressure
+		x = 80
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_labor_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_labor_3_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_defense_1
+		icon = GFX_goal_generic_political_pressure
+		x = 82
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_defense_1_tt
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_defense_2
+		icon = GFX_goal_generic_political_pressure
+		x = 82
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_defense_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_defense_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_anarchy_defense_3
+		icon = GFX_goal_generic_political_pressure
+		x = 82
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_anarchy_defense_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_anarchy_defense_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_indep_1
+		icon = GFX_goal_generic_political_pressure
+		x = 86
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_com_gov_2 }
+		mutually_exclusive = { focus = GJ_com_stalin_1 focus = GJ_com_trotsky_1 focus = GJ_com_bukharin_1 focus = GJ_com_anarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_1_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_gpt_com_indep_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 84
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_com_indep_institutions_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_com_indep_econ_1
+		icon = GFX_goal_generic_political_pressure
+		x = 86
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_econ_1_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_com_indep_econ_2
+		icon = GFX_goal_generic_political_pressure
+		x = 86
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_indep_econ_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_econ_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_indep_econ_3
+		icon = GFX_goal_generic_political_pressure
+		x = 86
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_indep_econ_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_econ_3_tt
+		}
+	}
+	focus = {
+		id = GJ_com_indep_fed_1
+		icon = GFX_goal_generic_political_pressure
+		x = 88
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_com_indep_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_fed_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_com_indep_fed_2
+		icon = GFX_goal_generic_political_pressure
+		x = 88
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_com_indep_fed_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_fed_2_tt
+		}
+	}
+	focus = {
+		id = GJ_com_indep_fed_3
+		icon = GFX_goal_generic_political_pressure
+		x = 88
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_com_indep_fed_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_com_indep_fed_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 101
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_fas_root_1 focus = GJ_neu_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_root_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 101
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dem_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_root_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 101
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dem_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_root_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_legal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dem_root_3 }
+		mutually_exclusive = { focus = GJ_dem_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_legal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_legal_2
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_dem_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_legal_2_tt
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+		}
+	}
+	focus = {
+		id = GJ_dem_war_1
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dem_root_3 }
+		mutually_exclusive = { focus = GJ_dem_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_war_2
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_dem_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_war_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_war_3
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dem_war_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_war_3_tt
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		id = GJ_dem_gov_1
+		icon = GFX_goal_generic_political_pressure
+		x = 101
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_dem_legal_2 focus = GJ_dem_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_gov_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_gov_2
+		icon = GFX_goal_generic_political_pressure
+		x = 101
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_gov_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_adv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 90
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_adv_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_dem_adv_2
+		icon = GFX_goal_generic_political_pressure
+		x = 90
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_adv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_adv_2_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_adv_3
+		icon = GFX_goal_generic_political_pressure
+		x = 90
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_dem_adv_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_adv_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_social_1
+		icon = GFX_goal_generic_political_pressure
+		x = 94
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_2 }
+		mutually_exclusive = { focus = GJ_dem_liberal_1 focus = GJ_dem_christian_1 focus = GJ_dem_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_gpt_dem_social_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 92
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_dem_social_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_dem_social_institutions_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_social_labor_1
+		icon = GFX_goal_generic_political_pressure
+		x = 94
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_social_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_labor_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_social_labor_2
+		icon = GFX_goal_generic_political_pressure
+		x = 94
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_social_labor_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_labor_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_social_labor_3
+		icon = GFX_goal_generic_political_pressure
+		x = 94
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_dem_social_labor_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_labor_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_social_welfare_1
+		icon = GFX_goal_generic_political_pressure
+		x = 96
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_social_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_welfare_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_social_welfare_2
+		icon = GFX_goal_generic_political_pressure
+		x = 96
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_dem_social_welfare_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_welfare_2_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_dem_social_welfare_3
+		icon = GFX_goal_generic_political_pressure
+		x = 96
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_dem_social_welfare_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_social_welfare_3_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_2 }
+		mutually_exclusive = { focus = GJ_dem_social_1 focus = GJ_dem_christian_1 focus = GJ_dem_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_dem_liberal_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 98
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_dem_liberal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_dem_liberal_institutions_1_tt
+			add_political_power = 1
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_capital_1
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_liberal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_capital_1_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_capital_2
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_liberal_capital_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_capital_2_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_capital_3
+		icon = GFX_goal_generic_political_pressure
+		x = 100
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_dem_liberal_capital_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_capital_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_trade_1
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_liberal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_trade_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_trade_2
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_liberal_trade_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_trade_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_liberal_trade_3
+		icon = GFX_goal_generic_political_pressure
+		x = 102
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_dem_liberal_trade_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_liberal_trade_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_1
+		icon = GFX_goal_generic_political_pressure
+		x = 106
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_2 }
+		mutually_exclusive = { focus = GJ_dem_social_1 focus = GJ_dem_liberal_1 focus = GJ_dem_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_gpt_dem_christian_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 104
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_dem_christian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_dem_christian_institutions_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_doctrine_1
+		icon = GFX_goal_generic_political_pressure
+		x = 106
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_christian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_doctrine_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_doctrine_2
+		icon = GFX_goal_generic_political_pressure
+		x = 106
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_christian_doctrine_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_doctrine_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_doctrine_3
+		icon = GFX_goal_generic_political_pressure
+		x = 106
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_dem_christian_doctrine_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_doctrine_3_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_moral_1
+		icon = GFX_goal_generic_political_pressure
+		x = 108
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_christian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_moral_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_moral_2
+		icon = GFX_goal_generic_political_pressure
+		x = 108
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_christian_moral_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_moral_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_christian_moral_3
+		icon = GFX_goal_generic_political_pressure
+		x = 108
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_dem_christian_moral_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_christian_moral_3_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 111
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_dem_gov_2 }
+		mutually_exclusive = { focus = GJ_dem_social_1 focus = GJ_dem_liberal_1 focus = GJ_dem_christian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_order_1
+		icon = GFX_goal_generic_political_pressure
+		x = 110
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_order_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_order_2
+		icon = GFX_goal_generic_political_pressure
+		x = 110
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_conserv_order_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_order_2_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_order_3
+		icon = GFX_goal_generic_political_pressure
+		x = 110
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_dem_conserv_order_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_order_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_defense_1
+		icon = GFX_goal_generic_political_pressure
+		x = 112
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_dem_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_defense_1_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_defense_2
+		icon = GFX_goal_generic_political_pressure
+		x = 112
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_dem_conserv_defense_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_defense_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dem_conserv_defense_3
+		icon = GFX_goal_generic_political_pressure
+		x = 112
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_dem_conserv_defense_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dem_conserv_defense_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 125
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_dem_root_1 focus = GJ_neu_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_root_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 125
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_fas_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_root_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 125
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_fas_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_root_3_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_fas_legal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_fas_root_3 }
+		mutually_exclusive = { focus = GJ_fas_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_legal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_legal_2
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_fas_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_legal_2_tt
+			set_politics = { ruling_party = fascism elections_allowed = no }
+		}
+	}
+	focus = {
+		id = GJ_fas_war_1
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_fas_root_3 }
+		mutually_exclusive = { focus = GJ_fas_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_war_2
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_fas_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_war_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_war_3
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_fas_war_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_war_3_tt
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		id = GJ_fas_gov_1
+		icon = GFX_goal_generic_political_pressure
+		x = 125
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_fas_legal_2 focus = GJ_fas_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_gov_1_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_fas_gov_2
+		icon = GFX_goal_generic_political_pressure
+		x = 125
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_gov_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_adv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 114
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_adv_1_tt
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = GJ_fas_adv_2
+		icon = GFX_goal_generic_political_pressure
+		x = 114
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_adv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_adv_2_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_fas_adv_3
+		icon = GFX_goal_generic_political_pressure
+		x = 114
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_fas_adv_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_adv_3_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_1
+		icon = GFX_goal_generic_political_pressure
+		x = 118
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_2 }
+		mutually_exclusive = { focus = GJ_fas_corp_1 focus = GJ_fas_natsoc_1 focus = GJ_fas_clerical_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_gpt_fas_franco_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 116
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_fas_franco_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_fas_franco_institutions_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_church_1
+		icon = GFX_goal_generic_political_pressure
+		x = 118
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_church_1_tt
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_church_2
+		icon = GFX_goal_generic_political_pressure
+		x = 118
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_church_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_church_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_church_3
+		icon = GFX_goal_generic_political_pressure
+		x = 118
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_church_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_church_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_autarky_1
+		icon = GFX_goal_generic_political_pressure
+		x = 120
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_autarky_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_autarky_2
+		icon = GFX_goal_generic_political_pressure
+		x = 120
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_autarky_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_autarky_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_franco_autarky_3
+		icon = GFX_goal_generic_political_pressure
+		x = 120
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_franco_autarky_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_franco_autarky_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_1
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_2 }
+		mutually_exclusive = { focus = GJ_fas_franco_1 focus = GJ_fas_natsoc_1 focus = GJ_fas_clerical_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_fas_corp_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 122
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_fas_corp_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_fas_corp_institutions_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_guild_1
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_corp_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_guild_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_guild_2
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_corp_guild_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_guild_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_guild_3
+		icon = GFX_goal_generic_political_pressure
+		x = 124
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_corp_guild_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_guild_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_econ_1
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_fas_corp_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_econ_1_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_econ_2
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_corp_econ_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_econ_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_corp_econ_3
+		icon = GFX_goal_generic_political_pressure
+		x = 126
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_corp_econ_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_corp_econ_3_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_1
+		icon = GFX_goal_generic_political_pressure
+		x = 130
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_2 }
+		mutually_exclusive = { focus = GJ_fas_franco_1 focus = GJ_fas_corp_1 focus = GJ_fas_clerical_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_1_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_gpt_fas_natsoc_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 128
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_fas_natsoc_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_fas_natsoc_institutions_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_rearm_1
+		icon = GFX_goal_generic_political_pressure
+		x = 130
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_fas_natsoc_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_rearm_1_tt
+			add_offsite_building = { type = arms_factory level = 3 }
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_rearm_2
+		icon = GFX_goal_generic_political_pressure
+		x = 130
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_natsoc_rearm_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_rearm_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_rearm_3
+		icon = GFX_goal_generic_political_pressure
+		x = 130
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_natsoc_rearm_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_rearm_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_expand_1
+		icon = GFX_goal_generic_political_pressure
+		x = 132
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_natsoc_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_expand_1_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_expand_2
+		icon = GFX_goal_generic_political_pressure
+		x = 132
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_natsoc_expand_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_expand_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_natsoc_expand_3
+		icon = GFX_goal_generic_political_pressure
+		x = 132
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_natsoc_expand_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_natsoc_expand_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_1
+		icon = GFX_goal_generic_political_pressure
+		x = 135
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_fas_gov_2 }
+		mutually_exclusive = { focus = GJ_fas_franco_1 focus = GJ_fas_corp_1 focus = GJ_fas_natsoc_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_church_1
+		icon = GFX_goal_generic_political_pressure
+		x = 134
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_clerical_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_church_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_church_2
+		icon = GFX_goal_generic_political_pressure
+		x = 134
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_clerical_church_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_church_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_church_3
+		icon = GFX_goal_generic_political_pressure
+		x = 134
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_fas_clerical_church_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_church_3_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_guild_1
+		icon = GFX_goal_generic_political_pressure
+		x = 136
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_fas_clerical_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_guild_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_guild_2
+		icon = GFX_goal_generic_political_pressure
+		x = 136
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_fas_clerical_guild_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_guild_2_tt
+		}
+	}
+	focus = {
+		id = GJ_fas_clerical_guild_3
+		icon = GFX_goal_generic_political_pressure
+		x = 136
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_fas_clerical_guild_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_fas_clerical_guild_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_dem_root_1 focus = GJ_fas_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_root_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_neu_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_root_2_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_neu_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_neu_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_root_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_legal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 157
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_neu_root_3 }
+		mutually_exclusive = { focus = GJ_neu_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_legal_1_tt
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_legal_2
+		icon = GFX_goal_generic_political_pressure
+		x = 157
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_neu_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_legal_2_tt
+			set_politics = { ruling_party = neutrality elections_allowed = no }
+		}
+	}
+	focus = {
+		id = GJ_neu_war_1
+		icon = GFX_goal_generic_political_pressure
+		x = 159
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_neu_root_3 }
+		mutually_exclusive = { focus = GJ_neu_legal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_war_2
+		icon = GFX_goal_generic_political_pressure
+		x = 159
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_neu_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_war_2_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_neu_war_3
+		icon = GFX_goal_generic_political_pressure
+		x = 159
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_neu_war_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_war_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_gov_1
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_neu_legal_2 focus = GJ_neu_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_gov_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_gov_2
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_gov_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_adv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 138
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_adv_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_adv_2
+		icon = GFX_goal_generic_political_pressure
+		x = 138
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_adv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_adv_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_adv_3
+		icon = GFX_goal_generic_political_pressure
+		x = 138
+		y = 10
+		cost = 10
+		prerequisite = { focus = GJ_neu_adv_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_adv_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_1
+		icon = GFX_goal_generic_political_pressure
+		x = 142
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		available = { has_completed_focus = GJ_neu_war_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_neu_junta_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 140
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_junta_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_neu_junta_institutions_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_rule_1
+		icon = GFX_goal_generic_political_pressure
+		x = 142
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_rule_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_rule_2
+		icon = GFX_goal_generic_political_pressure
+		x = 142
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_rule_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_rule_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_rule_3
+		icon = GFX_goal_generic_political_pressure
+		x = 142
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_rule_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_rule_3_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_arms_1
+		icon = GFX_goal_generic_political_pressure
+		x = 144
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_arms_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_arms_2
+		icon = GFX_goal_generic_political_pressure
+		x = 144
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_arms_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_arms_2_tt
+			army_experience = 50
+		}
+	}
+	focus = {
+		id = GJ_neu_junta_arms_3
+		icon = GFX_goal_generic_political_pressure
+		x = 144
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_junta_arms_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_junta_arms_3_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_1
+		icon = GFX_goal_generic_political_pressure
+		x = 148
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_neu_pres_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 146
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_pres_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_neu_pres_institutions_1_tt
+			add_political_power = 1
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_rule_1
+		icon = GFX_goal_generic_political_pressure
+		x = 148
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_pres_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_rule_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_rule_2
+		icon = GFX_goal_generic_political_pressure
+		x = 148
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_pres_rule_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_rule_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_rule_3
+		icon = GFX_goal_generic_political_pressure
+		x = 148
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_pres_rule_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_rule_3_tt
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_dev_1
+		icon = GFX_goal_generic_political_pressure
+		x = 150
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_pres_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_dev_1_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_dev_2
+		icon = GFX_goal_generic_political_pressure
+		x = 150
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_pres_dev_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_dev_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_pres_dev_3
+		icon = GFX_goal_generic_political_pressure
+		x = 150
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_pres_dev_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_pres_dev_3_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_1
+		icon = GFX_goal_generic_political_pressure
+		x = 154
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		available = { always = yes }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_neu_monarchy_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 152
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_monarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_neu_monarchy_institutions_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_crown_1
+		icon = GFX_goal_generic_political_pressure
+		x = 154
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_monarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_crown_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_crown_2
+		icon = GFX_goal_generic_political_pressure
+		x = 154
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_monarchy_crown_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_crown_2_tt
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_crown_3
+		icon = GFX_goal_generic_political_pressure
+		x = 154
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_monarchy_crown_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_crown_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_diplo_1
+		icon = GFX_goal_generic_political_pressure
+		x = 156
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_monarchy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_diplo_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_diplo_2
+		icon = GFX_goal_generic_political_pressure
+		x = 156
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_monarchy_diplo_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_diplo_2_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_monarchy_diplo_3
+		icon = GFX_goal_generic_political_pressure
+		x = 156
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_monarchy_diplo_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_monarchy_diplo_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_1
+		icon = GFX_goal_generic_political_pressure
+		x = 160
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_gpt_neu_conserv_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 158
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_neu_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_neu_conserv_institutions_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_trad_1
+		icon = GFX_goal_generic_political_pressure
+		x = 160
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_trad_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_trad_2
+		icon = GFX_goal_generic_political_pressure
+		x = 160
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_trad_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_trad_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_trad_3
+		icon = GFX_goal_generic_political_pressure
+		x = 160
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_trad_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_trad_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_reform_1
+		icon = GFX_goal_generic_political_pressure
+		x = 162
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_reform_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_reform_2
+		icon = GFX_goal_generic_political_pressure
+		x = 162
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_reform_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_reform_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_conserv_reform_3
+		icon = GFX_goal_generic_political_pressure
+		x = 162
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_conserv_reform_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_conserv_reform_3_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_1
+		icon = GFX_goal_generic_political_pressure
+		x = 165
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_reform_1
+		icon = GFX_goal_generic_political_pressure
+		x = 164
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_kemal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_reform_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_reform_2
+		icon = GFX_goal_generic_political_pressure
+		x = 164
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_kemal_reform_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_reform_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_reform_3
+		icon = GFX_goal_generic_political_pressure
+		x = 164
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_kemal_reform_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_reform_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_state_1
+		icon = GFX_goal_generic_political_pressure
+		x = 166
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_kemal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_state_1_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_state_2
+		icon = GFX_goal_generic_political_pressure
+		x = 166
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_kemal_state_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_state_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_kemal_state_3
+		icon = GFX_goal_generic_political_pressure
+		x = 166
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_neu_kemal_state_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_kemal_state_3_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_1
+		icon = GFX_goal_generic_political_pressure
+		x = 169
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_agrarian_1 focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_1_tt
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_patron_1
+		icon = GFX_goal_generic_political_pressure
+		x = 168
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_caudillo_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_patron_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_patron_2
+		icon = GFX_goal_generic_political_pressure
+		x = 168
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_caudillo_patron_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_patron_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_patron_3
+		icon = GFX_goal_generic_political_pressure
+		x = 168
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_caudillo_patron_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_patron_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_power_1
+		icon = GFX_goal_generic_political_pressure
+		x = 170
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_caudillo_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_power_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_power_2
+		icon = GFX_goal_generic_political_pressure
+		x = 170
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_caudillo_power_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_power_2_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_neu_caudillo_power_3
+		icon = GFX_goal_generic_political_pressure
+		x = 170
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_neu_caudillo_power_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_caudillo_power_3_tt
+			add_stability = 0.05
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_1
+		icon = GFX_goal_generic_political_pressure
+		x = 173
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_land_1
+		icon = GFX_goal_generic_political_pressure
+		x = 172
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_agrarian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_land_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_land_2
+		icon = GFX_goal_generic_political_pressure
+		x = 172
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_agrarian_land_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_land_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_land_3
+		icon = GFX_goal_generic_political_pressure
+		x = 172
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_agrarian_land_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_land_3_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_people_1
+		icon = GFX_goal_generic_political_pressure
+		x = 174
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_agrarian_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_people_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_people_2
+		icon = GFX_goal_generic_political_pressure
+		x = 174
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_agrarian_people_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_people_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_agrarian_people_3
+		icon = GFX_goal_generic_political_pressure
+		x = 174
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_neu_agrarian_people_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_agrarian_people_3_tt
+			add_stability = 0.10
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_1
+		icon = GFX_goal_generic_political_pressure
+		x = 177
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_neu_gov_2 }
+		mutually_exclusive = { focus = GJ_neu_junta_1 focus = GJ_neu_pres_1 focus = GJ_neu_monarchy_1 focus = GJ_neu_conserv_1 focus = GJ_neu_kemal_1 focus = GJ_neu_caudillo_1 focus = GJ_neu_agrarian_1 }
+		available = { always = yes }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_1_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_faith_1
+		icon = GFX_goal_generic_political_pressure
+		x = 176
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_faith_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_faith_2
+		icon = GFX_goal_generic_political_pressure
+		x = 176
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_theocracy_faith_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_faith_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_faith_3
+		icon = GFX_goal_generic_political_pressure
+		x = 176
+		y = 11
+		cost = 5
+		prerequisite = { focus = GJ_neu_theocracy_faith_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_faith_3_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_rule_1
+		icon = GFX_goal_generic_political_pressure
+		x = 178
+		y = 9
+		cost = 5
+		prerequisite = { focus = GJ_neu_theocracy_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_rule_1_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_rule_2
+		icon = GFX_goal_generic_political_pressure
+		x = 178
+		y = 10
+		cost = 5
+		prerequisite = { focus = GJ_neu_theocracy_rule_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_rule_2_tt
+		}
+	}
+	focus = {
+		id = GJ_neu_theocracy_rule_3
+		icon = GFX_goal_generic_political_pressure
+		x = 178
+		y = 11
+		cost = 10
+		prerequisite = { focus = GJ_neu_theocracy_rule_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_neu_theocracy_rule_3_tt
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = GJ_hid_exile_1
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 0
+		cost = 5
+		available = { capital_scope = { NOT = { is_controlled_by = ROOT } } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_exile_1_tt
+		}
+	}
+	focus = {
+		id = GJ_hid_exile_2
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_hid_exile_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_exile_2_tt
+		}
+	}
+	focus = {
+		id = GJ_hid_exile_3
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_hid_exile_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_exile_3_tt
+		}
+	}
+	focus = {
+		id = GJ_hid_exile_4
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_hid_exile_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_exile_4_tt
+		}
+	}
+	focus = {
+		id = GJ_hid_exile_5
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_hid_exile_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_exile_5_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_hid_exile_institutions_1
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_hid_exile_5 }
+		available = { capital_scope = { is_controlled_by = ROOT } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_hid_exile_institutions_1_tt
+		}
+	}
+	focus = {
+		id = GJ_gpt_hid_exile_institutions_2
+		icon = GFX_goal_generic_political_pressure
+		x = 180
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_gpt_hid_exile_institutions_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_gpt_hid_exile_institutions_2_tt
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_hid_egg_1
+		icon = GFX_goal_generic_political_pressure
+		x = 182
+		y = 0
+		cost = 5
+		available = { always = yes }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_egg_1_tt
+			add_stability = 0.01
+		}
+	}
+	focus = {
+		id = GJ_hid_egg_2
+		icon = GFX_goal_generic_political_pressure
+		x = 182
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_hid_egg_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_egg_2_tt
+			add_political_power = 5
+		}
+	}
+	focus = {
+		id = GJ_hid_egg_3
+		icon = GFX_goal_generic_political_pressure
+		x = 182
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_hid_egg_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_egg_3_tt
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = GJ_hid_egg_4
+		icon = GFX_goal_generic_political_pressure
+		x = 182
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_hid_egg_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_egg_4_tt
+			add_stability = 0.02
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = GJ_hid_crisis_1
+		icon = GFX_goal_generic_political_pressure
+		x = 184
+		y = 0
+		cost = 5
+		available = { has_war = yes has_war_support < 0.3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_crisis_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_hid_crisis_2
+		icon = GFX_goal_generic_political_pressure
+		x = 184
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_hid_crisis_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_crisis_2_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_hid_crisis_3
+		icon = GFX_goal_generic_political_pressure
+		x = 184
+		y = 2
+		cost = 10
+		prerequisite = { focus = GJ_hid_crisis_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_hid_crisis_3_tt
+			add_war_support = 0.10
+		}
+	}
+
+	############################################################
+	# 외교·첩보
+	############################################################
+	focus = {
+		id = GJ_dip_root_1
+		icon = GFX_goal_generic_major_alliance
+		x = 203
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_root_1_tt
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = GJ_dip_allies_1
+		icon = GFX_goal_generic_major_alliance
+		x = 190
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_root_1 }
+		mutually_exclusive = { focus = GJ_dip_axis_1 focus = GJ_dip_comintern_1 focus = GJ_dip_neutral_1 focus = GJ_dip_leader_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_allies_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_allies_2
+		icon = GFX_goal_generic_major_alliance
+		x = 190
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_allies_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_allies_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_allies_3
+		icon = GFX_goal_generic_major_alliance
+		x = 190
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_allies_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_allies_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_allies_4
+		icon = GFX_goal_generic_major_alliance
+		x = 190
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_allies_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_allies_4_tt
+			navy_experience = 50
+		}
+	}
+	focus = {
+		id = GJ_dip_allies_5
+		icon = GFX_goal_generic_major_alliance
+		x = 190
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_dip_allies_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_allies_5_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_axis_1
+		icon = GFX_goal_generic_major_alliance
+		x = 192
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_root_1 }
+		mutually_exclusive = { focus = GJ_dip_allies_1 focus = GJ_dip_comintern_1 focus = GJ_dip_neutral_1 focus = GJ_dip_leader_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_axis_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_axis_2
+		icon = GFX_goal_generic_major_alliance
+		x = 192
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_axis_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_axis_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_axis_3
+		icon = GFX_goal_generic_major_alliance
+		x = 192
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_axis_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_axis_3_tt
+			army_experience = 50
+		}
+	}
+	focus = {
+		id = GJ_dip_axis_4
+		icon = GFX_goal_generic_major_alliance
+		x = 192
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_axis_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_axis_4_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_axis_5
+		icon = GFX_goal_generic_major_alliance
+		x = 192
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_dip_axis_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_axis_5_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_comintern_1
+		icon = GFX_goal_generic_major_alliance
+		x = 194
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_root_1 }
+		mutually_exclusive = { focus = GJ_dip_allies_1 focus = GJ_dip_axis_1 focus = GJ_dip_neutral_1 focus = GJ_dip_leader_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_comintern_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_comintern_2
+		icon = GFX_goal_generic_major_alliance
+		x = 194
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_comintern_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_comintern_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_dip_comintern_3
+		icon = GFX_goal_generic_major_alliance
+		x = 194
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_comintern_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_comintern_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_comintern_4
+		icon = GFX_goal_generic_major_alliance
+		x = 194
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_comintern_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_comintern_4_tt
+			army_experience = 50
+		}
+	}
+	focus = {
+		id = GJ_dip_comintern_5
+		icon = GFX_goal_generic_major_alliance
+		x = 194
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_dip_comintern_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_comintern_5_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_1
+		icon = GFX_goal_generic_major_alliance
+		x = 198
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_root_1 }
+		mutually_exclusive = { focus = GJ_dip_allies_1 focus = GJ_dip_axis_1 focus = GJ_dip_comintern_1 focus = GJ_dip_leader_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_2
+		icon = GFX_goal_generic_major_alliance
+		x = 198
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_trade_1
+		icon = GFX_goal_generic_major_alliance
+		x = 196
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_trade_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_trade_2
+		icon = GFX_goal_generic_major_alliance
+		x = 196
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_trade_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_trade_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_trade_3
+		icon = GFX_goal_generic_major_alliance
+		x = 196
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_trade_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_trade_3_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_defense_1
+		icon = GFX_goal_generic_major_alliance
+		x = 198
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_defense_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_defense_2
+		icon = GFX_goal_generic_major_alliance
+		x = 198
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_defense_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_defense_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_defense_3
+		icon = GFX_goal_generic_major_alliance
+		x = 198
+		y = 5
+		cost = 10
+		prerequisite = { focus = GJ_dip_neutral_defense_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_defense_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_aid_1
+		icon = GFX_goal_generic_major_alliance
+		x = 200
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_aid_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_aid_2
+		icon = GFX_goal_generic_major_alliance
+		x = 200
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_aid_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_aid_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_neutral_aid_3
+		icon = GFX_goal_generic_major_alliance
+		x = 200
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_neutral_aid_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_neutral_aid_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_1
+		icon = GFX_goal_generic_major_alliance
+		x = 209
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_root_1 }
+		mutually_exclusive = { focus = GJ_dip_allies_1 focus = GJ_dip_axis_1 focus = GJ_dip_comintern_1 focus = GJ_dip_neutral_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_2
+		icon = GFX_goal_generic_major_alliance
+		x = 209
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_econ_1
+		icon = GFX_goal_generic_major_alliance
+		x = 202
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_econ_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_econ_2
+		icon = GFX_goal_generic_major_alliance
+		x = 202
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_dip_leader_econ_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_econ_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_econ_3
+		icon = GFX_goal_generic_major_alliance
+		x = 202
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_econ_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_econ_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_mil_1
+		icon = GFX_goal_generic_major_alliance
+		x = 204
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_mil_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_mil_2
+		icon = GFX_goal_generic_major_alliance
+		x = 204
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_mil_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_mil_2_tt
+			army_experience = 30
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_mil_3
+		icon = GFX_goal_generic_major_alliance
+		x = 204
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_mil_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_mil_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_bloc_1
+		icon = GFX_goal_generic_major_alliance
+		x = 211
+		y = 3
+		cost = 10
+		prerequisite = { focus = GJ_dip_leader_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_bloc_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_bloc_2
+		icon = GFX_goal_generic_major_alliance
+		x = 211
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_bloc_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_war_1
+		icon = GFX_goal_generic_major_alliance
+		x = 206
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_war_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_war_2
+		icon = GFX_goal_generic_major_alliance
+		x = 206
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_war_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_war_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_war_3
+		icon = GFX_goal_generic_major_alliance
+		x = 206
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_dip_leader_war_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_war_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_fed_1
+		icon = GFX_goal_generic_major_alliance
+		x = 208
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_fed_1_tt
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_fed_2
+		icon = GFX_goal_generic_major_alliance
+		x = 208
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_fed_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_fed_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_leader_fed_3
+		icon = GFX_goal_generic_major_alliance
+		x = 208
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_dip_leader_fed_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_leader_fed_3_tt
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_dip_region_lat_1
+		icon = GFX_goal_generic_major_alliance
+		x = 210
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		allow_branch = { capital_scope = { is_on_continent = south_america } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_lat_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_lat_2
+		icon = GFX_goal_generic_major_alliance
+		x = 210
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_dip_region_lat_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_lat_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_bal_1
+		icon = GFX_goal_generic_major_alliance
+		x = 212
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		allow_branch = { capital_scope = { is_on_continent = europe } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_bal_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_bal_2
+		icon = GFX_goal_generic_major_alliance
+		x = 212
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_dip_region_bal_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_bal_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_mena_1
+		icon = GFX_goal_generic_major_alliance
+		x = 214
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		allow_branch = { capital_scope = { OR = { is_on_continent = middle_east is_on_continent = africa } } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_mena_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_mena_2
+		icon = GFX_goal_generic_major_alliance
+		x = 214
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_dip_region_mena_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_mena_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_asia_1
+		icon = GFX_goal_generic_major_alliance
+		x = 216
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_dip_leader_bloc_2 }
+		allow_branch = { capital_scope = { is_on_continent = asia } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_asia_1_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_region_asia_2
+		icon = GFX_goal_generic_major_alliance
+		x = 216
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_dip_region_asia_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_region_asia_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_black_1
+		icon = GFX_goal_generic_major_alliance
+		x = 218
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_black_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_dip_black_2
+		icon = GFX_goal_generic_major_alliance
+		x = 218
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_dip_black_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_black_2_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_black_3
+		icon = GFX_goal_generic_major_alliance
+		x = 218
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_dip_black_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_black_3_tt
+		}
+	}
+	focus = {
+		id = GJ_dip_black_4
+		icon = GFX_goal_generic_major_alliance
+		x = 218
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_dip_black_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_dip_black_4_tt
+		}
+	}
+
+	############################################################
+	# 지형 특화
+	############################################################
+	focus = {
+		id = GJ_ter_coast_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 225
+		y = 0
+		cost = 5
+		allow_branch = { any_owned_state = { is_coastal = yes } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 225
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_a_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 224
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_a_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 224
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_a_3
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 224
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_ter_coast_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_a_3_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_b_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 226
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_b_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_b_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 226
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_coast_b_3
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 226
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ter_coast_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_coast_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 229
+		y = 0
+		cost = 5
+		allow_branch = { NOT = { any_owned_state = { is_coastal = yes } } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 229
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ter_land_a_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 228
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_a_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 228
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_a_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_a_3
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 228
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_ter_land_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_b_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 230
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_b_1_tt
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = GJ_ter_land_b_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 230
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_b_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_land_b_3
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 230
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ter_land_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_land_b_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_island_1
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 232
+		y = 0
+		cost = 5
+		allow_branch = { capital_scope = { is_coastal = yes } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_island_1_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_island_2
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 232
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ter_island_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_island_2_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_island_3
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 232
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ter_island_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_island_3_tt
+		}
+	}
+	focus = {
+		id = GJ_ter_island_4
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 232
+		y = 3
+		cost = 10
+		prerequisite = { focus = GJ_ter_island_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ter_island_4_tt
+		}
+	}
+
+	############################################################
+	# 괴뢰국 / 독립
+	############################################################
+	focus = {
+		id = GJ_sub_root_1
+		icon = GFX_goal_generic_political_pressure
+		x = 241
+		y = 0
+		cost = 5
+		available = { is_subject = yes }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_root_1_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_root_2
+		icon = GFX_goal_generic_political_pressure
+		x = 241
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_root_2_tt
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_sub_root_3
+		icon = GFX_goal_generic_political_pressure
+		x = 241
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_root_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_peace_1
+		icon = GFX_goal_generic_political_pressure
+		x = 238
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_3 }
+		mutually_exclusive = { focus = GJ_sub_arms_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_peace_1_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_peace_2
+		icon = GFX_goal_generic_political_pressure
+		x = 238
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_sub_peace_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_peace_2_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_peace_3
+		icon = GFX_goal_generic_political_pressure
+		x = 238
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_peace_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_peace_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_peace_4
+		icon = GFX_goal_generic_political_pressure
+		x = 238
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_sub_peace_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_peace_4_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_peace_5
+		icon = GFX_goal_generic_political_pressure
+		x = 238
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_sub_peace_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_peace_5_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_arms_1
+		icon = GFX_goal_generic_political_pressure
+		x = 240
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_3 }
+		mutually_exclusive = { focus = GJ_sub_peace_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_arms_1_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_arms_2
+		icon = GFX_goal_generic_political_pressure
+		x = 240
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_sub_arms_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_arms_2_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_arms_3
+		icon = GFX_goal_generic_political_pressure
+		x = 240
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_arms_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_arms_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_arms_4
+		icon = GFX_goal_generic_political_pressure
+		x = 240
+		y = 6
+		cost = 10
+		prerequisite = { focus = GJ_sub_arms_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_arms_4_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_arms_5
+		icon = GFX_goal_generic_political_pressure
+		x = 240
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_sub_arms_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_arms_5_tt
+			add_stability = 0.10
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GJ_sub_build_1
+		icon = GFX_goal_generic_political_pressure
+		x = 243
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_sub_root_3 }
+		available = { is_subject = no }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_1_tt
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GJ_sub_build_2
+		icon = GFX_goal_generic_political_pressure
+		x = 243
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_2_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_build_a_1
+		icon = GFX_goal_generic_political_pressure
+		x = 242
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_a_1_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_build_a_2
+		icon = GFX_goal_generic_political_pressure
+		x = 242
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_a_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_a_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GJ_sub_build_a_3
+		icon = GFX_goal_generic_political_pressure
+		x = 242
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_a_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_a_3_tt
+		}
+	}
+	focus = {
+		id = GJ_sub_build_b_1
+		icon = GFX_goal_generic_political_pressure
+		x = 244
+		y = 5
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_b_1_tt
+			army_experience = 30
+		}
+	}
+	focus = {
+		id = GJ_sub_build_b_2
+		icon = GFX_goal_generic_political_pressure
+		x = 244
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_sub_build_b_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_b_2_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_sub_build_b_3
+		icon = GFX_goal_generic_political_pressure
+		x = 244
+		y = 7
+		cost = 10
+		prerequisite = { focus = GJ_sub_build_b_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_sub_build_b_3_tt
+			add_political_power = 50
+			add_war_support = 0.10
+		}
+	}
+
+	############################################################
+	# 후반부
+	############################################################
+	focus = {
+		id = GJ_late_total_1
+		icon = GFX_goal_generic_production
+		x = 250
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_total_1_tt
+		}
+	}
+	focus = {
+		id = GJ_late_total_2
+		icon = GFX_goal_generic_production
+		x = 250
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_late_total_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_total_2_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_late_total_3
+		icon = GFX_goal_generic_production
+		x = 250
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_late_total_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_total_3_tt
+		}
+	}
+	focus = {
+		id = GJ_late_total_4
+		icon = GFX_goal_generic_production
+		x = 250
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_late_total_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_total_4_tt
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = GJ_late_total_5
+		icon = GFX_goal_generic_production
+		x = 250
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_late_total_4 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_total_5_tt
+		}
+	}
+	focus = {
+		id = GJ_late_rebuild_1
+		icon = GFX_goal_generic_production
+		x = 252
+		y = 0
+		cost = 5
+		available = { has_war = no }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_rebuild_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_late_rebuild_2
+		icon = GFX_goal_generic_production
+		x = 252
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_late_rebuild_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_rebuild_2_tt
+		}
+	}
+	focus = {
+		id = GJ_late_rebuild_3
+		icon = GFX_goal_generic_production
+		x = 252
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_late_rebuild_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_rebuild_3_tt
+			add_stability = 0.10
+		}
+	}
+	focus = {
+		id = GJ_late_rebuild_4
+		icon = GFX_goal_generic_production
+		x = 252
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_late_rebuild_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_rebuild_4_tt
+		}
+	}
+	focus = {
+		id = GJ_late_rebuild_5
+		icon = GFX_goal_generic_production
+		x = 252
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_late_rebuild_4 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_late_rebuild_5_tt
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+	}
+}

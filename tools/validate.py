@@ -325,14 +325,15 @@ def check_focus_trees(trees, rep: Report):
                     f"{tree.line}행: country 블록이 없다. 트리가 어떤 나라에도 배정되지 않아 "
                     "게임에서 영원히 보이지 않는다",
                 )
+            elif scalar(tree.value, "default") == "yes":
+                # 기본(제네릭) 트리: 다른 트리가 이기지 못한 모든 나라가 받는다. tag 조건이 없는 게 정상이다.
+                rep.note(f"{name}: focus_tree '{tid}' -> 기본 트리 (default = yes)")
             else:
                 tags = [e.value for e in walk(country[0].value) if e.key == "tag"]
                 if not tags:
                     rep.warn(name, f"{tree.line}행: country 블록에 tag 조건이 없다")
                 else:
                     rep.note(f"{name}: focus_tree '{tid}' -> {', '.join(sorted(set(tags)))}")
-            if scalar(tree.value, "default") == "yes":
-                rep.warn(name, f"{tree.line}행: default = yes 다. 국가 전용 트리라면 no 여야 한다")
 
         for f in [e for e in walk(entries) if e.key == "focus" and e.is_block]:
             fid = scalar(f.value, "id")
@@ -703,6 +704,10 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
                     required.add(opt)
     for iid in ideas:
         required |= {iid, iid + "_desc"}
+    for name, entries in trees.items():
+        for e in walk(entries):
+            if e.key == "custom_effect_tooltip" and not e.is_block:
+                required.add(e.value)
     for name, entries in in_dir(trees, "common/characters/").items():
         for e in walk(entries):
             if e.key == "name" and not e.is_block and e.value.startswith(("KOR_", "JAP_")):

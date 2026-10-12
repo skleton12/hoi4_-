@@ -64,3 +64,5 @@ HOI4 기본(제네릭) 포커스 트리를 448칸으로 새로 짜는 **설계 �
 설계가 들어갈 모드는 `mod/gibon_jungjeom` 이다. 런처에 보이는 이름은 **「기본 중점 변경 모드」**,
 폴더·파일 이름은 영문이다(한글 폴더 이름은 런처에서 로딩 실패의 원인이 된다).
 설치: `powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -ModName gibon_jungjeom -Enable`
+모드 파일 만들기: `python3 design/generic_tree/build_mod.py` → `generic.txt` 와 로컬라이제이션을 다시 쓴다.
+검사: `python3 tools/validate.py mod/gibon_jungjeom`. 조건 문구를 새로 쓰면 `build_mod.py` 의 `CONDITIONS` 에 트리거를 추가해야 한다.
