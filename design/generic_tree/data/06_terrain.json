@@ -1,0 +1,33 @@
+{
+  "branch": "terrain",
+  "title": "지형 특화",
+  "groups": [
+    {
+      "id": "ter_coast",
+      "title": "해안국",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 주 보유",
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "ter_land",
+      "title": "내륙국",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 없음",
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "ter_island",
+      "title": "섬나라",
+      "after": null,
+      "exclusive": null,
+      "condition": "섬 국가",
+      "target": 10,
+      "focuses": []
+    }
+  ]
+}

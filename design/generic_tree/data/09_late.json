@@ -1,0 +1,24 @@
+{
+  "branch": "late",
+  "title": "후반부",
+  "groups": [
+    {
+      "id": "late_total",
+      "title": "총력전",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "late_rebuild",
+      "title": "전후 재건",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 종료 후",
+      "target": 10,
+      "focuses": []
+    }
+  ]
+}

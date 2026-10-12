@@ -1,0 +1,60 @@
+{
+  "branch": "diplomacy",
+  "title": "외교·첩보",
+  "groups": [
+    {
+      "id": "dip_allies",
+      "title": "연합국 편승",
+      "after": null,
+      "exclusive": "diplo",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dip_axis",
+      "title": "추축국 편승",
+      "after": null,
+      "exclusive": "diplo",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dip_comintern",
+      "title": "코민테른 편승",
+      "after": null,
+      "exclusive": "diplo",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dip_neutral",
+      "title": "무장 중립",
+      "after": null,
+      "exclusive": "diplo",
+      "condition": null,
+      "target": 20,
+      "focuses": []
+    },
+    {
+      "id": "dip_leader",
+      "title": "지역 맹주",
+      "after": null,
+      "exclusive": "diplo",
+      "condition": null,
+      "target": 30,
+      "focuses": []
+    },
+    {
+      "id": "dip_black",
+      "title": "비밀 예산",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    }
+  ]
+}

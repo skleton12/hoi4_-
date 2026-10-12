@@ -1,0 +1,213 @@
+{
+  "branch": "politics",
+  "title": "정치",
+  "groups": [
+    {
+      "id": "pol_com",
+      "title": "공산주의 공통",
+      "after": null,
+      "exclusive": "ideology",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "com_stalin",
+      "title": "스탈린형",
+      "after": "pol_com",
+      "exclusive": "com_model",
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "com_trotsky",
+      "title": "트로츠키형",
+      "after": "pol_com",
+      "exclusive": "com_model",
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "com_bukharin",
+      "title": "부하린형",
+      "after": "pol_com",
+      "exclusive": "com_model",
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "com_anarchy",
+      "title": "아나키스트",
+      "after": "pol_com",
+      "exclusive": "com_model",
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "com_indep",
+      "title": "자주 노선",
+      "after": "pol_com",
+      "exclusive": "com_model",
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "pol_dem",
+      "title": "민주주의 공통",
+      "after": null,
+      "exclusive": "ideology",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dem_social",
+      "title": "사회 민주",
+      "after": "pol_dem",
+      "exclusive": "dem_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dem_liberal",
+      "title": "자유 민주",
+      "after": "pol_dem",
+      "exclusive": "dem_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "dem_christian",
+      "title": "기독교 민주",
+      "after": "pol_dem",
+      "exclusive": "dem_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "pol_fas",
+      "title": "파시즘 공통",
+      "after": null,
+      "exclusive": "ideology",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "fas_franco",
+      "title": "프랑코형 국가주의",
+      "after": "pol_fas",
+      "exclusive": "fas_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "fas_corp",
+      "title": "국가 조합주의",
+      "after": "pol_fas",
+      "exclusive": "fas_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "fas_natsoc",
+      "title": "국가사회주의",
+      "after": "pol_fas",
+      "exclusive": "fas_model",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "pol_neu",
+      "title": "비동맹 공통",
+      "after": null,
+      "exclusive": "ideology",
+      "condition": null,
+      "target": 9,
+      "focuses": []
+    },
+    {
+      "id": "neu_junta",
+      "title": "군사 독재",
+      "after": "pol_neu",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 9,
+      "focuses": []
+    },
+    {
+      "id": "neu_pres",
+      "title": "대통령 독재",
+      "after": "pol_neu",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 9,
+      "focuses": []
+    },
+    {
+      "id": "neu_monarchy",
+      "title": "왕정 복고",
+      "after": "pol_neu",
+      "exclusive": "neu_model",
+      "condition": "옛 왕가 존재",
+      "target": 9,
+      "focuses": []
+    },
+    {
+      "id": "neu_conserv",
+      "title": "전통 보수",
+      "after": "pol_neu",
+      "exclusive": "neu_model",
+      "condition": null,
+      "target": 9,
+      "focuses": []
+    },
+    {
+      "id": "hid_coup",
+      "title": "군부 쿠데타",
+      "after": null,
+      "exclusive": null,
+      "condition": "안정도 30% 미만",
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "hid_exile",
+      "title": "망명 정부",
+      "after": null,
+      "exclusive": null,
+      "condition": "수도 피점령",
+      "target": 6,
+      "focuses": []
+    },
+    {
+      "id": "hid_civil",
+      "title": "내전 선동",
+      "after": null,
+      "exclusive": null,
+      "condition": "타 이념 지지율 40% 이상",
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "hid_egg",
+      "title": "이스터 에그",
+      "after": null,
+      "exclusive": null,
+      "condition": "숨은 조건",
+      "target": 5,
+      "focuses": []
+    }
+  ]
+}

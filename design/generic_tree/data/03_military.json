@@ -1,0 +1,114 @@
+{
+  "branch": "military",
+  "title": "군사",
+  "groups": [
+    {
+      "id": "army_base",
+      "title": "육군 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "army_def",
+      "title": "소국 방어",
+      "after": "army_base",
+      "exclusive": "army_doc",
+      "condition": null,
+      "target": 20,
+      "focuses": []
+    },
+    {
+      "id": "army_exp",
+      "title": "원정군",
+      "after": "army_base",
+      "exclusive": "army_doc",
+      "condition": null,
+      "target": 20,
+      "focuses": []
+    },
+    {
+      "id": "army_late",
+      "title": "육군 후반",
+      "after": "army_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "navy_base",
+      "title": "해군 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 주 보유",
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "navy_coast",
+      "title": "연안 해군",
+      "after": "navy_base",
+      "exclusive": "navy_doc",
+      "condition": null,
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "navy_blue",
+      "title": "대양 해군",
+      "after": "navy_base",
+      "exclusive": "navy_doc",
+      "condition": null,
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "navy_late",
+      "title": "해군 후반",
+      "after": "navy_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "air_base",
+      "title": "공군 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    },
+    {
+      "id": "air_def",
+      "title": "방공 요격",
+      "after": "air_base",
+      "exclusive": "air_doc",
+      "condition": null,
+      "target": 12,
+      "focuses": []
+    },
+    {
+      "id": "air_cas",
+      "title": "전술 폭격",
+      "after": "air_base",
+      "exclusive": "air_doc",
+      "condition": null,
+      "target": 12,
+      "focuses": []
+    },
+    {
+      "id": "air_late",
+      "title": "공군 후반",
+      "after": "air_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 8,
+      "focuses": []
+    }
+  ]
+}

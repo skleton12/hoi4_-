@@ -1,0 +1,114 @@
+{
+  "branch": "culture",
+  "title": "문화권 특화",
+  "groups": [
+    {
+      "id": "cul_lat_root",
+      "title": "남미·중미 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": "남미·중미",
+      "target": 6,
+      "focuses": []
+    },
+    {
+      "id": "cul_lat_a",
+      "title": "자원 민족주의",
+      "after": "cul_lat_root",
+      "exclusive": "lat",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_lat_b",
+      "title": "남미 연합",
+      "after": "cul_lat_root",
+      "exclusive": "lat",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_bal_root",
+      "title": "발칸·동유럽 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": "발칸·동유럽",
+      "target": 6,
+      "focuses": []
+    },
+    {
+      "id": "cul_bal_a",
+      "title": "발칸 협약",
+      "after": "cul_bal_root",
+      "exclusive": "bal",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_bal_b",
+      "title": "영토 회복주의",
+      "after": "cul_bal_root",
+      "exclusive": "bal",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_mena_root",
+      "title": "중동·북아프리카 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": "중동·북아프리카",
+      "target": 6,
+      "focuses": []
+    },
+    {
+      "id": "cul_mena_a",
+      "title": "범아랍주의",
+      "after": "cul_mena_root",
+      "exclusive": "mena",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_mena_b",
+      "title": "석유 이권 협상",
+      "after": "cul_mena_root",
+      "exclusive": "mena",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_asia_root",
+      "title": "아시아 공통",
+      "after": null,
+      "exclusive": null,
+      "condition": "아시아",
+      "target": 6,
+      "focuses": []
+    },
+    {
+      "id": "cul_asia_a",
+      "title": "반식민 연대",
+      "after": "cul_asia_root",
+      "exclusive": "asia",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    },
+    {
+      "id": "cul_asia_b",
+      "title": "균형 외교",
+      "after": "cul_asia_root",
+      "exclusive": "asia",
+      "condition": null,
+      "target": 7,
+      "focuses": []
+    }
+  ]
+}

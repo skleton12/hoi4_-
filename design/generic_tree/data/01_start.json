@@ -1,0 +1,51 @@
+{
+  "branch": "start",
+  "title": "공통 시작",
+  "groups": [
+    {
+      "id": "start_root",
+      "title": "국가 재정비",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": []
+    },
+    {
+      "id": "start_ind",
+      "title": "산업 우선",
+      "after": "start_root",
+      "exclusive": "first_choice",
+      "condition": null,
+      "target": 1,
+      "focuses": []
+    },
+    {
+      "id": "start_mil",
+      "title": "군비 우선",
+      "after": "start_root",
+      "exclusive": "first_choice",
+      "condition": null,
+      "target": 1,
+      "focuses": []
+    },
+    {
+      "id": "start_dip",
+      "title": "외교 우선",
+      "after": "start_root",
+      "exclusive": "first_choice",
+      "condition": null,
+      "target": 1,
+      "focuses": []
+    },
+    {
+      "id": "start_end",
+      "title": "국가 비전",
+      "after": "start_root",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": []
+    }
+  ]
+}

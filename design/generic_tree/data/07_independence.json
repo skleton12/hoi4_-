@@ -1,0 +1,42 @@
+{
+  "branch": "independence",
+  "title": "괴뢰국 / 독립",
+  "groups": [
+    {
+      "id": "sub_root",
+      "title": "자치 요구",
+      "after": null,
+      "exclusive": null,
+      "condition": "종주국 보유",
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "sub_peace",
+      "title": "협상 독립",
+      "after": "sub_root",
+      "exclusive": "indep",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "sub_arms",
+      "title": "무장 독립",
+      "after": "sub_root",
+      "exclusive": "indep",
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "sub_build",
+      "title": "독립 국가 건설",
+      "after": "sub_root",
+      "exclusive": null,
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    }
+  ]
+}

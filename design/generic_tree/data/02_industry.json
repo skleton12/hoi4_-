@@ -1,0 +1,78 @@
+{
+  "branch": "industry",
+  "title": "산업",
+  "groups": [
+    {
+      "id": "ind_base",
+      "title": "기초 산업",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "ind_light",
+      "title": "경공업 노선",
+      "after": "ind_base",
+      "exclusive": "ind_line",
+      "condition": null,
+      "target": 20,
+      "focuses": []
+    },
+    {
+      "id": "ind_heavy",
+      "title": "중공업 노선",
+      "after": "ind_base",
+      "exclusive": "ind_line",
+      "condition": null,
+      "target": 20,
+      "focuses": []
+    },
+    {
+      "id": "ind_res",
+      "title": "자원 개발",
+      "after": "ind_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "ind_war",
+      "title": "전시경제",
+      "after": "ind_res",
+      "exclusive": null,
+      "condition": null,
+      "target": 10,
+      "focuses": []
+    },
+    {
+      "id": "ind_sci",
+      "title": "연구",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 15,
+      "focuses": []
+    },
+    {
+      "id": "ind_urban",
+      "title": "도시화",
+      "after": "ind_sci",
+      "exclusive": "urban",
+      "condition": null,
+      "target": 5,
+      "focuses": []
+    },
+    {
+      "id": "ind_rural",
+      "title": "농촌화",
+      "after": "ind_sci",
+      "exclusive": "urban",
+      "condition": null,
+      "target": 5,
+      "focuses": []
+    }
+  ]
+}
