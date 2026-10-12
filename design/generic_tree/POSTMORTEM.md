@@ -25,6 +25,10 @@
 | 4 | **다른 모드가 `generic.txt` 를 다시 덮어씀** | 플레이세트에서 뒤에 오는 모드가 이긴다 | 다른 모드를 끄고 다시 시험 |
 | 5 | 압축 해제 위치 오류 · 세이브 불러오기 | 흔한 실수. 0.1.1 에 `install.bat` 을 넣어 줄였다 | `mod\gibon_jungjeom.mod` 가 폴더 옆에 있는가, 새 게임인가 |
 
+**GPT 확인 (사용자 PC 로그):** 게임 로그상 **로드된 모드가 0개**다. 중점 문법 오류가 아니라 모드 자체가 읽히지 않았다.
+따라서 직접 원인은 **1·2(·5) 쪽**이고, 3·4 는 모드가 로드된 다음에야 따질 문제라 지금은 배제한다.
+"작은 모드부터 확인했어야 한다"는 과정의 문제이고, 이번 실패의 직접 원인은 아니다.
+
 1~2 는 마커 한 번으로 갈린다: 마커가 **안 보이면** 1·2·5, **보이는데 바닐라 트리면** 3·4 다.
 
 ## 과정에서의 원인
@@ -55,3 +59,18 @@
 - 설계: `data/*.json` 448칸, 그림 `img/`, 검사 `check.py`, 그리기 `render.py`
 - 모드 생성기: `build_mod.py` → `mod/gibon_jungjeom/` (로딩 마커 포함)
 - 설치·진단: `tools/Install-Mod.ps1 -ModName gibon_jungjeom`, `tools/validate.py`
+
+## 모드 0개 로드 — 대조할 것 (GPT 가 PC 에서 확인 중)
+
+| 확인 | 정상 | 어긋나면 |
+|---|---|---|
+| 게임이 쓰는 사용자 폴더 | `dlc_load.json` 이 있는 `문서\Paradox Interactive\Hearts of Iron IV` 하나 | OneDrive 로 폴더가 둘이면 모드를 다른 쪽에 넣은 것 |
+| `mod\gibon_jungjeom.mod` | 폴더 **옆**에 있고 `path="mod/gibon_jungjeom"` (슬래시) | 없거나 경로가 다르면 런처가 폴더를 못 찾는다 |
+| `dlc_load.json` 의 `enabled_mods` | `"mod/gibon_jungjeom.mod"` 포함 | 비어 있으면 게임은 모드 없이 뜬다 |
+| 런처 플레이세트 | 모드가 체크돼 있고 그 플레이세트가 **활성** | 런처가 실행할 때 `dlc_load.json` 을 플레이세트 내용으로 다시 쓴다 |
+| `supported_version` vs `launcher-settings.json` 의 `rawVersion` | 1.19.3 이 `1.19.3.*` 안에 든다 | 범위 밖이면 런처가 조용히 뺀다 |
+| 실행 경로 | 런처 [플레이] | 스팀/실행 파일 직접 실행은 플레이세트를 안 거친다 |
+| `game.log` / `error.log` 의 모드 줄 | 모드 이름이나 `mod/gibon_jungjeom` 이 나온다 | 한 번도 안 나오면 위 표에서 어긋난 곳이 있다 |
+
+`tools/Check-Hoi4Mod.ps1 -ModName gibon_jungjeom` 이 위 항목 대부분을 한 번에 출력한다.
+
