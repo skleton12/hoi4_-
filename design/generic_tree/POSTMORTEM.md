@@ -104,3 +104,30 @@
 | 로그의 거절 사유 | `game.log`·`error.log`·`system.log` 에서 `mod` 가 들어간 줄 전부, `Active Mod Count` 앞뒤 |
 | 환경 자체 문제 | ASCII 이름·ASCII 경로의 **마커만 든 1파일 모드**도 0개인가 |
 
+## 파일 접근 추적 (Process Monitor)
+
+GPT 확인: 경로 한글 · `.mod.txt` · `path` 오류 · UTF-16 모두 해당 없음. 설정 파일에 모드가 적혀 있다고 해서
+게임이 그 파일을 읽었다고 볼 수는 없으므로, 게임 시작 순간의 파일 접근을 추적한다.
+
+**준비** (Sysinternals Process Monitor, 관리자 권한)
+1. 게임과 런처를 모두 끈다. ProcMon 을 켜고 캡처를 잠시 멈춘 뒤(Ctrl+E) 화면을 비운다(Ctrl+X).
+2. 필터(Ctrl+L), 모두 Include:
+   - `Process Name` is `hoi4.exe`
+   - `Process Name` is `Paradox Launcher.exe` (런처가 언제 무엇을 쓰는지 같이 본다)
+   - `Path` contains `dlc_load`
+   - `Path` contains `\mod\`
+   - `Operation` is `Process Start` (실행 인자를 보려고)
+3. 캡처 시작(Ctrl+E) → 런처 [플레이] → 메인 메뉴가 뜨면 캡처 정지 → `File > Save` (PML) 와 CSV 로 저장.
+4. `hoi4.exe` 의 `Process Start` 이벤트 속성에서 **Command line** 을 기록한다.
+
+**읽는 법**
+
+| 추적 결과 | 뜻 |
+|---|---|
+| `hoi4.exe` 가 `dlc_load.json` 을 **열지 않음** | 게임이 그 파일로 모드를 정하지 않는다. 실행 인자(Command line)·런처 쪽을 본다 |
+| 다른 경로의 `dlc_load.json` 을 엶 | 게임이 쓰는 사용자 폴더가 다르다 |
+| `dlc_load.json` SUCCESS, `mod\new_focus.mod` 접근 **없음** | 목록을 읽고도 항목을 버렸다(목록 해석 단계) |
+| `new_focus.mod` 가 NAME/PATH NOT FOUND | 경로 해석이 우리가 생각한 위치와 다르다. 결과의 실제 경로를 본다 |
+| `.mod` SUCCESS, `mod\new_focus\` 폴더 접근 없음 | 설명 파일을 읽고 거절했다(내용·버전 판정) |
+| 폴더 안 파일까지 SUCCESS | 실제로는 읽었다. `Active Mod Count` 의 의미부터 다시 본다 |
+
