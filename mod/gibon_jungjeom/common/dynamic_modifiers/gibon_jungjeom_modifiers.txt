@@ -15,4 +15,6 @@ GJ_reforms = {
 	supply_consumption_factor = GJ_supply_consumption_factor
 	army_defence_factor = GJ_army_defence_factor
 	army_org_factor = GJ_army_org_factor
+	resistance_target = GJ_resistance_target
+	compliance_growth = GJ_compliance_growth
 }

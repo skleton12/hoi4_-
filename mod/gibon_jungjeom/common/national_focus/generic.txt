@@ -8712,6 +8712,8 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_war_3_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_resistance_target value = -0.15 }
 		}
 	}
 	focus = {
@@ -8725,6 +8727,9 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_war_4_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_resistance_target value = -0.2 }
+			add_to_variable = { var = GJ_compliance_growth value = 0.1 }
 		}
 	}
 	focus = {

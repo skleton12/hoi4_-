@@ -85,6 +85,8 @@ MODIFIERS = [
     (r"보급 소모 (-\d+)%", "supply_consumption_factor", 0.01),
     (r"방어전 \+(\d+)%", "army_defence_factor", 0.01),
     (r"사단 조직력 \+(\d+)%", "army_org_factor", 0.01),
+    (r"점령지 저항 (-\d+)%", "resistance_target", 0.01),
+    (r"준수 증가 \+(\d+)%", "compliance_growth", 0.01),
 ]
 DYNAMIC = "GJ_reforms"
 RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
