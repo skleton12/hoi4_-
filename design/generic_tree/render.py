@@ -48,6 +48,7 @@ ROW = NODE_H + 22
 HEADER = 58
 MARGIN = 48
 TOP = 120
+SPLIT_WIDTH = 6000  # 이보다 넓은 갈래 그림은 최상위 소갈래별로도 나눠 저장한다
 
 
 def font(size):
@@ -269,7 +270,46 @@ def render_branch(branch):
 
     path = OUT / f"{branch['_file']}.png"
     img.save(path)
+    if width > SPLIT_WIDTH:
+        split_branch(branch, groups, pos, img)
     return path
+
+
+def split_branch(branch, groups, pos, img):
+    """너무 넓은 갈래는 최상위 소갈래(예: 이념)마다 잘라 따로 저장한다.
+
+    좁은 최상위 소갈래들(숨은 길 등)은 하나로 묶는다. 파일 이름은 <갈래>_<번호>.png.
+    """
+    by_id = {g["id"]: g for g in groups}
+
+    def root_of(g):
+        while parents_of(g):
+            g = by_id[parents_of(g)[0]]
+        return g["id"]
+
+    cols = {}
+    for g in groups:
+        cols.setdefault(root_of(g), []).append(pos[g["id"]][0])
+    parts = []
+    for g in groups:
+        if parents_of(g) or g["id"] not in cols:
+            continue
+        lo, hi = min(cols[g["id"]]), max(cols[g["id"]])
+        title = g["title"]
+        if parts and hi - lo < 3 and parts[-1][3]:
+            parts[-1] = (parts[-1][0], hi, parts[-1][2] + " · " + title, True)
+        else:
+            parts.append((lo, hi, title, hi - lo < 3))
+    h = img.height
+    for i, (lo, hi, title, _) in enumerate(parts, 1):
+        x0 = max(0, int(MARGIN + lo * COL - 20))
+        x1 = min(img.width, int(MARGIN + hi * COL + NODE_W + 20))
+        part = Image.new("RGB", (max(x1 - x0, 900), h), BG)
+        part.paste(img.crop((x0, 0, x1, h)), (0, 0))
+        d = ImageDraw.Draw(part)
+        d.rectangle((0, 0, part.width, 100), fill=BG)
+        bold(d, (MARGIN, 30), f"{branch['title']} — {title}", F_TITLE, TEXT)
+        part.save(OUT / f"{branch['_file']}_{i}.png")
 
 
 # ---------------------------------------------------------------- 전체 지도

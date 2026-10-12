@@ -96,31 +96,6 @@
       ]
     },
     {
-      "id": "gpt_com_gov_institutions",
-      "title": "인민 행정",
-      "after": "com_gov",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "인민행정 교육",
-          "effect": "정치력 획득 +3% 국가 정신",
-          "days": 35
-        },
-        {
-          "name": "지역대표 협의",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "혁명헌장 정착",
-          "effect": "안정도 +5%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "com_adv",
       "title": "혁명 간부",
       "after": "com_gov",
@@ -135,13 +110,13 @@
         },
         {
           "name": "계획 전문가 영입",
-          "effect": "경제 고문 영입",
+          "effect": "경제 고문 영입, 육군 장성 2명 영입",
           "days": 35
         },
         {
-          "name": "붉은 장성 기용",
-          "effect": "육군 장성 2명 영입",
-          "days": 35
+          "name": "혁명헌장 정착",
+          "effect": "안정도 +5%, 정치력 획득 +10%",
+          "days": 70
         }
       ]
     },
@@ -166,21 +141,11 @@
       "after": "com_stalin",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "간부 임명체계",
-          "effect": "고문 영입 비용 -5%",
-          "days": 35
-        },
-        {
-          "name": "국가감찰 위원회",
-          "effect": "방첩 +1 국가 정신",
-          "days": 35
-        },
-        {
           "name": "중앙행정 일원화",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「중앙 통치」: 정치력 +10%, 방첩 +10%",
           "days": 70
         }
       ]
@@ -230,7 +195,7 @@
         },
         {
           "name": "코민테른 충성 서약",
-          "effect": "코민테른 가입 가능, 소련 우호 +50",
+          "effect": "코민테른 편승 기간 -30%, 소련 우호 +50",
           "days": 35
         }
       ]
@@ -256,21 +221,11 @@
       "after": "com_trotsky",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "노동대표 순환제",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "국제간부 교육",
-          "effect": "육군 경험치 +15",
-          "days": 35
-        },
-        {
           "name": "혁명대표 총회",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「혁명 참여」: 안정도 +5%, 육군 경험 +5%",
           "days": 70
         }
       ]
@@ -346,21 +301,11 @@
       "after": "com_bukharin",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "농공 교환협약",
-          "effect": "소비재 공장 비율 -1%",
-          "days": 35
-        },
-        {
-          "name": "협동조합 연합회",
-          "effect": "생산 효율 성장 +3% 국가 정신",
-          "days": 35
-        },
-        {
           "name": "농공 협약비준",
-          "effect": "안정도 +5%",
+          "effect": "정신 「농공 협약」: 소비재 -3%, 생산 효율 +5%",
           "days": 70
         }
       ]
@@ -436,21 +381,11 @@
       "after": "com_anarchy",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "코뮌 상호부조",
-          "effect": "보급 소비 -3% 국가 정신",
-          "days": 35
-        },
-        {
-          "name": "자유대표 조정회",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
           "name": "공동체 연방헌장",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「자유 연방」: 보급 소모 -10%, 안정 +5%",
           "days": 70
         }
       ]
@@ -526,21 +461,11 @@
       "after": "com_indep",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "토착간부 학교",
-          "effect": "고문 영입 비용 -5%",
-          "days": 35
-        },
-        {
-          "name": "자립기술 협약",
-          "effect": "산업 연구 보너스 1회",
-          "days": 35
-        },
-        {
           "name": "독자헌장 비준",
-          "effect": "안정도 +5%",
+          "effect": "정신 「인민 자립」: 연구 +3%, 안정도 +5%",
           "days": 70
         }
       ]
@@ -689,31 +614,6 @@
       ]
     },
     {
-      "id": "gpt_dem_gov_institutions",
-      "title": "시민 헌정",
-      "after": "dem_gov",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "공직윤리 법안",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "청원권 보장",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "평화적 정권교체",
-          "effect": "안정도 +5%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "dem_adv",
       "title": "개혁 내각",
       "after": "dem_gov",
@@ -723,18 +623,18 @@
       "focuses": [
         {
           "name": "기술 관료 등용",
-          "effect": "산업 고문 영입",
+          "effect": "산업 고문 영입, 정치력 +50",
           "days": 35
         },
         {
           "name": "의회 연정 구성",
-          "effect": "정치력 +50, 안정도 +5%",
+          "effect": "안정도 +5%, 장성 1명, 방어 교리 -10%",
           "days": 35
         },
         {
-          "name": "시민군 장교단",
-          "effect": "육군 장성 1명, 방어 교리 비용 -10%",
-          "days": 35
+          "name": "평화적 정권교체",
+          "effect": "안정도 +5%, 정치력 획득 +10%",
+          "days": 70
         }
       ]
     },
@@ -759,21 +659,11 @@
       "after": "dem_social",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "사회예산 협의",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "노사중재 제도",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
           "name": "사회협의 상설화",
-          "effect": "생산 효율 성장 +3% 국가 정신",
+          "effect": "정신 「사회 협의」: 안정도 +5%, 생산 효율 +5%",
           "days": 70
         }
       ]
@@ -849,21 +739,11 @@
       "after": "dem_liberal",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "의회 예산감사",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "공공정보 공개",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
           "name": "시민감시 제도화",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「시민 감시」: 정치력 +10%, 방첩 +5%",
           "days": 70
         }
       ]
@@ -913,7 +793,7 @@
         },
         {
           "name": "자유 진영 합류",
-          "effect": "연합국 가입 가능",
+          "effect": "연합국 편승 기간 -30%, 연합국 우호 +25",
           "days": 70
         }
       ]
@@ -939,21 +819,11 @@
       "after": "dem_christian",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "교구간 구호협약",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "종교자유 협의",
-          "effect": "민주주의 지지율 +3%",
-          "days": 35
-        },
-        {
           "name": "공동체 조정내각",
-          "effect": "고문 영입 비용 -5%",
+          "effect": "정신 「공동체 연대」: 안정도 +10%",
           "days": 70
         }
       ]
@@ -1167,31 +1037,6 @@
       ]
     },
     {
-      "id": "gpt_fas_gov_institutions",
-      "title": "동원 행정",
-      "after": "fas_gov",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "중앙동원 위원회",
-          "effect": "전쟁 지원 +3%",
-          "days": 35
-        },
-        {
-          "name": "전시행정 훈련",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "동원체계 법제화",
-          "effect": "생산 효율 성장 +3% 국가 정신",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "fas_adv",
       "title": "운동 간부",
       "after": "fas_gov",
@@ -1201,18 +1046,18 @@
       "focuses": [
         {
           "name": "당 이론가 영입",
-          "effect": "선전 고문 영입",
+          "effect": "선전 고문 영입, 전쟁 지원 +3%",
           "days": 35
         },
         {
           "name": "군수 장관 임명",
-          "effect": "군수공장 +1, 산업 고문 영입",
+          "effect": "군수공장 +1, 산업 고문, 장성 2명",
           "days": 35
         },
         {
-          "name": "충성파 장성 기용",
-          "effect": "육군 장성 2명 영입",
-          "days": 35
+          "name": "동원체계 법제화",
+          "effect": "생산 효율 성장 +5%, 정치력 +50",
+          "days": 70
         }
       ]
     },
@@ -1237,21 +1082,11 @@
       "after": "fas_franco",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "내전피해 구제",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "민정관리 복귀",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
           "name": "지역화해 협약",
-          "effect": "안정도 +5%",
+          "effect": "정신 「국내 수습」: 안정도 +10%, 정치력 +5%",
           "days": 70
         }
       ]
@@ -1327,21 +1162,11 @@
       "after": "fas_corp",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "직능분쟁 중재",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "조합회계 감사",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
           "name": "국가계약 표준화",
-          "effect": "생산 효율 유지 +3% 국가 정신",
+          "effect": "정신 「직능 행정」: 생산 효율 유지 +5%",
           "days": 70
         }
       ]
@@ -1417,21 +1242,11 @@
       "after": "fas_natsoc",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "중앙배급 장부",
-          "effect": "소비재 비율 -1%, 안정도 -2%",
-          "days": 35
-        },
-        {
-          "name": "군수관료 재편",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
           "name": "통제경제 정착",
-          "effect": "생산 효율 한도 +3% 국가 정신",
+          "effect": "정신 「국가 통제」: 생산 효율 상한 +5%",
           "days": 70
         }
       ]
@@ -1481,7 +1296,7 @@
         },
         {
           "name": "추축 동맹 접근",
-          "effect": "추축국 가입 가능",
+          "effect": "추축국 편승 기간 -30%, 독일 우호 +25",
           "days": 35
         }
       ]
@@ -1591,7 +1406,7 @@
         },
         {
           "name": "권위주의 헌법",
-          "effect": "선거 폐지, 안정도 +5%",
+          "effect": "정부를 비동맹으로 교체, 선거 폐지",
           "days": 70
         }
       ]
@@ -1645,31 +1460,6 @@
       ]
     },
     {
-      "id": "gpt_neu_gov_institutions",
-      "title": "관료 통치",
-      "after": "neu_gov",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "비당파 관료임용",
-          "effect": "고문 영입 비용 -5%",
-          "days": 35
-        },
-        {
-          "name": "지방행정 조정",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "국가행정 법전",
-          "effect": "정치력 획득 +3% 국가 정신",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "neu_adv",
       "title": "실무 내각",
       "after": "neu_gov",
@@ -1684,13 +1474,13 @@
         },
         {
           "name": "경찰청장 임명",
-          "effect": "방첩 +15%",
+          "effect": "방첩 +15%, 원로 장성 1명 영입",
           "days": 35
         },
         {
-          "name": "원로 장성 기용",
-          "effect": "육군 장성 1명, 육군 경험 +30",
-          "days": 35
+          "name": "국가행정 법전",
+          "effect": "안정도 +5%, 정치력 획득 +10%",
+          "days": 70
         }
       ]
     },
@@ -1715,21 +1505,11 @@
       "after": "neu_junta",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "군민협의 기구",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "군정회계 정비",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
           "name": "문관 행정위임",
-          "effect": "고문 영입 비용 -5%",
+          "effect": "정신 「군민 관계」: 안정도 +5%, 정치력 +5%",
           "days": 70
         }
       ]
@@ -1805,21 +1585,11 @@
       "after": "neu_pres",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "국가사업 감사",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "지방청원 접수",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
           "name": "행정부 책임규정",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「행정부 정비」: 정치력 +10%",
           "days": 70
         }
       ]
@@ -1895,21 +1665,11 @@
       "after": "neu_monarchy",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "왕실예산 협상",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "섭정 권한정비",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
           "name": "군주권 법제화",
-          "effect": "고문 영입 비용 -5%",
+          "effect": "정신 「왕실과 의회」: 안정도 +10%",
           "days": 70
         }
       ]
@@ -1985,21 +1745,11 @@
       "after": "neu_conserv",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 1,
       "focuses": [
         {
-          "name": "향촌대표 회의",
-          "effect": "안정도 +3%",
-          "days": 35
-        },
-        {
-          "name": "세대교체 협약",
-          "effect": "정치력 +50",
-          "days": 35
-        },
-        {
           "name": "점진개혁 법전",
-          "effect": "정치력 획득 +3% 국가 정신",
+          "effect": "정신 「점진 개혁」: 정치력 +5%, 안정도 +5%",
           "days": 70
         }
       ]
@@ -2355,7 +2105,7 @@
       "after": "hid_exile",
       "exclusive": null,
       "condition": "본토 해방 후",
-      "target": 3,
+      "target": 2,
       "focuses": [
         {
           "name": "귀환행정 준비",
@@ -2363,13 +2113,8 @@
           "days": 35
         },
         {
-          "name": "저항조직 민정이양",
-          "effect": "해방 후 안정도 +5% 디시전",
-          "days": 35
-        },
-        {
           "name": "해방헌장 선포",
-          "effect": "해방 후 정치력 +75 디시전",
+          "effect": "해방 후 정치력 +75, 안정도 +5%",
           "days": 70
         }
       ]
