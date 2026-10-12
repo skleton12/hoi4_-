@@ -1,7 +1,7 @@
 <#
-    대균열 모드 설치 스크립트
+    모드 설치 스크립트
 
-    저장소의 mod\daegyunyeol 을 HOI4 모드 폴더로 통째로 복사한다(덮어쓰기).
+    저장소의 mod\<모드> 를 HOI4 모드 폴더로 통째로 복사한다(덮어쓰기). 기본값은 대균열(daegyunyeol).
     설치된 게임 버전을 읽어 supported_version 을 자동으로 맞춰준다.
 
     사용법 (저장소 폴더에서):
@@ -10,11 +10,15 @@
     런처 플레이세트에 자동 등록까지 하려면:
         powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -Enable
 
+    기본 중점 변경 모드를 설치하려면:
+        powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -ModName gibon_jungjeom -Enable
+
     한글 이름의 예전 모드를 같이 지우려면:
         powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -RemoveOld "대균열"
 #>
 [CmdletBinding()]
 param(
+    [string]$ModName = "daegyunyeol",
     [string]$Source,
     [switch]$Enable,
     [string]$RemoveOld,
@@ -24,7 +28,7 @@ param(
 $ErrorActionPreference = "Stop"
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 
-$ModFolderName = "daegyunyeol"
+$ModFolderName = $ModName
 
 function Info($m) { Write-Host "  [    ] $m" }
 function Ok($m)   { Write-Host "  [ OK ] $m" -ForegroundColor Green }
@@ -107,8 +111,8 @@ if (Test-Path -LiteralPath $target) {
 Copy-Item -LiteralPath $Source -Destination $target -Recurse -Force
 Ok "복사 완료: $target"
 
-# 로딩 확인용 마커. 일본 국가명을 'Japan [DAEGYUNYEOL OK]' 로 바꾼다.
-$marker = Join-Path $target 'localisation\replace\daegyunyeol_marker_l_english.yml'
+# 로딩 확인용 마커(있는 모드만). 대균열은 일본 국가명을 'Japan [DAEGYUNYEOL OK]' 로 바꾼다.
+$marker = Join-Path $target "localisation\replace\${ModFolderName}_marker_l_english.yml"
 if ($NoMarker) {
     if (Test-Path -LiteralPath $marker) {
         Remove-Item -LiteralPath $marker -Force
@@ -173,5 +177,5 @@ Write-Host "   2) 런처에서 '대균열' 체크 -> [플레이]"
 Write-Host "   3) 1936 새 게임, 일본 선택"
 Write-Host "   4) 디시전 탭 -> '대균열' 카테고리 -> '대균열 발동'"
 Write-Host "   5) 콘솔(~) 에서  tag KOR  -> 포커스트리 확인"
-Write-Host "   6) 안 되면  tools\Check-Hoi4Mod.ps1 -ModName daegyunyeol  실행 후 출력 전달"
+Write-Host "   6) 안 되면  tools\Check-Hoi4Mod.ps1 -ModName $ModFolderName  실행 후 출력 전달"
 Write-Host ""
