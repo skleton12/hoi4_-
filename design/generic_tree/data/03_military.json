@@ -501,6 +501,381 @@
           "days": 70
         }
       ]
+    },
+    {
+      "id": "army_spec",
+      "title": "특수부대",
+      "after": "army_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "산악 전문부대",
+          "effect": "산악병 편제 해금, 산악 공격 +5%",
+          "days": 35
+        },
+        {
+          "name": "해병 상륙대",
+          "effect": "해병 편제 해금",
+          "days": 35
+        },
+        {
+          "name": "공수 강하대",
+          "effect": "공수 편제 해금",
+          "days": 35
+        },
+        {
+          "name": "특수전 학교",
+          "effect": "특수부대 대대 한도 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "army_staff",
+      "title": "장성과 참모",
+      "after": "army_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "야전 지휘관 양성",
+          "effect": "육군 장성 2명 영입",
+          "days": 35
+        },
+        {
+          "name": "참모대학 개교",
+          "effect": "장성 경험 획득 +15%",
+          "days": 35
+        },
+        {
+          "name": "원수 임명",
+          "effect": "원수 1명 영입",
+          "days": 35
+        },
+        {
+          "name": "지휘 체계 개편",
+          "effect": "사단 지휘 한도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "army_equip",
+      "title": "장비 개발",
+      "after": "army_modern",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국산 소총 설계",
+          "effect": "보병 장비 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "경전차 국산화",
+          "effect": "기갑 연구 +10%",
+          "days": 35
+        },
+        {
+          "name": "야포 표준화",
+          "effect": "포병 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "국산 장비 체계",
+          "effect": "장비 생산 효율 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "army_primacy",
+      "title": "육군 우선주의",
+      "after": "army_modern",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "육군 예산 우선",
+          "effect": "육군 교리 비용 -15%",
+          "days": 35
+        },
+        {
+          "name": "육군 중심 국방",
+          "effect": "육군 경험 +50",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "army_def_c",
+      "title": "요새와 저항",
+      "after": "army_def",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "산악 요새선",
+          "effect": "산악 방어 +10%, 요새 +1",
+          "days": 35
+        },
+        {
+          "name": "대전차 장애물 지대",
+          "effect": "대전차 방어 +10%",
+          "days": 35
+        },
+        {
+          "name": "국민 저항 계획",
+          "effect": "점령 시 저항 +20%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "army_volunteer",
+      "title": "의용군",
+      "after": "army_exp",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "의용군 사령부",
+          "effect": "의용군 파견 한도 +1",
+          "days": 35
+        },
+        {
+          "name": "국제 의용 대대",
+          "effect": "의용군 경험 획득 +10%",
+          "days": 35
+        },
+        {
+          "name": "원정 보급 기지",
+          "effect": "원정 사단 보급 소모 -10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "navy_coast_b",
+      "title": "연안 전대",
+      "after": "navy_coast",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "고속 어뢰정 전대",
+          "effect": "구축함 생산 +10%",
+          "days": 35
+        },
+        {
+          "name": "기뢰 부설 전단",
+          "effect": "기뢰 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "연안 방어 사령부",
+          "effect": "해안 방어 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "navy_blue_b",
+      "title": "기동 함대",
+      "after": "navy_blue",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "항모 기동 부대",
+          "effect": "항모 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "순양함 전대 편성",
+          "effect": "순양함 생산 +10%",
+          "days": 35
+        },
+        {
+          "name": "통상 파괴전 교리",
+          "effect": "잠수함 교리 비용 -20%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "navy_marine",
+      "title": "해병대",
+      "after": "navy_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "상륙전 교범",
+          "effect": "상륙 공격 +10%",
+          "days": 35
+        },
+        {
+          "name": "상륙정 건조 계획",
+          "effect": "수송선 +10",
+          "days": 35
+        },
+        {
+          "name": "해병 사단 창설",
+          "effect": "해병 사단 1개 생성",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "navy_trade",
+      "title": "상선 호위",
+      "after": "navy_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "호송선단 체계",
+          "effect": "호송 효율 +10%",
+          "days": 35
+        },
+        {
+          "name": "대잠 초계망",
+          "effect": "대잠 효율 +10%",
+          "days": 35
+        },
+        {
+          "name": "상선대 확충",
+          "effect": "수송선 +20",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "navy_primacy",
+      "title": "해군 우선주의",
+      "after": "navy_modern",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "해군 예산 우선",
+          "effect": "해군 교리 비용 -15%",
+          "days": 35
+        },
+        {
+          "name": "대해군 국가 선언",
+          "effect": "해군 경험 +50",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "air_school",
+      "title": "항공 인력",
+      "after": "air_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "조종사 양성소",
+          "effect": "공군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "정비병 학교",
+          "effect": "공군 장비 보충 +10%",
+          "days": 35
+        },
+        {
+          "name": "항공 학도대",
+          "effect": "공군 경험 +20",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "air_def_b",
+      "title": "방공 교리",
+      "after": "air_def",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "야간 전투기대",
+          "effect": "야간 공중전 +10%",
+          "days": 35
+        },
+        {
+          "name": "공중 우세 교리",
+          "effect": "공군 교리 비용 -15%",
+          "days": 35
+        },
+        {
+          "name": "방공 레이더망",
+          "effect": "레이더 연구 +15%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "air_cas_b",
+      "title": "폭격 교리",
+      "after": "air_cas",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "급강하 폭격대",
+          "effect": "근접 지원기 생산 +10%",
+          "days": 35
+        },
+        {
+          "name": "전략 폭격 연구",
+          "effect": "전략 폭격기 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "해상 초계기대",
+          "effect": "해상 정찰 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "air_primacy",
+      "title": "공군 우선주의",
+      "after": "air_modern",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "공군 예산 우선",
+          "effect": "공군 교리 비용 -15%",
+          "days": 35
+        },
+        {
+          "name": "공군 독립 군종",
+          "effect": "공군 경험 +50",
+          "days": 70
+        }
+      ]
     }
   ]
 }

@@ -47,6 +47,7 @@ CONDITIONS = {
     "종주국 보유": ("available", "is_subject = yes"),
     "독립 달성 후": ("available", "is_subject = no"),
     "전쟁 종료 후": ("available", "has_war = no"),
+    "전쟁 중": ("available", "has_war = yes"),
     "수도 피점령": ("available", "capital_scope = { NOT = { is_controlled_by = ROOT } }"),
     "본토 해방 후": ("available", "capital_scope = { is_controlled_by = ROOT }"),
     "전쟁 중 전쟁 지원 30% 미만": ("available", "has_war = yes has_war_support < 0.3"),

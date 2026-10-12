@@ -401,6 +401,416 @@
           "days": 35
         }
       ]
+    },
+    {
+      "id": "ind_law",
+      "title": "경제법 개혁",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "경제 동원 법안",
+          "effect": "경제법 한 단계 상향",
+          "days": 35
+        },
+        {
+          "name": "징병제 법안",
+          "effect": "징병법 한 단계 상향",
+          "days": 35
+        },
+        {
+          "name": "무역법 협상",
+          "effect": "무역법 변경 정치력 -50%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_finance",
+      "title": "금융",
+      "after": "ind_base",
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "국가 중앙은행 설립",
+          "effect": "정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "국채 발행",
+          "effect": "민간공장 +1, 안정도 -3%",
+          "days": 35
+        },
+        {
+          "name": "외환 관리법",
+          "effect": "무역 자원 획득 +5%",
+          "days": 35
+        },
+        {
+          "name": "산업 개발 공채",
+          "effect": "민간공장 +2",
+          "days": 70
+        },
+        {
+          "name": "재정 건전화",
+          "effect": "안정도 +5%, 소비재 공장 -2%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_infra",
+      "title": "기반 시설",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국도망 건설",
+          "effect": "인프라 +1 (4개 주)",
+          "days": 35
+        },
+        {
+          "name": "철도 간선 복선화",
+          "effect": "보급 처리량 +10%",
+          "days": 35
+        },
+        {
+          "name": "항만·공항 정비",
+          "effect": "비행장 +1 (2개 주)",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_infra_a",
+      "title": "전력과 통신",
+      "after": "ind_infra",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "수력발전소 건설",
+          "effect": "민간공장 +1, 건물 슬롯 +1",
+          "days": 35
+        },
+        {
+          "name": "전국 전화망",
+          "effect": "정보 +5%, 연구 속도 +2%",
+          "days": 35
+        },
+        {
+          "name": "레이더 기지 건설",
+          "effect": "레이더 +1 (2개 주)",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_infra_b",
+      "title": "주 개발 계획",
+      "after": "ind_infra",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "주별 공업 조사",
+          "effect": "주 수 비례 민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "낙후 지역 개발",
+          "effect": "건물 슬롯 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "지방 공업 거점",
+          "effect": "주 수 비례 군수공장 +1",
+          "days": 35
+        },
+        {
+          "name": "균형 발전 법",
+          "effect": "안정도 +5%, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_light_c",
+      "title": "생활 수준",
+      "after": "ind_light",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국민차 계획",
+          "effect": "민간공장 +1, 안정도 +3%",
+          "days": 35
+        },
+        {
+          "name": "가전제품 보급",
+          "effect": "소비재 공장 -3%",
+          "days": 35
+        },
+        {
+          "name": "관광 산업 진흥",
+          "effect": "정치력 +50, 무역 자원 +5%",
+          "days": 35
+        },
+        {
+          "name": "소비 사회 진입",
+          "effect": "안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_heavy_c",
+      "title": "군수 산업",
+      "after": "ind_heavy",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "탄약 공장 신설",
+          "effect": "군수공장 +1",
+          "days": 35
+        },
+        {
+          "name": "전차 공장 전환",
+          "effect": "기갑 생산 +10%",
+          "days": 35
+        },
+        {
+          "name": "항공기 공장 설립",
+          "effect": "군수공장 +1, 항공기 생산 +5%",
+          "days": 35
+        },
+        {
+          "name": "국영 병기창",
+          "effect": "군수공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_res_c",
+      "title": "합성과 심층 채굴",
+      "after": "ind_res",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "합성 연료 공장",
+          "effect": "합성 정유소 +1",
+          "days": 35
+        },
+        {
+          "name": "합성 고무 공장",
+          "effect": "합성 고무 연구 -30%",
+          "days": 35
+        },
+        {
+          "name": "심층 채굴",
+          "effect": "강철 +4, 크롬 +2",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_res_d",
+      "title": "자원 외교",
+      "after": "ind_res",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "자원 수출 협정",
+          "effect": "무역 자원 획득 +10%",
+          "days": 35
+        },
+        {
+          "name": "외국 광산 투자",
+          "effect": "정치력 +50, 강철 +2",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_prod",
+      "title": "생산 효율",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "생산 라인 표준화",
+          "effect": "생산 효율 상한 +5%",
+          "days": 35
+        },
+        {
+          "name": "숙련공 보너스",
+          "effect": "생산 효율 증가 +5%",
+          "days": 35
+        },
+        {
+          "name": "공장 전기화",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "대량 생산 체제",
+          "effect": "생산 효율 상한 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_war_b",
+      "title": "총동원 생산",
+      "after": "ind_war",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "공장 3교대제",
+          "effect": "공장 생산량 +10%, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "여성 노동 동원",
+          "effect": "징집 인력 +2%, 공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "전시 재고 관리",
+          "effect": "보급 소모 -10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_sci_b",
+      "title": "응용 연구",
+      "after": "ind_sci",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "전자 연구소",
+          "effect": "전자 공학 연구 +10%",
+          "days": 35
+        },
+        {
+          "name": "화학 연구소",
+          "effect": "합성 연구 +15%",
+          "days": 35
+        },
+        {
+          "name": "기계 연구국",
+          "effect": "산업 연구 +10%",
+          "days": 35
+        },
+        {
+          "name": "국가 연구 프로젝트",
+          "effect": "연구 슬롯 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_dock",
+      "title": "조선 산업",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 주 보유",
+      "target": 4,
+      "focuses": [
+        {
+          "name": "조선소 확장",
+          "effect": "해군 조선소 +2",
+          "days": 35
+        },
+        {
+          "name": "상선 건조 계획",
+          "effect": "수송선 +10",
+          "days": 35
+        },
+        {
+          "name": "선박 설계국",
+          "effect": "해군 장비 연구 +10%",
+          "days": 35
+        },
+        {
+          "name": "국영 조선 공사",
+          "effect": "해군 조선소 +3",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_urban_b",
+      "title": "도시 개발",
+      "after": "ind_urban",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "도시 계획국",
+          "effect": "건물 슬롯 +1 (도시 2개 주)",
+          "days": 35
+        },
+        {
+          "name": "대중교통망",
+          "effect": "인프라 +1 (도시 주)",
+          "days": 35
+        },
+        {
+          "name": "산업 도시 선포",
+          "effect": "민간공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_rural_b",
+      "title": "농촌 개발",
+      "after": "ind_rural",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "관개 수로 사업",
+          "effect": "징집 인력 +1%, 안정도 +3%",
+          "days": 35
+        },
+        {
+          "name": "농산물 가공 공장",
+          "effect": "민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "농업 수출 조합",
+          "effect": "무역 자원 획득 +10%",
+          "days": 35
+        }
+      ]
     }
   ]
 }
