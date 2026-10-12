@@ -200,6 +200,10 @@ def build():
     loc_path = MOD / "localisation" / "english" / "gibon_jungjeom_l_english.yml"
     loc_path.parent.mkdir(parents=True, exist_ok=True)
     loc_path.write_text("\n".join(loc) + "\n", encoding="utf-8")
+    korean_path = MOD / "localisation" / "korean" / "gibon_jungjeom_l_korean.yml"
+    korean_path.parent.mkdir(parents=True, exist_ok=True)
+    korean_loc = ["\ufeffl_korean:", *loc[1:]]
+    korean_path.write_text("\n".join(korean_loc) + "\n", encoding="utf-8")
     focuses = sum(len(g["focuses"]) for b in branches for g in b["groups"])
     print(f"{out.relative_to(MOD.parent.parent)}  포커스 {focuses}개")
     print(f"{loc_path.relative_to(MOD.parent.parent)}  키 {len(loc) - 1}개")
