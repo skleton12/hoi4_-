@@ -92,7 +92,11 @@ if ($gameDir) {
     }
 }
 $supported = $null
-if ($gameVersion) {
+if ($ModFolderName -eq 'gibon_jungjeom') {
+    # 사용자 지정 대상: 1.19.3.0.c01a (5632). 다른 패치로 호환 범위를 넓히지 않는다.
+    $supported = '1.19.3.*'
+    Info "대상 빌드: 1.19.3.0.c01a (5632), 감지된 게임 버전: $gameVersion"
+} elseif ($gameVersion) {
     $p = $gameVersion -split '\.'
     $supported = "$($p[0]).$($p[1]).*"
     Ok "게임 버전 $gameVersion 감지 -> supported_version=`"$supported`""

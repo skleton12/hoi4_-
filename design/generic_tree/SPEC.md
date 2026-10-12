@@ -61,6 +61,9 @@ HOI4 기본(제네릭) 포커스 트리를 448칸으로 새로 짜는 **설계 �
 
 ## 모드
 
+사용자 지정 대상 빌드: **1.19.3.0.c01a (5632)**. 두 디스크립터의 호환 표기는
+`supported_version="1.19.3.*"`이며, 설치 스크립트도 이 범위를 유지한다.
+
 설계가 들어갈 모드는 `mod/gibon_jungjeom` 이다. 런처에 보이는 이름은 **「기본 중점 변경 모드」**,
 폴더·파일 이름은 영문이다(한글 폴더 이름은 런처에서 로딩 실패의 원인이 된다).
 설치: `powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -ModName gibon_jungjeom -Enable`
