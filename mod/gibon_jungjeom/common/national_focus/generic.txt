@@ -1535,6 +1535,308 @@ focus_tree = {
 			custom_effect_tooltip = GJ_ind_rural_b_3_tt
 		}
 	}
+	focus = {
+		id = GJ_ind_coast_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 51
+		y = 0
+		cost = 5
+		allow_branch = { any_owned_state = { is_coastal = yes } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_1_tt
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 51
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_a_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 50
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_a_1_tt
+			add_offsite_building = { type = dockyard level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_a_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 50
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_a_2_tt
+			add_equipment_to_stockpile = { type = convoy amount = 20 }
+			random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_a_3
+		icon = GFX_GJ_construct_civ_factory
+		x = 50
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_ind_coast_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_a_3_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_b_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 52
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_b_1_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.02 }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_b_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 52
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_b_2_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_army_defence_factor value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_ind_coast_b_3
+		icon = GFX_GJ_construct_civ_factory
+		x = 52
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_coast_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_coast_b_3_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 55
+		y = 0
+		cost = 5
+		allow_branch = { NOT = { any_owned_state = { is_coastal = yes } } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_ind_land_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 55
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_2_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_a_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 54
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_a_1_tt
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_a_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 54
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_a_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_a_2_tt
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_supply_consumption_factor value = -0.05 }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_a_3
+		icon = GFX_GJ_construct_civ_factory
+		x = 54
+		y = 4
+		cost = 10
+		prerequisite = { focus = GJ_ind_land_a_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_a_3_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_b_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 56
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_b_1_tt
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GJ_ind_land_b_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 56
+		y = 3
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_b_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_b_2_tt
+			random_owned_controlled_state = { add_resource = { type = steel amount = 4 } }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_local_resources_factor value = 0.1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_land_b_3
+		icon = GFX_GJ_construct_civ_factory
+		x = 56
+		y = 4
+		cost = 5
+		prerequisite = { focus = GJ_ind_land_b_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_land_b_3_tt
+			add_offsite_building = { type = arms_factory level = 1 }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_army_defence_factor value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_ind_island_1
+		icon = GFX_GJ_construct_civ_factory
+		x = 58
+		y = 0
+		cost = 5
+		allow_branch = { capital_scope = { is_coastal = yes } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_island_1_tt
+			add_offsite_building = { type = dockyard level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_ind_island_2
+		icon = GFX_GJ_construct_civ_factory
+		x = 58
+		y = 1
+		cost = 5
+		prerequisite = { focus = GJ_ind_island_1 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_island_2_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_army_defence_factor value = 0.1 }
+		}
+	}
+	focus = {
+		id = GJ_ind_island_3
+		icon = GFX_GJ_construct_civ_factory
+		x = 58
+		y = 2
+		cost = 5
+		prerequisite = { focus = GJ_ind_island_2 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_island_3_tt
+			add_equipment_to_stockpile = { type = convoy amount = 20 }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_supply_consumption_factor value = -0.05 }
+		}
+	}
+	focus = {
+		id = GJ_ind_island_4
+		icon = GFX_GJ_construct_civ_factory
+		x = 58
+		y = 3
+		cost = 10
+		prerequisite = { focus = GJ_ind_island_3 }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_ind_island_4_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
 
 	############################################################
 	# 군사
@@ -1542,7 +1844,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_base_1
 		icon = GFX_GJ_army_doctrines
-		x = 63
+		x = 73
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -1555,7 +1857,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_base_2
 		icon = GFX_GJ_army_doctrines
-		x = 63
+		x = 73
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_army_base_1 }
@@ -1568,7 +1870,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_base_3
 		icon = GFX_GJ_army_doctrines
-		x = 63
+		x = 73
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_army_base_2 }
@@ -1581,7 +1883,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_modern_1
 		icon = GFX_GJ_army_doctrines
-		x = 55
+		x = 65
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_army_base_3 }
@@ -1596,7 +1898,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_modern_2
 		icon = GFX_GJ_army_doctrines
-		x = 55
+		x = 65
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_army_modern_1 }
@@ -1609,7 +1911,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_modern_3
 		icon = GFX_GJ_army_doctrines
-		x = 55
+		x = 65
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_army_modern_2 }
@@ -1622,7 +1924,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_1
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_army_base_3 }
@@ -1636,7 +1938,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_2
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_army_def_1 }
@@ -1651,7 +1953,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 58
+		x = 68
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_def_2 }
@@ -1664,7 +1966,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 58
+		x = 68
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_def_a_1 }
@@ -1677,7 +1979,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 58
+		x = 68
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_def_a_2 }
@@ -1690,7 +1992,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_a_4
 		icon = GFX_GJ_army_doctrines
-		x = 58
+		x = 68
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_army_def_a_3 }
@@ -1703,7 +2005,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_def_2 }
@@ -1718,7 +2020,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_def_b_1 }
@@ -1731,7 +2033,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_def_b_2 }
@@ -1746,7 +2048,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_b_4
 		icon = GFX_GJ_army_doctrines
-		x = 60
+		x = 70
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_army_def_b_3 }
@@ -1761,7 +2063,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_1
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_army_base_3 }
@@ -1776,7 +2078,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_2
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_1 }
@@ -1791,7 +2093,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 64
+		x = 74
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_2 }
@@ -1806,7 +2108,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 64
+		x = 74
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_a_1 }
@@ -1819,7 +2121,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 64
+		x = 74
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_a_2 }
@@ -1832,7 +2134,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_a_4
 		icon = GFX_GJ_army_doctrines
-		x = 64
+		x = 74
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_a_3 }
@@ -1845,7 +2147,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_2 }
@@ -1858,7 +2160,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_b_1 }
@@ -1871,7 +2173,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_b_2 }
@@ -1885,7 +2187,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_exp_b_4
 		icon = GFX_GJ_army_doctrines
-		x = 66
+		x = 76
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_army_exp_b_3 }
@@ -1898,7 +2200,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_base_1
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 0
 		cost = 5
 		allow_branch = { any_owned_state = { is_coastal = yes } }
@@ -1912,7 +2214,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_base_2
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_1 }
@@ -1926,7 +2228,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_base_3
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_2 }
@@ -1939,7 +2241,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_modern_1
 		icon = GFX_GJ_army_doctrines
-		x = 74
+		x = 84
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_3 }
@@ -1952,7 +2254,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_modern_2
 		icon = GFX_GJ_army_doctrines
-		x = 74
+		x = 84
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_navy_modern_1 }
@@ -1965,7 +2267,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_modern_3
 		icon = GFX_GJ_army_doctrines
-		x = 74
+		x = 84
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_navy_modern_2 }
@@ -1980,7 +2282,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_1
 		icon = GFX_GJ_army_doctrines
-		x = 77
+		x = 87
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_3 }
@@ -1994,7 +2296,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_2
 		icon = GFX_GJ_army_doctrines
-		x = 77
+		x = 87
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_1 }
@@ -2007,7 +2309,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 76
+		x = 86
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_2 }
@@ -2020,7 +2322,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 76
+		x = 86
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_a_1 }
@@ -2033,7 +2335,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 76
+		x = 86
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_a_2 }
@@ -2046,7 +2348,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_a_4
 		icon = GFX_GJ_army_doctrines
-		x = 76
+		x = 86
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_navy_coast_a_3 }
@@ -2059,7 +2361,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_1
 		icon = GFX_GJ_army_doctrines
-		x = 81
+		x = 91
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_3 }
@@ -2073,7 +2375,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_2
 		icon = GFX_GJ_army_doctrines
-		x = 81
+		x = 91
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_1 }
@@ -2087,7 +2389,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_2 }
@@ -2100,7 +2402,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_a_1 }
@@ -2113,7 +2415,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_a_2 }
@@ -2126,7 +2428,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_a_4
 		icon = GFX_GJ_army_doctrines
-		x = 80
+		x = 90
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_navy_blue_a_3 }
@@ -2140,7 +2442,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_base_1
 		icon = GFX_GJ_army_doctrines
-		x = 93
+		x = 103
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -2153,7 +2455,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_base_2
 		icon = GFX_GJ_army_doctrines
-		x = 93
+		x = 103
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_air_base_1 }
@@ -2166,7 +2468,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_base_3
 		icon = GFX_GJ_army_doctrines
-		x = 93
+		x = 103
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_air_base_2 }
@@ -2179,7 +2481,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_modern_1
 		icon = GFX_GJ_army_doctrines
-		x = 88
+		x = 98
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_air_base_3 }
@@ -2192,7 +2494,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_modern_2
 		icon = GFX_GJ_army_doctrines
-		x = 88
+		x = 98
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_air_modern_1 }
@@ -2207,7 +2509,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_modern_3
 		icon = GFX_GJ_army_doctrines
-		x = 88
+		x = 98
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_air_modern_2 }
@@ -2220,7 +2522,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_1
 		icon = GFX_GJ_army_doctrines
-		x = 91
+		x = 101
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_air_base_3 }
@@ -2234,7 +2536,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_2
 		icon = GFX_GJ_army_doctrines
-		x = 91
+		x = 101
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_air_def_1 }
@@ -2247,7 +2549,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 90
+		x = 100
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_air_def_2 }
@@ -2260,7 +2562,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 90
+		x = 100
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_air_def_a_1 }
@@ -2274,7 +2576,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 90
+		x = 100
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_air_def_a_2 }
@@ -2287,7 +2589,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_1
 		icon = GFX_GJ_army_doctrines
-		x = 95
+		x = 105
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_air_base_3 }
@@ -2301,7 +2603,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_2
 		icon = GFX_GJ_army_doctrines
-		x = 95
+		x = 105
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_1 }
@@ -2314,7 +2616,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_a_1
 		icon = GFX_GJ_army_doctrines
-		x = 94
+		x = 104
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_2 }
@@ -2327,7 +2629,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_a_2
 		icon = GFX_GJ_army_doctrines
-		x = 94
+		x = 104
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_a_1 }
@@ -2340,7 +2642,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_a_3
 		icon = GFX_GJ_army_doctrines
-		x = 94
+		x = 104
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_air_cas_a_2 }
@@ -2353,7 +2655,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_spec_1
 		icon = GFX_GJ_army_doctrines
-		x = 70
+		x = 80
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_army_base_3 }
@@ -2366,7 +2668,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_spec_2
 		icon = GFX_GJ_army_doctrines
-		x = 70
+		x = 80
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_army_spec_1 }
@@ -2379,7 +2681,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_spec_3
 		icon = GFX_GJ_army_doctrines
-		x = 70
+		x = 80
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_spec_2 }
@@ -2392,7 +2694,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_spec_4
 		icon = GFX_GJ_army_doctrines
-		x = 70
+		x = 80
 		y = 6
 		cost = 10
 		prerequisite = { focus = GJ_army_spec_3 }
@@ -2405,7 +2707,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_staff_1
 		icon = GFX_GJ_army_doctrines
-		x = 72
+		x = 82
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_army_base_3 }
@@ -2418,7 +2720,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_staff_2
 		icon = GFX_GJ_army_doctrines
-		x = 72
+		x = 82
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_army_staff_1 }
@@ -2431,7 +2733,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_staff_3
 		icon = GFX_GJ_army_doctrines
-		x = 72
+		x = 82
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_staff_2 }
@@ -2444,7 +2746,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_staff_4
 		icon = GFX_GJ_army_doctrines
-		x = 72
+		x = 82
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_staff_3 }
@@ -2457,7 +2759,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_equip_1
 		icon = GFX_GJ_army_doctrines
-		x = 54
+		x = 64
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_modern_3 }
@@ -2470,7 +2772,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_equip_2
 		icon = GFX_GJ_army_doctrines
-		x = 54
+		x = 64
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_equip_1 }
@@ -2483,7 +2785,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_equip_3
 		icon = GFX_GJ_army_doctrines
-		x = 54
+		x = 64
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_army_equip_2 }
@@ -2496,7 +2798,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_equip_4
 		icon = GFX_GJ_army_doctrines
-		x = 54
+		x = 64
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_army_equip_3 }
@@ -2509,7 +2811,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_primacy_1
 		icon = GFX_GJ_army_doctrines
-		x = 56
+		x = 66
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_modern_3 }
@@ -2522,7 +2824,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_primacy_2
 		icon = GFX_GJ_army_doctrines
-		x = 56
+		x = 66
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_army_primacy_1 }
@@ -2536,7 +2838,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_c_1
 		icon = GFX_GJ_army_doctrines
-		x = 62
+		x = 72
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_def_2 }
@@ -2549,7 +2851,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_c_2
 		icon = GFX_GJ_army_doctrines
-		x = 62
+		x = 72
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_def_c_1 }
@@ -2562,7 +2864,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_def_c_3
 		icon = GFX_GJ_army_doctrines
-		x = 62
+		x = 72
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_def_c_2 }
@@ -2575,7 +2877,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_volunteer_1
 		icon = GFX_GJ_army_doctrines
-		x = 68
+		x = 78
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_army_exp_2 }
@@ -2588,7 +2890,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_volunteer_2
 		icon = GFX_GJ_army_doctrines
-		x = 68
+		x = 78
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_army_volunteer_1 }
@@ -2601,7 +2903,7 @@ focus_tree = {
 	focus = {
 		id = GJ_army_volunteer_3
 		icon = GFX_GJ_army_doctrines
-		x = 68
+		x = 78
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_army_volunteer_2 }
@@ -2616,7 +2918,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 78
+		x = 88
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_2 }
@@ -2629,7 +2931,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 78
+		x = 88
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_b_1 }
@@ -2642,7 +2944,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_coast_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 78
+		x = 88
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_navy_coast_b_2 }
@@ -2655,7 +2957,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 82
+		x = 92
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_2 }
@@ -2668,7 +2970,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 82
+		x = 92
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_b_1 }
@@ -2681,7 +2983,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_blue_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 82
+		x = 92
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_navy_blue_b_2 }
@@ -2694,7 +2996,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_marine_1
 		icon = GFX_GJ_army_doctrines
-		x = 84
+		x = 94
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_3 }
@@ -2707,7 +3009,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_marine_2
 		icon = GFX_GJ_army_doctrines
-		x = 84
+		x = 94
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_navy_marine_1 }
@@ -2721,7 +3023,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_marine_3
 		icon = GFX_GJ_army_doctrines
-		x = 84
+		x = 94
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_marine_2 }
@@ -2734,7 +3036,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_trade_1
 		icon = GFX_GJ_army_doctrines
-		x = 86
+		x = 96
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_navy_base_3 }
@@ -2747,7 +3049,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_trade_2
 		icon = GFX_GJ_army_doctrines
-		x = 86
+		x = 96
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_navy_trade_1 }
@@ -2760,7 +3062,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_trade_3
 		icon = GFX_GJ_army_doctrines
-		x = 86
+		x = 96
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_navy_trade_2 }
@@ -2774,7 +3076,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_primacy_1
 		icon = GFX_GJ_army_doctrines
-		x = 74
+		x = 84
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_navy_modern_3 }
@@ -2787,7 +3089,7 @@ focus_tree = {
 	focus = {
 		id = GJ_navy_primacy_2
 		icon = GFX_GJ_army_doctrines
-		x = 74
+		x = 84
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_navy_primacy_1 }
@@ -2801,7 +3103,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_school_1
 		icon = GFX_GJ_army_doctrines
-		x = 98
+		x = 108
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_air_base_3 }
@@ -2815,7 +3117,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_school_2
 		icon = GFX_GJ_army_doctrines
-		x = 98
+		x = 108
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_air_school_1 }
@@ -2828,7 +3130,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_school_3
 		icon = GFX_GJ_army_doctrines
-		x = 98
+		x = 108
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_air_school_2 }
@@ -2842,7 +3144,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 92
+		x = 102
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_air_def_2 }
@@ -2855,7 +3157,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 92
+		x = 102
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_air_def_b_1 }
@@ -2868,7 +3170,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_def_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 92
+		x = 102
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_air_def_b_2 }
@@ -2881,7 +3183,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_b_1
 		icon = GFX_GJ_army_doctrines
-		x = 96
+		x = 106
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_2 }
@@ -2894,7 +3196,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_b_2
 		icon = GFX_GJ_army_doctrines
-		x = 96
+		x = 106
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_b_1 }
@@ -2907,7 +3209,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_cas_b_3
 		icon = GFX_GJ_army_doctrines
-		x = 96
+		x = 106
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_air_cas_b_2 }
@@ -2920,7 +3222,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_primacy_1
 		icon = GFX_GJ_army_doctrines
-		x = 88
+		x = 98
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_air_modern_3 }
@@ -2933,7 +3235,7 @@ focus_tree = {
 	focus = {
 		id = GJ_air_primacy_2
 		icon = GFX_GJ_army_doctrines
-		x = 88
+		x = 98
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_air_primacy_1 }
@@ -2951,7 +3253,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_root_1
 		icon = GFX_GJ_political_pressure
-		x = 119
+		x = 129
 		y = 0
 		cost = 5
 		mutually_exclusive = { focus = GJ_dem_root_1 focus = GJ_fas_root_1 focus = GJ_neu_root_1 }
@@ -2964,7 +3266,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_root_2
 		icon = GFX_GJ_political_pressure
-		x = 119
+		x = 129
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_com_root_1 }
@@ -2978,7 +3280,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_root_3
 		icon = GFX_GJ_political_pressure
-		x = 119
+		x = 129
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_com_root_2 }
@@ -2994,7 +3296,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_legal_1
 		icon = GFX_GJ_political_pressure
-		x = 118
+		x = 128
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_com_root_3 }
@@ -3008,7 +3310,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_legal_2
 		icon = GFX_GJ_political_pressure
-		x = 118
+		x = 128
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_com_legal_1 }
@@ -3022,7 +3324,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_war_1
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_com_root_3 }
@@ -3036,7 +3338,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_war_2
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_com_war_1 }
@@ -3049,7 +3351,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_war_3
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_com_war_2 }
@@ -3063,7 +3365,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_gov_1
 		icon = GFX_GJ_political_pressure
-		x = 119
+		x = 129
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_com_legal_2 focus = GJ_com_war_3 }
@@ -3078,7 +3380,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_gov_2
 		icon = GFX_GJ_political_pressure
-		x = 119
+		x = 129
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_1 }
@@ -3091,7 +3393,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_adv_1
 		icon = GFX_GJ_political_pressure
-		x = 104
+		x = 114
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3106,7 +3408,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_adv_2
 		icon = GFX_GJ_political_pressure
-		x = 104
+		x = 114
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_adv_1 }
@@ -3119,7 +3421,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_adv_3
 		icon = GFX_GJ_political_pressure
-		x = 104
+		x = 114
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_com_adv_2 }
@@ -3135,7 +3437,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_1
 		icon = GFX_GJ_political_pressure
-		x = 108
+		x = 118
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3150,7 +3452,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_com_stalin_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 106
+		x = 116
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_stalin_1 }
@@ -3165,7 +3467,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_econ_1
 		icon = GFX_GJ_political_pressure
-		x = 108
+		x = 118
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_stalin_1 }
@@ -3179,7 +3481,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_econ_2
 		icon = GFX_GJ_political_pressure
-		x = 108
+		x = 118
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_stalin_econ_1 }
@@ -3194,7 +3496,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_econ_3
 		icon = GFX_GJ_political_pressure
-		x = 108
+		x = 118
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_stalin_econ_2 }
@@ -3209,7 +3511,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_party_1
 		icon = GFX_GJ_political_pressure
-		x = 110
+		x = 120
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_stalin_1 }
@@ -3224,7 +3526,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_party_2
 		icon = GFX_GJ_political_pressure
-		x = 110
+		x = 120
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_stalin_party_1 }
@@ -3238,7 +3540,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_stalin_party_3
 		icon = GFX_GJ_political_pressure
-		x = 110
+		x = 120
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_stalin_party_2 }
@@ -3251,7 +3553,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_1
 		icon = GFX_GJ_political_pressure
-		x = 114
+		x = 124
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3266,7 +3568,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_com_trotsky_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 112
+		x = 122
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_trotsky_1 }
@@ -3281,7 +3583,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_export_1
 		icon = GFX_GJ_political_pressure
-		x = 114
+		x = 124
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_trotsky_1 }
@@ -3294,7 +3596,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_export_2
 		icon = GFX_GJ_political_pressure
-		x = 114
+		x = 124
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_trotsky_export_1 }
@@ -3307,7 +3609,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_export_3
 		icon = GFX_GJ_political_pressure
-		x = 114
+		x = 124
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_trotsky_export_2 }
@@ -3320,7 +3622,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_world_1
 		icon = GFX_GJ_political_pressure
-		x = 116
+		x = 126
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_trotsky_1 }
@@ -3333,7 +3635,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_world_2
 		icon = GFX_GJ_political_pressure
-		x = 116
+		x = 126
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_trotsky_world_1 }
@@ -3346,7 +3648,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_trotsky_world_3
 		icon = GFX_GJ_political_pressure
-		x = 116
+		x = 126
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_com_trotsky_world_2 }
@@ -3359,7 +3661,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_1
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3375,7 +3677,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_com_bukharin_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 118
+		x = 128
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_bukharin_1 }
@@ -3388,7 +3690,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_market_1
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_1 }
@@ -3403,7 +3705,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_market_2
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_market_1 }
@@ -3417,7 +3719,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_market_3
 		icon = GFX_GJ_political_pressure
-		x = 120
+		x = 130
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_market_2 }
@@ -3432,7 +3734,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_mild_1
 		icon = GFX_GJ_political_pressure
-		x = 122
+		x = 132
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_1 }
@@ -3446,7 +3748,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_mild_2
 		icon = GFX_GJ_political_pressure
-		x = 122
+		x = 132
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_mild_1 }
@@ -3461,7 +3763,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_bukharin_mild_3
 		icon = GFX_GJ_political_pressure
-		x = 122
+		x = 132
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_bukharin_mild_2 }
@@ -3476,7 +3778,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_1
 		icon = GFX_GJ_political_pressure
-		x = 126
+		x = 136
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3491,7 +3793,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_com_anarchy_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 124
+		x = 134
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_anarchy_1 }
@@ -3506,7 +3808,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_labor_1
 		icon = GFX_GJ_political_pressure
-		x = 126
+		x = 136
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_1 }
@@ -3521,7 +3823,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_labor_2
 		icon = GFX_GJ_political_pressure
-		x = 126
+		x = 136
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_labor_1 }
@@ -3535,7 +3837,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_labor_3
 		icon = GFX_GJ_political_pressure
-		x = 126
+		x = 136
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_labor_2 }
@@ -3551,7 +3853,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_defense_1
 		icon = GFX_GJ_political_pressure
-		x = 128
+		x = 138
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_1 }
@@ -3564,7 +3866,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_defense_2
 		icon = GFX_GJ_political_pressure
-		x = 128
+		x = 138
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_defense_1 }
@@ -3579,7 +3881,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_anarchy_defense_3
 		icon = GFX_GJ_political_pressure
-		x = 128
+		x = 138
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_anarchy_defense_2 }
@@ -3592,7 +3894,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_1
 		icon = GFX_GJ_political_pressure
-		x = 132
+		x = 142
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_com_gov_2 }
@@ -3607,7 +3909,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_com_indep_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 130
+		x = 140
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_indep_1 }
@@ -3621,7 +3923,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_econ_1
 		icon = GFX_GJ_political_pressure
-		x = 132
+		x = 142
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_com_indep_1 }
@@ -3635,7 +3937,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_econ_2
 		icon = GFX_GJ_political_pressure
-		x = 132
+		x = 142
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_indep_econ_1 }
@@ -3648,7 +3950,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_econ_3
 		icon = GFX_GJ_political_pressure
-		x = 132
+		x = 142
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_indep_econ_2 }
@@ -3661,7 +3963,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_fed_1
 		icon = GFX_GJ_political_pressure
-		x = 134
+		x = 144
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_com_indep_1 }
@@ -3675,7 +3977,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_fed_2
 		icon = GFX_GJ_political_pressure
-		x = 134
+		x = 144
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_com_indep_fed_1 }
@@ -3688,7 +3990,7 @@ focus_tree = {
 	focus = {
 		id = GJ_com_indep_fed_3
 		icon = GFX_GJ_political_pressure
-		x = 134
+		x = 144
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_com_indep_fed_2 }
@@ -3701,7 +4003,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_root_1
 		icon = GFX_GJ_political_pressure
-		x = 147
+		x = 157
 		y = 0
 		cost = 5
 		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_fas_root_1 focus = GJ_neu_root_1 }
@@ -3715,7 +4017,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_root_2
 		icon = GFX_GJ_political_pressure
-		x = 147
+		x = 157
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dem_root_1 }
@@ -3728,7 +4030,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_root_3
 		icon = GFX_GJ_political_pressure
-		x = 147
+		x = 157
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dem_root_2 }
@@ -3742,7 +4044,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_legal_1
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dem_root_3 }
@@ -3756,7 +4058,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_legal_2
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_dem_legal_1 }
@@ -3770,7 +4072,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_war_1
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dem_root_3 }
@@ -3784,7 +4086,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_war_2
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_dem_war_1 }
@@ -3797,7 +4099,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_war_3
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dem_war_2 }
@@ -3811,7 +4113,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_gov_1
 		icon = GFX_GJ_political_pressure
-		x = 147
+		x = 157
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_dem_legal_2 focus = GJ_dem_war_3 }
@@ -3824,7 +4126,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_gov_2
 		icon = GFX_GJ_political_pressure
-		x = 147
+		x = 157
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_1 }
@@ -3837,7 +4139,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_adv_1
 		icon = GFX_GJ_political_pressure
-		x = 136
+		x = 146
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_2 }
@@ -3851,7 +4153,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_adv_2
 		icon = GFX_GJ_political_pressure
-		x = 136
+		x = 146
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_adv_1 }
@@ -3865,7 +4167,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_adv_3
 		icon = GFX_GJ_political_pressure
-		x = 136
+		x = 146
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_dem_adv_2 }
@@ -3881,7 +4183,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_1
 		icon = GFX_GJ_political_pressure
-		x = 140
+		x = 150
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_2 }
@@ -3896,7 +4198,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_dem_social_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 138
+		x = 148
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_dem_social_1 }
@@ -3910,7 +4212,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_labor_1
 		icon = GFX_GJ_political_pressure
-		x = 140
+		x = 150
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_social_1 }
@@ -3925,7 +4227,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_labor_2
 		icon = GFX_GJ_political_pressure
-		x = 140
+		x = 150
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_social_labor_1 }
@@ -3938,7 +4240,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_labor_3
 		icon = GFX_GJ_political_pressure
-		x = 140
+		x = 150
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_dem_social_labor_2 }
@@ -3953,7 +4255,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_welfare_1
 		icon = GFX_GJ_political_pressure
-		x = 142
+		x = 152
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_social_1 }
@@ -3969,7 +4271,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_welfare_2
 		icon = GFX_GJ_political_pressure
-		x = 142
+		x = 152
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_dem_social_welfare_1 }
@@ -3983,7 +4285,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_social_welfare_3
 		icon = GFX_GJ_political_pressure
-		x = 142
+		x = 152
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_dem_social_welfare_2 }
@@ -3997,7 +4299,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_1
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_2 }
@@ -4013,7 +4315,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_dem_liberal_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 144
+		x = 154
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_dem_liberal_1 }
@@ -4028,7 +4330,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_capital_1
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_liberal_1 }
@@ -4042,7 +4344,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_capital_2
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_liberal_capital_1 }
@@ -4058,7 +4360,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_capital_3
 		icon = GFX_GJ_political_pressure
-		x = 146
+		x = 156
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_dem_liberal_capital_2 }
@@ -4073,7 +4375,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_trade_1
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_liberal_1 }
@@ -4086,7 +4388,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_trade_2
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_liberal_trade_1 }
@@ -4099,7 +4401,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_liberal_trade_3
 		icon = GFX_GJ_political_pressure
-		x = 148
+		x = 158
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_dem_liberal_trade_2 }
@@ -4112,7 +4414,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_1
 		icon = GFX_GJ_political_pressure
-		x = 152
+		x = 162
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_2 }
@@ -4127,7 +4429,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_dem_christian_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 150
+		x = 160
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_dem_christian_1 }
@@ -4141,7 +4443,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_doctrine_1
 		icon = GFX_GJ_political_pressure
-		x = 152
+		x = 162
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_christian_1 }
@@ -4156,7 +4458,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_doctrine_2
 		icon = GFX_GJ_political_pressure
-		x = 152
+		x = 162
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_christian_doctrine_1 }
@@ -4171,7 +4473,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_doctrine_3
 		icon = GFX_GJ_political_pressure
-		x = 152
+		x = 162
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_dem_christian_doctrine_2 }
@@ -4187,7 +4489,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_moral_1
 		icon = GFX_GJ_political_pressure
-		x = 154
+		x = 164
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_christian_1 }
@@ -4200,7 +4502,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_moral_2
 		icon = GFX_GJ_political_pressure
-		x = 154
+		x = 164
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_christian_moral_1 }
@@ -4213,7 +4515,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_christian_moral_3
 		icon = GFX_GJ_political_pressure
-		x = 154
+		x = 164
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_dem_christian_moral_2 }
@@ -4227,7 +4529,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_1
 		icon = GFX_GJ_political_pressure
-		x = 157
+		x = 167
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dem_gov_2 }
@@ -4242,7 +4544,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_order_1
 		icon = GFX_GJ_political_pressure
-		x = 156
+		x = 166
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_conserv_1 }
@@ -4258,7 +4560,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_order_2
 		icon = GFX_GJ_political_pressure
-		x = 156
+		x = 166
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_conserv_order_1 }
@@ -4272,7 +4574,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_order_3
 		icon = GFX_GJ_political_pressure
-		x = 156
+		x = 166
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_dem_conserv_order_2 }
@@ -4285,7 +4587,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_defense_1
 		icon = GFX_GJ_political_pressure
-		x = 158
+		x = 168
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_dem_conserv_1 }
@@ -4299,7 +4601,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_defense_2
 		icon = GFX_GJ_political_pressure
-		x = 158
+		x = 168
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_dem_conserv_defense_1 }
@@ -4314,7 +4616,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dem_conserv_defense_3
 		icon = GFX_GJ_political_pressure
-		x = 158
+		x = 168
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_dem_conserv_defense_2 }
@@ -4327,7 +4629,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_root_1
 		icon = GFX_GJ_political_pressure
-		x = 171
+		x = 181
 		y = 0
 		cost = 5
 		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_dem_root_1 focus = GJ_neu_root_1 }
@@ -4340,7 +4642,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_root_2
 		icon = GFX_GJ_political_pressure
-		x = 171
+		x = 181
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_fas_root_1 }
@@ -4355,7 +4657,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_root_3
 		icon = GFX_GJ_political_pressure
-		x = 171
+		x = 181
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_fas_root_2 }
@@ -4369,7 +4671,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_legal_1
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_fas_root_3 }
@@ -4383,7 +4685,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_legal_2
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_fas_legal_1 }
@@ -4397,7 +4699,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_war_1
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_fas_root_3 }
@@ -4412,7 +4714,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_war_2
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_fas_war_1 }
@@ -4425,7 +4727,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_war_3
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_fas_war_2 }
@@ -4439,7 +4741,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_gov_1
 		icon = GFX_GJ_political_pressure
-		x = 171
+		x = 181
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_fas_legal_2 focus = GJ_fas_war_3 }
@@ -4453,7 +4755,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_gov_2
 		icon = GFX_GJ_political_pressure
-		x = 171
+		x = 181
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_1 }
@@ -4466,7 +4768,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_adv_1
 		icon = GFX_GJ_political_pressure
-		x = 160
+		x = 170
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_2 }
@@ -4480,7 +4782,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_adv_2
 		icon = GFX_GJ_political_pressure
-		x = 160
+		x = 170
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_adv_1 }
@@ -4494,7 +4796,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_adv_3
 		icon = GFX_GJ_political_pressure
-		x = 160
+		x = 170
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_fas_adv_2 }
@@ -4508,7 +4810,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_1
 		icon = GFX_GJ_political_pressure
-		x = 164
+		x = 174
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_2 }
@@ -4523,7 +4825,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_fas_franco_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 162
+		x = 172
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_fas_franco_1 }
@@ -4539,7 +4841,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_church_1
 		icon = GFX_GJ_political_pressure
-		x = 164
+		x = 174
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_1 }
@@ -4554,7 +4856,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_church_2
 		icon = GFX_GJ_political_pressure
-		x = 164
+		x = 174
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_church_1 }
@@ -4567,7 +4869,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_church_3
 		icon = GFX_GJ_political_pressure
-		x = 164
+		x = 174
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_church_2 }
@@ -4580,7 +4882,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_autarky_1
 		icon = GFX_GJ_political_pressure
-		x = 166
+		x = 176
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_1 }
@@ -4595,7 +4897,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_autarky_2
 		icon = GFX_GJ_political_pressure
-		x = 166
+		x = 176
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_autarky_1 }
@@ -4610,7 +4912,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_franco_autarky_3
 		icon = GFX_GJ_political_pressure
-		x = 166
+		x = 176
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_franco_autarky_2 }
@@ -4623,7 +4925,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_1
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_2 }
@@ -4639,7 +4941,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_fas_corp_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 168
+		x = 178
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_fas_corp_1 }
@@ -4652,7 +4954,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_guild_1
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_corp_1 }
@@ -4666,7 +4968,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_guild_2
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_corp_guild_1 }
@@ -4681,7 +4983,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_guild_3
 		icon = GFX_GJ_political_pressure
-		x = 170
+		x = 180
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_corp_guild_2 }
@@ -4696,7 +4998,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_econ_1
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_fas_corp_1 }
@@ -4710,7 +5012,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_econ_2
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_corp_econ_1 }
@@ -4725,7 +5027,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_corp_econ_3
 		icon = GFX_GJ_political_pressure
-		x = 172
+		x = 182
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_corp_econ_2 }
@@ -4739,7 +5041,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_1
 		icon = GFX_GJ_political_pressure
-		x = 176
+		x = 186
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_2 }
@@ -4754,7 +5056,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_fas_natsoc_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 174
+		x = 184
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_fas_natsoc_1 }
@@ -4769,7 +5071,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_rearm_1
 		icon = GFX_GJ_political_pressure
-		x = 176
+		x = 186
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_fas_natsoc_1 }
@@ -4783,7 +5085,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_rearm_2
 		icon = GFX_GJ_political_pressure
-		x = 176
+		x = 186
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_natsoc_rearm_1 }
@@ -4796,7 +5098,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_rearm_3
 		icon = GFX_GJ_political_pressure
-		x = 176
+		x = 186
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_natsoc_rearm_2 }
@@ -4809,7 +5111,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_expand_1
 		icon = GFX_GJ_political_pressure
-		x = 178
+		x = 188
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_natsoc_1 }
@@ -4822,7 +5124,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_expand_2
 		icon = GFX_GJ_political_pressure
-		x = 178
+		x = 188
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_natsoc_expand_1 }
@@ -4835,7 +5137,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_natsoc_expand_3
 		icon = GFX_GJ_political_pressure
-		x = 178
+		x = 188
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_natsoc_expand_2 }
@@ -4848,7 +5150,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_1
 		icon = GFX_GJ_political_pressure
-		x = 181
+		x = 191
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_fas_gov_2 }
@@ -4863,7 +5165,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_church_1
 		icon = GFX_GJ_political_pressure
-		x = 180
+		x = 190
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_clerical_1 }
@@ -4877,7 +5179,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_church_2
 		icon = GFX_GJ_political_pressure
-		x = 180
+		x = 190
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_clerical_church_1 }
@@ -4890,7 +5192,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_church_3
 		icon = GFX_GJ_political_pressure
-		x = 180
+		x = 190
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_fas_clerical_church_2 }
@@ -4905,7 +5207,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_guild_1
 		icon = GFX_GJ_political_pressure
-		x = 182
+		x = 192
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_fas_clerical_1 }
@@ -4919,7 +5221,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_guild_2
 		icon = GFX_GJ_political_pressure
-		x = 182
+		x = 192
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_fas_clerical_guild_1 }
@@ -4934,7 +5236,7 @@ focus_tree = {
 	focus = {
 		id = GJ_fas_clerical_guild_3
 		icon = GFX_GJ_political_pressure
-		x = 182
+		x = 192
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_fas_clerical_guild_2 }
@@ -4947,7 +5249,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_root_1
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 0
 		cost = 5
 		mutually_exclusive = { focus = GJ_com_root_1 focus = GJ_dem_root_1 focus = GJ_fas_root_1 }
@@ -4963,7 +5265,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_root_2
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_neu_root_1 }
@@ -4977,7 +5279,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_root_3
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_neu_root_2 }
@@ -4990,7 +5292,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_legal_1
 		icon = GFX_GJ_political_pressure
-		x = 203
+		x = 213
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_neu_root_3 }
@@ -5006,7 +5308,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_legal_2
 		icon = GFX_GJ_political_pressure
-		x = 203
+		x = 213
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_neu_legal_1 }
@@ -5020,7 +5322,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_war_1
 		icon = GFX_GJ_political_pressure
-		x = 205
+		x = 215
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_neu_root_3 }
@@ -5034,7 +5336,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_war_2
 		icon = GFX_GJ_political_pressure
-		x = 205
+		x = 215
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_neu_war_1 }
@@ -5048,7 +5350,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_war_3
 		icon = GFX_GJ_political_pressure
-		x = 205
+		x = 215
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_neu_war_2 }
@@ -5063,7 +5365,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_gov_1
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_neu_legal_2 focus = GJ_neu_war_3 }
@@ -5076,7 +5378,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_gov_2
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_1 }
@@ -5089,7 +5391,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_adv_1
 		icon = GFX_GJ_political_pressure
-		x = 184
+		x = 194
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5104,7 +5406,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_adv_2
 		icon = GFX_GJ_political_pressure
-		x = 184
+		x = 194
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_adv_1 }
@@ -5117,7 +5419,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_adv_3
 		icon = GFX_GJ_political_pressure
-		x = 184
+		x = 194
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_neu_adv_2 }
@@ -5133,7 +5435,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_1
 		icon = GFX_GJ_political_pressure
-		x = 188
+		x = 198
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5148,7 +5450,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_neu_junta_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 186
+		x = 196
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_junta_1 }
@@ -5164,7 +5466,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_rule_1
 		icon = GFX_GJ_political_pressure
-		x = 188
+		x = 198
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_1 }
@@ -5178,7 +5480,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_rule_2
 		icon = GFX_GJ_political_pressure
-		x = 188
+		x = 198
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_rule_1 }
@@ -5193,7 +5495,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_rule_3
 		icon = GFX_GJ_political_pressure
-		x = 188
+		x = 198
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_rule_2 }
@@ -5207,7 +5509,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_arms_1
 		icon = GFX_GJ_political_pressure
-		x = 190
+		x = 200
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_1 }
@@ -5222,7 +5524,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_arms_2
 		icon = GFX_GJ_political_pressure
-		x = 190
+		x = 200
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_arms_1 }
@@ -5236,7 +5538,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_junta_arms_3
 		icon = GFX_GJ_political_pressure
-		x = 190
+		x = 200
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_junta_arms_2 }
@@ -5250,7 +5552,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_1
 		icon = GFX_GJ_political_pressure
-		x = 194
+		x = 204
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5266,7 +5568,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_neu_pres_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 192
+		x = 202
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_pres_1 }
@@ -5281,7 +5583,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_rule_1
 		icon = GFX_GJ_political_pressure
-		x = 194
+		x = 204
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_pres_1 }
@@ -5295,7 +5597,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_rule_2
 		icon = GFX_GJ_political_pressure
-		x = 194
+		x = 204
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_pres_rule_1 }
@@ -5308,7 +5610,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_rule_3
 		icon = GFX_GJ_political_pressure
-		x = 194
+		x = 204
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_pres_rule_2 }
@@ -5323,7 +5625,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_dev_1
 		icon = GFX_GJ_political_pressure
-		x = 196
+		x = 206
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_pres_1 }
@@ -5337,7 +5639,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_dev_2
 		icon = GFX_GJ_political_pressure
-		x = 196
+		x = 206
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_pres_dev_1 }
@@ -5352,7 +5654,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_pres_dev_3
 		icon = GFX_GJ_political_pressure
-		x = 196
+		x = 206
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_pres_dev_2 }
@@ -5366,7 +5668,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_1
 		icon = GFX_GJ_political_pressure
-		x = 200
+		x = 210
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5381,7 +5683,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_neu_monarchy_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 198
+		x = 208
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_monarchy_1 }
@@ -5395,7 +5697,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_crown_1
 		icon = GFX_GJ_political_pressure
-		x = 200
+		x = 210
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_monarchy_1 }
@@ -5408,7 +5710,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_crown_2
 		icon = GFX_GJ_political_pressure
-		x = 200
+		x = 210
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_monarchy_crown_1 }
@@ -5422,7 +5724,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_crown_3
 		icon = GFX_GJ_political_pressure
-		x = 200
+		x = 210
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_monarchy_crown_2 }
@@ -5435,7 +5737,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_diplo_1
 		icon = GFX_GJ_political_pressure
-		x = 202
+		x = 212
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_monarchy_1 }
@@ -5448,7 +5750,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_diplo_2
 		icon = GFX_GJ_political_pressure
-		x = 202
+		x = 212
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_monarchy_diplo_1 }
@@ -5462,7 +5764,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_monarchy_diplo_3
 		icon = GFX_GJ_political_pressure
-		x = 202
+		x = 212
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_monarchy_diplo_2 }
@@ -5475,7 +5777,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_1
 		icon = GFX_GJ_political_pressure
-		x = 206
+		x = 216
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5490,7 +5792,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_neu_conserv_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 204
+		x = 214
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_neu_conserv_1 }
@@ -5506,7 +5808,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_trad_1
 		icon = GFX_GJ_political_pressure
-		x = 206
+		x = 216
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_1 }
@@ -5520,7 +5822,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_trad_2
 		icon = GFX_GJ_political_pressure
-		x = 206
+		x = 216
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_trad_1 }
@@ -5535,7 +5837,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_trad_3
 		icon = GFX_GJ_political_pressure
-		x = 206
+		x = 216
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_trad_2 }
@@ -5548,7 +5850,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_reform_1
 		icon = GFX_GJ_political_pressure
-		x = 208
+		x = 218
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_1 }
@@ -5563,7 +5865,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_reform_2
 		icon = GFX_GJ_political_pressure
-		x = 208
+		x = 218
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_reform_1 }
@@ -5578,7 +5880,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_conserv_reform_3
 		icon = GFX_GJ_political_pressure
-		x = 208
+		x = 218
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_conserv_reform_2 }
@@ -5594,7 +5896,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_1
 		icon = GFX_GJ_political_pressure
-		x = 211
+		x = 221
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5610,7 +5912,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_reform_1
 		icon = GFX_GJ_political_pressure
-		x = 210
+		x = 220
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_kemal_1 }
@@ -5625,7 +5927,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_reform_2
 		icon = GFX_GJ_political_pressure
-		x = 210
+		x = 220
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_kemal_reform_1 }
@@ -5640,7 +5942,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_reform_3
 		icon = GFX_GJ_political_pressure
-		x = 210
+		x = 220
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_kemal_reform_2 }
@@ -5655,7 +5957,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_state_1
 		icon = GFX_GJ_political_pressure
-		x = 212
+		x = 222
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_kemal_1 }
@@ -5669,7 +5971,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_state_2
 		icon = GFX_GJ_political_pressure
-		x = 212
+		x = 222
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_kemal_state_1 }
@@ -5685,7 +5987,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_kemal_state_3
 		icon = GFX_GJ_political_pressure
-		x = 212
+		x = 222
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_neu_kemal_state_2 }
@@ -5700,7 +6002,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_1
 		icon = GFX_GJ_political_pressure
-		x = 215
+		x = 225
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5716,7 +6018,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_patron_1
 		icon = GFX_GJ_political_pressure
-		x = 214
+		x = 224
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_caudillo_1 }
@@ -5730,7 +6032,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_patron_2
 		icon = GFX_GJ_political_pressure
-		x = 214
+		x = 224
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_caudillo_patron_1 }
@@ -5745,7 +6047,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_patron_3
 		icon = GFX_GJ_political_pressure
-		x = 214
+		x = 224
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_caudillo_patron_2 }
@@ -5760,7 +6062,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_power_1
 		icon = GFX_GJ_political_pressure
-		x = 216
+		x = 226
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_caudillo_1 }
@@ -5773,7 +6075,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_power_2
 		icon = GFX_GJ_political_pressure
-		x = 216
+		x = 226
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_caudillo_power_1 }
@@ -5787,7 +6089,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_caudillo_power_3
 		icon = GFX_GJ_political_pressure
-		x = 216
+		x = 226
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_neu_caudillo_power_2 }
@@ -5802,7 +6104,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_1
 		icon = GFX_GJ_political_pressure
-		x = 219
+		x = 229
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5817,7 +6119,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_land_1
 		icon = GFX_GJ_political_pressure
-		x = 218
+		x = 228
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_agrarian_1 }
@@ -5833,7 +6135,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_land_2
 		icon = GFX_GJ_political_pressure
-		x = 218
+		x = 228
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_agrarian_land_1 }
@@ -5847,7 +6149,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_land_3
 		icon = GFX_GJ_political_pressure
-		x = 218
+		x = 228
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_agrarian_land_2 }
@@ -5860,7 +6162,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_people_1
 		icon = GFX_GJ_political_pressure
-		x = 220
+		x = 230
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_agrarian_1 }
@@ -5873,7 +6175,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_people_2
 		icon = GFX_GJ_political_pressure
-		x = 220
+		x = 230
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_agrarian_people_1 }
@@ -5886,7 +6188,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_agrarian_people_3
 		icon = GFX_GJ_political_pressure
-		x = 220
+		x = 230
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_neu_agrarian_people_2 }
@@ -5901,7 +6203,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_1
 		icon = GFX_GJ_political_pressure
-		x = 223
+		x = 233
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_neu_gov_2 }
@@ -5917,7 +6219,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_faith_1
 		icon = GFX_GJ_political_pressure
-		x = 222
+		x = 232
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_theocracy_1 }
@@ -5931,7 +6233,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_faith_2
 		icon = GFX_GJ_political_pressure
-		x = 222
+		x = 232
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_theocracy_faith_1 }
@@ -5944,7 +6246,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_faith_3
 		icon = GFX_GJ_political_pressure
-		x = 222
+		x = 232
 		y = 11
 		cost = 5
 		prerequisite = { focus = GJ_neu_theocracy_faith_2 }
@@ -5958,7 +6260,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_rule_1
 		icon = GFX_GJ_political_pressure
-		x = 224
+		x = 234
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_neu_theocracy_1 }
@@ -5973,7 +6275,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_rule_2
 		icon = GFX_GJ_political_pressure
-		x = 224
+		x = 234
 		y = 10
 		cost = 5
 		prerequisite = { focus = GJ_neu_theocracy_rule_1 }
@@ -5988,7 +6290,7 @@ focus_tree = {
 	focus = {
 		id = GJ_neu_theocracy_rule_3
 		icon = GFX_GJ_political_pressure
-		x = 224
+		x = 234
 		y = 11
 		cost = 10
 		prerequisite = { focus = GJ_neu_theocracy_rule_2 }
@@ -6002,7 +6304,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_exile_1
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 0
 		cost = 5
 		available = { capital_scope = { NOT = { is_controlled_by = ROOT } } }
@@ -6015,7 +6317,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_exile_2
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_hid_exile_1 }
@@ -6030,7 +6332,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_exile_3
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_hid_exile_2 }
@@ -6043,7 +6345,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_exile_4
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_hid_exile_3 }
@@ -6056,7 +6358,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_exile_5
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_hid_exile_4 }
@@ -6069,7 +6371,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_hid_exile_institutions_1
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_hid_exile_5 }
@@ -6083,7 +6385,7 @@ focus_tree = {
 	focus = {
 		id = GJ_gpt_hid_exile_institutions_2
 		icon = GFX_GJ_political_pressure
-		x = 226
+		x = 236
 		y = 6
 		cost = 10
 		prerequisite = { focus = GJ_gpt_hid_exile_institutions_1 }
@@ -6098,7 +6400,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_egg_1
 		icon = GFX_GJ_political_pressure
-		x = 228
+		x = 238
 		y = 0
 		cost = 5
 		available = { always = yes }
@@ -6112,7 +6414,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_egg_2
 		icon = GFX_GJ_political_pressure
-		x = 228
+		x = 238
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_hid_egg_1 }
@@ -6126,7 +6428,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_egg_3
 		icon = GFX_GJ_political_pressure
-		x = 228
+		x = 238
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_hid_egg_2 }
@@ -6140,7 +6442,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_egg_4
 		icon = GFX_GJ_political_pressure
-		x = 228
+		x = 238
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_hid_egg_3 }
@@ -6155,7 +6457,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_crisis_1
 		icon = GFX_GJ_political_pressure
-		x = 230
+		x = 240
 		y = 0
 		cost = 5
 		available = { has_war = yes has_war_support < 0.3 }
@@ -6169,7 +6471,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_crisis_2
 		icon = GFX_GJ_political_pressure
-		x = 230
+		x = 240
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_hid_crisis_1 }
@@ -6185,7 +6487,7 @@ focus_tree = {
 	focus = {
 		id = GJ_hid_crisis_3
 		icon = GFX_GJ_political_pressure
-		x = 230
+		x = 240
 		y = 2
 		cost = 10
 		prerequisite = { focus = GJ_hid_crisis_2 }
@@ -6203,7 +6505,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_root_1
 		icon = GFX_GJ_major_alliance
-		x = 250
+		x = 256
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6216,7 +6518,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_allies_1
 		icon = GFX_GJ_major_alliance
-		x = 236
+		x = 246
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -6230,7 +6532,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_allies_2
 		icon = GFX_GJ_major_alliance
-		x = 236
+		x = 246
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_allies_1 }
@@ -6245,7 +6547,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_allies_3
 		icon = GFX_GJ_major_alliance
-		x = 236
+		x = 246
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_allies_2 }
@@ -6258,7 +6560,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_allies_4
 		icon = GFX_GJ_major_alliance
-		x = 236
+		x = 246
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_allies_3 }
@@ -6272,7 +6574,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_allies_5
 		icon = GFX_GJ_major_alliance
-		x = 236
+		x = 246
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_dip_allies_4 }
@@ -6285,7 +6587,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_axis_1
 		icon = GFX_GJ_major_alliance
-		x = 238
+		x = 248
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -6299,7 +6601,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_axis_2
 		icon = GFX_GJ_major_alliance
-		x = 238
+		x = 248
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_axis_1 }
@@ -6312,7 +6614,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_axis_3
 		icon = GFX_GJ_major_alliance
-		x = 238
+		x = 248
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_axis_2 }
@@ -6326,7 +6628,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_axis_4
 		icon = GFX_GJ_major_alliance
-		x = 238
+		x = 248
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_axis_3 }
@@ -6339,7 +6641,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_axis_5
 		icon = GFX_GJ_major_alliance
-		x = 238
+		x = 248
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_dip_axis_4 }
@@ -6352,7 +6654,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_comintern_1
 		icon = GFX_GJ_major_alliance
-		x = 240
+		x = 250
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -6366,7 +6668,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_comintern_2
 		icon = GFX_GJ_major_alliance
-		x = 240
+		x = 250
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_comintern_1 }
@@ -6380,7 +6682,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_comintern_3
 		icon = GFX_GJ_major_alliance
-		x = 240
+		x = 250
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_comintern_2 }
@@ -6395,7 +6697,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_comintern_4
 		icon = GFX_GJ_major_alliance
-		x = 240
+		x = 250
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_comintern_3 }
@@ -6409,7 +6711,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_comintern_5
 		icon = GFX_GJ_major_alliance
-		x = 240
+		x = 250
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_dip_comintern_4 }
@@ -6422,7 +6724,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_1
 		icon = GFX_GJ_major_alliance
-		x = 244
+		x = 254
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -6436,7 +6738,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_2
 		icon = GFX_GJ_major_alliance
-		x = 244
+		x = 254
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_1 }
@@ -6449,7 +6751,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_1
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_2 }
@@ -6462,7 +6764,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_2
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_trade_1 }
@@ -6476,7 +6778,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_3
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_trade_2 }
@@ -6490,7 +6792,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_defense_1
 		icon = GFX_GJ_major_alliance
-		x = 244
+		x = 254
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_2 }
@@ -6503,7 +6805,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_defense_2
 		icon = GFX_GJ_major_alliance
-		x = 244
+		x = 254
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_defense_1 }
@@ -6518,7 +6820,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_defense_3
 		icon = GFX_GJ_major_alliance
-		x = 244
+		x = 254
 		y = 5
 		cost = 10
 		prerequisite = { focus = GJ_dip_neutral_defense_2 }
@@ -6533,7 +6835,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_aid_1
 		icon = GFX_GJ_major_alliance
-		x = 246
+		x = 256
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_2 }
@@ -6546,7 +6848,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_aid_2
 		icon = GFX_GJ_major_alliance
-		x = 246
+		x = 256
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_aid_1 }
@@ -6559,7 +6861,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_aid_3
 		icon = GFX_GJ_major_alliance
-		x = 246
+		x = 256
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_aid_2 }
@@ -6572,7 +6874,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_1
 		icon = GFX_GJ_major_alliance
-		x = 255
+		x = 261
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -6586,7 +6888,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_2
 		icon = GFX_GJ_major_alliance
-		x = 255
+		x = 261
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_1 }
@@ -6599,7 +6901,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_econ_1
 		icon = GFX_GJ_major_alliance
-		x = 248
+		x = 258
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_2 }
@@ -6612,7 +6914,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_econ_2
 		icon = GFX_GJ_major_alliance
-		x = 248
+		x = 258
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_dip_leader_econ_1 }
@@ -6626,7 +6928,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_econ_3
 		icon = GFX_GJ_major_alliance
-		x = 248
+		x = 258
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_econ_2 }
@@ -6641,7 +6943,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_mil_1
 		icon = GFX_GJ_major_alliance
-		x = 250
+		x = 260
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_2 }
@@ -6654,7 +6956,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_mil_2
 		icon = GFX_GJ_major_alliance
-		x = 250
+		x = 260
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_mil_1 }
@@ -6670,7 +6972,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_mil_3
 		icon = GFX_GJ_major_alliance
-		x = 250
+		x = 260
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_mil_2 }
@@ -6683,7 +6985,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_bloc_1
 		icon = GFX_GJ_major_alliance
-		x = 257
+		x = 263
 		y = 3
 		cost = 10
 		prerequisite = { focus = GJ_dip_leader_2 }
@@ -6696,7 +6998,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_bloc_2
 		icon = GFX_GJ_major_alliance
-		x = 257
+		x = 263
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_bloc_1 }
@@ -6709,7 +7011,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_war_1
 		icon = GFX_GJ_major_alliance
-		x = 252
+		x = 262
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_bloc_2 }
@@ -6722,7 +7024,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_war_2
 		icon = GFX_GJ_major_alliance
-		x = 252
+		x = 262
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_war_1 }
@@ -6735,7 +7037,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_war_3
 		icon = GFX_GJ_major_alliance
-		x = 252
+		x = 262
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_dip_leader_war_2 }
@@ -6748,7 +7050,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_fed_1
 		icon = GFX_GJ_major_alliance
-		x = 254
+		x = 264
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_bloc_2 }
@@ -6764,7 +7066,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_fed_2
 		icon = GFX_GJ_major_alliance
-		x = 254
+		x = 264
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_dip_leader_fed_1 }
@@ -6777,7 +7079,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_leader_fed_3
 		icon = GFX_GJ_major_alliance
-		x = 254
+		x = 264
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_dip_leader_fed_2 }
@@ -6791,117 +7093,9 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = GJ_dip_region_lat_1
-		icon = GFX_GJ_major_alliance
-		x = 256
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_leader_bloc_2 }
-		allow_branch = { capital_scope = { is_on_continent = south_america } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_lat_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_lat_2
-		icon = GFX_GJ_major_alliance
-		x = 256
-		y = 6
-		cost = 10
-		prerequisite = { focus = GJ_dip_region_lat_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_lat_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_bal_1
-		icon = GFX_GJ_major_alliance
-		x = 258
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_leader_bloc_2 }
-		allow_branch = { capital_scope = { is_on_continent = europe } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_bal_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_bal_2
-		icon = GFX_GJ_major_alliance
-		x = 258
-		y = 6
-		cost = 10
-		prerequisite = { focus = GJ_dip_region_bal_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_bal_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_mena_1
-		icon = GFX_GJ_major_alliance
-		x = 260
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_leader_bloc_2 }
-		allow_branch = { capital_scope = { OR = { is_on_continent = middle_east is_on_continent = africa } } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_mena_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_mena_2
-		icon = GFX_GJ_major_alliance
-		x = 260
-		y = 6
-		cost = 10
-		prerequisite = { focus = GJ_dip_region_mena_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_mena_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_asia_1
-		icon = GFX_GJ_major_alliance
-		x = 262
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_leader_bloc_2 }
-		allow_branch = { capital_scope = { is_on_continent = asia } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_asia_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_region_asia_2
-		icon = GFX_GJ_major_alliance
-		x = 262
-		y = 6
-		cost = 10
-		prerequisite = { focus = GJ_dip_region_asia_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_region_asia_2_tt
-		}
-	}
-	focus = {
 		id = GJ_dip_black_1
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6916,7 +7110,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_2
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_1 }
@@ -6929,7 +7123,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_3
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_2 }
@@ -6942,7 +7136,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_4
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_3 }
@@ -6954,448 +7148,9 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = GJ_dip_reg_lat_1
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 0
-		cost = 5
-		allow_branch = { capital_scope = { is_on_continent = south_america } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_1_tt
-			add_political_power = 50
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_2
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 1
-		cost = 10
-		prerequisite = { focus = GJ_dip_reg_lat_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_2_tt
-			random_owned_controlled_state = { add_resource = { type = oil amount = 10 } }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_3
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_3_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_4
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_3 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_4_tt
-			add_offsite_building = { type = industrial_complex level = 2 }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_5
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 4
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_4 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_5_tt
-			add_stability = 0.10
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_b_1
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_5 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_b_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_b_2
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 6
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_b_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_b_2_tt
-			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_lat_b_3
-		icon = GFX_GJ_major_alliance
-		x = 268
-		y = 7
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_lat_b_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_lat_b_3_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_1
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 0
-		cost = 5
-		allow_branch = { capital_scope = { is_on_continent = europe } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_1_tt
-			add_war_support = 0.10
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_2
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_3
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_3_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_4
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_3 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_4_tt
-			army_experience = 20
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_5
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 4
-		cost = 10
-		prerequisite = { focus = GJ_dip_reg_bal_4 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_5_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_b_1
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_5 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_b_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_b_2
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 6
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_b_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_b_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_bal_b_3
-		icon = GFX_GJ_major_alliance
-		x = 270
-		y = 7
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_bal_b_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_bal_b_3_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_1
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 0
-		cost = 5
-		allow_branch = { capital_scope = { OR = { is_on_continent = middle_east is_on_continent = africa } } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_1_tt
-			add_political_power = 100
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_2
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_2_tt
-			random_owned_controlled_state = { add_resource = { type = oil amount = 10 } }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_3
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_3_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_4
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 3
-		cost = 10
-		prerequisite = { focus = GJ_dip_reg_mena_3 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_4_tt
-			add_offsite_building = { type = industrial_complex level = 2 }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_5
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 4
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_4 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_5_tt
-			add_stability = 0.10
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_b_1
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_5 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_b_1_tt
-			add_war_support = 0.05
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_b_2
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 6
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_b_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_b_2_tt
-			add_stability = 0.05
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_political_power_gain value = 0.05 }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_mena_b_3
-		icon = GFX_GJ_major_alliance
-		x = 272
-		y = 7
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_mena_b_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_mena_b_3_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_1
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 0
-		cost = 5
-		allow_branch = { capital_scope = { is_on_continent = asia } }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_1_tt
-			add_war_support = 0.10
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_2
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_2_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_3
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_3_tt
-			add_political_power = 50
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_4
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_3 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_4_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_5
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 4
-		cost = 10
-		prerequisite = { focus = GJ_dip_reg_asia_4 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_5_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_b_1
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 5
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_5 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_b_1_tt
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_b_2
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 6
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_b_1 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_b_2_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
-		}
-	}
-	focus = {
-		id = GJ_dip_reg_asia_b_3
-		icon = GFX_GJ_major_alliance
-		x = 274
-		y = 7
-		cost = 5
-		prerequisite = { focus = GJ_dip_reg_asia_b_2 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_dip_reg_asia_b_3_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.03 }
-		}
-	}
-	focus = {
 		id = GJ_dip_league_1
 		icon = GFX_GJ_major_alliance
-		x = 264
+		x = 266
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_dip_root_1 }
@@ -7409,7 +7164,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_league_2
 		icon = GFX_GJ_major_alliance
-		x = 264
+		x = 266
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_dip_league_1 }
@@ -7422,7 +7177,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_league_3
 		icon = GFX_GJ_major_alliance
-		x = 264
+		x = 266
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_dip_league_2 }
@@ -7435,7 +7190,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_league_4
 		icon = GFX_GJ_major_alliance
-		x = 264
+		x = 266
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_league_3 }
@@ -7448,7 +7203,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_b_1
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_4 }
@@ -7461,7 +7216,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_b_2
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_b_1 }
@@ -7474,7 +7229,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_b_3
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_b_2 }
@@ -7487,7 +7242,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_black_b_4
 		icon = GFX_GJ_major_alliance
-		x = 266
+		x = 268
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_dip_black_b_3 }
@@ -7500,7 +7255,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_b_1
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_trade_3 }
@@ -7514,7 +7269,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_b_2
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_trade_b_1 }
@@ -7527,7 +7282,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_b_3
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_dip_neutral_trade_b_2 }
@@ -7541,7 +7296,7 @@ focus_tree = {
 	focus = {
 		id = GJ_dip_neutral_trade_b_4
 		icon = GFX_GJ_major_alliance
-		x = 242
+		x = 252
 		y = 9
 		cost = 10
 		prerequisite = { focus = GJ_dip_neutral_trade_b_3 }
@@ -7554,284 +7309,12 @@ focus_tree = {
 	}
 
 	############################################################
-	# 지형 특화
-	############################################################
-	focus = {
-		id = GJ_ter_coast_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 281
-		y = 0
-		cost = 5
-		allow_branch = { any_owned_state = { is_coastal = yes } }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_1_tt
-			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 281
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_2_tt
-			add_offsite_building = { type = industrial_complex level = 1 }
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_a_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 280
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_a_1_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_a_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 280
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_a_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_a_2_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_a_3
-		icon = GFX_GJ_construct_infrastructure
-		x = 280
-		y = 4
-		cost = 10
-		prerequisite = { focus = GJ_ter_coast_a_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_a_3_tt
-			add_offsite_building = { type = industrial_complex level = 1 }
-			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_b_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 282
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_b_1_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_b_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 282
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_b_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_b_2_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_coast_b_3
-		icon = GFX_GJ_construct_infrastructure
-		x = 282
-		y = 4
-		cost = 5
-		prerequisite = { focus = GJ_ter_coast_b_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_coast_b_3_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_land_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 285
-		y = 0
-		cost = 5
-		allow_branch = { NOT = { any_owned_state = { is_coastal = yes } } }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_1_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_land_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 285
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_2_tt
-			add_offsite_building = { type = industrial_complex level = 1 }
-		}
-	}
-	focus = {
-		id = GJ_ter_land_a_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 284
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_a_1_tt
-			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
-			random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
-		}
-	}
-	focus = {
-		id = GJ_ter_land_a_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 284
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_a_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_a_2_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_land_a_3
-		icon = GFX_GJ_construct_infrastructure
-		x = 284
-		y = 4
-		cost = 10
-		prerequisite = { focus = GJ_ter_land_a_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_a_3_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_land_b_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 286
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_b_1_tt
-			add_political_power = 25
-		}
-	}
-	focus = {
-		id = GJ_ter_land_b_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 286
-		y = 3
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_b_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_b_2_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_land_b_3
-		icon = GFX_GJ_construct_infrastructure
-		x = 286
-		y = 4
-		cost = 5
-		prerequisite = { focus = GJ_ter_land_b_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_land_b_3_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_island_1
-		icon = GFX_GJ_construct_infrastructure
-		x = 288
-		y = 0
-		cost = 5
-		allow_branch = { capital_scope = { is_coastal = yes } }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_island_1_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_island_2
-		icon = GFX_GJ_construct_infrastructure
-		x = 288
-		y = 1
-		cost = 5
-		prerequisite = { focus = GJ_ter_island_1 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_island_2_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_island_3
-		icon = GFX_GJ_construct_infrastructure
-		x = 288
-		y = 2
-		cost = 5
-		prerequisite = { focus = GJ_ter_island_2 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_island_3_tt
-		}
-	}
-	focus = {
-		id = GJ_ter_island_4
-		icon = GFX_GJ_construct_infrastructure
-		x = 288
-		y = 3
-		cost = 10
-		prerequisite = { focus = GJ_ter_island_3 }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 1 }
-		completion_reward = {
-			custom_effect_tooltip = GJ_ter_island_4_tt
-		}
-	}
-
-	############################################################
 	# 괴뢰국 / 독립
 	############################################################
 	focus = {
 		id = GJ_sub_root_1
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 0
 		cost = 5
 		available = { is_subject = yes }
@@ -7844,7 +7327,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_root_2
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_1 }
@@ -7859,7 +7342,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_root_3
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_2 }
@@ -7872,7 +7355,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_peace_1
 		icon = GFX_GJ_political_pressure
-		x = 294
+		x = 274
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -7886,7 +7369,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_peace_2
 		icon = GFX_GJ_political_pressure
-		x = 294
+		x = 274
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_peace_1 }
@@ -7901,7 +7384,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_peace_3
 		icon = GFX_GJ_political_pressure
-		x = 294
+		x = 274
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_peace_2 }
@@ -7914,7 +7397,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_peace_4
 		icon = GFX_GJ_political_pressure
-		x = 294
+		x = 274
 		y = 6
 		cost = 10
 		prerequisite = { focus = GJ_sub_peace_3 }
@@ -7927,7 +7410,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_peace_5
 		icon = GFX_GJ_political_pressure
-		x = 294
+		x = 274
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_peace_4 }
@@ -7940,7 +7423,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_arms_1
 		icon = GFX_GJ_political_pressure
-		x = 296
+		x = 276
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -7954,7 +7437,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_arms_2
 		icon = GFX_GJ_political_pressure
-		x = 296
+		x = 276
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_arms_1 }
@@ -7967,7 +7450,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_arms_3
 		icon = GFX_GJ_political_pressure
-		x = 296
+		x = 276
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_arms_2 }
@@ -7981,7 +7464,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_arms_4
 		icon = GFX_GJ_political_pressure
-		x = 296
+		x = 276
 		y = 6
 		cost = 10
 		prerequisite = { focus = GJ_sub_arms_3 }
@@ -7994,7 +7477,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_arms_5
 		icon = GFX_GJ_political_pressure
-		x = 296
+		x = 276
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_arms_4 }
@@ -8009,7 +7492,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_1
 		icon = GFX_GJ_political_pressure
-		x = 301
+		x = 281
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8024,7 +7507,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_2
 		icon = GFX_GJ_political_pressure
-		x = 301
+		x = 281
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_1 }
@@ -8039,7 +7522,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_a_1
 		icon = GFX_GJ_political_pressure
-		x = 298
+		x = 278
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_2 }
@@ -8054,7 +7537,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_a_2
 		icon = GFX_GJ_political_pressure
-		x = 298
+		x = 278
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_a_1 }
@@ -8069,7 +7552,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_a_3
 		icon = GFX_GJ_political_pressure
-		x = 298
+		x = 278
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_a_2 }
@@ -8082,7 +7565,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_b_1
 		icon = GFX_GJ_political_pressure
-		x = 300
+		x = 280
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_2 }
@@ -8096,7 +7579,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_b_2
 		icon = GFX_GJ_political_pressure
-		x = 300
+		x = 280
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_b_1 }
@@ -8110,7 +7593,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_b_3
 		icon = GFX_GJ_political_pressure
-		x = 300
+		x = 280
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_sub_build_b_2 }
@@ -8125,7 +7608,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_movement_1
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8138,7 +7621,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_movement_2
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_movement_1 }
@@ -8153,7 +7636,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_movement_3
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_movement_2 }
@@ -8167,7 +7650,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_movement_4
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_movement_3 }
@@ -8181,7 +7664,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_movement_5
 		icon = GFX_GJ_political_pressure
-		x = 306
+		x = 286
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_movement_4 }
@@ -8194,7 +7677,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_1
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8208,7 +7691,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_2
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_1 }
@@ -8221,7 +7704,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_a_1
 		icon = GFX_GJ_political_pressure
-		x = 308
+		x = 288
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_2 }
@@ -8234,7 +7717,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_a_2
 		icon = GFX_GJ_political_pressure
-		x = 308
+		x = 288
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_a_1 }
@@ -8248,7 +7731,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_a_3
 		icon = GFX_GJ_political_pressure
-		x = 308
+		x = 288
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_a_2 }
@@ -8262,7 +7745,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_a_4
 		icon = GFX_GJ_political_pressure
-		x = 308
+		x = 288
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_a_3 }
@@ -8277,7 +7760,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_b_1
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_2 }
@@ -8290,7 +7773,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_b_2
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_b_1 }
@@ -8304,7 +7787,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_b_3
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_b_2 }
@@ -8318,7 +7801,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_b_4
 		icon = GFX_GJ_political_pressure
-		x = 310
+		x = 290
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_sub_loyal_b_3 }
@@ -8334,7 +7817,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_c_1
 		icon = GFX_GJ_political_pressure
-		x = 312
+		x = 292
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_2 }
@@ -8349,7 +7832,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_c_2
 		icon = GFX_GJ_political_pressure
-		x = 312
+		x = 292
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_loyal_c_1 }
@@ -8364,7 +7847,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_loyal_c_3
 		icon = GFX_GJ_political_pressure
-		x = 312
+		x = 292
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_sub_loyal_c_2 }
@@ -8377,7 +7860,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_colony_1
 		icon = GFX_GJ_political_pressure
-		x = 314
+		x = 294
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8392,7 +7875,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_colony_2
 		icon = GFX_GJ_political_pressure
-		x = 314
+		x = 294
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_colony_1 }
@@ -8406,7 +7889,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_colony_3
 		icon = GFX_GJ_political_pressure
-		x = 314
+		x = 294
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_colony_2 }
@@ -8420,7 +7903,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_c_1
 		icon = GFX_GJ_political_pressure
-		x = 302
+		x = 282
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_2 }
@@ -8433,7 +7916,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_c_2
 		icon = GFX_GJ_political_pressure
-		x = 302
+		x = 282
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_c_1 }
@@ -8448,7 +7931,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_c_3
 		icon = GFX_GJ_political_pressure
-		x = 302
+		x = 282
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_c_2 }
@@ -8462,7 +7945,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_c_4
 		icon = GFX_GJ_political_pressure
-		x = 302
+		x = 282
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_sub_build_c_3 }
@@ -8476,7 +7959,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_d_1
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 284
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_2 }
@@ -8489,7 +7972,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_d_2
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 284
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_d_1 }
@@ -8502,7 +7985,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_d_3
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 284
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_sub_build_d_2 }
@@ -8515,7 +7998,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_build_d_4
 		icon = GFX_GJ_political_pressure
-		x = 304
+		x = 284
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_sub_build_d_3 }
@@ -8530,7 +8013,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_1
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8546,7 +8029,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_2
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_rk_1 }
@@ -8560,7 +8043,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_3
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_rk_2 }
@@ -8573,7 +8056,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_4
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_rk_3 }
@@ -8588,7 +8071,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_5
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_sub_rk_4 }
@@ -8601,7 +8084,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_b_1
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_sub_rk_5 }
@@ -8614,7 +8097,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_b_2
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_sub_rk_b_1 }
@@ -8629,7 +8112,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_rk_b_3
 		icon = GFX_GJ_political_pressure
-		x = 316
+		x = 296
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_sub_rk_b_2 }
@@ -8642,7 +8125,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_1
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_sub_root_3 }
@@ -8658,7 +8141,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_2
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_sub_collab_1 }
@@ -8672,7 +8155,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_3
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_sub_collab_2 }
@@ -8687,7 +8170,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_4
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_sub_collab_3 }
@@ -8700,7 +8183,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_5
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_sub_collab_4 }
@@ -8713,7 +8196,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_b_1
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 8
 		cost = 5
 		prerequisite = { focus = GJ_sub_collab_5 }
@@ -8727,7 +8210,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_b_2
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 9
 		cost = 5
 		prerequisite = { focus = GJ_sub_collab_b_1 }
@@ -8740,7 +8223,7 @@ focus_tree = {
 	focus = {
 		id = GJ_sub_collab_b_3
 		icon = GFX_GJ_political_pressure
-		x = 318
+		x = 298
 		y = 10
 		cost = 10
 		prerequisite = { focus = GJ_sub_collab_b_2 }
@@ -8757,7 +8240,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_1
 		icon = GFX_GJ_production
-		x = 325
+		x = 305
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -8771,7 +8254,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_2
 		icon = GFX_GJ_production
-		x = 325
+		x = 305
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_total_1 }
@@ -8785,7 +8268,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_3
 		icon = GFX_GJ_production
-		x = 325
+		x = 305
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_total_2 }
@@ -8799,7 +8282,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_4
 		icon = GFX_GJ_production
-		x = 325
+		x = 305
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_total_3 }
@@ -8813,7 +8296,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_5
 		icon = GFX_GJ_production
-		x = 325
+		x = 305
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_total_4 }
@@ -8828,7 +8311,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_1
 		icon = GFX_GJ_production
-		x = 329
+		x = 309
 		y = 0
 		cost = 5
 		available = { has_war = no }
@@ -8842,7 +8325,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_2
 		icon = GFX_GJ_production
-		x = 329
+		x = 309
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_1 }
@@ -8860,7 +8343,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_3
 		icon = GFX_GJ_production
-		x = 329
+		x = 309
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_2 }
@@ -8874,7 +8357,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_4
 		icon = GFX_GJ_production
-		x = 329
+		x = 309
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_3 }
@@ -8887,7 +8370,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_5
 		icon = GFX_GJ_production
-		x = 329
+		x = 309
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_4 }
@@ -8901,7 +8384,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_1
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 0
 		cost = 5
 		available = { has_war = yes }
@@ -8914,7 +8397,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_2
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_war_1 }
@@ -8927,7 +8410,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_3
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_war_2 }
@@ -8942,7 +8425,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_4
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 3
 		cost = 10
 		prerequisite = { focus = GJ_late_war_3 }
@@ -8958,7 +8441,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_1
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 4
 		cost = 5
 		prerequisite = { focus = GJ_late_war_4 }
@@ -8974,7 +8457,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_2
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_war_b_1 }
@@ -8988,7 +8471,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_3
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_war_b_2 }
@@ -9002,7 +8485,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_war_b_4
 		icon = GFX_GJ_production
-		x = 332
+		x = 312
 		y = 7
 		cost = 10
 		prerequisite = { focus = GJ_late_war_b_3 }
@@ -9015,7 +8498,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_1
 		icon = GFX_GJ_production
-		x = 334
+		x = 314
 		y = 0
 		cost = 5
 		available = { has_war = yes }
@@ -9029,7 +8512,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_2
 		icon = GFX_GJ_production
-		x = 334
+		x = 314
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_peace_1 }
@@ -9043,7 +8526,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_peace_3
 		icon = GFX_GJ_production
-		x = 334
+		x = 314
 		y = 2
 		cost = 10
 		prerequisite = { focus = GJ_late_peace_2 }
@@ -9056,7 +8539,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_1
 		icon = GFX_GJ_production
-		x = 324
+		x = 304
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_total_5 }
@@ -9071,7 +8554,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_2
 		icon = GFX_GJ_production
-		x = 324
+		x = 304
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_total_b_1 }
@@ -9084,7 +8567,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_total_b_3
 		icon = GFX_GJ_production
-		x = 324
+		x = 304
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_total_b_2 }
@@ -9097,7 +8580,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_1
 		icon = GFX_GJ_production
-		x = 326
+		x = 306
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_total_5 }
@@ -9111,7 +8594,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_2
 		icon = GFX_GJ_production
-		x = 326
+		x = 306
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_partisan_1 }
@@ -9124,7 +8607,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_partisan_3
 		icon = GFX_GJ_production
-		x = 326
+		x = 306
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_partisan_2 }
@@ -9138,7 +8621,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_1
 		icon = GFX_GJ_production
-		x = 336
+		x = 316
 		y = 0
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -9150,7 +8633,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_2
 		icon = GFX_GJ_production
-		x = 336
+		x = 316
 		y = 1
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_1 }
@@ -9163,7 +8646,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_3
 		icon = GFX_GJ_production
-		x = 336
+		x = 316
 		y = 2
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_2 }
@@ -9176,7 +8659,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_4
 		icon = GFX_GJ_production
-		x = 336
+		x = 316
 		y = 3
 		cost = 5
 		prerequisite = { focus = GJ_late_tech_3 }
@@ -9189,7 +8672,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_tech_5
 		icon = GFX_GJ_production
-		x = 336
+		x = 316
 		y = 4
 		cost = 10
 		prerequisite = { focus = GJ_late_tech_4 }
@@ -9203,7 +8686,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_1
 		icon = GFX_GJ_production
-		x = 328
+		x = 308
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_5 }
@@ -9218,7 +8701,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_2
 		icon = GFX_GJ_production
-		x = 328
+		x = 308
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_b_1 }
@@ -9231,7 +8714,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_3
 		icon = GFX_GJ_production
-		x = 328
+		x = 308
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_b_2 }
@@ -9244,7 +8727,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_b_4
 		icon = GFX_GJ_production
-		x = 328
+		x = 308
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_b_3 }
@@ -9258,7 +8741,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_1
 		icon = GFX_GJ_production
-		x = 330
+		x = 310
 		y = 5
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_5 }
@@ -9272,7 +8755,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_2
 		icon = GFX_GJ_production
-		x = 330
+		x = 310
 		y = 6
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_c_1 }
@@ -9286,7 +8769,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_3
 		icon = GFX_GJ_production
-		x = 330
+		x = 310
 		y = 7
 		cost = 5
 		prerequisite = { focus = GJ_late_rebuild_c_2 }
@@ -9300,7 +8783,7 @@ focus_tree = {
 	focus = {
 		id = GJ_late_rebuild_c_4
 		icon = GFX_GJ_production
-		x = 330
+		x = 310
 		y = 8
 		cost = 10
 		prerequisite = { focus = GJ_late_rebuild_c_3 }

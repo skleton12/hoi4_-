@@ -811,6 +811,176 @@
           "days": 35
         }
       ]
+    },
+    {
+      "id": "ind_coast",
+      "title": "해안 공업",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 주 보유",
+      "target": 2,
+      "focuses": [
+        {
+          "name": "연안도로 정비",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "해안산업 입지",
+          "effect": "민간공장 +2",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_coast_a",
+      "title": "항만",
+      "after": "ind_coast",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "항구 하역표준",
+          "effect": "해군 조선소 +1, 보급 처리량 +5%",
+          "days": 35
+        },
+        {
+          "name": "수륙운송 연결",
+          "effect": "수송선 +20, 건물 슬롯 +1",
+          "days": 35
+        },
+        {
+          "name": "해안 물류체계",
+          "effect": "민간공장 +2, 인프라 +1 (2개 주)",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_coast_b",
+      "title": "해안 방위산업",
+      "after": "ind_coast",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "연안기상 관측소",
+          "effect": "연구 속도 +2%",
+          "days": 35
+        },
+        {
+          "name": "항만방호 협의",
+          "effect": "방어전 +5%",
+          "days": 35
+        },
+        {
+          "name": "해안 거점보강",
+          "effect": "군수공장 +1",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_land",
+      "title": "내륙 공업",
+      "after": null,
+      "exclusive": null,
+      "condition": "해안 없음",
+      "target": 2,
+      "focuses": [
+        {
+          "name": "접경통상 경로",
+          "effect": "정치력 +50, 무역 자원 +5%",
+          "days": 35
+        },
+        {
+          "name": "내륙 공업거점",
+          "effect": "민간공장 +2",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_land_a",
+      "title": "교통망",
+      "after": "ind_land",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "간선도로 보수",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "내륙철도 연결",
+          "effect": "보급 소모 -5%, 인프라 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "내륙 물류체계",
+          "effect": "민간공장 +1, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_land_b",
+      "title": "산악과 자원",
+      "after": "ind_land",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국경 세관정비",
+          "effect": "정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "산악 광산 개발",
+          "effect": "자원 추출 +10%, 강철 +4",
+          "days": 35
+        },
+        {
+          "name": "내륙요새 부지",
+          "effect": "방어전 +5%, 군수공장 +1",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_island",
+      "title": "섬 공업",
+      "after": null,
+      "exclusive": null,
+      "condition": "섬 국가",
+      "target": 4,
+      "focuses": [
+        {
+          "name": "섬항구 정비",
+          "effect": "해군 조선소 +2",
+          "days": 35
+        },
+        {
+          "name": "상륙저지 진지",
+          "effect": "방어전 +10%",
+          "days": 35
+        },
+        {
+          "name": "도서보급 연결",
+          "effect": "수송선 +20, 보급 소모 -5%",
+          "days": 35
+        },
+        {
+          "name": "도서방위 협동체",
+          "effect": "민간공장 +2, 군수공장 +1",
+          "days": 70
+        }
+      ]
     }
   ]
 }
