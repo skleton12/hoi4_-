@@ -76,7 +76,7 @@ MODIFIERS = [
     (r"(?<!획득 )정치력 \+(\d+)%", "political_power_factor", 0.01),
     (r"공장 생산량 \+(\d+)%", "industrial_capacity_factory", 0.01),
     (r"소비재 공장 ([+-]\d+)%", "consumer_goods_factor", 0.01),
-    (r"연구 속도 \+(\d+)%", "research_speed_factor", 0.01),
+    (r"(?<![가-힣] )연구 속도 \+(\d+)%", "research_speed_factor", 0.01),
     (r"생산 효율 상한 \+(\d+)%", "production_factory_max_efficiency_factor", 0.01),
     (r"생산 효율 증가 \+(\d+)%", "production_factory_efficiency_gain_factor", 0.01),
     (r"민간공장 건설 속도 \+(\d+)%", "production_speed_industrial_complex_factor", 0.01),

@@ -313,7 +313,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_light_b_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.05 }
+			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -413,8 +413,6 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_heavy_a_4_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.1 }
 		}
 	}
 	focus = {
@@ -472,7 +470,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_heavy_b_4_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.05 }
+			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -722,8 +720,6 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_sci_a_2_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.1 }
 		}
 	}
 	focus = {
@@ -753,7 +749,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_urban_1_tt
 			add_offsite_building = { type = industrial_complex level = 1 }
-			add_stability = 0.03
+			add_stability = 0.05
 		}
 	}
 	focus = {
@@ -1069,7 +1065,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_light_c_1_tt
 			add_offsite_building = { type = industrial_complex level = 1 }
-			add_stability = 0.03
+			add_stability = 0.05
 		}
 	}
 	focus = {
@@ -1250,7 +1246,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_prod_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.05 }
+			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -1280,7 +1276,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_prod_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -1310,7 +1306,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_war_b_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.1 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
 		}
 	}
 	focus = {
@@ -1326,7 +1322,7 @@ focus_tree = {
 			custom_effect_tooltip = GJ_ind_war_b_2_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
 			add_to_variable = { var = GJ_conscription value = 0.02 }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -1394,7 +1390,9 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_sci_b_4_tt
-			add_research_slot = 1
+			add_political_power = 50
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
 		}
 	}
 	focus = {
@@ -1508,7 +1506,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_rural_b_1_tt
-			add_stability = 0.03
+			add_stability = 0.05
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
 			add_to_variable = { var = GJ_conscription value = 0.01 }
 		}
@@ -1538,7 +1536,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_rural_b_3_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -1902,7 +1900,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_urban_d_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -2434,8 +2432,6 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_navy_modern_3_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
 		}
 	}
 	focus = {
@@ -2661,8 +2657,6 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_air_modern_2_tt
-			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.1 }
 		}
 	}
 	focus = {
@@ -3664,7 +3658,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_stalin_econ_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.1 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
 		}
 	}
 	focus = {
@@ -3830,7 +3824,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_bukharin_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_consumer_goods_factor value = -0.05 }
+			add_to_variable = { var = GJ_consumer_goods_factor value = -0.03 }
 		}
 	}
 	focus = {
@@ -3887,7 +3881,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_bukharin_market_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_production_factory_efficiency_gain_factor value = 0.1 }
+			add_to_variable = { var = GJ_production_factory_efficiency_gain_factor value = 0.05 }
 		}
 	}
 	focus = {
@@ -3976,7 +3970,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_anarchy_labor_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -4380,7 +4374,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_dem_social_labor_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -4528,7 +4522,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_dem_liberal_capital_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.05 }
+			add_to_variable = { var = GJ_production_factory_max_efficiency_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -4935,7 +4929,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_adv_1_tt
-			add_war_support = 0.03
+			add_war_support = 0.05
 		}
 	}
 	focus = {
@@ -5050,7 +5044,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_franco_autarky_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -5136,7 +5130,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_corp_guild_2_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_consumer_goods_factor value = -0.05 }
+			add_to_variable = { var = GJ_consumer_goods_factor value = -0.03 }
 		}
 	}
 	focus = {
@@ -5151,7 +5145,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_corp_guild_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -5389,7 +5383,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_clerical_guild_2_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -5807,7 +5801,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_pres_dev_2_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -6049,7 +6043,7 @@ focus_tree = {
 			custom_effect_tooltip = GJ_neu_conserv_reform_3_tt
 			add_offsite_building = { type = industrial_complex level = 1 }
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -6065,7 +6059,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_kemal_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -6110,7 +6104,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_kemal_reform_3_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -6567,7 +6561,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_hid_egg_1_tt
-			add_stability = 0.01
+			add_stability = 0.05
 		}
 	}
 	focus = {
@@ -6595,7 +6589,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_hid_egg_3_tt
-			add_war_support = 0.03
+			add_war_support = 0.05
 		}
 	}
 	focus = {
@@ -6609,8 +6603,8 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_hid_egg_4_tt
-			add_stability = 0.02
-			add_war_support = 0.02
+			add_stability = 0.05
+			add_war_support = 0.05
 		}
 	}
 	focus = {
@@ -6759,7 +6753,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_allies_1_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -6788,7 +6782,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_allies_aid_1_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -6874,7 +6868,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_axis_1_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -6961,7 +6955,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_axis_pact_2_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.03 }
 		}
 	}
 	focus = {
@@ -6990,7 +6984,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_comintern_1_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -7188,7 +7182,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_neutral_trade_b_2_tt
-			add_political_power = 25
+			add_political_power = 50
 			add_offsite_building = { type = arms_factory level = 1 }
 		}
 	}
@@ -7291,7 +7285,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_neutral_aid_2_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -7652,7 +7646,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_black_b_1_tt
-			add_political_power = 25
+			add_political_power = 50
 		}
 	}
 	focus = {
@@ -8144,7 +8138,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_sub_loyal_a_4_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.03 }
 		}
 	}
 	focus = {
@@ -9182,7 +9176,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_rebuild_c_4_tt
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reforms } } } add_dynamic_modifier = { modifier = GJ_reforms } }
-			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.1 }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
 		}
 	}
 }
