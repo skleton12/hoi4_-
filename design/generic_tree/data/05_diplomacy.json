@@ -12,7 +12,7 @@
       "focuses": [
         {
           "name": "외교부 재편",
-          "effect": "정치력 +50, 외교 노선 선택 해금",
+          "effect": "정치력 +75, 외교 노선 선택 해금",
           "days": 35
         },
         {
@@ -32,12 +32,12 @@
       "focuses": [
         {
           "name": "연맹 이사국 도전",
-          "effect": "정치력 +50",
+          "effect": "정치력 +75",
           "days": 35
         },
         {
           "name": "군축 회의 참여",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         },
         {
@@ -47,7 +47,7 @@
         },
         {
           "name": "집단 안보 호소",
-          "effect": "안정도 +5%, 전쟁 지원 +5%",
+          "effect": "안정도 +10%, 전쟁 지원 +10%",
           "days": 35
         }
       ]
@@ -62,27 +62,27 @@
       "focuses": [
         {
           "name": "런던 외교 채널",
-          "effect": "정치력 +50, 민주 지지율 +5%",
+          "effect": "정치력 +75, 민주 지지율 +5%",
           "days": 35
         },
         {
           "name": "민주 진영 접근",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         }
       ]
     },
     {
       "id": "dip_allies_aid",
-      "title": "영미 원조",
+      "title": "영미 원조·대서양 동맹",
       "after": "dip_allies",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "영미 기술 협력",
-          "effect": "연구 속도 +3%",
+          "effect": "연구 속도 +5%",
           "days": 35
         },
         {
@@ -92,32 +92,17 @@
         },
         {
           "name": "연합국 군사 고문단",
-          "effect": "육군 경험 +50, 해군 경험 +25",
+          "effect": "육군 경험 +75, 해군 경험 +40",
           "days": 35
-        }
-      ]
-    },
-    {
-      "id": "dip_allies_pact",
-      "title": "대서양 동맹",
-      "after": "dip_allies",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
+        },
         {
           "name": "영미 상호 원조 조약",
           "effect": "연합국 보장 획득",
           "days": 35
         },
         {
-          "name": "대서양 헌장 지지",
-          "effect": "전쟁 지원 +10%",
-          "days": 35
-        },
-        {
           "name": "연합국 가입 신청",
-          "effect": "연합국 가입",
+          "effect": "연합국 가입, 전쟁 지원 +15%",
           "days": 70
         }
       ]
@@ -132,62 +117,47 @@
       "focuses": [
         {
           "name": "베를린 특사 파견",
-          "effect": "정치력 +50, 공산 지지율 -10%",
+          "effect": "정치력 +75, 공산 지지율 -10%",
           "days": 35
         },
         {
           "name": "반코민테른 협정",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         }
       ]
     },
     {
       "id": "dip_axis_aid",
-      "title": "추축 원조",
+      "title": "추축 원조·신질서",
       "after": "dip_axis",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "독일 기술 지원",
-          "effect": "연구 속도 +3%, 군수공장 +1",
+          "effect": "연구 속도 +5%, 군수공장 +1",
           "days": 35
         },
         {
           "name": "이탈리아 해군 협력",
-          "effect": "해군 경험 +50",
+          "effect": "해군 경험 +75",
           "days": 35
         },
         {
           "name": "추축 군사 고문단",
-          "effect": "육군 경험 +50",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "dip_axis_pact",
-      "title": "신질서",
-      "after": "dip_axis",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "영토 보상 약속",
-          "effect": "전쟁 지원 +10%",
+          "effect": "육군 경험 +75",
           "days": 35
         },
         {
-          "name": "신질서 참여",
-          "effect": "공장 생산량 +3%",
+          "name": "영토 보상 약속",
+          "effect": "전쟁 지원 +15%",
           "days": 35
         },
         {
           "name": "추축국 가입 신청",
-          "effect": "추축국 가입",
+          "effect": "추축국 가입, 공장 생산량 +5%",
           "days": 70
         }
       ]
@@ -202,23 +172,23 @@
       "focuses": [
         {
           "name": "모스크바 대사관",
-          "effect": "정치력 +50, 공산 지지율 +5%",
+          "effect": "정치력 +75, 공산 지지율 +5%",
           "days": 35
         },
         {
           "name": "인민 전선 전술",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         }
       ]
     },
     {
       "id": "dip_comintern_aid",
-      "title": "소련 원조",
+      "title": "소련 원조·국제주의",
       "after": "dip_comintern",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "소련 차관 도입",
@@ -227,37 +197,22 @@
         },
         {
           "name": "소련 기술 지원",
-          "effect": "연구 속도 +3%",
+          "effect": "연구 속도 +5%",
           "days": 35
         },
         {
           "name": "붉은 군대 교관단",
-          "effect": "육군 경험 +50",
+          "effect": "육군 경험 +75",
           "days": 35
-        }
-      ]
-    },
-    {
-      "id": "dip_comintern_pact",
-      "title": "국제주의",
-      "after": "dip_comintern",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
+        },
         {
           "name": "소련 상호 원조 협정",
           "effect": "소련 보장 획득",
           "days": 35
         },
         {
-          "name": "국제주의 연대",
-          "effect": "전쟁 지원 +10%",
-          "days": 35
-        },
-        {
           "name": "코민테른 가입 신청",
-          "effect": "코민테른 가입",
+          "effect": "코민테른 가입, 전쟁 지원 +15%",
           "days": 70
         }
       ]
@@ -272,12 +227,12 @@
       "focuses": [
         {
           "name": "영세 중립 선언",
-          "effect": "안정도 +10%, 세계 긴장도 영향 -50%",
+          "effect": "안정도 +15%, 전쟁 목표 긴장도 -50%",
           "days": 35
         },
         {
           "name": "중립국 지위 승인",
-          "effect": "정치력 +50",
+          "effect": "정치력 +75",
           "days": 35
         }
       ]
@@ -292,17 +247,17 @@
       "focuses": [
         {
           "name": "양측 무역 협정",
-          "effect": "민간공장 +1, 무역 자원 +10%",
+          "effect": "민간공장 +1, 자원 추출 +10%",
           "days": 35
         },
         {
           "name": "전쟁 특수 호황",
-          "effect": "참전국 교역 시 민간공장 +2",
+          "effect": "민간공장 +2",
           "days": 35
         },
         {
           "name": "금융 피난처",
-          "effect": "정치력 +100",
+          "effect": "정치력 +150",
           "days": 35
         }
       ]
@@ -322,12 +277,12 @@
         },
         {
           "name": "무기 수출 허가",
-          "effect": "군수공장 +1, 정치력 +50",
+          "effect": "군수공장 +1, 정치력 +75",
           "days": 35
         },
         {
           "name": "외화 보유고",
-          "effect": "정치력 +75",
+          "effect": "정치력 +100",
           "days": 35
         },
         {
@@ -339,51 +294,36 @@
     },
     {
       "id": "dip_neutral_defense",
-      "title": "국토 방위",
+      "title": "국토 방위·중재와 정보",
       "after": "dip_neutral",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "산악 요새 계획",
-          "effect": "방어전 +5%, 요새 건설 +20%",
+          "effect": "방어전 +5%, 요새 건설 속도 +20%",
           "days": 35
         },
         {
           "name": "국민 개병제",
-          "effect": "징집 인력 +2%, 방어 +5%",
+          "effect": "징집 인력 +3%, 방어전 +5%",
           "days": 35
         },
         {
           "name": "중립의 수호자",
           "effect": "방어전 +10%",
           "days": 70
-        }
-      ]
-    },
-    {
-      "id": "dip_neutral_aid",
-      "title": "중재와 정보",
-      "after": "dip_neutral",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "국제 중재 외교",
-          "effect": "일일 정치력 +0.1",
-          "days": 35
         },
         {
-          "name": "스파이 교차로",
-          "effect": "정치력 +50, 방첩 +20%",
+          "name": "국제 중재 외교",
+          "effect": "일일 정치력 +0.15",
           "days": 35
         },
         {
           "name": "의용군 파견 허가",
-          "effect": "의용군 파견 해금, 육군 경험 +25",
-          "days": 35
+          "effect": "의용군 파견 해금, 육군 경험 +40, 정치력 +75",
+          "days": 70
         }
       ]
     },
@@ -397,17 +337,17 @@
       "focuses": [
         {
           "name": "열강 사이의 줄타기",
-          "effect": "정치력 +50, 세계 긴장도 영향 -25%",
+          "effect": "정치력 +75, 전쟁 목표 긴장도 -25%",
           "days": 35
         },
         {
           "name": "양면 통상 협정",
-          "effect": "민간공장 +1, 무역 자원 +5%",
+          "effect": "민간공장 +1, 자원 추출 +10%",
           "days": 35
         },
         {
           "name": "불가침 선언",
-          "effect": "안정도 +5%, 방어전 +5%",
+          "effect": "안정도 +10%, 방어전 +5%",
           "days": 70
         }
       ]
@@ -422,27 +362,27 @@
       "focuses": [
         {
           "name": "지역 회의 소집",
-          "effect": "정치력 +50",
+          "effect": "정치력 +75",
           "days": 35
         },
         {
           "name": "이웃 정상 초청",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         }
       ]
     },
     {
       "id": "dip_leader_econ",
-      "title": "경제 통합",
+      "title": "경제 통합·군사 협력",
       "after": "dip_leader",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "관세 동맹",
-          "effect": "민간공장 +1, 무역 자원 +10%",
+          "effect": "민간공장 +1, 자원 추출 +10%",
           "days": 35
         },
         {
@@ -452,33 +392,18 @@
         },
         {
           "name": "지역 개발 은행",
-          "effect": "민간공장 건설 속도 +10%",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "dip_leader_mil",
-      "title": "군사 협력",
-      "after": "dip_leader",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "불가침 조약 체결",
-          "effect": "안정도 +5%",
+          "effect": "민간공장 건설 속도 +15%",
           "days": 35
         },
         {
-          "name": "합동 군사 훈련",
-          "effect": "사단 조직력 +5%, 육군 경험 +30",
+          "name": "불가침 조약 체결",
+          "effect": "안정도 +10%",
           "days": 35
         },
         {
           "name": "상호 방위 조약",
-          "effect": "방어전 +5%",
-          "days": 35
+          "effect": "방어전 +5%, 사단 조직력 +5%, 육군 경험 +45",
+          "days": 70
         }
       ]
     },
@@ -497,7 +422,7 @@
         },
         {
           "name": "진영 확대 외교",
-          "effect": "정치력 +50",
+          "effect": "정치력 +75",
           "days": 35
         }
       ]
@@ -512,12 +437,12 @@
       "focuses": [
         {
           "name": "강대국 간섭 거부",
-          "effect": "전쟁 지원 +10%",
+          "effect": "전쟁 지원 +15%",
           "days": 35
         },
         {
           "name": "버티는 이웃 압박",
-          "effect": "육군 경험 +25",
+          "effect": "육군 경험 +40",
           "days": 35
         },
         {
@@ -537,17 +462,17 @@
       "focuses": [
         {
           "name": "지역 의회 구성",
-          "effect": "안정도 +5%, 일일 정치력 +0.1",
+          "effect": "안정도 +10%, 일일 정치력 +0.15",
           "days": 35
         },
         {
           "name": "지역 연방 구상",
-          "effect": "정치력 +100",
+          "effect": "정치력 +150",
           "days": 35
         },
         {
           "name": "지역의 맹주",
-          "effect": "전쟁 지원 +10%, 공장 생산량 +5%",
+          "effect": "전쟁 지원 +15%, 공장 생산량 +5%",
           "days": 70
         }
       ]
@@ -562,7 +487,7 @@
       "focuses": [
         {
           "name": "비밀 예산 편성",
-          "effect": "정치력 +50, 일일 정치력 -0.05",
+          "effect": "정치력 +75, 일일 정치력 -0.05",
           "days": 35
         },
         {
@@ -577,7 +502,7 @@
         },
         {
           "name": "무허가 채굴",
-          "effect": "강철 +8 (임시)",
+          "effect": "강철 +4",
           "days": 35
         }
       ]
@@ -592,7 +517,7 @@
       "focuses": [
         {
           "name": "해외 정보망 구축",
-          "effect": "정치력 +50",
+          "effect": "정치력 +75",
           "days": 35
         },
         {
@@ -607,7 +532,7 @@
         },
         {
           "name": "방첩 총국",
-          "effect": "안정도 +5%",
+          "effect": "안정도 +10%",
           "days": 35
         }
       ]

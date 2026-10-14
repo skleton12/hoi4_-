@@ -12,7 +12,7 @@
       "focuses": [
         {
           "name": "육군 참모조직",
-          "effect": "육군 경험 +25, 육군 장성 1명 영입",
+          "effect": "육군 경험 +40, 육군 장성 1명 영입",
           "days": 35
         },
         {
@@ -42,7 +42,7 @@
         },
         {
           "name": "보병화력 재평가",
-          "effect": "보병 장비 연구 +10%",
+          "effect": "보병 장비 연구 +50%",
           "days": 35
         },
         {
@@ -87,7 +87,7 @@
         },
         {
           "name": "대전차 거점설계",
-          "effect": "대전차 연구 +15%",
+          "effect": "대전차 연구 +50%",
           "days": 35
         },
         {
@@ -97,7 +97,7 @@
         },
         {
           "name": "최후방어선 준비",
-          "effect": "수도 인근 방어 +10%",
+          "effect": "방어전 +5%",
           "days": 35
         }
       ]
@@ -112,7 +112,7 @@
       "focuses": [
         {
           "name": "예비군 등록제",
-          "effect": "징집 인력 +2%",
+          "effect": "징집 인력 +3%",
           "days": 35
         },
         {
@@ -142,12 +142,12 @@
       "focuses": [
         {
           "name": "원정전력 조사",
-          "effect": "육군 경험 +25",
+          "effect": "육군 경험 +40",
           "days": 35
         },
         {
           "name": "해외 파견기준",
-          "effect": "원정 사단 보급 소모 -10%",
+          "effect": "보급 소모 -5%",
           "days": 35
         }
       ]
@@ -162,17 +162,17 @@
       "focuses": [
         {
           "name": "원정지원자 모집",
-          "effect": "징집 인력 +1%",
+          "effect": "징집 인력 +2%",
           "days": 35
         },
         {
           "name": "기동포대 연구",
-          "effect": "포병 연구 +10%",
+          "effect": "포병 연구 +50%",
           "days": 35
         },
         {
           "name": "기갑지원 검토",
-          "effect": "기갑 연구 +10%",
+          "effect": "기갑 연구 +50%",
           "days": 35
         },
         {
@@ -202,7 +202,7 @@
         },
         {
           "name": "연합훈련 참관",
-          "effect": "육군 경험 +30",
+          "effect": "육군 경험 +45",
           "days": 35
         },
         {
@@ -222,7 +222,7 @@
       "focuses": [
         {
           "name": "해군 함적조사",
-          "effect": "해군 경험 +25",
+          "effect": "해군 경험 +40",
           "days": 35
         },
         {
@@ -247,7 +247,7 @@
       "focuses": [
         {
           "name": "함대레이더 연구",
-          "effect": "레이더 연구 +10%",
+          "effect": "레이더 연구 +50%",
           "days": 35
         },
         {
@@ -257,7 +257,7 @@
         },
         {
           "name": "현대 해군기준",
-          "effect": "해군 연구 속도 +5%",
+          "effect": "해군 연구 +50%",
           "days": 70
         }
       ]
@@ -272,7 +272,7 @@
       "focuses": [
         {
           "name": "연안수역 조사",
-          "effect": "해안 방어 +5%",
+          "effect": "해안 요새 건설 속도 +10%",
           "days": 35
         },
         {
@@ -297,17 +297,17 @@
         },
         {
           "name": "기뢰 운용검토",
-          "effect": "기뢰 연구 +20%",
+          "effect": "기뢰 연구 +50%",
           "days": 35
         },
         {
           "name": "연안 잠수함연구",
-          "effect": "잠수함 연구 +10%",
+          "effect": "잠수함 연구 +50%",
           "days": 35
         },
         {
           "name": "해안방위 함대",
-          "effect": "해안 방어 +10%",
+          "effect": "해안 요새 건설 속도 +20%",
           "days": 70
         }
       ]
@@ -342,7 +342,7 @@
       "focuses": [
         {
           "name": "대양함대 설계실",
-          "effect": "주력함 연구 +10%",
+          "effect": "주력함 연구 +50%",
           "days": 35
         },
         {
@@ -357,7 +357,7 @@
         },
         {
           "name": "대양 작전함대",
-          "effect": "해군 경험 +50, 주력함 생산 +10%",
+          "effect": "해군 경험 +75, 주력함 생산 +10%",
           "days": 70
         }
       ]
@@ -372,7 +372,7 @@
       "focuses": [
         {
           "name": "항공대 전력조사",
-          "effect": "공군 경험 +25",
+          "effect": "공군 경험 +40",
           "days": 35
         },
         {
@@ -397,17 +397,17 @@
       "focuses": [
         {
           "name": "항공기술 표준국",
-          "effect": "항공기 생산 효율 +5%",
+          "effect": "생산 효율 증가 +5%",
           "days": 35
         },
         {
           "name": "고성능 엔진연구",
-          "effect": "항공기 연구 속도 +10%",
+          "effect": "항공기 연구 +50%",
           "days": 35
         },
         {
           "name": "제트추진 실험",
-          "effect": "제트 엔진 연구 +20%",
+          "effect": "제트 엔진 연구 +50%",
           "days": 70
         }
       ]
@@ -427,18 +427,18 @@
         },
         {
           "name": "전투기 설계심사",
-          "effect": "전투기 연구 +10%",
+          "effect": "전투기 연구 +50%",
           "days": 35
         }
       ]
     },
     {
       "id": "air_def_a",
-      "title": "방공망",
+      "title": "방공망·방공 교리",
       "after": "air_def",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "대공포 배치계획",
@@ -447,12 +447,22 @@
         },
         {
           "name": "요격비행 훈련",
-          "effect": "공군 경험 +30",
+          "effect": "공군 경험 +45",
           "days": 35
         },
         {
           "name": "영공 방위체계",
           "effect": "방공 +10%",
+          "days": 70
+        },
+        {
+          "name": "야간 전투기대",
+          "effect": "야간 공중전 +10%",
+          "days": 35
+        },
+        {
+          "name": "방공 레이더망",
+          "effect": "레이더 연구 +50%, 공군 교리 비용 -15%",
           "days": 70
         }
       ]
@@ -472,18 +482,18 @@
         },
         {
           "name": "근접지원 설계심사",
-          "effect": "근접 지원기 연구 +10%",
+          "effect": "근접 지원기 연구 +50%",
           "days": 35
         }
       ]
     },
     {
       "id": "air_cas_a",
-      "title": "전선 지원",
+      "title": "전선 지원·폭격 교리",
       "after": "air_cas",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "전선 비행장확보",
@@ -498,6 +508,16 @@
         {
           "name": "전선 항공지원망",
           "effect": "근접 지원 효율 +10%",
+          "days": 70
+        },
+        {
+          "name": "급강하 폭격대",
+          "effect": "근접 지원기 생산 +10%",
+          "days": 35
+        },
+        {
+          "name": "해상 초계기대",
+          "effect": "전략 폭격기 연구 +50%, 해상 정찰 +10%",
           "days": 70
         }
       ]
@@ -563,42 +583,12 @@
       ]
     },
     {
-      "id": "army_equip",
-      "title": "장비 개발",
-      "after": "army_modern",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "국산 소총 설계",
-          "effect": "보병 장비 연구 +15%",
-          "days": 35
-        },
-        {
-          "name": "경전차 국산화",
-          "effect": "기갑 연구 +10%",
-          "days": 35
-        },
-        {
-          "name": "야포 표준화",
-          "effect": "포병 연구 +15%",
-          "days": 35
-        },
-        {
-          "name": "국산 장비 체계",
-          "effect": "장비 생산 효율 +5%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "army_primacy",
-      "title": "육군 우선주의",
+      "title": "육군 우선주의·장비 개발",
       "after": "army_modern",
       "exclusive": null,
       "condition": null,
-      "target": 2,
+      "target": 5,
       "focuses": [
         {
           "name": "육군 예산 우선",
@@ -607,7 +597,22 @@
         },
         {
           "name": "육군 중심 국방",
-          "effect": "육군 경험 +50",
+          "effect": "육군 경험 +75",
+          "days": 70
+        },
+        {
+          "name": "국산 소총 설계",
+          "effect": "보병 장비 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "경전차 국산화",
+          "effect": "기갑 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "국산 장비 체계",
+          "effect": "생산 효율 증가 +5%, 포병 연구 +50%",
           "days": 70
         }
       ]
@@ -622,17 +627,17 @@
       "focuses": [
         {
           "name": "산악 요새선",
-          "effect": "산악 방어 +10%, 요새 +1",
+          "effect": "방어전 +5%, 참호 효과 +10%",
           "days": 35
         },
         {
           "name": "대전차 장애물 지대",
-          "effect": "대전차 방어 +10%",
+          "effect": "대전차 연구 +50%",
           "days": 35
         },
         {
           "name": "국민 저항 계획",
-          "effect": "점령 시 저항 +20%",
+          "effect": "민병 사단 2개 생성",
           "days": 35
         }
       ]
@@ -652,12 +657,12 @@
         },
         {
           "name": "국제 의용 대대",
-          "effect": "의용군 경험 획득 +10%",
+          "effect": "육군 경험 +20",
           "days": 35
         },
         {
           "name": "원정 보급 기지",
-          "effect": "원정 사단 보급 소모 -10%",
+          "effect": "보급 소모 -5%",
           "days": 35
         }
       ]
@@ -677,12 +682,12 @@
         },
         {
           "name": "기뢰 부설 전단",
-          "effect": "기뢰 연구 +15%",
+          "effect": "기뢰 연구 +50%",
           "days": 35
         },
         {
           "name": "연안 방어 사령부",
-          "effect": "해안 방어 +10%",
+          "effect": "해안 요새 건설 속도 +20%",
           "days": 35
         }
       ]
@@ -697,7 +702,7 @@
       "focuses": [
         {
           "name": "항모 기동 부대",
-          "effect": "항모 연구 +15%",
+          "effect": "항모 연구 +50%",
           "days": 35
         },
         {
@@ -714,11 +719,11 @@
     },
     {
       "id": "navy_marine",
-      "title": "해병대",
+      "title": "해병대·상선 호위",
       "after": "navy_base",
       "exclusive": null,
       "condition": null,
-      "target": 3,
+      "target": 5,
       "focuses": [
         {
           "name": "상륙전 교범",
@@ -734,31 +739,16 @@
           "name": "해병 사단 창설",
           "effect": "해병 사단 1개 생성",
           "days": 35
-        }
-      ]
-    },
-    {
-      "id": "navy_trade",
-      "title": "상선 호위",
-      "after": "navy_base",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
+        },
         {
           "name": "호송선단 체계",
           "effect": "호송 효율 +10%",
           "days": 35
         },
         {
-          "name": "대잠 초계망",
-          "effect": "대잠 효율 +10%",
-          "days": 35
-        },
-        {
           "name": "상선대 확충",
-          "effect": "수송선 +20",
-          "days": 35
+          "effect": "수송선 +20, 대잠 효율 +10%",
+          "days": 70
         }
       ]
     },
@@ -777,7 +767,7 @@
         },
         {
           "name": "대해군 국가 선언",
-          "effect": "해군 경험 +50",
+          "effect": "해군 경험 +75",
           "days": 70
         }
       ]
@@ -792,7 +782,7 @@
       "focuses": [
         {
           "name": "조종사 양성소",
-          "effect": "공군 경험 +30",
+          "effect": "공군 경험 +45",
           "days": 35
         },
         {
@@ -802,57 +792,7 @@
         },
         {
           "name": "항공 학도대",
-          "effect": "공군 경험 +20",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "air_def_b",
-      "title": "방공 교리",
-      "after": "air_def",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "야간 전투기대",
-          "effect": "야간 공중전 +10%",
-          "days": 35
-        },
-        {
-          "name": "공중 우세 교리",
-          "effect": "공군 교리 비용 -15%",
-          "days": 35
-        },
-        {
-          "name": "방공 레이더망",
-          "effect": "레이더 연구 +15%",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "air_cas_b",
-      "title": "폭격 교리",
-      "after": "air_cas",
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "급강하 폭격대",
-          "effect": "근접 지원기 생산 +10%",
-          "days": 35
-        },
-        {
-          "name": "전략 폭격 연구",
-          "effect": "전략 폭격기 연구 +15%",
-          "days": 35
-        },
-        {
-          "name": "해상 초계기대",
-          "effect": "해상 정찰 +10%",
+          "effect": "공군 경험 +30",
           "days": 35
         }
       ]
@@ -872,7 +812,7 @@
         },
         {
           "name": "공군 독립 군종",
-          "effect": "공군 경험 +50",
+          "effect": "공군 경험 +75",
           "days": 70
         }
       ]

@@ -55,6 +55,13 @@ CONDITIONS = {
 ROUTE_CONDITIONS = {"무장 봉기로 집권": "com_war", "군부 쿠데타로 집권": "neu_war"}
 
 IDEOLOGY = {"공산주의": "communism", "민주주의": "democratic", "파시즘": "fascism", "비동맹": "neutrality"}
+PARTY = {"공산주의": "communism", "공산": "communism", "민주주의": "democratic", "민주": "democratic",
+         "파시즘": "fascism", "비동맹": "neutrality"}
+# 분야별 연구 보너스 → add_tech_bonus 범주 (바닐라 기술 범주 중 확실한 것만)
+TECH = {"보병 장비": "infantry_weapons", "포병": "artillery", "대전차": "artillery", "기갑": "armor",
+        "레이더": "radar_tech", "전자 공학": "electronics", "전자": "electronics", "로켓": "rocketry",
+        "핵": "nuclear", "제트 엔진": "jet_engine", "합성": "synth_resources", "합성 정유소": "synth_resources",
+        "합성 고무": "synth_resources", "산업": "industry", "전투기": "light_fighter", "근접 지원기": "cas_bomber"}
 
 
 def num(text, pattern):
@@ -67,27 +74,41 @@ def fnum(text, pattern):
     return float(m.group(1)) if m else None
 
 
-# 퍼센트형 효과는 국가 정신 수백 개 대신 동적 수정자 하나(GJ_reforms)에 변수로 쌓는다.
-# (효과 문구 패턴, 수정자 이름, 값 배율)
+# 퍼센트형 효과는 국가 정신 수백 개 대신 동적 수정자 셋(산업·군사·국정 개혁)에 변수로 쌓는다.
+# (효과 문구 패턴, 수정자 이름, 값 배율, 정신)
 MODIFIERS = [
-    (r"징집 인력 \+(\d+)%", "conscription", 0.01),
-    (r"일일 정치력 ([+-][\d.]+)", "political_power_gain", 1),
-    (r"정치력 획득 \+(\d+)%", "political_power_factor", 0.01),
-    (r"(?<!획득 )정치력 \+(\d+)%", "political_power_factor", 0.01),
-    (r"공장 생산량 \+(\d+)%", "industrial_capacity_factory", 0.01),
-    (r"소비재 공장 ([+-]\d+)%", "consumer_goods_factor", 0.01),
-    (r"(?<![가-힣] )연구 속도 \+(\d+)%", "research_speed_factor", 0.01),
-    (r"생산 효율 상한 \+(\d+)%", "production_factory_max_efficiency_factor", 0.01),
-    (r"생산 효율 증가 \+(\d+)%", "production_factory_efficiency_gain_factor", 0.01),
-    (r"민간공장 건설 속도 \+(\d+)%", "production_speed_industrial_complex_factor", 0.01),
-    (r"(?<!강철·텅스텐 )자원 추출 \+(\d+)%", "local_resources_factor", 0.01),
-    (r"보급 소모 (-\d+)%", "supply_consumption_factor", 0.01),
-    (r"방어전 \+(\d+)%", "army_defence_factor", 0.01),
-    (r"사단 조직력 \+(\d+)%", "army_org_factor", 0.01),
-    (r"점령지 저항 (-\d+)%", "resistance_target", 0.01),
-    (r"준수 증가 \+(\d+)%", "compliance_growth", 0.01),
+    (r"징집 인력 \+(\d+)%", "conscription", 0.01, "mil"),
+    (r"일일 정치력 ([+-][\d.]+)", "political_power_gain", 1, "state"),
+    (r"정치력 획득 \+(\d+)%", "political_power_factor", 0.01, "state"),
+    (r"(?<!획득 )정치력 \+(\d+)%", "political_power_factor", 0.01, "state"),
+    (r"공장 생산량 \+(\d+)%", "industrial_capacity_factory", 0.01, "ind"),
+    (r"소비재 공장 ([+-]\d+)%", "consumer_goods_factor", 0.01, "ind"),
+    (r"(?<![가-힣] )연구 속도 \+(\d+)%", "research_speed_factor", 0.01, "ind"),
+    (r"생산 효율 상한 \+(\d+)%", "production_factory_max_efficiency_factor", 0.01, "ind"),
+    (r"생산 효율 증가 \+(\d+)%", "production_factory_efficiency_gain_factor", 0.01, "ind"),
+    (r"라인 전환 효율 \+(\d+)%", "line_change_production_efficiency_factor", 0.01, "ind"),
+    (r"민간공장 건설 속도 \+(\d+)%", "production_speed_industrial_complex_factor", 0.01, "ind"),
+    (r"(?<!강철·텅스텐 )자원 추출 \+(\d+)%", "local_resources_factor", 0.01, "ind"),
+    (r"(?<!해안 )요새 건설 속도 \+(\d+)%", "production_speed_bunker_factor", 0.01, "mil"),
+    (r"해안 요새 건설 속도 \+(\d+)%", "production_speed_coastal_bunker_factor", 0.01, "mil"),
+    (r"보급 소모 (-\d+)%", "supply_consumption_factor", 0.01, "mil"),
+    (r"방어전 \+(\d+)%", "army_defence_factor", 0.01, "mil"),
+    (r"사단 조직력 \+(\d+)%", "army_org_factor", 0.01, "mil"),
+    (r"참호 효과 \+(\d+)%", "max_dig_in_factor", 0.01, "mil"),
+    (r"연료 저장량 \+(\d+)%", "max_fuel_factor", 0.01, "mil"),
+    (r"항복 한계 \+(\d+)%", "surrender_limit", 0.01, "mil"),
+    (r"정당화 기간 (-\d+)%", "justify_war_goal_time", 0.01, "state"),
+    (r"전쟁 목표 긴장도 (-\d+)%", "generate_wargoal_tension", 0.01, "state"),
+    (r"이념 침투 방어 \+(\d+)%", "drift_defence_factor", 0.01, "state"),
+    (r"고문 영입 비용 (-\d+)%", "political_advisor_cost_factor", 0.01, "state"),
+    (r"점령지 저항 (-\d+)%", "resistance_target", 0.01, "state"),
+    (r"준수 증가 \+(\d+)%", "compliance_growth", 0.01, "state"),
 ]
-DYNAMIC = "GJ_reforms"
+SPIRITS = {
+    "ind": ("GJ_reform_industry", "산업 개혁", "GFX_idea_generic_political_pressure"),
+    "mil": ("GJ_reform_military", "군사 개혁", "GFX_idea_generic_political_pressure"),
+    "state": ("GJ_reform_state", "국정 개혁", "GFX_idea_generic_political_pressure"),
+}
 FACTION = "GJ_regional_faction"
 RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
 
@@ -120,7 +141,7 @@ def rewards(effect):
         out.append(f"air_experience = {n}")
     if (n := num(effect, r"연구 슬롯 \+(\d+)")):
         out.append(f"add_research_slot = {n}")
-    if (n := num(effect, r"보병 장비 (\d+) 획득")):
+    if (n := num(effect, r"보병 장비 (\d+)(?: 획득)?(?![\d%])")):
         out.append(f"add_equipment_to_stockpile = {{ type = infantry_equipment amount = {n} }}")
     if (n := num(effect, r"수송선 \+(\d+)(?![\d%])")):
         out.append(f"add_equipment_to_stockpile = {{ type = convoy amount = {n} }}")
@@ -147,31 +168,46 @@ def rewards(effect):
         out.append(f"if = {{ limit = {{ is_in_faction = no }} create_faction = {FACTION} }}")
     if "정보 기관 설립" in effect:
         out.append("create_intelligence_agency = yes")
+    for m in re.finditer(r"(?<!이웃국 )(?<![가-힣·])(공산주의|공산|민주주의|민주|파시즘|비동맹) 지지율 ([+-]\d+)%", effect):
+        out.append(f"add_popularity = {{ ideology = {PARTY[m.group(1)]} popularity = {int(m.group(2)) / 100:.2f} }}")
+    if (m := re.search(r"공산·파시즘 지지율 ([+-]\d+)%", effect)):
+        for ideo in ("communism", "fascism"):
+            out.append(f"add_popularity = {{ ideology = {ideo} popularity = {int(m.group(1)) / 100:.2f} }}")
+    if (m := re.search(r"자치도 ([+-]\d+)", effect)):
+        out.append(f"if = {{ limit = {{ is_subject = yes }} add_autonomy_score = {{ value = {int(m.group(1))} }} }}")
+    for m in re.finditer(r"(?<![가-힣])([가-힣]+(?: [가-힣]+)?) 연구(?: 속도)? \+(\d+)%", effect):
+        if m.group(1) in TECH:
+            out.append(f"add_tech_bonus = {{ name = {{FID}} bonus = {int(m.group(2)) / 100:.2f} uses = 1 "
+                       f"category = {TECH[m.group(1)]} }}")
     m = re.search(r"정부를 (공산주의|민주주의|파시즘|비동맹)(?:으)?로 교체", effect)
     if m:
         elections = "yes" if m.group(1) == "민주주의" else "no"
         out.append(f"set_politics = {{ ruling_party = {IDEOLOGY[m.group(1)]} elections_allowed = {elections} }}")
 
-    adds = []
-    for pattern, modifier, scale in MODIFIERS:
+    adds, spirits = [], []
+    for pattern, modifier, scale, spirit in MODIFIERS:
         v = fnum(effect, pattern)
         if v:
             adds.append(f"add_to_variable = {{ var = GJ_{modifier} value = {v * scale:g} }}")
-    if adds:
-        out.append(f"if = {{ limit = {{ NOT = {{ has_dynamic_modifier = {{ modifier = {DYNAMIC} }} }} }} "
-                   f"add_dynamic_modifier = {{ modifier = {DYNAMIC} }} }}")
-        out += adds
-    return out
+            if spirit not in spirits:
+                spirits.append(spirit)
+    for spirit in spirits:
+        name = SPIRITS[spirit][0]
+        out.append(f"if = {{ limit = {{ NOT = {{ has_dynamic_modifier = {{ modifier = {name} }} }} }} "
+                   f"add_dynamic_modifier = {{ modifier = {name} }} }}")
+    return out + adds
 
 
 def dynamic_modifier_file():
-    seen = []
-    for _, modifier, _ in MODIFIERS:
-        if modifier not in seen:
-            seen.append(modifier)
-    body = "\n".join(f"\t{m} = GJ_{m}" for m in seen)
-    return ("# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 한꺼번에 반영된다.\n"
-            f"{DYNAMIC} = {{\n\ticon = GFX_idea_generic_political_pressure\n\tenable = {{ always = yes }}\n{body}\n}}\n")
+    text = "# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 반영된다.\n"
+    for spirit, (name, _, icon) in SPIRITS.items():
+        seen = []
+        for _, modifier, _, owner in MODIFIERS:
+            if owner == spirit and modifier not in seen:
+                seen.append(modifier)
+        body = "\n".join(f"\t{m} = GJ_{m}" for m in seen)
+        text += f"{name} = {{\n\ticon = {icon}\n\tenable = {{ always = yes }}\n{body}\n}}\n"
+    return text
 
 
 def rows_for(groups):
@@ -264,7 +300,7 @@ def build():
                 block.append("\t\tai_will_do = { factor = 1 }")
                 block.append("\t\tcompletion_reward = {")
                 block.append(f"\t\t\tcustom_effect_tooltip = {fid}_tt")
-                block += [f"\t\t\t{r}" for r in rewards(f["effect"])]
+                block += [f"\t\t\t{r}".replace("{FID}", fid) for r in rewards(f["effect"])]
                 block += ["\t\t}", "\t}"]
                 lines += block
 
@@ -279,8 +315,9 @@ def build():
         raise SystemExit(f"CONDITIONS 에 없는 조건 문구: {sorted(unknown)}")
 
     loc.append(f' {FACTION}:0 "지역 협약"')
-    loc.append(f' {DYNAMIC}:0 "기본 중점 개혁"')
-    loc.append(f' {DYNAMIC}_desc:0 "기본 중점에서 쌓은 개혁의 누적 효과."')
+    for name, title, _ in SPIRITS.values():
+        loc.append(f' {name}:0 "{title}"')
+        loc.append(f' {name}_desc:0 "기본 중점에서 쌓은 {title}의 누적 효과."')
     dyn = MOD / "common" / "dynamic_modifiers" / "gibon_jungjeom_modifiers.txt"
     dyn.parent.mkdir(parents=True, exist_ok=True)
     dyn.write_text(dynamic_modifier_file(), encoding="utf-8")

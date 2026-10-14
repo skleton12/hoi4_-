@@ -1,20 +1,38 @@
-# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 한꺼번에 반영된다.
-GJ_reforms = {
+# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 반영된다.
+GJ_reform_industry = {
 	icon = GFX_idea_generic_political_pressure
 	enable = { always = yes }
-	conscription = GJ_conscription
-	political_power_gain = GJ_political_power_gain
-	political_power_factor = GJ_political_power_factor
 	industrial_capacity_factory = GJ_industrial_capacity_factory
 	consumer_goods_factor = GJ_consumer_goods_factor
 	research_speed_factor = GJ_research_speed_factor
 	production_factory_max_efficiency_factor = GJ_production_factory_max_efficiency_factor
 	production_factory_efficiency_gain_factor = GJ_production_factory_efficiency_gain_factor
+	line_change_production_efficiency_factor = GJ_line_change_production_efficiency_factor
 	production_speed_industrial_complex_factor = GJ_production_speed_industrial_complex_factor
 	local_resources_factor = GJ_local_resources_factor
+}
+GJ_reform_military = {
+	icon = GFX_idea_generic_political_pressure
+	enable = { always = yes }
+	conscription = GJ_conscription
+	production_speed_bunker_factor = GJ_production_speed_bunker_factor
+	production_speed_coastal_bunker_factor = GJ_production_speed_coastal_bunker_factor
 	supply_consumption_factor = GJ_supply_consumption_factor
 	army_defence_factor = GJ_army_defence_factor
 	army_org_factor = GJ_army_org_factor
+	max_dig_in_factor = GJ_max_dig_in_factor
+	max_fuel_factor = GJ_max_fuel_factor
+	surrender_limit = GJ_surrender_limit
+}
+GJ_reform_state = {
+	icon = GFX_idea_generic_political_pressure
+	enable = { always = yes }
+	political_power_gain = GJ_political_power_gain
+	political_power_factor = GJ_political_power_factor
+	justify_war_goal_time = GJ_justify_war_goal_time
+	generate_wargoal_tension = GJ_generate_wargoal_tension
+	drift_defence_factor = GJ_drift_defence_factor
+	political_advisor_cost_factor = GJ_political_advisor_cost_factor
 	resistance_target = GJ_resistance_target
 	compliance_growth = GJ_compliance_growth
 }

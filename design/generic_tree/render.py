@@ -11,6 +11,11 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+
+def rewards(effect):
+    from build_mod import rewards as real  # build_mod 가 render 를 불러 쓰므로 늦게 불러온다
+    return real(effect)
+
 HERE = Path(__file__).parent
 DATA = HERE / "data"
 OUT = HERE / "img"
@@ -180,6 +185,9 @@ def draw_node(d, box, focus, color, index, total):
         y += 15
     days = f"{focus['days']}일"
     d.text((x1 - 8 - F_SMALL.getlength(days), y1 - 17), days, font=F_SMALL, fill="#c8c8c8")
+    if not rewards(focus["effect"]):
+        # 게임에서 실제 효과 없이 설명 문구만 나오는 칸
+        d.text((x0 + 10, y1 - 17), "설명만", font=F_SMALL, fill="#e0b050")
 
 
 def render_branch(branch):
@@ -194,11 +202,11 @@ def render_branch(branch):
     img = Image.new("RGB", (int(width), int(height)), BG)
     d = ImageDraw.Draw(img)
 
-    done = sum(len(g["focuses"]) for g in groups)
     total = sum(g["target"] for g in groups)
+    real = sum(bool(rewards(f["effect"])) for g in groups for f in g["focuses"])
     bold(d, (MARGIN, 30), branch["title"], F_TITLE, TEXT)
     d.text((MARGIN + F_TITLE.getlength(branch["title"]) + 20, 44),
-           f"{total}칸 · 작성 {done}/{total}", font=F_SUB, fill=MUTED)
+           f"{total}칸 · 실제 효과 {real}칸 · 노란 「설명만」 = 게임에서 문구만 나옴", font=F_SUB, fill=MUTED)
 
     # 뿌리 띠: 갈래 이름에서 최상위 소갈래로 선을 내린다
     root_y = TOP + 70
