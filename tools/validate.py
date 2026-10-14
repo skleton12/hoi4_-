@@ -710,7 +710,7 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
         required |= {iid, iid + "_desc"}
     for name, entries in trees.items():
         for e in walk(entries):
-            if e.key == "custom_effect_tooltip" and not e.is_block:
+            if e.key in ("custom_effect_tooltip", "create_faction") and not e.is_block:
                 required.add(e.value)
     # 동적 수정자는 국가 정신 칸에 이름·설명이 보인다
     for name, entries in in_dir(trees, "common/dynamic_modifiers/").items():

@@ -88,6 +88,7 @@ MODIFIERS = [
     (r"준수 증가 \+(\d+)%", "compliance_growth", 0.01),
 ]
 DYNAMIC = "GJ_reforms"
+FACTION = "GJ_regional_faction"
 RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
 
 
@@ -136,6 +137,16 @@ def rewards(effect):
     for word, res in RESOURCES.items():
         if (n := num(effect, word + r" \+(\d+)(?![\d%])")):
             out.append(f"random_owned_controlled_state = {{ add_resource = {{ type = {res} amount = {n} }} }}")
+    for bloc, leader in (("연합국", "ENG"), ("추축국", "GER"), ("코민테른", "SOV")):
+        if re.search(bloc + r" 가입(?! 가능)", effect):
+            out.append(f"if = {{ limit = {{ {leader} = {{ is_faction_leader = yes }} }} {leader} = {{ add_to_faction = ROOT }} }}")
+    for who, tag in (("연합국", "ENG"), ("소련", "SOV")):
+        if f"{who} 보장 획득" in effect:
+            out.append(f"if = {{ limit = {{ country_exists = {tag} }} {tag} = {{ give_guarantee = ROOT }} }}")
+    if "자체 진영 생성" in effect:
+        out.append(f"if = {{ limit = {{ is_in_faction = no }} create_faction = {FACTION} }}")
+    if "정보 기관 설립" in effect:
+        out.append("create_intelligence_agency = yes")
     m = re.search(r"정부를 (공산주의|민주주의|파시즘|비동맹)(?:으)?로 교체", effect)
     if m:
         elections = "yes" if m.group(1) == "민주주의" else "no"
@@ -267,6 +278,7 @@ def build():
     if unknown:
         raise SystemExit(f"CONDITIONS 에 없는 조건 문구: {sorted(unknown)}")
 
+    loc.append(f' {FACTION}:0 "지역 협약"')
     loc.append(f' {DYNAMIC}:0 "기본 중점 개혁"')
     loc.append(f' {DYNAMIC}_desc:0 "기본 중점에서 쌓은 개혁의 누적 효과."')
     dyn = MOD / "common" / "dynamic_modifiers" / "gibon_jungjeom_modifiers.txt"
