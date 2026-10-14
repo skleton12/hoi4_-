@@ -19,6 +19,12 @@ HERE = Path(__file__).parent
 DATA = HERE / "data"
 MOD = HERE.parent.parent / "mod" / "gibon_jungjeom"
 PREFIX = "GJ"
+# HOI4 supports these 10 localization languages. Reuse the English source text
+# under each locale so the focus tree remains readable with any game language.
+LOCALISATION_LANGUAGES = (
+    "english", "french", "german", "polish", "braz_por",
+    "russian", "spanish", "japanese", "simp_chinese", "korean",
+)
 
 ICONS = {
     "start": "GFX_GJ_political_pressure",
@@ -334,16 +340,17 @@ def build():
     out = MOD / "common" / "national_focus" / "generic.txt"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    loc_path = MOD / "localisation" / "english" / "gibon_jungjeom_l_english.yml"
-    loc_path.parent.mkdir(parents=True, exist_ok=True)
-    loc_path.write_text("\n".join(loc) + "\n", encoding="utf-8")
-    korean_path = MOD / "localisation" / "korean" / "gibon_jungjeom_l_korean.yml"
-    korean_path.parent.mkdir(parents=True, exist_ok=True)
-    korean_loc = ["\ufeffl_korean:", *loc[1:]]
-    korean_path.write_text("\n".join(korean_loc) + "\n", encoding="utf-8")
+    english_path = None
+    for language in LOCALISATION_LANGUAGES:
+        loc_path = MOD / "localisation" / language / f"gibon_jungjeom_l_{language}.yml"
+        loc_path.parent.mkdir(parents=True, exist_ok=True)
+        language_loc = [f"\ufeffl_{language}:", *loc[1:]]
+        loc_path.write_text("\n".join(language_loc) + "\n", encoding="utf-8")
+        if language == "english":
+            english_path = loc_path
     focuses = sum(len(g["focuses"]) for b in branches for g in b["groups"])
     print(f"{out.relative_to(MOD.parent.parent)}  포커스 {focuses}개")
-    print(f"{loc_path.relative_to(MOD.parent.parent)}  키 {len(loc) - 1}개")
+    print(f"{english_path.relative_to(MOD.parent.parent)} + {len(LOCALISATION_LANGUAGES) - 1}개 언어  키 {len(loc) - 1}개씩")
 
 
 if __name__ == "__main__":
