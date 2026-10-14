@@ -3505,10 +3505,10 @@
     },
     {
       "id": "neu_junta",
-      "title": "군사 독재",
+      "title": "군부 통치",
       "after": "neu_gov",
       "exclusive": "neu_model",
-      "condition": "군부 쿠데타로 집권",
+      "condition": null,
       "target": 1,
       "focuses": [
         {
@@ -3554,41 +3554,6 @@
       ]
     },
     {
-      "id": "neu_junta_end",
-      "title": "군정 공고화",
-      "after": "neu_junta",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "장교 관료 임명",
-          "effect": "정치력 +75, 일일 정치력 +0.1",
-          "days": 35
-        },
-        {
-          "name": "군수 산업 육성",
-          "effect": "군수공장 +2",
-          "days": 35
-        },
-        {
-          "name": "사관 학교 확충",
-          "effect": "육군 경험 +30",
-          "days": 35
-        },
-        {
-          "name": "국경 요새화",
-          "effect": "요새 건설 속도 +20%, 방어전 +5%",
-          "days": 35
-        },
-        {
-          "name": "국군의 나라",
-          "effect": "전쟁 지원 +15%, 사단 조직력 +5%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "neu_junta_a2",
       "title": "군사 산업",
       "after": "neu_junta_rule",
@@ -3619,31 +3584,66 @@
       ]
     },
     {
-      "id": "neu_junta_b2",
-      "title": "군의 통치",
-      "after": "neu_junta_end",
+      "id": "neu_caudillo_patron",
+      "title": "후견 정치·1인 통치",
+      "after": "neu_junta",
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "지방 유력자 포섭",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "사병 정규군 편입",
+          "effect": "징집 인력 +3%, 육군 장성 1명",
+          "days": 35
+        },
+        {
+          "name": "대농장주 동맹",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "개인 경호 연대",
+          "effect": "방첩 +15%",
+          "days": 35
+        },
+        {
+          "name": "영원한 지도자",
+          "effect": "선거 폐지, 전쟁 지원 +15%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_a2",
+      "title": "자원 국유화",
+      "after": "neu_caudillo_patron",
       "exclusive": null,
       "condition": null,
       "target": 4,
       "focuses": [
         {
-          "name": "군 출신 지사",
-          "effect": "안정도 +10%",
+          "name": "석유 국유화",
+          "effect": "석유 +6",
           "days": 35
         },
         {
-          "name": "계엄 사법부",
-          "effect": "이념 침투 방어 +20%",
+          "name": "광산 국유화",
+          "effect": "크롬 +4, 텅스텐 +4",
           "days": 35
         },
         {
-          "name": "군 경제 위원회",
-          "effect": "정치력 +100",
+          "name": "국영 자원 공사",
+          "effect": "자원 추출 +10%",
           "days": 35
         },
         {
-          "name": "군정 국가",
-          "effect": "일일 정치력 +0.15, 안정도 +5%",
+          "name": "자원 민족주의",
+          "effect": "민간공장 +2, 정치력 +75",
           "days": 70
         }
       ]
@@ -3679,31 +3679,31 @@
       ]
     },
     {
-      "id": "neu_junta_y",
-      "title": "온건파 군정",
+      "id": "neu_caudillo_x",
+      "title": "포퓰리즘",
       "after": "neu_junta",
       "exclusive": "neu_junta_line",
       "condition": null,
       "target": 4,
       "focuses": [
         {
-          "name": "민정 이양 약속",
-          "effect": "안정도 +15%",
+          "name": "임금 대폭 인상",
+          "effect": "안정도 +15%, 소비재 공장 +5%",
           "days": 35
         },
         {
-          "name": "기술 관료 기용",
-          "effect": "연구 속도 +5%",
+          "name": "퍼스트레이디 재단",
+          "effect": "안정도 +10%, 정치력 +50",
           "days": 35
         },
         {
-          "name": "관제 선거",
-          "effect": "정치력 +75",
+          "name": "국민 주택",
+          "effect": "민간공장 +1, 안정도 +5%",
           "days": 35
         },
         {
-          "name": "군민 협치",
-          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "name": "민중주의 국가",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
           "days": 70
         }
       ]
@@ -3713,7 +3713,7 @@
       "title": "강군 국가",
       "after": [
         "neu_junta_x",
-        "neu_junta_y"
+        "neu_caudillo_x"
       ],
       "exclusive": null,
       "condition": null,
@@ -3738,7 +3738,7 @@
     },
     {
       "id": "neu_pres",
-      "title": "대통령 독재",
+      "title": "개발 독재",
       "after": "neu_gov",
       "exclusive": "neu_model",
       "condition": null,
@@ -3787,41 +3787,6 @@
       ]
     },
     {
-      "id": "neu_pres_end",
-      "title": "대통령 국가",
-      "after": "neu_pres",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "대통령 기획원",
-          "effect": "민간공장 +2",
-          "days": 35
-        },
-        {
-          "name": "관변 단체 결성",
-          "effect": "안정도 +10%, 정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "지방 순시",
-          "effect": "인프라 +1 (3개 주)",
-          "days": 35
-        },
-        {
-          "name": "대통령 경호실",
-          "effect": "이념 침투 방어 +20%",
-          "days": 35
-        },
-        {
-          "name": "국가 근대화 완수",
-          "effect": "공장 생산량 +5%, 안정도 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "neu_pres_a2",
       "title": "개발 독재",
       "after": "neu_pres_rule",
@@ -3852,31 +3817,66 @@
       ]
     },
     {
-      "id": "neu_pres_b2",
-      "title": "대통령 정당",
-      "after": "neu_pres_end",
+      "id": "neu_kemal_reform",
+      "title": "세속 개혁·국가 주도 산업",
+      "after": "neu_pres",
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "세속 국가 선포",
+          "effect": "연구 속도 +5%, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "문자·복식 개혁",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "국민 교육 운동",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "국영 은행 설립",
+          "effect": "민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "국가 공업 5개년",
+          "effect": "민간공장 +2, 군수공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_a2",
+      "title": "국가주의 경제",
+      "after": "neu_kemal_reform",
       "exclusive": null,
       "condition": null,
       "target": 4,
       "focuses": [
         {
-          "name": "여당 조직 강화",
-          "effect": "일일 정치력 +0.1",
+          "name": "국영 직물 공장",
+          "effect": "민간공장 +2",
           "days": 35
         },
         {
-          "name": "청년 당원단",
-          "effect": "징집 인력 +2%",
+          "name": "국영 제철소",
+          "effect": "강철 +6, 군수공장 +1",
           "days": 35
         },
         {
-          "name": "당정 협의회",
-          "effect": "정치력 +75",
+          "name": "국영 철도청",
+          "effect": "인프라 +1 (3개 주)",
           "days": 35
         },
         {
-          "name": "일당 우위 체제",
-          "effect": "안정도 +10%, 정치력 +75",
+          "name": "국가주의 완성",
+          "effect": "공장 생산량 +5%, 민간공장 +2",
           "days": 70
         }
       ]
@@ -3912,31 +3912,31 @@
       ]
     },
     {
-      "id": "neu_pres_y",
-      "title": "반공 국가",
+      "id": "neu_kemal_x",
+      "title": "급진 세속화",
       "after": "neu_pres",
       "exclusive": "neu_pres_line",
       "condition": null,
       "target": 4,
       "focuses": [
         {
-          "name": "반공법 제정",
-          "effect": "공산주의 지지율 -10%",
+          "name": "종교 학교 폐지",
+          "effect": "연구 속도 +5%, 안정도 -5%",
           "days": 35
         },
         {
-          "name": "국가 보안법",
-          "effect": "이념 침투 방어 +20%",
+          "name": "여성 참정권",
+          "effect": "징집 인력 +2%, 안정도 +5%",
           "days": 35
         },
         {
-          "name": "반공 예비군",
-          "effect": "징집 인력 +3%",
+          "name": "서구식 법전",
+          "effect": "일일 정치력 +0.1",
           "days": 35
         },
         {
-          "name": "반공 보루",
-          "effect": "방어전 +5%, 전쟁 지원 +15%",
+          "name": "세속 공화국",
+          "effect": "연구 속도 +5%, 안정도 +10%",
           "days": 70
         }
       ]
@@ -3946,7 +3946,7 @@
       "title": "영구 집권",
       "after": [
         "neu_pres_x",
-        "neu_pres_y"
+        "neu_kemal_x"
       ],
       "exclusive": null,
       "condition": null,
@@ -3971,7 +3971,7 @@
     },
     {
       "id": "neu_monarchy",
-      "title": "왕정 복고",
+      "title": "왕정과 전통",
       "after": "neu_gov",
       "exclusive": "neu_model",
       "condition": "옛 왕가 존재",
@@ -4020,41 +4020,6 @@
       ]
     },
     {
-      "id": "neu_monarchy_end",
-      "title": "왕국의 영광",
-      "after": "neu_monarchy",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "왕립 아카데미",
-          "effect": "연구 속도 +5%",
-          "days": 35
-        },
-        {
-          "name": "국왕 직속 군",
-          "effect": "육군 경험 +25, 전쟁 지원 +10%",
-          "days": 35
-        },
-        {
-          "name": "왕실 재산 헌납",
-          "effect": "민간공장 +2",
-          "days": 35
-        },
-        {
-          "name": "귀족 원로원",
-          "effect": "정치력 +100",
-          "days": 35
-        },
-        {
-          "name": "왕관 아래 하나",
-          "effect": "안정도 +20%, 전쟁 지원 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "neu_monarchy_a2",
       "title": "왕실 경제",
       "after": "neu_monarchy_crown",
@@ -4085,142 +4050,9 @@
       ]
     },
     {
-      "id": "neu_monarchy_b2",
-      "title": "왕실 군대",
-      "after": "neu_monarchy_end",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "왕립 사관 학교",
-          "effect": "육군 경험 +30",
-          "days": 35
-        },
-        {
-          "name": "왕실 기병대 기계화",
-          "effect": "기갑 연구 +50%",
-          "days": 35
-        },
-        {
-          "name": "국왕 근위 사단",
-          "effect": "사단 조직력 +5%",
-          "days": 35
-        },
-        {
-          "name": "왕국 수호군",
-          "effect": "군수공장 +2, 전쟁 지원 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_monarchy_x",
-      "title": "절대 왕정",
-      "after": "neu_monarchy",
-      "exclusive": "neu_monarchy_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "국왕 친정",
-          "effect": "정치력 +100",
-          "days": 35
-        },
-        {
-          "name": "의회 해산",
-          "effect": "일일 정치력 +0.15",
-          "days": 35
-        },
-        {
-          "name": "왕권 신수설",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "절대 군주",
-          "effect": "안정도 +15%, 전쟁 지원 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_monarchy_y",
-      "title": "입헌 왕정",
-      "after": "neu_monarchy",
-      "exclusive": "neu_monarchy_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "왕국 헌법",
-          "effect": "안정도 +15%",
-          "days": 35
-        },
-        {
-          "name": "양원제 의회",
-          "effect": "민주주의 지지율 +10%",
-          "days": 35
-        },
-        {
-          "name": "책임 내각제",
-          "effect": "일일 정치력 +0.1",
-          "days": 35
-        },
-        {
-          "name": "군림하되 통치 않음",
-          "effect": "안정도 +20%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_monarchy_cap",
-      "title": "왕조의 영광",
-      "after": [
-        "neu_monarchy_x",
-        "neu_monarchy_y"
-      ],
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "왕실 기념 축제",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "왕가 혼인 동맹",
-          "effect": "정치력 +100",
-          "days": 35
-        },
-        {
-          "name": "영광의 왕조",
-          "effect": "안정도 +15%, 전쟁 지원 +15%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_conserv",
-      "title": "전통 보수",
-      "after": "neu_gov",
-      "exclusive": "neu_model",
-      "condition": null,
-      "target": 1,
-      "focuses": [
-        {
-          "name": "지주 계급 보호",
-          "effect": "안정도 +15%, 정치력 +5%",
-          "days": 70
-        }
-      ]
-    },
-    {
       "id": "neu_conserv_trad",
       "title": "전통·온건 개혁",
-      "after": "neu_conserv",
+      "after": "neu_monarchy",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -4248,41 +4080,6 @@
         {
           "name": "질서와 진보",
           "effect": "공장 생산량 +5%, 민간공장 +2, 징집 인력 +3%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_conserv_end",
-      "title": "전통 국가",
-      "after": "neu_conserv",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "지주 은행 설립",
-          "effect": "정치력 +75",
-          "days": 35
-        },
-        {
-          "name": "농업 기계화",
-          "effect": "자원 추출 +10%, 민간공장 +1",
-          "days": 35
-        },
-        {
-          "name": "향토 방위대",
-          "effect": "징집 인력 +2%, 방어전 +5%",
-          "days": 35
-        },
-        {
-          "name": "교회 학교 지원",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "질서 있는 나라",
-          "effect": "안정도 +15%, 이념 침투 방어 +20%",
           "days": 70
         }
       ]
@@ -4318,31 +4115,31 @@
       ]
     },
     {
-      "id": "neu_conserv_b2",
-      "title": "전통 군대",
-      "after": "neu_conserv_end",
-      "exclusive": null,
+      "id": "neu_monarchy_x",
+      "title": "절대 왕정",
+      "after": "neu_monarchy",
+      "exclusive": "neu_monarchy_line",
       "condition": null,
       "target": 4,
       "focuses": [
         {
-          "name": "기병 전통",
-          "effect": "육군 경험 +30",
+          "name": "국왕 친정",
+          "effect": "정치력 +100",
           "days": 35
         },
         {
-          "name": "귀족 장교단",
-          "effect": "사단 조직력 +5%",
+          "name": "의회 해산",
+          "effect": "일일 정치력 +0.15",
           "days": 35
         },
         {
-          "name": "지역 연대",
-          "effect": "징집 인력 +2%",
+          "name": "왕권 신수설",
+          "effect": "안정도 +10%",
           "days": 35
         },
         {
-          "name": "전통의 군대",
-          "effect": "방어전 +5%, 전쟁 지원 +10%",
+          "name": "절대 군주",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
           "days": 70
         }
       ]
@@ -4350,8 +4147,8 @@
     {
       "id": "neu_conserv_x",
       "title": "보수 근대화",
-      "after": "neu_conserv",
-      "exclusive": "neu_conserv_line",
+      "after": "neu_monarchy",
+      "exclusive": "neu_monarchy_line",
       "condition": null,
       "target": 4,
       "focuses": [
@@ -4378,524 +4175,28 @@
       ]
     },
     {
-      "id": "neu_conserv_y",
-      "title": "반동",
-      "after": "neu_conserv",
-      "exclusive": "neu_conserv_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "옛 법 복원",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "검열 강화",
-          "effect": "이념 침투 방어 +20%",
-          "days": 35
-        },
-        {
-          "name": "신분 질서 복원",
-          "effect": "정치력 +100",
-          "days": 35
-        },
-        {
-          "name": "반동 국가",
-          "effect": "안정도 +15%, 일일 정치력 +0.1",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_conserv_cap",
-      "title": "오랜 왕국",
+      "id": "neu_monarchy_cap",
+      "title": "왕조의 영광",
       "after": [
-        "neu_conserv_x",
-        "neu_conserv_y"
+        "neu_monarchy_x",
+        "neu_conserv_x"
       ],
       "exclusive": null,
       "condition": null,
       "target": 3,
       "focuses": [
         {
-          "name": "국가 기념일 제정",
-          "effect": "전쟁 지원 +10%",
-          "days": 35
-        },
-        {
-          "name": "전통 문화 보호",
+          "name": "왕실 기념 축제",
           "effect": "안정도 +10%",
           "days": 35
         },
         {
-          "name": "변치 않는 나라",
-          "effect": "안정도 +20%, 정치력 +75",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal",
-      "title": "근대화 개혁 독재",
-      "after": "neu_gov",
-      "exclusive": "neu_model",
-      "condition": null,
-      "target": 1,
-      "focuses": [
-        {
-          "name": "근대화 개혁 선언",
-          "effect": "연구 속도 +5%",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_reform",
-      "title": "세속 개혁·국가 주도 산업",
-      "after": "neu_kemal",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "세속 국가 선포",
-          "effect": "연구 속도 +5%, 안정도 -5%",
-          "days": 35
-        },
-        {
-          "name": "문자·복식 개혁",
-          "effect": "일일 정치력 +0.15",
-          "days": 35
-        },
-        {
-          "name": "국민 교육 운동",
-          "effect": "연구 속도 +5%",
-          "days": 35
-        },
-        {
-          "name": "국영 은행 설립",
-          "effect": "민간공장 +1",
-          "days": 35
-        },
-        {
-          "name": "국가 공업 5개년",
-          "effect": "민간공장 +2, 군수공장 +2",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_end",
-      "title": "근대 국가",
-      "after": "neu_kemal",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "국립 대학 설립",
-          "effect": "연구 속도 +5%",
-          "days": 35
-        },
-        {
-          "name": "철도 국가 사업",
-          "effect": "인프라 +1 (3개 주)",
-          "days": 35
-        },
-        {
-          "name": "국영 광산 공사",
-          "effect": "강철 +4, 자원 추출 +10%",
-          "days": 35
-        },
-        {
-          "name": "근대 군대 창설",
-          "effect": "육군 경험 +30, 사단 조직력 +5%",
-          "days": 35
-        },
-        {
-          "name": "근대화 혁명 완수",
-          "effect": "민간공장 +2, 안정도 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_a2",
-      "title": "국가주의 경제",
-      "after": "neu_kemal_reform",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "국영 직물 공장",
-          "effect": "민간공장 +2",
-          "days": 35
-        },
-        {
-          "name": "국영 제철소",
-          "effect": "강철 +6, 군수공장 +1",
-          "days": 35
-        },
-        {
-          "name": "국영 철도청",
-          "effect": "인프라 +1 (3개 주)",
-          "days": 35
-        },
-        {
-          "name": "국가주의 완성",
-          "effect": "공장 생산량 +5%, 민간공장 +2",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_b2",
-      "title": "민족 각성",
-      "after": "neu_kemal_end",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "민족 역사 연구소",
-          "effect": "전쟁 지원 +10%",
-          "days": 35
-        },
-        {
-          "name": "국어 정화 운동",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "국민 회관 건립",
-          "effect": "정치력 +75",
-          "days": 35
-        },
-        {
-          "name": "민족 국가",
-          "effect": "안정도 +15%, 전쟁 지원 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_x",
-      "title": "급진 세속화",
-      "after": "neu_kemal",
-      "exclusive": "neu_kemal_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "종교 학교 폐지",
-          "effect": "연구 속도 +5%, 안정도 -5%",
-          "days": 35
-        },
-        {
-          "name": "여성 참정권",
-          "effect": "징집 인력 +2%, 안정도 +5%",
-          "days": 35
-        },
-        {
-          "name": "서구식 법전",
-          "effect": "일일 정치력 +0.1",
-          "days": 35
-        },
-        {
-          "name": "세속 공화국",
-          "effect": "연구 속도 +5%, 안정도 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_y",
-      "title": "점진 세속화",
-      "after": "neu_kemal",
-      "exclusive": "neu_kemal_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "종교청 설치",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "온건 개혁파",
-          "effect": "정치력 +75",
-          "days": 35
-        },
-        {
-          "name": "전통 존중",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "조화로운 근대화",
-          "effect": "안정도 +15%, 연구 속도 +3%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_kemal_cap",
-      "title": "공화국의 아버지",
-      "after": [
-        "neu_kemal_x",
-        "neu_kemal_y"
-      ],
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "공화 원칙 선포",
-          "effect": "일일 정치력 +0.1",
-          "days": 35
-        },
-        {
-          "name": "국민 영웅 숭배",
-          "effect": "전쟁 지원 +15%",
-          "days": 35
-        },
-        {
-          "name": "영원한 공화국",
-          "effect": "안정도 +15%, 민간공장 +2",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo",
-      "title": "카우디요 통치",
-      "after": "neu_gov",
-      "exclusive": "neu_model",
-      "condition": null,
-      "target": 1,
-      "focuses": [
-        {
-          "name": "카우디요 등장",
-          "effect": "안정도 +10%, 정치력 +75",
-          "days": 35
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_patron",
-      "title": "후견 정치·1인 통치",
-      "after": "neu_caudillo",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "지방 유력자 포섭",
-          "effect": "안정도 +15%",
-          "days": 35
-        },
-        {
-          "name": "사병 정규군 편입",
-          "effect": "징집 인력 +3%, 육군 장성 1명",
-          "days": 35
-        },
-        {
-          "name": "대농장주 동맹",
-          "effect": "자원 추출 +10%",
-          "days": 35
-        },
-        {
-          "name": "개인 경호 연대",
-          "effect": "방첩 +15%",
-          "days": 35
-        },
-        {
-          "name": "영원한 지도자",
-          "effect": "선거 폐지, 전쟁 지원 +15%, 안정도 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_end",
-      "title": "후견 국가",
-      "after": "neu_caudillo",
-      "exclusive": null,
-      "condition": null,
-      "target": 5,
-      "focuses": [
-        {
-          "name": "측근 기업가 특혜",
-          "effect": "민간공장 +2",
-          "days": 35
-        },
-        {
-          "name": "국가 경찰 창설",
-          "effect": "이념 침투 방어 +20%",
-          "days": 35
-        },
-        {
-          "name": "군 장성 매수",
-          "effect": "육군 경험 +25, 정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "대중 연설 순회",
-          "effect": "전쟁 지원 +10%, 안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "국가 원수 숭배",
-          "effect": "일일 정치력 +0.15, 안정도 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_a2",
-      "title": "자원 국유화",
-      "after": "neu_caudillo_patron",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "석유 국유화",
-          "effect": "석유 +6",
-          "days": 35
-        },
-        {
-          "name": "광산 국유화",
-          "effect": "크롬 +4, 텅스텐 +4",
-          "days": 35
-        },
-        {
-          "name": "국영 자원 공사",
-          "effect": "자원 추출 +10%",
-          "days": 35
-        },
-        {
-          "name": "자원 민족주의",
-          "effect": "민간공장 +2, 정치력 +75",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_b2",
-      "title": "민중 동원",
-      "after": "neu_caudillo_end",
-      "exclusive": null,
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "대중 집회",
-          "effect": "전쟁 지원 +10%",
-          "days": 35
-        },
-        {
-          "name": "지도자 노조",
-          "effect": "공장 생산량 +5%",
-          "days": 35
-        },
-        {
-          "name": "빈민 구호",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "민중의 지도자",
-          "effect": "안정도 +15%, 일일 정치력 +0.1",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_x",
-      "title": "포퓰리즘",
-      "after": "neu_caudillo",
-      "exclusive": "neu_caudillo_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "임금 대폭 인상",
-          "effect": "안정도 +15%, 소비재 공장 +5%",
-          "days": 35
-        },
-        {
-          "name": "퍼스트레이디 재단",
-          "effect": "안정도 +10%, 정치력 +50",
-          "days": 35
-        },
-        {
-          "name": "국민 주택",
-          "effect": "민간공장 +1, 안정도 +5%",
-          "days": 35
-        },
-        {
-          "name": "민중주의 국가",
-          "effect": "안정도 +15%, 전쟁 지원 +10%",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_y",
-      "title": "과두 지배",
-      "after": "neu_caudillo",
-      "exclusive": "neu_caudillo_line",
-      "condition": null,
-      "target": 4,
-      "focuses": [
-        {
-          "name": "대지주 연합",
+          "name": "왕가 혼인 동맹",
           "effect": "정치력 +100",
           "days": 35
         },
         {
-          "name": "외국 자본 특혜",
-          "effect": "민간공장 +2",
-          "days": 35
-        },
-        {
-          "name": "사설 경비대",
-          "effect": "징집 인력 +2%",
-          "days": 35
-        },
-        {
-          "name": "과두 국가",
-          "effect": "일일 정치력 +0.15",
-          "days": 70
-        }
-      ]
-    },
-    {
-      "id": "neu_caudillo_cap",
-      "title": "영원한 카우디요",
-      "after": [
-        "neu_caudillo_x",
-        "neu_caudillo_y"
-      ],
-      "exclusive": null,
-      "condition": null,
-      "target": 3,
-      "focuses": [
-        {
-          "name": "기념비 건립",
-          "effect": "안정도 +10%",
-          "days": 35
-        },
-        {
-          "name": "후계자 지명",
-          "effect": "정치력 +100",
-          "days": 35
-        },
-        {
-          "name": "지도자의 나라",
+          "name": "영광의 왕조",
           "effect": "안정도 +15%, 전쟁 지원 +15%",
           "days": 70
         }
