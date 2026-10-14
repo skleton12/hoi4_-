@@ -3799,6 +3799,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_root_2_tt
+			recruit_character = GJ_com_reformer
 			add_political_power = 75
 		}
 	}
@@ -3929,6 +3930,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_adv_1_tt
+			recruit_character = GJ_com_commissar
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
 			add_to_variable = { var = GJ_army_org_factor value = 0.05 }
 		}
@@ -3944,6 +3946,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_adv_2_tt
+			recruit_character = GJ_com_planner
 		}
 	}
 	focus = {
@@ -6363,6 +6366,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dem_adv_1_tt
+			recruit_character = GJ_dem_industrialist
 			add_political_power = 75
 		}
 	}
@@ -8352,6 +8356,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_adv_1_tt
+			recruit_character = GJ_fas_demagogue
 			add_war_support = 0.10
 		}
 	}
@@ -8366,6 +8371,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_adv_2_tt
+			recruit_character = GJ_fas_industrialist
 			add_offsite_building = { type = arms_factory level = 1 }
 		}
 	}
@@ -10334,6 +10340,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_adv_1_tt
+			recruit_character = GJ_neu_economist
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
 			add_to_variable = { var = GJ_consumer_goods_factor value = -0.03 }
 		}

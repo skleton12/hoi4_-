@@ -1,0 +1,108 @@
+# build_mod.py 가 만든 파일이다. 정치 중점으로 후보를 등록한다.
+characters = {
+	GJ_com_reformer = {
+		name = GJ_com_reformer
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_1
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_com_reformer
+			allowed = { always = yes }
+			traits = { communist_revolutionary }
+			cost = 150
+		}
+	}
+	GJ_com_commissar = {
+		name = GJ_com_commissar
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_2
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_com_commissar
+			allowed = { always = yes }
+			traits = { communist_revolutionary }
+			cost = 150
+		}
+	}
+	GJ_com_planner = {
+		name = GJ_com_planner
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_3
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_com_planner
+			allowed = { always = yes }
+			traits = { captain_of_industry }
+			cost = 150
+		}
+	}
+	GJ_dem_industrialist = {
+		name = GJ_dem_industrialist
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_1
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_dem_industrialist
+			allowed = { always = yes }
+			traits = { captain_of_industry }
+			cost = 150
+		}
+	}
+	GJ_fas_demagogue = {
+		name = GJ_fas_demagogue
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_2
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_fas_demagogue
+			allowed = { always = yes }
+			traits = { fascist_demagogue }
+			cost = 150
+		}
+	}
+	GJ_fas_industrialist = {
+		name = GJ_fas_industrialist
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_3
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_fas_industrialist
+			allowed = { always = yes }
+			traits = { war_industrialist }
+			cost = 150
+		}
+	}
+	GJ_neu_economist = {
+		name = GJ_neu_economist
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_asia_1
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GJ_neu_economist
+			allowed = { always = yes }
+			traits = { silent_workhorse }
+			cost = 150
+		}
+	}
+}

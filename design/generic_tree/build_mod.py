@@ -119,6 +119,18 @@ SPIRITS = {
 FACTION = "GJ_regional_faction"
 RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
 
+# 정치 중점이 후보를 등록하면 플레이어가 정치력으로 임명할 수 있는 범용 고문.
+# 정치고문 특성은 바닐라에서 널리 쓰이는 공용 trait만 사용한다.
+ADVISORS = {
+    "공산 고문 후보 추가": ("GJ_com_reformer", "인민 조직가", "communist_revolutionary", "GFX_idea_generic_political_advisor_asia_1"),
+    "정치위원 고문 후보 추가": ("GJ_com_commissar", "정치위원", "communist_revolutionary", "GFX_idea_generic_political_advisor_asia_2"),
+    "경제 고문 후보 추가": ("GJ_com_planner", "계획 경제 전문가", "captain_of_industry", "GFX_idea_generic_political_advisor_asia_3"),
+    "산업 고문 후보 추가": ("GJ_dem_industrialist", "산업 기술관료", "captain_of_industry", "GFX_idea_generic_political_advisor_asia_1"),
+    "선전 고문 후보 추가": ("GJ_fas_demagogue", "국민 선전가", "fascist_demagogue", "GFX_idea_generic_political_advisor_asia_2"),
+    "군수 고문 후보 추가": ("GJ_fas_industrialist", "군수 산업가", "war_industrialist", "GFX_idea_generic_political_advisor_asia_3"),
+    "재무 고문 후보 추가": ("GJ_neu_economist", "재무 전문가", "silent_workhorse", "GFX_idea_generic_political_advisor_asia_1"),
+}
+
 
 def state_count(effect, word):
     m = re.search(word + r" \+\d+ \((\d+)개 주\)", effect)
@@ -128,6 +140,9 @@ def state_count(effect, word):
 def rewards(effect):
     """효과 요약에서 확실한 것만 실제 효과로 바꾼다."""
     out = []
+    for description, (character, _, _, _) in ADVISORS.items():
+        if description in effect:
+            out.append(f"recruit_character = {character}")
     if (n := num(effect, r"(?<!일일 )(?<!획득 )정치력 \+(\d+)(?![\d%])")):
         out.append(f"add_political_power = {n}")
     if (n := num(effect, r"민간공장 \+(\d+)(?![\d%])")):
@@ -223,6 +238,31 @@ def dynamic_modifier_file():
         body = "\n".join(f"\t{m} = GJ_{m}" for m in seen)
         text += f"{name} = {{\n\ticon = {icon}\n\tenable = {{ always = yes }}\n{body}\n}}\n"
     return text
+
+
+def characters_file():
+    """중점에서 등록하는 범용 정치고문을 생성한다."""
+    text = ["# build_mod.py 가 만든 파일이다. 정치 중점으로 후보를 등록한다.", "characters = {"]
+    for _, (character, _, trait, portrait) in ADVISORS.items():
+        text += [
+            f"\t{character} = {{",
+            f"\t\tname = {character}",
+            "\t\tportraits = {",
+            "\t\t\tcivilian = {",
+            f"\t\t\t\tsmall = {portrait}",
+            "\t\t\t}",
+            "\t\t}",
+            "\t\tadvisor = {",
+            "\t\t\tslot = political_advisor",
+            f"\t\t\tidea_token = {character}",
+            "\t\t\tallowed = { always = yes }",
+            f"\t\t\ttraits = {{ {trait} }}",
+            "\t\t\tcost = 150",
+            "\t\t}",
+            "\t}",
+        ]
+    text.append("}")
+    return "\n".join(text) + "\n"
 
 
 def rows_for(groups):
@@ -333,9 +373,15 @@ def build():
     for name, title, _ in SPIRITS.values():
         loc.append(f' {name}:0 "{title}"')
         loc.append(f' {name}_desc:0 "기본 중점에서 쌓은 {title}의 누적 효과."')
+    for _, (character, name, _, _) in ADVISORS.items():
+        loc.append(f' {character}:0 "{name}"')
     dyn = MOD / "common" / "dynamic_modifiers" / "gibon_jungjeom_modifiers.txt"
     dyn.parent.mkdir(parents=True, exist_ok=True)
     dyn.write_text(dynamic_modifier_file(), encoding="utf-8")
+
+    characters = MOD / "common" / "characters" / "gibon_jungjeom_characters.txt"
+    characters.parent.mkdir(parents=True, exist_ok=True)
+    characters.write_text(characters_file(), encoding="utf-8")
 
     out = MOD / "common" / "national_focus" / "generic.txt"
     out.parent.mkdir(parents=True, exist_ok=True)

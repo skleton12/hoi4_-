@@ -719,7 +719,7 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
                 required |= {e.key, e.key + "_desc"}
     for name, entries in in_dir(trees, "common/characters/").items():
         for e in walk(entries):
-            if e.key == "name" and not e.is_block and e.value.startswith(("KOR_", "JAP_")):
+            if e.key == "name" and not e.is_block and e.value.startswith(("KOR_", "JAP_", "GJ_")):
                 required.add(e.value)
     for cat in cats:
         required.add(cat)
