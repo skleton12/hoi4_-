@@ -153,8 +153,16 @@ def layout(groups):
             x += span[k["id"]]
         x = left
         for k in joins[g["id"]]:
-            place(k, x, max(end_y(by_id[p]) for p in parents_of(k)) + 14)
-            x += span[k["id"]]
+            ps = parents_of(k)
+            y_join = max(end_y(by_id[p]) for p in ps) + 14
+            lo = min(pos[p][0] - (span[p] - 1) / 2 for p in ps)
+            hi = max(pos[p][0] + (span[p] - 1) / 2 for p in ps)
+            if span[k["id"]] <= hi - lo + 1:
+                # 작은 합류는 부모들 바로 아래 가운데에 둔다(옆 소갈래와 겹치지 않게)
+                place(k, (lo + hi) / 2 - (span[k["id"]] - 1) / 2, y_join)
+            else:
+                place(k, x, y_join)
+                x += span[k["id"]]
 
     left = 0
     for r in roots:

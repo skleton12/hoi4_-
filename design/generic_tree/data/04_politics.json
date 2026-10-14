@@ -173,7 +173,7 @@
     {
       "id": "com_stalin_end",
       "title": "철의 통치",
-      "after": "com_stalin_econ",
+      "after": "com_stalin",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -201,6 +201,154 @@
         {
           "name": "사회주의 조국",
           "effect": "안정도 +15%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_stalin_a2",
+      "title": "산업화 돌격",
+      "after": "com_stalin_econ",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "철강 콤비나트",
+          "effect": "강철 +6, 군수공장 +1",
+          "days": 35
+        },
+        {
+          "name": "트랙터 공장 건설",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "운하 건설 동원",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "중공업 기지 완성",
+          "effect": "군수공장 +2, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_stalin_b2",
+      "title": "붉은 군대",
+      "after": "com_stalin_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "군관구 재편",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "기갑 군단 창설",
+          "effect": "기갑 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "종심 작전 이론",
+          "effect": "사단 조직력 +5%, 육군 경험 +20",
+          "days": 35
+        },
+        {
+          "name": "붉은 군대 현대화",
+          "effect": "군수공장 +2, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_stalin_x",
+      "title": "대숙청",
+      "after": "com_stalin",
+      "exclusive": "com_stalin_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "인민위원부 강화",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "반혁명 분자 색출",
+          "effect": "정치력 +100, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "당 중앙 정화",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "절대 권력 확립",
+          "effect": "안정도 +15%, 정치력 +100",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_stalin_y",
+      "title": "집단 지도",
+      "after": "com_stalin",
+      "exclusive": "com_stalin_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "정치국 합의제",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "당 대회 정례화",
+          "effect": "일일 정치력 +0.1, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "군 지도부 보존",
+          "effect": "육군 경험 +40",
+          "days": 35
+        },
+        {
+          "name": "집단 지도 체제",
+          "effect": "안정도 +15%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_stalin_cap",
+      "title": "사회주의 강국",
+      "after": [
+        "com_stalin_x",
+        "com_stalin_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "사회주의 경쟁",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "인민 영웅 칭호",
+          "effect": "전쟁 지원 +15%, 안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "붉은 강철의 나라",
+          "effect": "민간공장 +2, 군수공장 +2",
           "days": 70
         }
       ]
@@ -258,7 +406,7 @@
     {
       "id": "com_trotsky_end",
       "title": "연속 혁명",
-      "after": "com_trotsky_export",
+      "after": "com_trotsky",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -286,6 +434,154 @@
         {
           "name": "혁명의 붉은 별",
           "effect": "전쟁 지원 +20%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_trotsky_a2",
+      "title": "혁명 기지",
+      "after": "com_trotsky_export",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "혁명 망명자 수용",
+          "effect": "정치력 +75, 공산주의 지지율 +5%",
+          "days": 35
+        },
+        {
+          "name": "국제 여단 훈련소",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "혁명 무기고",
+          "effect": "보병 장비 2000",
+          "days": 35
+        },
+        {
+          "name": "혁명의 요새",
+          "effect": "방어전 +5%, 요새 건설 속도 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_trotsky_b2",
+      "title": "노동자 국가",
+      "after": "com_trotsky_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "공장 위원회 권력",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "노동자 감독관",
+          "effect": "민간공장 +1, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "혁명 철도군",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "노동자 국가 완성",
+          "effect": "군수공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_trotsky_x",
+      "title": "붉은 군대 민주화",
+      "after": "com_trotsky",
+      "exclusive": "com_trotsky_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "병사 위원회",
+          "effect": "사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "선출제 장교단",
+          "effect": "육군 경험 +25, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "정치 교육대",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "혁명적 규율",
+          "effect": "사단 조직력 +5%, 징집 인력 +2%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_trotsky_y",
+      "title": "전문 군대",
+      "after": "com_trotsky",
+      "exclusive": "com_trotsky_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "옛 장교 기용",
+          "effect": "육군 경험 +40",
+          "days": 35
+        },
+        {
+          "name": "군사 전문가 학교",
+          "effect": "포병 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "중앙 군사위원회",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "혁명 정규군",
+          "effect": "군수공장 +2, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_trotsky_cap",
+      "title": "세계 혁명 사령부",
+      "after": [
+        "com_trotsky_x",
+        "com_trotsky_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "혁명 사령부 설치",
+          "effect": "정당화 기간 -25%",
+          "days": 35
+        },
+        {
+          "name": "해외 지부 확장",
+          "effect": "정치력 +100, 전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "지구적 혁명",
+          "effect": "전쟁 지원 +20%, 징집 인력 +3%",
           "days": 70
         }
       ]
@@ -343,7 +639,7 @@
     {
       "id": "com_bukharin_end",
       "title": "인민 번영",
-      "after": "com_bukharin_market",
+      "after": "com_bukharin",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -371,6 +667,154 @@
         {
           "name": "번영하는 사회주의",
           "effect": "공장 생산량 +5%, 안정도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_bukharin_a2",
+      "title": "농촌 번영",
+      "after": "com_bukharin_market",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "곡물 자유 판매",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "농기계 대여소",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "농촌 신용 은행",
+          "effect": "민간공장 +1, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "부유한 농촌",
+          "effect": "안정도 +15%, 민간공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_bukharin_b2",
+      "title": "소비 경제",
+      "after": "com_bukharin_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "생필품 공장",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "국영 백화점",
+          "effect": "안정도 +5%, 소비재 공장 -3%",
+          "days": 35
+        },
+        {
+          "name": "임금 인상",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "인민 소비 사회",
+          "effect": "공장 생산량 +5%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_bukharin_x",
+      "title": "점진적 집단화",
+      "after": "com_bukharin",
+      "exclusive": "com_bukharin_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "자발적 협동농장",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "모범 농장",
+          "effect": "연구 속도 +3%",
+          "days": 35
+        },
+        {
+          "name": "농업 전문가 파견",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "협동 농업 체계",
+          "effect": "민간공장 +2, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_bukharin_y",
+      "title": "개인 농민 보호",
+      "after": "com_bukharin",
+      "exclusive": "com_bukharin_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "토지 소유 보장",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "농민 대표 당원",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "농민 자위대",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "자영농 국가",
+          "effect": "안정도 +15%, 징집 인력 +2%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_bukharin_cap",
+      "title": "인간의 얼굴",
+      "after": [
+        "com_bukharin_x",
+        "com_bukharin_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "언론 자유 일부 허용",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "정치범 사면",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "사회주의 민주",
+          "effect": "일일 정치력 +0.15, 안정도 +10%",
           "days": 70
         }
       ]
@@ -428,7 +872,7 @@
     {
       "id": "com_anarchy_end",
       "title": "자유 영역",
-      "after": "com_anarchy_labor",
+      "after": "com_anarchy",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -456,6 +900,154 @@
         {
           "name": "해방된 땅",
           "effect": "전쟁 지원 +20%, 징집 인력 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_anarchy_a2",
+      "title": "자주 관리",
+      "after": "com_anarchy_labor",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "집산화 공장",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "공동체 경제 위원회",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "무상 배급소",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "자주 관리 경제",
+          "effect": "군수공장 +2, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_anarchy_b2",
+      "title": "민병대",
+      "after": "com_anarchy_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "철도 노동자 민병",
+          "effect": "징집 인력 +2%, 인프라 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "광부 다이너마이트대",
+          "effect": "대전차 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "자원 의용 종대",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "민중 군대",
+          "effect": "징집 인력 +3%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_anarchy_x",
+      "title": "순수 아나키즘",
+      "after": "com_anarchy",
+      "exclusive": "com_anarchy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국가 기구 폐지",
+          "effect": "안정도 +10%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "자유 연합 원칙",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "화폐 폐지 실험",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "자유 코뮌 연방",
+          "effect": "안정도 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_anarchy_y",
+      "title": "전시 협력",
+      "after": "com_anarchy",
+      "exclusive": "com_anarchy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "반파시즘 공동전선",
+          "effect": "전쟁 지원 +15%",
+          "days": 35
+        },
+        {
+          "name": "통합 사령부",
+          "effect": "사단 조직력 +5%, 육군 경험 +20",
+          "days": 35
+        },
+        {
+          "name": "군수 위원회",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "전시 혁명 정부",
+          "effect": "전쟁 지원 +10%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_anarchy_cap",
+      "title": "자유의 땅",
+      "after": [
+        "com_anarchy_x",
+        "com_anarchy_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "자유 학교 연맹",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "국제 아나키 회의",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "자유의 횃불",
+          "effect": "안정도 +15%, 전쟁 지원 +15%",
           "days": 70
         }
       ]
@@ -513,7 +1105,7 @@
     {
       "id": "com_indep_end",
       "title": "독자 사회주의",
-      "after": "com_indep_econ",
+      "after": "com_indep",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -541,6 +1133,154 @@
         {
           "name": "우리식 사회주의",
           "effect": "안정도 +15%, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_indep_a2",
+      "title": "자력갱생",
+      "after": "com_indep_econ",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "자체 철강 기지",
+          "effect": "강철 +6",
+          "days": 35
+        },
+        {
+          "name": "자체 공작 기계",
+          "effect": "산업 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "지방 공업 육성",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "자력갱생 경제",
+          "effect": "공장 생산량 +5%, 자원 추출 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_indep_b2",
+      "title": "전민 무장",
+      "after": "com_indep_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "노농 적위대",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "지하 요새화",
+          "effect": "요새 건설 속도 +20%, 참호 효과 +10%",
+          "days": 35
+        },
+        {
+          "name": "군수 자립",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "전민 무장 체계",
+          "effect": "방어전 +5%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_indep_x",
+      "title": "개방 사회주의",
+      "after": "com_indep",
+      "exclusive": "com_indep_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "서방 차관 도입",
+          "effect": "민간공장 +2, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "기술자 교류",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "노동자 해외 연수",
+          "effect": "전자 공학 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "열린 사회주의",
+          "effect": "안정도 +15%, 연구 속도 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_indep_y",
+      "title": "폐쇄 사회주의",
+      "after": "com_indep",
+      "exclusive": "com_indep_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국경 봉쇄",
+          "effect": "이념 침투 방어 +30%",
+          "days": 35
+        },
+        {
+          "name": "사상 교양 사업",
+          "effect": "안정도 +10%, 전쟁 지원 +5%",
+          "days": 35
+        },
+        {
+          "name": "수령 중심 체제",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "일심단결",
+          "effect": "안정도 +15%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "com_indep_cap",
+      "title": "제3의 길",
+      "after": [
+        "com_indep_x",
+        "com_indep_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "비동맹 정상 회의",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "제3세계 원조",
+          "effect": "정치력 +75, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "독자 노선 완성",
+          "effect": "민간공장 +2, 안정도 +15%",
           "days": 70
         }
       ]
@@ -716,7 +1456,7 @@
     {
       "id": "dem_social_end",
       "title": "복지 국가",
-      "after": "dem_social_labor",
+      "after": "dem_social",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -744,6 +1484,154 @@
         {
           "name": "요람에서 무덤까지",
           "effect": "안정도 +20%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_social_a2",
+      "title": "계획된 시장",
+      "after": "dem_social_labor",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국가 투자 은행",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "기간산업 공영화",
+          "effect": "군수공장 +1, 민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "완전 고용 정책",
+          "effect": "안정도 +10%, 징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "혼합 경제",
+          "effect": "공장 생산량 +5%, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_social_b2",
+      "title": "노동자 참여",
+      "after": "dem_social_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "공동 결정제",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "직업 훈련원",
+          "effect": "연구 속도 +3%",
+          "days": 35
+        },
+        {
+          "name": "노조 연금 기금",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "노동 존중 사회",
+          "effect": "안정도 +15%, 공장 생산량 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_social_x",
+      "title": "개혁 사회주의",
+      "after": "dem_social",
+      "exclusive": "dem_social_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "사회화 위원회",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "농지 재분배",
+          "effect": "안정도 +10%, 자원 추출 +5%",
+          "days": 35
+        },
+        {
+          "name": "은행 국유화",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "민주 사회주의",
+          "effect": "안정도 +15%, 민간공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_social_y",
+      "title": "중도 개혁",
+      "after": "dem_social",
+      "exclusive": "dem_social_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "사회 자유 연합",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "중산층 지원",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "시장 친화 복지",
+          "effect": "민간공장 건설 속도 +10%",
+          "days": 35
+        },
+        {
+          "name": "사회적 합의",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_social_cap",
+      "title": "민중의 집",
+      "after": [
+        "dem_social_x",
+        "dem_social_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국민 연금",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "공공 의료 체계",
+          "effect": "징집 인력 +2%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "민중의 집 완성",
+          "effect": "안정도 +20%, 공장 생산량 +5%",
           "days": 70
         }
       ]
@@ -801,7 +1689,7 @@
     {
       "id": "dem_liberal_end",
       "title": "자유 경제",
-      "after": "dem_liberal_capital",
+      "after": "dem_liberal",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -829,6 +1717,154 @@
         {
           "name": "자유 무역의 등대",
           "effect": "민간공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_liberal_a2",
+      "title": "금융 강국",
+      "after": "dem_liberal_capital",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국채 시장 개설",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "보험 산업 육성",
+          "effect": "민간공장 +1, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "국제 결제 은행",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "금융 중심지",
+          "effect": "민간공장 +2, 공장 생산량 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_liberal_b2",
+      "title": "자유와 권리",
+      "after": "dem_liberal_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "권리 장전",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "언론 자유 보장",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "사법권 독립 보장",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "열린 사회",
+          "effect": "안정도 +15%, 연구 속도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_liberal_x",
+      "title": "고전 자유주의",
+      "after": "dem_liberal",
+      "exclusive": "dem_liberal_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "작은 정부",
+          "effect": "소비재 공장 -5%",
+          "days": 35
+        },
+        {
+          "name": "규제 철폐",
+          "effect": "민간공장 건설 속도 +15%",
+          "days": 35
+        },
+        {
+          "name": "민간 군수 계약",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "자유방임 경제",
+          "effect": "공장 생산량 +5%, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_liberal_y",
+      "title": "사회 자유주의",
+      "after": "dem_liberal",
+      "exclusive": "dem_liberal_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "공교육 확충",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "노동 보호법",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "공공 사업청",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "공정한 시장",
+          "effect": "안정도 +10%, 민간공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_liberal_cap",
+      "title": "민주주의의 병기창",
+      "after": [
+        "dem_liberal_x",
+        "dem_liberal_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "자동차 산업 전환",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "항공기 대량 생산",
+          "effect": "전투기 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "민주주의 병기창",
+          "effect": "군수공장 +2, 공장 생산량 +5%",
           "days": 70
         }
       ]
@@ -886,7 +1922,7 @@
     {
       "id": "dem_christian_end",
       "title": "기독교 사회",
-      "after": "dem_christian_doctrine",
+      "after": "dem_christian",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -914,6 +1950,154 @@
         {
           "name": "신앙과 민주",
           "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_christian_a2",
+      "title": "가정과 공동체",
+      "after": "dem_christian_doctrine",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "다자녀 지원",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "가정 보호법",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "교회 자선 연합",
+          "effect": "안정도 +5%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "공동체 국가",
+          "effect": "안정도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_christian_b2",
+      "title": "사회적 시장",
+      "after": "dem_christian_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "중소기업 보호",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "기업 공동체",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "사회 보험 확대",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "부흥의 기적",
+          "effect": "민간공장 +2, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_christian_x",
+      "title": "기독교 노동",
+      "after": "dem_christian",
+      "exclusive": "dem_christian_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "가톨릭 노동 청년회",
+          "effect": "징집 인력 +2%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "노동 사목",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "정의로운 임금",
+          "effect": "안정도 +10%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "노동의 존엄",
+          "effect": "공장 생산량 +5%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_christian_y",
+      "title": "보수 기독교",
+      "after": "dem_christian",
+      "exclusive": "dem_christian_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "교회 재산 회복",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "종교 교육 의무화",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "전통 도덕 수호",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "기독교 국가 선언",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_christian_cap",
+      "title": "유럽의 화해",
+      "after": [
+        "dem_christian_x",
+        "dem_christian_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국경 너머 대화",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "기독교 민주 국제",
+          "effect": "민주주의 지지율 +5%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "화해의 정치",
+          "effect": "안정도 +15%, 이념 침투 방어 +20%",
           "days": 70
         }
       ]
@@ -971,7 +2155,7 @@
     {
       "id": "dem_conserv_end",
       "title": "보수 질서",
-      "after": "dem_conserv_order",
+      "after": "dem_conserv",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -999,6 +2183,154 @@
         {
           "name": "강한 민주 국가",
           "effect": "전쟁 지원 +15%, 방어전 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_a2",
+      "title": "건전 재정",
+      "after": "dem_conserv_order",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "금본위 유지",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "예산 감사원",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "세제 간소화",
+          "effect": "민간공장 건설 속도 +10%",
+          "days": 35
+        },
+        {
+          "name": "건전한 국가 재정",
+          "effect": "민간공장 +2, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_b2",
+      "title": "국가 안보",
+      "after": "dem_conserv_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국가 보안국 창설",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "예비군 법",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "해안 경비 강화",
+          "effect": "해안 요새 건설 속도 +20%",
+          "days": 35
+        },
+        {
+          "name": "안보 국가",
+          "effect": "방어전 +5%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_x",
+      "title": "온건 보수",
+      "after": "dem_conserv",
+      "exclusive": "dem_conserv_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "중도 연정",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "지방 자치 확대",
+          "effect": "정치력 +50, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "점진 근대화",
+          "effect": "연구 속도 +3%",
+          "days": 35
+        },
+        {
+          "name": "온건 보수 정부",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_y",
+      "title": "강경 보수",
+      "after": "dem_conserv",
+      "exclusive": "dem_conserv_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "비상 대권 법",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "공산당 활동 금지",
+          "effect": "공산주의 지지율 -10%",
+          "days": 35
+        },
+        {
+          "name": "질서 유지법",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "강한 정부",
+          "effect": "전쟁 지원 +15%, 정치력 +50",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "dem_conserv_cap",
+      "title": "헌정의 수호자",
+      "after": [
+        "dem_conserv_x",
+        "dem_conserv_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "헌법 재판소",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "국민 화합 정부",
+          "effect": "안정도 +10%, 정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "헌정 질서 완성",
+          "effect": "안정도 +20%, 전쟁 지원 +10%",
           "days": 70
         }
       ]
@@ -1174,7 +2506,7 @@
     {
       "id": "fas_franco_end",
       "title": "국민 재건",
-      "after": "fas_franco_church",
+      "after": "fas_franco",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1202,6 +2534,154 @@
         {
           "name": "영원한 조국",
           "effect": "전쟁 지원 +15%, 이념 침투 방어 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_franco_a2",
+      "title": "군대와 질서",
+      "after": "fas_franco_church",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "군사 법정",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "국민 수비대",
+          "effect": "징집 인력 +2%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "원정 군단 재편",
+          "effect": "육군 경험 +40",
+          "days": 35
+        },
+        {
+          "name": "질서의 군대",
+          "effect": "사단 조직력 +5%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_franco_b2",
+      "title": "가톨릭 국가",
+      "after": "fas_franco_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "교회 교육 복원",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "가톨릭 축일 부활",
+          "effect": "안정도 +5%, 전쟁 지원 +5%",
+          "days": 35
+        },
+        {
+          "name": "바티칸 협약",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "가톨릭 국가 선언",
+          "effect": "안정도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_franco_x",
+      "title": "팔랑헤 강화",
+      "after": "fas_franco",
+      "exclusive": "fas_franco_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "단일 정당 체제",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "청년 전선",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "국가 노조 체제",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "운동 국가",
+          "effect": "전쟁 지원 +15%, 파시즘 지지율 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_franco_y",
+      "title": "군주파 연합",
+      "after": "fas_franco",
+      "exclusive": "fas_franco_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "왕위 계승법",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "왕당파 장군 기용",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "섭정 체제",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "왕국으로의 길",
+          "effect": "안정도 +15%, 비동맹 지지율 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_franco_cap",
+      "title": "평화의 25년",
+      "after": [
+        "fas_franco_x",
+        "fas_franco_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "장기 재건 계획",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "관광 산업 개방",
+          "effect": "정치력 +75, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "안정의 시대",
+          "effect": "안정도 +20%, 민간공장 +2",
           "days": 70
         }
       ]
@@ -1259,7 +2739,7 @@
     {
       "id": "fas_corp_end",
       "title": "조합 국가",
-      "after": "fas_corp_guild",
+      "after": "fas_corp",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1287,6 +2767,154 @@
         {
           "name": "신국가 완성",
           "effect": "안정도 +15%, 생산 효율 증가 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_corp_a2",
+      "title": "조합 경제",
+      "after": "fas_corp_guild",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "산업 조합",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "농업 조합",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "조합 은행",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "조합 경제 완성",
+          "effect": "민간공장 +2, 군수공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_corp_b2",
+      "title": "국가 기획",
+      "after": "fas_corp_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국가 기획청",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "늪지 간척 사업",
+          "effect": "건물 슬롯 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "국가 전력 공사",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "기획 국가",
+          "effect": "공장 생산량 +5%, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_corp_x",
+      "title": "급진 조합주의",
+      "after": "fas_corp",
+      "exclusive": "fas_corp_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "노동자 조합 우선",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "자본 통제",
+          "effect": "소비재 공장 -5%",
+          "days": 35
+        },
+        {
+          "name": "국민 노동 대장",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "조합 혁명",
+          "effect": "공장 생산량 +5%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_corp_y",
+      "title": "보수 조합주의",
+      "after": "fas_corp",
+      "exclusive": "fas_corp_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "고용주 협회",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "교회 노동 조정",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "사회 평화 협정",
+          "effect": "안정도 +10%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "계급 조화",
+          "effect": "안정도 +15%, 공장 생산량 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_corp_cap",
+      "title": "새로운 국가",
+      "after": [
+        "fas_corp_x",
+        "fas_corp_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국가 박람회",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "제국 도로망",
+          "effect": "인프라 +1 (4개 주)",
+          "days": 35
+        },
+        {
+          "name": "새로운 국가 완성",
+          "effect": "안정도 +15%, 민간공장 +2",
           "days": 70
         }
       ]
@@ -1344,7 +2972,7 @@
     {
       "id": "fas_natsoc_end",
       "title": "총력 국가",
-      "after": "fas_natsoc_rearm",
+      "after": "fas_natsoc",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1372,6 +3000,154 @@
         {
           "name": "국가 총력 체제",
           "effect": "공장 생산량 +5%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_natsoc_a2",
+      "title": "기갑과 공군",
+      "after": "fas_natsoc_rearm",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "기갑 사단 창설",
+          "effect": "기갑 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "급강하 폭격 학교",
+          "effect": "근접 지원기 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "전투기 학교",
+          "effect": "공군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "전격전 군대",
+          "effect": "군수공장 +2, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_natsoc_b2",
+      "title": "전시 산업",
+      "after": "fas_natsoc_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "인조 고무 공장",
+          "effect": "고무 +6",
+          "days": 35
+        },
+        {
+          "name": "알루미늄 제련소",
+          "effect": "알루미늄 +6",
+          "days": 35
+        },
+        {
+          "name": "군수성 통합",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "전시 생산 체제",
+          "effect": "군수공장 +3",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_natsoc_x",
+      "title": "당 우위",
+      "after": "fas_natsoc",
+      "exclusive": "fas_natsoc_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "친위대 확대",
+          "effect": "이념 침투 방어 +20%, 징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "당 감시 체계",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "당 군사 조직",
+          "effect": "육군 경험 +25",
+          "days": 35
+        },
+        {
+          "name": "당 국가",
+          "effect": "정치력 +150",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_natsoc_y",
+      "title": "군 우위",
+      "after": "fas_natsoc",
+      "exclusive": "fas_natsoc_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국방군 독립성",
+          "effect": "사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "참모 본부 권한",
+          "effect": "육군 경험 +40",
+          "days": 35
+        },
+        {
+          "name": "전통 장교단",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "군의 국가",
+          "effect": "전쟁 지원 +15%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_natsoc_cap",
+      "title": "대전쟁 준비",
+      "after": [
+        "fas_natsoc_x",
+        "fas_natsoc_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "전쟁 경제 전환",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "국경 정당화",
+          "effect": "정당화 기간 -25%",
+          "days": 35
+        },
+        {
+          "name": "최후의 동원",
+          "effect": "징집 인력 +4%, 전쟁 지원 +20%",
           "days": 70
         }
       ]
@@ -1429,7 +3205,7 @@
     {
       "id": "fas_clerical_end",
       "title": "교권 질서",
-      "after": "fas_clerical_church",
+      "after": "fas_clerical",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1457,6 +3233,154 @@
         {
           "name": "교회의 방패",
           "effect": "안정도 +15%, 이념 침투 방어 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_a2",
+      "title": "신분 사회",
+      "after": "fas_clerical_church",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "농민 신분회",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "장인 길드",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "귀족 신분회",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "신분 국가 완성",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_b2",
+      "title": "십자가와 칼",
+      "after": "fas_clerical_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "가톨릭 장교단",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "교회 자금 군비",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "성모 의용대",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "십자가의 군대",
+          "effect": "사단 조직력 +5%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_x",
+      "title": "교회 통치",
+      "after": "fas_clerical",
+      "exclusive": "fas_clerical_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "주교 내각",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "교회 법정",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "십일조 국가 징수",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "교회 국가 완성",
+          "effect": "안정도 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_y",
+      "title": "민족 교회",
+      "after": "fas_clerical",
+      "exclusive": "fas_clerical_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "민족 성인 숭배",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "민족 교회 자치",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "민족 신앙 운동",
+          "effect": "안정도 +10%, 파시즘 지지율 +5%",
+          "days": 35
+        },
+        {
+          "name": "신앙과 민족",
+          "effect": "전쟁 지원 +15%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "fas_clerical_cap",
+      "title": "천년 왕국",
+      "after": [
+        "fas_clerical_x",
+        "fas_clerical_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "성당 재건 사업",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "가톨릭 대학",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "신의 질서",
+          "effect": "안정도 +20%, 전쟁 지원 +10%",
           "days": 70
         }
       ]
@@ -1632,7 +3556,7 @@
     {
       "id": "neu_junta_end",
       "title": "군정 공고화",
-      "after": "neu_junta_rule",
+      "after": "neu_junta",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1660,6 +3584,154 @@
         {
           "name": "국군의 나라",
           "effect": "전쟁 지원 +15%, 사단 조직력 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_junta_a2",
+      "title": "군사 산업",
+      "after": "neu_junta_rule",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국영 무기창",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "군용 차량 공장",
+          "effect": "기갑 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "군수 철도",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "군산 복합체",
+          "effect": "군수공장 +2, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_junta_b2",
+      "title": "군의 통치",
+      "after": "neu_junta_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "군 출신 지사",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "계엄 사법부",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "군 경제 위원회",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "군정 국가",
+          "effect": "일일 정치력 +0.15, 안정도 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_junta_x",
+      "title": "강경파 군정",
+      "after": "neu_junta",
+      "exclusive": "neu_junta_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "반대파 체포",
+          "effect": "정치력 +75, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "무기한 계엄",
+          "effect": "전쟁 지원 +15%",
+          "days": 35
+        },
+        {
+          "name": "군 정보 기관",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "철권 통치",
+          "effect": "징집 인력 +3%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_junta_y",
+      "title": "온건파 군정",
+      "after": "neu_junta",
+      "exclusive": "neu_junta_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "민정 이양 약속",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "기술 관료 기용",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "관제 선거",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "군민 협치",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_junta_cap",
+      "title": "강군 국가",
+      "after": [
+        "neu_junta_x",
+        "neu_junta_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국방 대학",
+          "effect": "육군 경험 +40",
+          "days": 35
+        },
+        {
+          "name": "예비군 동원 체계",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "강군의 나라",
+          "effect": "사단 조직력 +5%, 군수공장 +2",
           "days": 70
         }
       ]
@@ -1717,7 +3789,7 @@
     {
       "id": "neu_pres_end",
       "title": "대통령 국가",
-      "after": "neu_pres_rule",
+      "after": "neu_pres",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1745,6 +3817,154 @@
         {
           "name": "국가 근대화 완수",
           "effect": "공장 생산량 +5%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_pres_a2",
+      "title": "개발 독재",
+      "after": "neu_pres_rule",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "수출 공단",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "고속 도로 사업",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "중화학 공업화",
+          "effect": "군수공장 +2, 강철 +4",
+          "days": 35
+        },
+        {
+          "name": "개발 연대",
+          "effect": "공장 생산량 +5%, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_pres_b2",
+      "title": "대통령 정당",
+      "after": "neu_pres_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "여당 조직 강화",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "청년 당원단",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "당정 협의회",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "일당 우위 체제",
+          "effect": "안정도 +10%, 정치력 +75",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_pres_x",
+      "title": "민족 근대화",
+      "after": "neu_pres",
+      "exclusive": "neu_pres_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "농촌 근대화 운동",
+          "effect": "안정도 +10%, 자원 추출 +5%",
+          "days": 35
+        },
+        {
+          "name": "국민 교육 헌장",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "과학 기술처",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "조국 근대화",
+          "effect": "민간공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_pres_y",
+      "title": "반공 국가",
+      "after": "neu_pres",
+      "exclusive": "neu_pres_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "반공법 제정",
+          "effect": "공산주의 지지율 -10%",
+          "days": 35
+        },
+        {
+          "name": "국가 보안법",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "반공 예비군",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "반공 보루",
+          "effect": "방어전 +5%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_pres_cap",
+      "title": "영구 집권",
+      "after": [
+        "neu_pres_x",
+        "neu_pres_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국민 회의 소집",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "긴급 조치권",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "대통령 영도 체제",
+          "effect": "일일 정치력 +0.15, 안정도 +10%",
           "days": 70
         }
       ]
@@ -1802,7 +4022,7 @@
     {
       "id": "neu_monarchy_end",
       "title": "왕국의 영광",
-      "after": "neu_monarchy_crown",
+      "after": "neu_monarchy",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1830,6 +4050,154 @@
         {
           "name": "왕관 아래 하나",
           "effect": "안정도 +20%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_monarchy_a2",
+      "title": "왕실 경제",
+      "after": "neu_monarchy_crown",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "왕실 토지 개발",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "왕립 무역 회사",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "왕실 조폐국",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "왕국의 번영",
+          "effect": "민간공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_monarchy_b2",
+      "title": "왕실 군대",
+      "after": "neu_monarchy_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "왕립 사관 학교",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "왕실 기병대 기계화",
+          "effect": "기갑 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "국왕 근위 사단",
+          "effect": "사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "왕국 수호군",
+          "effect": "군수공장 +2, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_monarchy_x",
+      "title": "절대 왕정",
+      "after": "neu_monarchy",
+      "exclusive": "neu_monarchy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국왕 친정",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "의회 해산",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "왕권 신수설",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "절대 군주",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_monarchy_y",
+      "title": "입헌 왕정",
+      "after": "neu_monarchy",
+      "exclusive": "neu_monarchy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "왕국 헌법",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "양원제 의회",
+          "effect": "민주주의 지지율 +10%",
+          "days": 35
+        },
+        {
+          "name": "책임 내각제",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "군림하되 통치 않음",
+          "effect": "안정도 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_monarchy_cap",
+      "title": "왕조의 영광",
+      "after": [
+        "neu_monarchy_x",
+        "neu_monarchy_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "왕실 기념 축제",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "왕가 혼인 동맹",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "영광의 왕조",
+          "effect": "안정도 +15%, 전쟁 지원 +15%",
           "days": 70
         }
       ]
@@ -1887,7 +4255,7 @@
     {
       "id": "neu_conserv_end",
       "title": "전통 국가",
-      "after": "neu_conserv_trad",
+      "after": "neu_conserv",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -1915,6 +4283,154 @@
         {
           "name": "질서 있는 나라",
           "effect": "안정도 +15%, 이념 침투 방어 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_conserv_a2",
+      "title": "농업 귀족",
+      "after": "neu_conserv_trad",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "대농장 근대화",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "지주 대표 의회",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "곡물 수출 협정",
+          "effect": "민간공장 +1, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "귀족 국가",
+          "effect": "안정도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_conserv_b2",
+      "title": "전통 군대",
+      "after": "neu_conserv_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "기병 전통",
+          "effect": "육군 경험 +30",
+          "days": 35
+        },
+        {
+          "name": "귀족 장교단",
+          "effect": "사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "지역 연대",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "전통의 군대",
+          "effect": "방어전 +5%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_conserv_x",
+      "title": "보수 근대화",
+      "after": "neu_conserv",
+      "exclusive": "neu_conserv_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "선별적 개혁",
+          "effect": "연구 속도 +3%",
+          "days": 35
+        },
+        {
+          "name": "철도 귀족 투자",
+          "effect": "인프라 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "산업 귀족",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "근대적 보수",
+          "effect": "공장 생산량 +5%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_conserv_y",
+      "title": "반동",
+      "after": "neu_conserv",
+      "exclusive": "neu_conserv_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "옛 법 복원",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "검열 강화",
+          "effect": "이념 침투 방어 +20%",
+          "days": 35
+        },
+        {
+          "name": "신분 질서 복원",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "반동 국가",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_conserv_cap",
+      "title": "오랜 왕국",
+      "after": [
+        "neu_conserv_x",
+        "neu_conserv_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국가 기념일 제정",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "전통 문화 보호",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "변치 않는 나라",
+          "effect": "안정도 +20%, 정치력 +75",
           "days": 70
         }
       ]
@@ -1972,7 +4488,7 @@
     {
       "id": "neu_kemal_end",
       "title": "근대 국가",
-      "after": "neu_kemal_reform",
+      "after": "neu_kemal",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -2000,6 +4516,154 @@
         {
           "name": "근대화 혁명 완수",
           "effect": "민간공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_a2",
+      "title": "국가주의 경제",
+      "after": "neu_kemal_reform",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "국영 직물 공장",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "국영 제철소",
+          "effect": "강철 +6, 군수공장 +1",
+          "days": 35
+        },
+        {
+          "name": "국영 철도청",
+          "effect": "인프라 +1 (3개 주)",
+          "days": 35
+        },
+        {
+          "name": "국가주의 완성",
+          "effect": "공장 생산량 +5%, 민간공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_b2",
+      "title": "민족 각성",
+      "after": "neu_kemal_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "민족 역사 연구소",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "국어 정화 운동",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "국민 회관 건립",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "민족 국가",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_x",
+      "title": "급진 세속화",
+      "after": "neu_kemal",
+      "exclusive": "neu_kemal_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "종교 학교 폐지",
+          "effect": "연구 속도 +5%, 안정도 -5%",
+          "days": 35
+        },
+        {
+          "name": "여성 참정권",
+          "effect": "징집 인력 +2%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "서구식 법전",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "세속 공화국",
+          "effect": "연구 속도 +5%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_y",
+      "title": "점진 세속화",
+      "after": "neu_kemal",
+      "exclusive": "neu_kemal_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "종교청 설치",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "온건 개혁파",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "전통 존중",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "조화로운 근대화",
+          "effect": "안정도 +15%, 연구 속도 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_kemal_cap",
+      "title": "공화국의 아버지",
+      "after": [
+        "neu_kemal_x",
+        "neu_kemal_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "공화 원칙 선포",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "국민 영웅 숭배",
+          "effect": "전쟁 지원 +15%",
+          "days": 35
+        },
+        {
+          "name": "영원한 공화국",
+          "effect": "안정도 +15%, 민간공장 +2",
           "days": 70
         }
       ]
@@ -2057,7 +4721,7 @@
     {
       "id": "neu_caudillo_end",
       "title": "후견 국가",
-      "after": "neu_caudillo_patron",
+      "after": "neu_caudillo",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -2085,6 +4749,154 @@
         {
           "name": "국가 원수 숭배",
           "effect": "일일 정치력 +0.15, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_a2",
+      "title": "자원 국유화",
+      "after": "neu_caudillo_patron",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "석유 국유화",
+          "effect": "석유 +6",
+          "days": 35
+        },
+        {
+          "name": "광산 국유화",
+          "effect": "크롬 +4, 텅스텐 +4",
+          "days": 35
+        },
+        {
+          "name": "국영 자원 공사",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "자원 민족주의",
+          "effect": "민간공장 +2, 정치력 +75",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_b2",
+      "title": "민중 동원",
+      "after": "neu_caudillo_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "대중 집회",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "지도자 노조",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "빈민 구호",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "민중의 지도자",
+          "effect": "안정도 +15%, 일일 정치력 +0.1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_x",
+      "title": "포퓰리즘",
+      "after": "neu_caudillo",
+      "exclusive": "neu_caudillo_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "임금 대폭 인상",
+          "effect": "안정도 +15%, 소비재 공장 +5%",
+          "days": 35
+        },
+        {
+          "name": "퍼스트레이디 재단",
+          "effect": "안정도 +10%, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "국민 주택",
+          "effect": "민간공장 +1, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "민중주의 국가",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_y",
+      "title": "과두 지배",
+      "after": "neu_caudillo",
+      "exclusive": "neu_caudillo_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "대지주 연합",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "외국 자본 특혜",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "사설 경비대",
+          "effect": "징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "과두 국가",
+          "effect": "일일 정치력 +0.15",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_caudillo_cap",
+      "title": "영원한 카우디요",
+      "after": [
+        "neu_caudillo_x",
+        "neu_caudillo_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "기념비 건립",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "후계자 지명",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "지도자의 나라",
+          "effect": "안정도 +15%, 전쟁 지원 +15%",
           "days": 70
         }
       ]
@@ -2142,7 +4954,7 @@
     {
       "id": "neu_agrarian_end",
       "title": "농민 국가",
-      "after": "neu_agrarian_land",
+      "after": "neu_agrarian",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -2170,6 +4982,154 @@
         {
           "name": "녹색 혁명",
           "effect": "민간공장 +2, 안정도 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_a2",
+      "title": "농촌 협동",
+      "after": "neu_agrarian_land",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "협동조합 연맹",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "협동 가공 공장",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "농촌 은행",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "협동 농촌",
+          "effect": "안정도 +15%, 민간공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_b2",
+      "title": "농민 군대",
+      "after": "neu_agrarian_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "농민 연대",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "마을 방위",
+          "effect": "방어전 +5%",
+          "days": 35
+        },
+        {
+          "name": "농민 장교",
+          "effect": "육군 경험 +25",
+          "days": 35
+        },
+        {
+          "name": "농민의 군대",
+          "effect": "사단 조직력 +5%, 징집 인력 +2%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_x",
+      "title": "녹색 사회주의",
+      "after": "neu_agrarian",
+      "exclusive": "neu_agrarian_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "토지 공유",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "농민 평의회",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "붉은 농민 연대",
+          "effect": "공산주의 지지율 +5%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "농민 민주 공화국",
+          "effect": "안정도 +15%, 공장 생산량 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_y",
+      "title": "농민 민족주의",
+      "after": "neu_agrarian",
+      "exclusive": "neu_agrarian_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "민족 농민 운동",
+          "effect": "전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "도시 엘리트 견제",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "농민 영웅",
+          "effect": "전쟁 지원 +10%, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "흙의 민족",
+          "effect": "안정도 +15%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_agrarian_cap",
+      "title": "녹색 국가",
+      "after": [
+        "neu_agrarian_x",
+        "neu_agrarian_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "농업 박람회",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "관개 대사업",
+          "effect": "건물 슬롯 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "풍요의 대지",
+          "effect": "안정도 +20%, 민간공장 +2",
           "days": 70
         }
       ]
@@ -2227,7 +5187,7 @@
     {
       "id": "neu_theocracy_end",
       "title": "신정 국가",
-      "after": "neu_theocracy_faith",
+      "after": "neu_theocracy",
       "exclusive": null,
       "condition": null,
       "target": 5,
@@ -2254,6 +5214,154 @@
         },
         {
           "name": "신의 나라",
+          "effect": "안정도 +20%, 전쟁 지원 +15%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_a2",
+      "title": "종교 경제",
+      "after": "neu_theocracy_faith",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "종교 기부 재단",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "이자 금지 은행",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "순례 경제",
+          "effect": "인프라 +1 (2개 주), 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "신앙 경제",
+          "effect": "민간공장 +2, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_b2",
+      "title": "신앙 군대",
+      "after": "neu_theocracy_end",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "성전 의용대",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "신학생 장교",
+          "effect": "육군 경험 +25",
+          "days": 35
+        },
+        {
+          "name": "순교자 여단",
+          "effect": "사단 조직력 +5%",
+          "days": 35
+        },
+        {
+          "name": "신앙의 전사",
+          "effect": "전쟁 지원 +20%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_x",
+      "title": "엄격한 신정",
+      "after": "neu_theocracy",
+      "exclusive": "neu_theocracy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "종교 경찰",
+          "effect": "이념 침투 방어 +30%",
+          "days": 35
+        },
+        {
+          "name": "율법 법정",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "세속 서적 금지",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "완전한 신정",
+          "effect": "안정도 +20%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_y",
+      "title": "온건한 신정",
+      "after": "neu_theocracy",
+      "exclusive": "neu_theocracy_line",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "종교 자문 의회",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "세속 관료 허용",
+          "effect": "일일 정치력 +0.1",
+          "days": 35
+        },
+        {
+          "name": "신앙과 과학",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "관용의 신정",
+          "effect": "안정도 +15%, 연구 속도 +3%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "neu_theocracy_cap",
+      "title": "신앙의 수호국",
+      "after": [
+        "neu_theocracy_x",
+        "neu_theocracy_y"
+      ],
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "성지 보호",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "신앙 연대 외교",
+          "effect": "정치력 +100",
+          "days": 35
+        },
+        {
+          "name": "신의 수호국",
           "effect": "안정도 +20%, 전쟁 지원 +15%",
           "days": 70
         }
