@@ -377,7 +377,7 @@
         },
         {
           "name": "대도시 산업구획",
-          "effect": "건물 슬롯 +1 (도시 3개 주)",
+          "effect": "건물 슬롯 +1 (3개 주)",
           "days": 35
         }
       ]
@@ -772,12 +772,12 @@
       "focuses": [
         {
           "name": "도시 계획국",
-          "effect": "건물 슬롯 +1 (도시 2개 주)",
+          "effect": "인프라 +1 (3개 주)",
           "days": 35
         },
         {
           "name": "대중교통망",
-          "effect": "인프라 +1 (도시 주)",
+          "effect": "공장 생산량 +3%",
           "days": 35
         },
         {
@@ -807,7 +807,7 @@
         },
         {
           "name": "농업 수출 조합",
-          "effect": "무역 자원 획득 +10%",
+          "effect": "무역 자원 획득 +10%, 정치력 +25",
           "days": 35
         }
       ]
@@ -978,6 +978,96 @@
         {
           "name": "도서방위 협동체",
           "effect": "민간공장 +2, 군수공장 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_urban_c",
+      "title": "도시 노동력",
+      "after": "ind_urban",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "도시 직업학교",
+          "effect": "생산 효율 증가 +5%",
+          "days": 35
+        },
+        {
+          "name": "노동 조합 협약",
+          "effect": "안정도 +5%, 소비재 공장 -2%",
+          "days": 35
+        },
+        {
+          "name": "도시 인구 유입",
+          "effect": "민간공장 +1, 연구 속도 +2%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_urban_d",
+      "title": "대도시권",
+      "after": "ind_urban_b",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "도시 전력망 집중",
+          "effect": "공장 생산량 +5%",
+          "days": 35
+        },
+        {
+          "name": "수도권 대개발",
+          "effect": "민간공장 +3, 건물 슬롯 +1",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "ind_rural_c",
+      "title": "농업 자급",
+      "after": "ind_rural",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "비료 공장 건설",
+          "effect": "민간공장 +1, 자원 추출 +5%",
+          "days": 35
+        },
+        {
+          "name": "식량 비축 제도",
+          "effect": "보급 소모 -5%",
+          "days": 35
+        },
+        {
+          "name": "자영농 육성법",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "ind_rural_d",
+      "title": "농민 병사",
+      "after": "ind_rural_b",
+      "exclusive": null,
+      "condition": null,
+      "target": 2,
+      "focuses": [
+        {
+          "name": "향토 예비군",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "농민 국가 선언",
+          "effect": "징집 인력 +2%, 안정도 +5%",
           "days": 70
         }
       ]
