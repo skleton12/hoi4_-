@@ -1,6 +1,6 @@
 {
   "branch": "independence",
-  "title": "괴뢰국 / 독립",
+  "title": "괴뢰국 / 종주국 / 독립",
   "groups": [
     {
       "id": "sub_root",
@@ -494,6 +494,116 @@
           "name": "정권 전복 계획",
           "effect": "징집 인력 +4%, 자치도 +10",
           "days": 70
+        }
+      ]
+    },
+    {
+      "id": "suz_root",
+      "title": "괴뢰국 관리",
+      "after": null,
+      "exclusive": null,
+      "condition": "괴뢰국 보유",
+      "target": 3,
+      "focuses": [
+        {
+          "name": "식민 사무국 설치",
+          "effect": "정치력 +75, 괴뢰국 자치도 -10",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 행정 감독",
+          "effect": "괴뢰국 자치도 -10, 안정도 +5%",
+          "days": 35
+        },
+        {
+          "name": "종주권 확립",
+          "effect": "괴뢰국 자치도 -15, 정치력 +50",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "suz_control",
+      "title": "직할 통치",
+      "after": "suz_root",
+      "exclusive": "suz",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "총독부 강화",
+          "effect": "괴뢰국 자치도 -15",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 군 편입",
+          "effect": "징집 인력 +3%",
+          "days": 35
+        },
+        {
+          "name": "자원 징발",
+          "effect": "자원 추출 +10%",
+          "days": 35
+        },
+        {
+          "name": "병합 준비",
+          "effect": "괴뢰국 자치도 -20, 정치력 +100",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "suz_comm",
+      "title": "공영권",
+      "after": "suz_root",
+      "exclusive": "suz",
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "공동 시장",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 자치 확대",
+          "effect": "괴뢰국 자치도 +10, 안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "공동 방위 조약",
+          "effect": "방어전 +5%, 전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "공영권 선언",
+          "effect": "정치력 +100, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "suz_dev",
+      "title": "괴뢰국 개발",
+      "after": "suz_root",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "괴뢰국 철도 부설",
+          "effect": "인프라 +1 (2개 주)",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 공장 투자",
+          "effect": "군수공장 +1, 민간공장 +1",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 장교 교육",
+          "effect": "육군 경험 +25",
+          "days": 35
         }
       ]
     }

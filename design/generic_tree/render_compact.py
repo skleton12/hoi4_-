@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw
 import render as style
 
 HERE = Path(__file__).parent
-FILES = ("02_industry", "03_military", "06_terrain", "07_independence", "09_late")
+FILES = ("02_industry", "03_military", "07_independence")
 OUT = HERE / "img"
 COLS = 4
 NW, NH = 164, 78

@@ -3,6 +3,56 @@
   "title": "산업",
   "groups": [
     {
+      "id": "start_root",
+      "title": "국가 재정비",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "국가 재정비 회의",
+          "effect": "정치력 +75, 인프라 +1 (수도)",
+          "days": 35
+        },
+        {
+          "name": "예산 재편",
+          "effect": "소비재 공장 -3%, 일일 정치력 +0.05",
+          "days": 35
+        },
+        {
+          "name": "국민 통합 선언",
+          "effect": "안정도 +10%",
+          "days": 35
+        }
+      ]
+    },
+    {
+      "id": "start_vision",
+      "title": "국가 비전",
+      "after": "start_root",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "행정 개혁",
+          "effect": "일일 정치력 +0.15",
+          "days": 35
+        },
+        {
+          "name": "국가 비전 선포",
+          "effect": "안정도 +10%, 전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "5개년 국가 계획",
+          "effect": "민간공장 +2, 군수공장 +2",
+          "days": 70
+        }
+      ]
+    },
+    {
       "id": "ind_base",
       "title": "기초 산업",
       "after": null,
@@ -349,9 +399,9 @@
     },
     {
       "id": "ind_urban",
-      "title": "도시화",
+      "title": "도시 개혁",
       "after": "ind_sci",
-      "exclusive": "urban",
+      "exclusive": null,
       "condition": null,
       "target": 2,
       "focuses": [
@@ -369,9 +419,9 @@
     },
     {
       "id": "ind_rural",
-      "title": "농촌화",
+      "title": "농촌 개혁",
       "after": "ind_sci",
-      "exclusive": "urban",
+      "exclusive": null,
       "condition": null,
       "target": 2,
       "focuses": [
@@ -1013,6 +1063,136 @@
         {
           "name": "농민 국가 선언",
           "effect": "징집 인력 +3%, 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_rebuild",
+      "title": "전후 재건",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 종료 후",
+      "target": 5,
+      "focuses": [
+        {
+          "name": "전후 피해대장",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "교량·철도 복구",
+          "effect": "인프라 +1 (5개 주)",
+          "days": 35
+        },
+        {
+          "name": "피란민 귀향지원",
+          "effect": "안정도 +15%",
+          "days": 35
+        },
+        {
+          "name": "민수전환 지원금",
+          "effect": "라인 전환 효율 +50%",
+          "days": 35
+        },
+        {
+          "name": "재건계획 완수",
+          "effect": "민간공장 +3",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_rebuild_b",
+      "title": "전후 질서",
+      "after": "late_rebuild",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "전범 재판",
+          "effect": "안정도 +10%, 정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "평화 조약 체결",
+          "effect": "세계 긴장도 -5%",
+          "days": 35
+        },
+        {
+          "name": "국제기구 가입",
+          "effect": "민주국 우호 +25",
+          "days": 35
+        },
+        {
+          "name": "새 시대 선언",
+          "effect": "안정도 +15%, 전쟁 지원 -10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_rebuild_c",
+      "title": "경제 재건",
+      "after": "late_rebuild",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "해외 원조 수용",
+          "effect": "민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "화폐 개혁",
+          "effect": "안정도 +10%",
+          "days": 35
+        },
+        {
+          "name": "군수 감축",
+          "effect": "군수공장 -2, 민간공장 +2",
+          "days": 35
+        },
+        {
+          "name": "경제 기적",
+          "effect": "공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_tech",
+      "title": "후반 기술",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "로켓 연구소",
+          "effect": "로켓 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "원자 연구 계획",
+          "effect": "핵 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "제트기 개발",
+          "effect": "제트 엔진 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "전자 계산기 연구",
+          "effect": "전자 연구 +50%",
+          "days": 35
+        },
+        {
+          "name": "비밀 무기 계획",
+          "effect": "연구 슬롯 +1",
           "days": 70
         }
       ]

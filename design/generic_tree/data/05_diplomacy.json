@@ -536,6 +536,91 @@
           "days": 35
         }
       ]
+    },
+    {
+      "id": "late_war",
+      "title": "전쟁 목표",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 중",
+      "target": 4,
+      "focuses": [
+        {
+          "name": "영토 요구서",
+          "effect": "이웃국 영유권 주장",
+          "days": 35
+        },
+        {
+          "name": "전쟁 목표 정당화",
+          "effect": "정당화 기간 -25%",
+          "days": 35
+        },
+        {
+          "name": "점령지 행정청",
+          "effect": "점령지 저항 -15%",
+          "days": 35
+        },
+        {
+          "name": "점령지 안정화",
+          "effect": "점령지 저항 -20%, 준수 증가 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_war_b",
+      "title": "전쟁 수행",
+      "after": "late_war",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "전시 내각 구성",
+          "effect": "일일 정치력 +0.15, 전쟁 지원 +10%",
+          "days": 35
+        },
+        {
+          "name": "전선 선전부",
+          "effect": "전쟁 지원 +15%",
+          "days": 35
+        },
+        {
+          "name": "전쟁 채권 발행",
+          "effect": "군수공장 +1, 안정도 -3%",
+          "days": 35
+        },
+        {
+          "name": "끝까지 싸운다",
+          "effect": "항복 한계 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_peace",
+      "title": "강화 외교",
+      "after": null,
+      "exclusive": null,
+      "condition": "전쟁 중",
+      "target": 3,
+      "focuses": [
+        {
+          "name": "중재국 접촉",
+          "effect": "정치력 +75",
+          "days": 35
+        },
+        {
+          "name": "휴전 협상",
+          "effect": "안정도 +10%, 전쟁 지원 -5%",
+          "days": 35
+        },
+        {
+          "name": "명예로운 강화",
+          "effect": "평화 협상 디시전 해금",
+          "days": 70
+        }
+      ]
     }
   ]
 }

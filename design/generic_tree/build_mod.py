@@ -41,6 +41,7 @@ CONDITIONS = {
     "국교 국가": ("available", "always = yes"),
     "숨은 조건": ("available", "always = yes"),
     "종주국 보유": ("available", "is_subject = yes"),
+    "괴뢰국 보유": ("available", "num_subjects > 0"),
     # 자치도 단계 이름은 1.19.3 게임 파일(common/autonomous_states/)에서 확인 필요. 틀리면 그 칸만 열리지 않는다.
     "판무관부": ("available", "has_autonomy_state = autonomy_reichskommissariat"),
     "협력정부": ("available", "has_autonomy_state = autonomy_collaboration_government"),
@@ -173,8 +174,14 @@ def rewards(effect):
     if (m := re.search(r"공산·파시즘 지지율 ([+-]\d+)%", effect)):
         for ideo in ("communism", "fascism"):
             out.append(f"add_popularity = {{ ideology = {ideo} popularity = {int(m.group(1)) / 100:.2f} }}")
-    if (m := re.search(r"자치도 ([+-]\d+)", effect)):
+    if (m := re.search(r"(?<!괴뢰국 )자치도 ([+-]\d+)", effect)):
         out.append(f"if = {{ limit = {{ is_subject = yes }} add_autonomy_score = {{ value = {int(m.group(1))} }} }}")
+    if (m := re.search(r"괴뢰국 자치도 ([+-]\d+)", effect)):
+        # 종주국이 모든 괴뢰국의 자치도를 올리거나 내린다
+        out.append(f"every_subject_country = {{ add_autonomy_score = {{ value = {int(m.group(1))} }} }}")
+    for word, tech in (("산악병", "tech_mountaineers"), ("해병", "tech_marines"), ("공수부대", "tech_paratroopers")):
+        if f"{word} 기술 획득" in effect:
+            out.append(f"set_technology = {{ {tech} = 1 }}")
     for m in re.finditer(r"(?<![가-힣])([가-힣]+(?: [가-힣]+)?) 연구(?: 속도)? \+(\d+)%", effect):
         if m.group(1) in TECH:
             out.append(f"add_tech_bonus = {{ name = {{FID}} bonus = {int(m.group(2)) / 100:.2f} uses = 1 "

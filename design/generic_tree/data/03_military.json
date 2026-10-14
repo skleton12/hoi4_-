@@ -532,17 +532,17 @@
       "focuses": [
         {
           "name": "산악 전문부대",
-          "effect": "산악병 편제 해금, 산악 공격 +5%",
+          "effect": "산악병 기술 획득, 육군 경험 +15",
           "days": 35
         },
         {
           "name": "해병 상륙대",
-          "effect": "해병 편제 해금",
+          "effect": "해병 기술 획득",
           "days": 35
         },
         {
           "name": "공수 강하대",
-          "effect": "공수 편제 해금",
+          "effect": "공수부대 기술 획득",
           "days": 35
         },
         {
@@ -813,6 +813,76 @@
         {
           "name": "공군 독립 군종",
           "effect": "공군 경험 +75",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_total",
+      "title": "총력전",
+      "after": null,
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "최종동원 계획",
+          "effect": "징집 인력 +4%",
+          "days": 35
+        },
+        {
+          "name": "잔여설비 전환",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "대체원료 실험",
+          "effect": "합성 연료 +5, 합성 고무 +5",
+          "days": 35
+        },
+        {
+          "name": "국민 항전호소",
+          "effect": "전쟁 지원 +20%",
+          "days": 35
+        },
+        {
+          "name": "항전 지속체계",
+          "effect": "방어전 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "late_total_b",
+      "title": "전시 보급·유격 항전",
+      "after": "late_total",
+      "exclusive": null,
+      "condition": null,
+      "target": 5,
+      "focuses": [
+        {
+          "name": "배급 통제 강화",
+          "effect": "보급 소모 -10%",
+          "days": 35
+        },
+        {
+          "name": "연료 비축령",
+          "effect": "연료 저장량 +20%",
+          "days": 35
+        },
+        {
+          "name": "전시 철도 사령부",
+          "effect": "보급 소모 -5%",
+          "days": 35
+        },
+        {
+          "name": "지하 무기고",
+          "effect": "보병 장비 2000 획득",
+          "days": 35
+        },
+        {
+          "name": "국토 수복 결의",
+          "effect": "민병 사단 3개 생성, 전쟁 지원 +20%",
           "days": 70
         }
       ]
