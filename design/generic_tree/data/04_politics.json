@@ -380,7 +380,7 @@
       "title": "아나키스트",
       "after": "com_gov",
       "exclusive": "com_model",
-      "condition": "무장 봉기로 집권",
+      "condition": null,
       "target": 1,
       "focuses": [
         {

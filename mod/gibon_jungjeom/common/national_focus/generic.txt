@@ -4464,7 +4464,6 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = GJ_com_gov_2 }
 		mutually_exclusive = { focus = GJ_com_stalin_1 focus = GJ_com_trotsky_1 focus = GJ_com_bukharin_1 focus = GJ_com_indep_1 }
-		available = { has_completed_focus = GJ_com_war_3 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
