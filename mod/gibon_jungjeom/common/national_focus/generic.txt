@@ -10484,4 +10484,159 @@ focus_tree = {
 			army_experience = 25
 		}
 	}
+	focus = {
+		id = GJ_suz_control_b_1
+		icon = GFX_GJ_political_pressure
+		x = 220
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_suz_control_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_control_b_1_tt
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id = GJ_suz_control_b_2
+		icon = GFX_GJ_political_pressure
+		x = 220
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_suz_control_b_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_control_b_2_tt
+			add_offsite_building = { type = industrial_complex level = 1 }
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
+			add_to_variable = { var = GJ_conscription value = 0.02 }
+		}
+	}
+	focus = {
+		id = GJ_suz_control_b_3
+		icon = GFX_GJ_political_pressure
+		x = 220
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_suz_control_b_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_control_b_3_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
+			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
+			add_to_variable = { var = GJ_local_resources_factor value = 0.1 }
+		}
+	}
+	focus = {
+		id = GJ_suz_comm_b_1
+		icon = GFX_GJ_political_pressure
+		x = 222
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_suz_comm_4 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_comm_b_1_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
+			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_suz_comm_b_2
+		icon = GFX_GJ_political_pressure
+		x = 222
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_suz_comm_b_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_comm_b_2_tt
+			army_experience = 25
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
+			add_to_variable = { var = GJ_conscription value = 0.03 }
+		}
+	}
+	focus = {
+		id = GJ_suz_comm_b_3
+		icon = GFX_GJ_political_pressure
+		x = 222
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_suz_comm_b_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_comm_b_3_tt
+			add_offsite_building = { type = industrial_complex level = 2 }
+			every_subject_country = { add_stability = 0.10 }
+		}
+	}
+	focus = {
+		id = GJ_suz_army_1
+		icon = GFX_GJ_political_pressure
+		x = 224
+		y = 6
+		cost = 5
+		prerequisite = { focus = GJ_suz_dev_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_army_1_tt
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
+			add_to_variable = { var = GJ_conscription value = 0.02 }
+			add_to_variable = { var = GJ_army_defence_factor value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_suz_army_2
+		icon = GFX_GJ_political_pressure
+		x = 224
+		y = 7
+		cost = 5
+		prerequisite = { focus = GJ_suz_army_1 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_army_2_tt
+			add_political_power = 50
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 }
+		}
+	}
+	focus = {
+		id = GJ_suz_army_3
+		icon = GFX_GJ_political_pressure
+		x = 224
+		y = 8
+		cost = 5
+		prerequisite = { focus = GJ_suz_army_2 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_army_3_tt
+			army_experience = 25
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
+			add_to_variable = { var = GJ_army_org_factor value = 0.05 }
+		}
+	}
+	focus = {
+		id = GJ_suz_army_4
+		icon = GFX_GJ_political_pressure
+		x = 224
+		y = 9
+		cost = 10
+		prerequisite = { focus = GJ_suz_army_3 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = GJ_suz_army_4_tt
+			add_war_support = 0.10
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
+			add_to_variable = { var = GJ_production_speed_bunker_factor value = 0.2 }
+		}
+	}
 }

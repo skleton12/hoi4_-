@@ -606,6 +606,86 @@
           "days": 35
         }
       ]
+    },
+    {
+      "id": "suz_control_b",
+      "title": "괴뢰국 수탈",
+      "after": "suz_control",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "괴뢰국 공장 이전",
+          "effect": "군수공장 +2",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 노동 징발",
+          "effect": "민간공장 +1, 징집 인력 +2%",
+          "days": 35
+        },
+        {
+          "name": "식민 경제 체제",
+          "effect": "자원 추출 +10%, 공장 생산량 +5%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "suz_comm_b",
+      "title": "공동 번영",
+      "after": "suz_comm",
+      "exclusive": null,
+      "condition": null,
+      "target": 3,
+      "focuses": [
+        {
+          "name": "공동 연구 기구",
+          "effect": "연구 속도 +5%",
+          "days": 35
+        },
+        {
+          "name": "괴뢰국 의용군",
+          "effect": "징집 인력 +3%, 육군 경험 +25",
+          "days": 35
+        },
+        {
+          "name": "연합 경제권",
+          "effect": "민간공장 +2, 괴뢰국 안정도 +10%",
+          "days": 70
+        }
+      ]
+    },
+    {
+      "id": "suz_army",
+      "title": "괴뢰국 군대",
+      "after": "suz_dev",
+      "exclusive": null,
+      "condition": null,
+      "target": 4,
+      "focuses": [
+        {
+          "name": "괴뢰국 방위군 창설",
+          "effect": "징집 인력 +2%, 방어전 +5%",
+          "days": 35
+        },
+        {
+          "name": "무기 대여 계약",
+          "effect": "보병 장비 1000, 정치력 +50",
+          "days": 35
+        },
+        {
+          "name": "연합 사령부",
+          "effect": "사단 조직력 +5%, 육군 경험 +25",
+          "days": 35
+        },
+        {
+          "name": "제국 방위망",
+          "effect": "요새 건설 속도 +20%, 전쟁 지원 +10%",
+          "days": 70
+        }
+      ]
     }
   ]
 }
