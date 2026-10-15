@@ -118,6 +118,20 @@ SPIRITS = {
 }
 FACTION = "GJ_regional_faction"
 RESOURCES = {"강철": "steel", "석유": "oil", "고무": "rubber", "알루미늄": "aluminium", "텅스텐": "tungsten", "크롬": "chromium"}
+ECONOMY_LAW_STEPS = {
+    "civilian_economy": "low_economic_mobilisation",
+    "low_economic_mobilisation": "partial_economic_mobilisation",
+    "partial_economic_mobilisation": "war_economy",
+    "war_economy": "tot_economic_mobilisation",
+}
+CONSCRIPTION_LAW_STEPS = {
+    "disarmed_nation": "volunteer_only",
+    "volunteer_only": "limited_conscription",
+    "limited_conscription": "extensive_conscription",
+    "extensive_conscription": "service_by_requirement",
+    "service_by_requirement": "all_adults_serve",
+    "all_adults_serve": "scraping_the_barrel",
+}
 
 # 정치 중점이 후보를 등록하면 플레이어가 정치력으로 임명할 수 있는 범용 고문.
 # 정치고문 특성은 바닐라에서 널리 쓰이는 공용 trait만 사용한다.
@@ -176,6 +190,23 @@ def rewards(effect):
             for _ in range(state_count(effect, "인프라")):
                 out.append("random_owned_controlled_state = { limit = { infrastructure < 5 } "
                            "add_building_construction = { type = infrastructure level = 1 instant_build = yes } }")
+    # 국가별 배치 대상은 달라도 건물 유형과 수량은 공통으로 적용할 수 있다.
+    for label, building in (("공군 기지", "air_base"), ("비행장", "air_base"), ("레이더", "radar_station")):
+        if re.search(re.escape(label) + r" \+1", effect):
+            state_limit = "is_on_border = yes " if "(국경 주)" in effect else ""
+            state_flag = f"GJ_temp_{building}_target"
+            for _ in range(state_count(effect, label)):
+                out.append(f"random_owned_controlled_state = {{ limit = {{ NOT = {{ has_state_flag = {state_flag} }} "
+                           f"{state_limit}{building} < 5 }} "
+                           f"add_building_construction = {{ type = {building} level = 1 instant_build = yes }} "
+                           f"set_state_flag = {state_flag} }}")
+            out.append(f"every_owned_state = {{ clr_state_flag = {state_flag} }}")
+    if "합성 정유소 +1" in effect:
+        out.append("random_owned_controlled_state = { limit = { synthetic_refinery < 5 } "
+                   "add_building_construction = { type = synthetic_refinery level = 1 instant_build = yes } }")
+    if (n := num(effect, r"국경 주 요새 \+(\d+)")):
+        out.append(f"random_owned_controlled_state = {{ limit = {{ is_on_border = yes land_fort < 10 }} "
+                   f"add_building_construction = {{ type = land_fort level = {n} instant_build = yes }} }}")
     if (n := num(effect, r"건물 슬롯 \+(\d+)")):
         for _ in range(state_count(effect, "건물 슬롯")):
             out.append(f"random_owned_controlled_state = {{ add_extra_state_shared_building_slots = {n} }}")
@@ -213,6 +244,18 @@ def rewards(effect):
     if m:
         elections = "yes" if m.group(1) == "민주주의" else "no"
         out.append(f"set_politics = {{ ruling_party = {IDEOLOGY[m.group(1)]} elections_allowed = {elections} }}")
+    if "경제법 한 단계 상향" in effect:
+        laws = list(ECONOMY_LAW_STEPS.items())
+        first, *rest = laws
+        out.append(f"if = {{ limit = {{ has_economy_law = {first[0]} }} set_economy = {first[1]} }}")
+        out.extend(f"else_if = {{ limit = {{ has_economy_law = {current} }} set_economy = {following} }}"
+                   for current, following in rest)
+    if "징병법 한 단계 상향" in effect:
+        laws = list(CONSCRIPTION_LAW_STEPS.items())
+        first, *rest = laws
+        out.append(f"if = {{ limit = {{ has_conscription_law = {first[0]} }} set_conscription = {first[1]} }}")
+        out.extend(f"else_if = {{ limit = {{ has_conscription_law = {current} }} set_conscription = {following} }}"
+                   for current, following in rest)
 
     adds, spirits = [], []
     for pattern, modifier, scale, spirit in MODIFIERS:

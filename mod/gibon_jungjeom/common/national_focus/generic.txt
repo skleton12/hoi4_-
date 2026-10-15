@@ -517,7 +517,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_ind_res_b_4_tt
+			random_owned_controlled_state = { limit = { synthetic_refinery < 5 } add_building_construction = { type = synthetic_refinery level = 1 instant_build = yes } }
 		}
 	}
 	focus = {
@@ -750,7 +750,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_ind_law_1_tt
+			if = { limit = { has_economy_law = civilian_economy } set_economy = low_economic_mobilisation }
+			else_if = { limit = { has_economy_law = low_economic_mobilisation } set_economy = partial_economic_mobilisation }
+			else_if = { limit = { has_economy_law = partial_economic_mobilisation } set_economy = war_economy }
+			else_if = { limit = { has_economy_law = war_economy } set_economy = tot_economic_mobilisation }
 		}
 	}
 	focus = {
@@ -763,7 +766,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_ind_law_2_tt
+			if = { limit = { has_conscription_law = disarmed_nation } set_conscription = volunteer_only }
+			else_if = { limit = { has_conscription_law = volunteer_only } set_conscription = limited_conscription }
+			else_if = { limit = { has_conscription_law = limited_conscription } set_conscription = extensive_conscription }
+			else_if = { limit = { has_conscription_law = extensive_conscription } set_conscription = service_by_requirement }
+			else_if = { limit = { has_conscription_law = service_by_requirement } set_conscription = all_adults_serve }
+			else_if = { limit = { has_conscription_law = all_adults_serve } set_conscription = scraping_the_barrel }
 		}
 	}
 	focus = {
@@ -887,7 +895,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_ind_infra_3_tt
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_air_base_target } air_base < 5 } add_building_construction = { type = air_base level = 1 instant_build = yes } set_state_flag = GJ_temp_air_base_target }
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_air_base_target } air_base < 5 } add_building_construction = { type = air_base level = 1 instant_build = yes } set_state_flag = GJ_temp_air_base_target }
+			every_owned_state = { clr_state_flag = GJ_temp_air_base_target }
 		}
 	}
 	focus = {
@@ -928,7 +938,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_ind_infra_a_3_tt
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_radar_station_target } radar_station < 5 } add_building_construction = { type = radar_station level = 1 instant_build = yes } set_state_flag = GJ_temp_radar_station_target }
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_radar_station_target } radar_station < 5 } add_building_construction = { type = radar_station level = 1 instant_build = yes } set_state_flag = GJ_temp_radar_station_target }
+			every_owned_state = { clr_state_flag = GJ_temp_radar_station_target }
 		}
 	}
 	focus = {
@@ -2218,7 +2230,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_army_def_a_1_tt
+			random_owned_controlled_state = { limit = { is_on_border = yes land_fort < 10 } add_building_construction = { type = land_fort level = 2 instant_build = yes } }
 		}
 	}
 	focus = {
@@ -2711,7 +2723,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_air_base_2_tt
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_air_base_target } air_base < 5 } add_building_construction = { type = air_base level = 1 instant_build = yes } set_state_flag = GJ_temp_air_base_target }
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_air_base_target } air_base < 5 } add_building_construction = { type = air_base level = 1 instant_build = yes } set_state_flag = GJ_temp_air_base_target }
+			every_owned_state = { clr_state_flag = GJ_temp_air_base_target }
 		}
 	}
 	focus = {
@@ -2897,7 +2911,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			custom_effect_tooltip = GJ_air_cas_a_1_tt
+			random_owned_controlled_state = { limit = { NOT = { has_state_flag = GJ_temp_air_base_target } is_on_border = yes air_base < 5 } add_building_construction = { type = air_base level = 1 instant_build = yes } set_state_flag = GJ_temp_air_base_target }
+			every_owned_state = { clr_state_flag = GJ_temp_air_base_target }
 		}
 	}
 	focus = {
