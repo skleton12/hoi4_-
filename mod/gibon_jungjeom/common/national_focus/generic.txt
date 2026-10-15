@@ -3607,6 +3607,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_root_1_tt
 			add_popularity = { ideology = communism popularity = 0.10 }
+			hidden_effect = { if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_state } } } add_dynamic_modifier = { modifier = GJ_reform_state } } add_to_variable = { var = GJ_communism_drift value = 0.1 } }
 		}
 	}
 	focus = {
@@ -5903,6 +5904,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dem_root_2_tt
+			hidden_effect = { if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_state } } } add_dynamic_modifier = { modifier = GJ_reform_state } } add_to_variable = { var = GJ_democratic_drift value = 0.1 } }
 		}
 	}
 	focus = {
@@ -7751,6 +7753,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_root_1_tt
 			add_popularity = { ideology = fascism popularity = 0.10 }
+			hidden_effect = { if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_state } } } add_dynamic_modifier = { modifier = GJ_reform_state } } add_to_variable = { var = GJ_fascism_drift value = 0.1 } }
 		}
 	}
 	focus = {
