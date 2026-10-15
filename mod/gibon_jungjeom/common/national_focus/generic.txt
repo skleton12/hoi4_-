@@ -857,6 +857,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_finance_2_tt
 			add_offsite_building = { type = industrial_complex level = 1 }
+			add_stability = -0.03
 		}
 	}
 	focus = {
@@ -1308,6 +1309,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_ind_war_b_1_tt
+			add_stability = -0.05
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
 			add_to_variable = { var = GJ_industrial_capacity_factory value = 0.05 }
 		}
@@ -2108,6 +2110,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_rebuild_b_4_tt
 			add_stability = 0.15
+			add_war_support = -0.10
 		}
 	}
 	focus = {
@@ -4007,6 +4010,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_stalin_econ_2_tt
+			add_stability = -0.05
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_military } } } add_dynamic_modifier = { modifier = GJ_reform_military } }
 			add_to_variable = { var = GJ_conscription value = 0.04 }
 		}
@@ -4053,6 +4057,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_stalin_econ_5_tt
 			add_political_power = 200
+			army_experience = -20
 		}
 	}
 	focus = {
@@ -4281,6 +4286,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_com_stalin_x_2_tt
 			add_political_power = 100
+			add_stability = -0.05
 		}
 	}
 	focus = {
@@ -8244,6 +8250,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_fas_root_3_tt
 			add_political_power = 75
+			add_stability = -0.05
 		}
 	}
 	focus = {
@@ -10403,6 +10410,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_junta_rule_1_tt
 			add_stability = 0.15
+			add_war_support = -0.05
 		}
 	}
 	focus = {
@@ -10668,6 +10676,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_junta_x_1_tt
 			add_political_power = 75
+			add_stability = -0.05
 		}
 	}
 	focus = {
@@ -10985,6 +10994,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_kemal_reform_1_tt
+			add_stability = -0.05
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
 			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
 		}
@@ -11182,6 +11192,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_neu_kemal_x_1_tt
+			add_stability = -0.05
 			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GJ_reform_industry } } } add_dynamic_modifier = { modifier = GJ_reform_industry } }
 			add_to_variable = { var = GJ_research_speed_factor value = 0.05 }
 		}
@@ -12776,6 +12787,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_hid_crisis_1_tt
 			add_political_power = 75
+			add_stability = -0.05
 		}
 	}
 	focus = {
@@ -13781,6 +13793,7 @@ focus_tree = {
 		ai_will_do = { factor = 1 }
 		completion_reward = {
 			custom_effect_tooltip = GJ_dip_black_b_3_tt
+			add_stability = -0.05
 		}
 	}
 	focus = {
@@ -13898,6 +13911,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_war_b_3_tt
 			add_offsite_building = { type = arms_factory level = 1 }
+			add_stability = -0.03
 		}
 	}
 	focus = {
@@ -13941,6 +13955,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GJ_late_peace_2_tt
 			add_stability = 0.10
+			add_war_support = -0.05
 		}
 	}
 	focus = {

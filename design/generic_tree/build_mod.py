@@ -151,17 +151,17 @@ def rewards(effect):
         out.append(f"add_offsite_building = {{ type = arms_factory level = {n} }}")
     if (n := num(effect, r"해군 조선소 \+(\d+)")):
         out.append(f"add_offsite_building = {{ type = dockyard level = {n} }}")
-    if (n := num(effect, r"(?<!괴뢰국 )안정도 \+(\d+)%")):
+    if (n := num(effect, r"(?<!괴뢰국 )안정도 ([+-]\d+)%")):
         out.append(f"add_stability = {n / 100:.2f}")
     if (n := num(effect, r"괴뢰국 안정도 \+(\d+)%")):
         out.append(f"every_subject_country = {{ add_stability = {n / 100:.2f} }}")
-    if (n := num(effect, r"전쟁 지원 \+(\d+)%")):
+    if (n := num(effect, r"전쟁 지원 ([+-]\d+)%")):
         out.append(f"add_war_support = {n / 100:.2f}")
-    if (n := num(effect, r"육군 경험 \+(\d+)")):
+    if (n := num(effect, r"육군 경험 ([+-]\d+)")):
         out.append(f"army_experience = {n}")
-    if (n := num(effect, r"해군 경험 \+(\d+)")):
+    if (n := num(effect, r"해군 경험 ([+-]\d+)")):
         out.append(f"navy_experience = {n}")
-    if (n := num(effect, r"공군 경험 \+(\d+)")):
+    if (n := num(effect, r"공군 경험 ([+-]\d+)")):
         out.append(f"air_experience = {n}")
     if (n := num(effect, r"연구 슬롯 \+(\d+)")):
         out.append(f"add_research_slot = {n}")
