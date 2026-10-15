@@ -13,7 +13,7 @@ import json
 import re
 from pathlib import Path
 
-from render import layout, parents_of
+from tree_layout import layout, parents_of
 
 HERE = Path(__file__).parent
 DATA = HERE / "data"
@@ -258,6 +258,14 @@ def tooltip(effect):
     return "\\n".join(lines)
 
 
+def effect_implementation(effect):
+    """효과를 쉼표 단위로 분류해 구현 완료·부분 구현·미구현 수를 센다."""
+    parts = [part.strip() for part in re.split(r",\s*", effect) if part.strip()]
+    missing = [part for part in parts if not rewards(part)]
+    implemented = len(parts) - len(missing)
+    return implemented, len(missing)
+
+
 def dynamic_modifier_file():
     text = "# build_mod.py 가 만든 파일이다. 포커스가 GJ_<수정자> 변수에 값을 더하면 여기서 반영된다.\n"
     for spirit, (name, _, icon) in SPIRITS.items():
@@ -340,6 +348,7 @@ def build():
                 route_last[g["id"]] = focus_id(g["id"], len(g["focuses"]))
 
     unknown = set()
+    fully_implemented = partial_implementation = tooltip_only = 0
     for b in branches:
         groups = b["groups"]
         pos, cols = layout(groups)
@@ -384,6 +393,13 @@ def build():
                              else "\t\tsearch_filters = { FOCUS_FILTER_RESEARCH }")
                 block.append("\t\tai_will_do = { factor = 1 }")
                 block.append("\t\tcompletion_reward = {")
+                implemented, missing = effect_implementation(f["effect"])
+                if missing and implemented:
+                    partial_implementation += 1
+                elif missing:
+                    tooltip_only += 1
+                else:
+                    fully_implemented += 1
                 tt = tooltip(f["effect"])
                 if tt:
                     block.append(f"\t\t\tcustom_effect_tooltip = {fid}_tt")
@@ -429,6 +445,7 @@ def build():
             english_path = loc_path
     focuses = sum(len(g["focuses"]) for b in branches for g in b["groups"])
     print(f"{out.relative_to(MOD.parent.parent)}  포커스 {focuses}개")
+    print(f"효과 구현 검사: 완전 {fully_implemented}칸 / 일부 미구현 {partial_implementation}칸 / 미구현 {tooltip_only}칸")
     print(f"{english_path.relative_to(MOD.parent.parent)} + {len(LOCALISATION_LANGUAGES) - 1}개 언어  키 {len(loc) - 1}개씩")
 
 
