@@ -221,11 +221,41 @@ def rewards(effect):
             adds.append(f"add_to_variable = {{ var = GJ_{modifier} value = {v * scale:g} }}")
             if spirit not in spirits:
                 spirits.append(spirit)
+    hidden = []
     for spirit in spirits:
         name = SPIRITS[spirit][0]
-        out.append(f"if = {{ limit = {{ NOT = {{ has_dynamic_modifier = {{ modifier = {name} }} }} }} "
-                   f"add_dynamic_modifier = {{ modifier = {name} }} }}")
-    return out + adds
+        hidden.append(f"if = {{ limit = {{ NOT = {{ has_dynamic_modifier = {{ modifier = {name} }} }} }} "
+                      f"add_dynamic_modifier = {{ modifier = {name} }} }}")
+    if adds:
+        # 변수 조작은 툴팁에 날것(흰 글씨)으로 보이므로 숨기고, tooltip() 이 색을 입혀 따로 보여 준다
+        out.append("hidden_effect = { " + " ".join(hidden + adds) + " }")
+    return out
+
+
+# 값이 줄어야 좋은 항목 (음수가 초록)
+GOOD_WHEN_NEGATIVE = ("소비재 공장", "보급 소모", "정당화 기간", "전쟁 목표 긴장도", "고문 영입 비용", "점령지 저항",
+                      "교리 비용", "자원 수입 비용", "전략 폭격 피해", "사단 훈련 시간", "무역법 변경", "세계 긴장도")
+
+
+def colored(part):
+    m = re.search(r"([+-])(\d[\d.]*%?)", part)
+    if not m:
+        return part
+    good = (m.group(1) == "+") != any(k in part for k in GOOD_WHEN_NEGATIVE)
+    return part[:m.start()] + ("§G" if good else "§R") + m.group(0) + "§!" + part[m.end():]
+
+
+def tooltip(effect):
+    """게임이 스스로 보여 주지 않는 부분만 툴팁으로 만든다.
+    국가 정신에 쌓이는 % 효과는 색을 입혀 정신 이름과 함께, 아직 효과가 없는 문구는 회색으로."""
+    lines = []
+    for part in re.split(r",\s*", effect):
+        spirit = next((sp for pattern, _, _, sp in MODIFIERS if re.search(pattern, part)), None)
+        if spirit:
+            lines.append(f"§Y{SPIRITS[spirit][1]}§!: {colored(part)}")
+        elif not rewards(part):
+            lines.append(f"§g{part} (준비 중)§!")
+    return "\\n".join(lines)
 
 
 def dynamic_modifier_file():
@@ -354,7 +384,9 @@ def build():
                              else "\t\tsearch_filters = { FOCUS_FILTER_RESEARCH }")
                 block.append("\t\tai_will_do = { factor = 1 }")
                 block.append("\t\tcompletion_reward = {")
-                block.append(f"\t\t\tcustom_effect_tooltip = {fid}_tt")
+                tt = tooltip(f["effect"])
+                if tt:
+                    block.append(f"\t\t\tcustom_effect_tooltip = {fid}_tt")
                 block += [f"\t\t\t{r}".replace("{FID}", fid) for r in rewards(f["effect"])]
                 block += ["\t\t}", "\t}"]
                 lines += block
@@ -362,7 +394,8 @@ def build():
                 name = f["name"].replace('"', "'")
                 loc.append(f' {fid}:0 "{name}"')
                 loc.append(f' {fid}_desc:0 "{b["title"]} · {g["title"]}"')
-                loc.append(f' {fid}_tt:0 "설계 효과: {f["effect"]}"')
+                if tt:
+                    loc.append(f' {fid}_tt:0 "{tt}"')
         x_offset += int(cols * 2) + 4
 
     lines.append("}")
