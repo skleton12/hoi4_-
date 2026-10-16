@@ -18,7 +18,8 @@ param(
     [string]$Source,
     [switch]$Enable,
     [string]$RemoveOld,
-    [switch]$NoMarker
+    [switch]$NoMarker,
+    [switch]$WithMarker
 )
 
 $ErrorActionPreference = "Stop"
@@ -107,16 +108,22 @@ if (Test-Path -LiteralPath $target) {
 Copy-Item -LiteralPath $Source -Destination $target -Recurse -Force
 Ok "복사 완료: $target"
 
-# 로딩 확인용 마커. 일본 국가명을 'Japan [DAEGYUNYEOL OK]' 로 바꾼다.
-$marker = Join-Path $target 'localisation\replace\daegyunyeol_marker_l_english.yml'
-if ($NoMarker) {
-    if (Test-Path -LiteralPath $marker) {
-        Remove-Item -LiteralPath $marker -Force
-        Ok "로딩 마커 제외 (-NoMarker)"
+# 진단 마커는 명시적으로 요청한 경우에만 바닐라 국가명을 덮어쓴다.
+# -NoMarker 는 기존 호출과 호환되며 -WithMarker 보다 우선한다.
+if ($WithMarker -and -not $NoMarker) {
+    $markerSource = Join-Path $PSScriptRoot 'debug_localisation'
+    $markerTarget = Join-Path $target 'localisation\replace'
+    if (-not (Test-Path -LiteralPath $markerSource)) { throw "진단 마커 소스를 찾을 수 없다: $markerSource" }
+    New-Item -ItemType Directory -Path $markerTarget -Force | Out-Null
+    Copy-Item -Path (Join-Path $markerSource '*.yml') -Destination $markerTarget -Force
+    Info "영어/한국어 로딩 마커 포함 (-WithMarker). 일본 이름의 [DAEGYUNYEOL OK] 를 확인할 것."
+} else {
+    # 사용자 지정 Source 에 구버전 마커가 있어도 기본 설치에서는 제외한다.
+    foreach ($language in @('english', 'korean')) {
+        $marker = Join-Path $target "localisation\replace\daegyunyeol_marker_l_$language.yml"
+        if (Test-Path -LiteralPath $marker) { Remove-Item -LiteralPath $marker -Force }
     }
-} elseif (Test-Path -LiteralPath $marker) {
-    Info "로딩 마커 포함. 국가 선택 화면의 일본 이름으로 로드 여부를 판정할 수 있다."
-    Info "  빼려면 -NoMarker 를 붙여 다시 실행할 것."
+    Info "로딩 마커 제외. 진단할 때만 -WithMarker 를 지정할 것."
 }
 
 # .mod 두 개(폴더 옆 + 폴더 안)를 모두 쓴다. 폴더형 모드는 둘 다 필요하다.

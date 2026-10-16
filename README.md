@@ -67,21 +67,22 @@ powershell -ExecutionPolicy Bypass -File .\tools\Test-Mod.ps1 -Collect
 
 ### 1초 판정: 로딩 마커
 
-`localisation/replace/` 에 바닐라 로컬라이제이션을 덮어쓰는 마커를 넣어뒀다.
-**국가 선택 화면에서 일본 이름만 보면 된다.**
+기본 모드는 바닐라 국가명을 덮어쓰지 않는다. 진단할 때만 아래 명령으로
+`tools/debug_localisation/` 의 영어·한국어 마커를 설치한다.
 
-| 보이는 것 | 뜻 |
-|---|---|
-| `Japan [DAEGYUNYEOL OK]` | 모드가 로드되고 있다 → 문제는 콘텐츠 쪽 |
-| `Japan` / `일본` | 모드가 전혀 로드되지 않았다 → 문제는 설치·런처 쪽 |
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\Install-Mod.ps1 -Enable -WithMarker
+```
 
-마커가 필요 없으면 설치 시 `-NoMarker` 를 붙이거나
-`localisation/replace/daegyunyeol_marker_l_english.yml` 파일만 지우면 된다.
+`Test-Mod.ps1` 은 진단용이므로 `-WithMarker` 를 자동으로 전달한다.
+국가 선택 화면의 일본 이름에 `[DAEGYUNYEOL OK]` 가 붙으면 마커가 로드된 것이다.
+마커가 없다면 설치·언어 설정·런처 활성화와 다른 국가명 번역 모드의 충돌을 확인한다.
+다른 모드가 같은 키를 덮어쓰면 마커가 가려질 수 있으므로, 마커 부재만으로 로딩 실패를 단정하지 않는다.
 
-마커는 일부러 ASCII 로만 썼다. 한글 폰트가 없어도 무조건 보인다.
-그래서 **마커는 보이는데 포커스 이름이 네모/빈칸이면 그건 폰트 문제**이고 로딩 문제가 아니다.
-두 원인이 이 한 줄로 갈린다. 확인이 끝나면
-`localisation/replace/daegyunyeol_marker_l_english.yml` 만 지우면 된다.
+확인이 끝나면 `-WithMarker` 없이 재설치한다. 기존 `-NoMarker` 도 지원하며,
+두 옵션을 함께 주면 `-NoMarker` 가 우선한다. 마커는 설치된 모드의
+`localisation/replace/daegyunyeol_marker_l_english.yml` 과
+`daegyunyeol_marker_l_korean.yml` 에서 `JAP`, `JAP_DEF` 를 의도적으로 덮어쓴다.
 
 ### 마커가 보인 다음
 
@@ -96,7 +97,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\Test-Mod.ps1 -Collect
 
 ```bash
 python3 tools/validate.py mod/daegyunyeol   # 모드 검증
-python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (26케이스)
+python3 tools/selftest.py                   # 검증기가 실제로 잡는지 확인 (47케이스)
 ```
 
 검사하는 것: 파일 인코딩, 구문 오류(줄 번호), 포커스 id 중복 / 선행조건 미해결 / 순환 / 좌표 충돌,
@@ -104,6 +105,9 @@ python3 tools/selftest.py                   # 검증기가 실제로 잡는지 �
 `promote_character`·`load_focus_tree`·scripted effect 참조 해결, 정의만 하고 안 쓰는 이념과 effect,
 검사만 하고 세우지 않는 플래그, 로컬라이제이션 키 누락과 미사용,
 두 `.mod` 디스크립터의 `name`·`version`·`supported_version` 일치 여부.
+
+언어별 키 누락·중복, 영어/한국어 키 일치, 파일명·언어 헤더·폴더 정합성,
+연구 보너스 이름, 이벤트의 실제 title/desc 참조, 정치고문 영입 누락도 검사한다.
 
 검사하지 못하는 것: GFX 스프라이트 이름, 트레이트·모디파이어 이름, 밸런스. 이건 `error.log` 로만 확인된다.
 
@@ -139,7 +143,9 @@ mod/
     │   ├── characters/daegyunyeol_characters.txt# 어드바이저 3 + 국가 지도자 2
     │   └── scripted_effects/…                   # 군대 해산 / 무장 금지 해제
     ├── events/daegyunyeol_events.txt            # daegyunyeol.1 ~ .15
-    └── localisation/english/…_l_english.yml     # UTF-8 BOM, 키 135개
+    └── localisation/
+        ├── english/…_l_english.yml             # UTF-8 BOM, 영어 키 141개
+        └── korean/…_l_korean.yml               # UTF-8 BOM, 한국어 키 141개
 ```
 
 포커스트리 배치 (총 27개). 세 지구 분기는 **산업 트리**다.
@@ -204,9 +210,11 @@ HOI4 에는 "모든 사단 해산" 한 줄짜리 효과가 없어서 `delete_uni
 
 ## 알려진 주의점
 
-- **한글 폰트.** HOI4 바닐라 폰트에는 한글 글리프가 없다. 모드는 정상 로드되는데
-  포커스 이름만 빈칸/네모로 보인다면 그건 폰트 문제이지 로딩 문제가 아니다.
-  한글 폰트를 제공하는 한국어 패치 모드를 같이 켜거나, 로컬라이제이션을 영문으로 바꾸면 된다.
+- **언어·한글 폰트.** 영어 설정에서는 영어 번역, 한국어 설정에서는 한국어 번역을 읽는다.
+  한국어 파일만 추가해도 현재 언어가 영어인 게임에 한글이 표시되지는 않는다.
+  한국어 패치가 영어 언어 슬롯을 사용하는 경우에는 그 패치의 설정과 배포 방식을 확인할 것.
+  한국어 UI에서 글자가 네모로 보이면 현재 게임·패치의 한글 폰트 지원을 확인한다.
+  이 모드는 폰트 파일을 덮어쓰지 않는다.
 - **GFX 이름.** 포커스 아이콘과 어드바이저 초상은 바닐라 스프라이트를 참조한다.
   버전에 따라 이름이 다르면 `error.log` 에 한 줄씩 찍히고 아이콘만 비어 보인다. 기능에는 영향이 없다.
 - **이벤트 그림 없음.** 실패 지점을 줄이려고 `picture` 를 넣지 않았다. 나중에 추가하면 된다.
@@ -232,7 +240,7 @@ HOI4 에는 "모든 사단 해산" 한 줄짜리 효과가 없어서 `delete_uni
 5. **OneDrive 리디렉션으로 문서 폴더가 두 개.** 런처가 쓰는 폴더와 게임이 읽는 폴더가 갈린다.
 6. **CP949(ANSI) 인코딩.** 한글이 든 파일을 메모장 기본값으로 저장하면 이렇게 된다. 게임이 파일을 버린다.
 
-**1분 판정:** 메인 메뉴 우하단 체크섬이 바닐라와 같으면 모드는 로드되지 않은 것이다.
+**보조 확인:** 메인 메뉴 우하단 체크섬과 게임 로그를 함께 확인한다. 체크섬만으로 번역 파일의 로드를 단정하지 않는다.
 
 ### B. 로드는 되는데 안 보이는 경우
 

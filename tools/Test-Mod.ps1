@@ -88,7 +88,7 @@ if ($Collect) {
 # --- 1단계 -------------------------------------------------------------------
 Write-Host ""
 Write-Host "==================== 1단계: 설치 ====================" -ForegroundColor Cyan
-& powershell -ExecutionPolicy Bypass -File $install -Enable
+& powershell -ExecutionPolicy Bypass -File $install -Enable -WithMarker
 
 if ($userDir) {
     $logDir = Join-Path $userDir 'logs'
@@ -109,10 +109,10 @@ Write-Host "     (스팀에서 바로 실행하지 말고 반드시 런처의 �
 Write-Host ""
 Write-Host "  B. 국가 선택 화면에서 일본 이름을 본다. 이게 핵심 판정이다:"
 Write-Host ""
-Write-Host "       'Japan [DAEGYUNYEOL OK]'  ->  모드가 로드되고 있다" -ForegroundColor Green
-Write-Host "       'Japan' 또는 '일본'        ->  모드가 전혀 로드되지 않았다" -ForegroundColor Red
+Write-Host "       '[DAEGYUNYEOL OK] 포함'  ->  모드가 로드되고 있다" -ForegroundColor Green
+Write-Host "       마커 없음                  ->  설치·언어·런처·다른 모드 충돌을 확인" -ForegroundColor Red
 Write-Host ""
-Write-Host "     이 글자는 일부러 영문이라 한글 폰트가 없어도 무조건 보인다."
+Write-Host "     진단 설치(-WithMarker)에서만 국가명을 덮어쓴다. 다른 국가명 변경 모드는 잠시 끌 것."
 Write-Host ""
 Write-Host "  C. 로드되고 있다면: 1936 새 게임 -> 일본 -> 디시전 탭 -> '대균열' 카테고리"
 Write-Host "     로드가 안 된다면: 여기서 멈추고 바로 3단계로 간다."

@@ -23,6 +23,11 @@ KOR_daegyunyeol_setup = {
 		recruit_character = KOR_leader_democratic
 		recruit_character = KOR_leader_authoritarian
 
+		# 정의된 정치고문도 영입해야 고문 선택 목록에 나타난다.
+		recruit_character = KOR_rift_commissar
+		recruit_character = KOR_district_liaison
+		recruit_character = KOR_rift_industrialist
+
 		add_ideas = KOR_rift_demilitarization
 		KOR_disband_all_units = yes
 	}

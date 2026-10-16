@@ -27,7 +27,8 @@ EVENTS = "events/daegyunyeol_events.txt"
 DECISIONS = "common/decisions/jap_daegyunyeol.txt"
 CATEGORIES = "common/decisions/categories/daegyunyeol_categories.txt"
 EFFECTS = "common/scripted_effects/daegyunyeol_effects.txt"
-LOC = "localisation/english/daegyunyeol_l_english.yml"
+LOC = "localisation/korean/daegyunyeol_l_korean.yml"
+ENG = "localisation/english/daegyunyeol_l_english.yml"
 
 
 def sub(path: str, old: str, new: str):
@@ -60,8 +61,21 @@ def drop_file(path: str):
     return mutate
 
 
+def install_debug_markers(root: Path):
+    target = root / "localisation" / "replace"
+    target.mkdir(parents=True, exist_ok=True)
+    for path in (REPO / "tools" / "debug_localisation").glob("*.yml"):
+        shutil.copy(path, target / path.name)
+
+
+def wrong_language_folder(root: Path):
+    path = root / LOC
+    target = root / "localisation" / "english" / path.name
+    path.rename(target)
+
+
 # (이름, 변이, 출력에 반드시 나와야 할 문구[, "warn"])
-# 네 번째 항목이 "warn" 이면 종료 코드는 0 이어도 되고 경고로 나오기만 하면 통과다.
+# "warn": 종료 코드 0과 지정 경고, "ok": 종료 코드 0과 지정 출력을 요구한다.
 CASES = [
     (
         "포커스트리 country 블록 삭제",
@@ -151,7 +165,7 @@ CASES = [
     (
         "폴더 안 descriptor.mod 에 잘못된 path 추가",
         sub("descriptor.mod", 'name="대균열"', 'name="대균열"\npath="mod/wrong_name"'),
-        "실제 폴더명과 다르다",
+        "실제 설치 경로와 다르다",
     ),
     (
         "두 디스크립터의 supported_version 불일치",
@@ -200,6 +214,30 @@ CASES = [
         sub(LOC, ' KOR_seal_the_rift:0 "대균열 봉인"', ' KOR_seal_the_rift 대균열 봉인'),
         "해석 불가",
     ),
+    ("한국어 파일 삭제", drop_file(LOC), "키 누락"),
+    ("영어 파일 삭제", drop_file(ENG), "키 누락"),
+    ("한국어 키 중복", sub(LOC, ' KOR_seal_the_rift:0', ' KOR_rift_army:0'), "키 중복"),
+    ("영어/한국어 전용 키 불일치", sub(LOC, ' KOR_seal_the_rift:0', ' KOR_renamed_key:0'), "키 불일치"),
+    ("파일명과 헤더 불일치", sub(LOC, 'l_korean:', 'l_english:'), "파일명과 언어 헤더 불일치"),
+    ("잘못된 언어 헤더", sub(LOC, 'l_korean:', 'korean:'), "언어 헤더 오류"),
+    ("UTF-8 손상", raw(LOC, lambda b: b + b"\xff"), "UTF-8 이 아니다"),
+    ("이스케이프 없는 따옴표", sub(LOC, '"대균열 봉인"', '"대균열 "봉인""'), "해석 불가"),
+    ("빈 번역", sub(LOC, '"대균열 봉인"', '""'), "값이 비어 있다"),
+    ("연구 보너스 번역 누락", sub(LOC, ' KOR_rift_research:0', ' KOR_unused_research:0'), "키 누락: KOR_rift_research"),
+    ("실제 이벤트 제목 참조 오타", sub(EVENTS, 'title = daegyunyeol.1.t', 'title = daegyunyeol.missing_title'), "키 누락: daegyunyeol.missing_title"),
+    ("실제 이벤트 설명 참조 오타", sub(EVENTS, 'desc = daegyunyeol.1.d', 'desc = daegyunyeol.missing_desc'), "키 누락: daegyunyeol.missing_desc"),
+    ("정치고문 영입 누락", sub(EFFECTS, '\t\trecruit_character = KOR_rift_commissar', ''), "정치고문 영입 누락"),
+    ("캐릭터 id 중복", sub('common/characters/daegyunyeol_characters.txt', '\tKOR_district_liaison = {', '\tKOR_rift_commissar = {'), "캐릭터 id 중복"),
+
+    ("폴더명만 맞고 부모 경로가 틀림", sub('../daegyunyeol.mod', 'path="mod/daegyunyeol"', 'path="wrong/daegyunyeol"'), "실제 설치 경로와 다르다"),
+    ("영어 BOM 제거", raw(ENG, lambda b: b.removeprefix(b"\xef\xbb\xbf")), "BOM"),
+    ("정상 이스케이프와 행말 주석", sub(LOC, '"대균열 봉인"', r'"대균열 \"봉인\"" # comment'), "오류 0개", "ok"),
+    ("이벤트 사용자 지정 제목 키", sub(EVENTS, 'title = daegyunyeol.1.t', 'title = daegyunyeol.2.t'), "오류 0개", "ok"),
+
+    ("선택적 진단 마커 충돌 경고", install_debug_markers, "다른 모드와 충돌 가능한 replace 키", "warn"),
+    ("언어 폴더 불일치", wrong_language_folder, "언어 폴더와 언어 헤더 불일치"),
+    ("미정의 번역 치환 참조", sub(LOC, '"대균열 봉인"', '"$DAEGYUNYEOL_MISSING$"'), "외부 또는 미정의 번역 참조", "warn"),
+
 ]
 
 
@@ -239,7 +277,10 @@ def main() -> int:
 
             code, out = run_validator(root)
             hit = [l.strip() for l in out.splitlines() if expect in l]
-            if kind == "error" and code == 0:
+            if kind in ("ok", "warn") and code != 0:
+                print(f"  [FAIL] {i:2}. {label}: 정상/경고 전용 사례에서 오류 발생\n{out}")
+                failures += 1
+            elif kind == "error" and code == 0:
                 print(f"  [FAIL] {i:2}. {label}: 망가뜨렸는데 오류 0 으로 통과했다")
                 failures += 1
             elif not hit:

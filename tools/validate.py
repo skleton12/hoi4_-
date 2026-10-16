@@ -262,8 +262,9 @@ def check_descriptors(mod_root: Path, outer_mod: Path, rep: Report):
             # path 가 있으면 어느 디스크립터든 같은 규칙을 적용한다.
             if "\\" in p:
                 rep.error(name, f"path 에 역슬래시가 있다: {p}. 슬래시(/)여야 한다")
-            if p.replace("\\", "/").split("/")[-1] != mod_root.name:
-                rep.error(name, f"path 가 실제 폴더명과 다르다: {p} vs {mod_root.name}")
+            expected = f"mod/{mod_root.name}"
+            if p != expected:
+                rep.error(name, f"path 가 실제 설치 경로와 다르다: {p} vs {expected}")
             if not p.isascii():
                 rep.warn(name, f"path 에 비ASCII 문자가 있다: {p}")
             if not need_path:
@@ -505,6 +506,8 @@ def check_ideas_and_characters(trees, rep: Report):
             if not root.is_block:
                 continue
             for ch in [e for e in root.value if e.key and e.is_block]:
+                if ch.key in chars:
+                    rep.error(name, f"{ch.line}행: 캐릭터 id 중복 '{ch.key}'")
                 chars[ch.key] = (name, ch.line)
                 if scalar(ch.value, "name") is None:
                     rep.error(name, f"{ch.line}행: 캐릭터 '{ch.key}' 에 name 이 없다")
@@ -556,6 +559,7 @@ def check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep
     char_refs = []
     tree_refs = []
     effect_calls = []
+    recruited = set()
 
     for name, entries in trees.items():
         for e in walk(entries):
@@ -590,6 +594,8 @@ def check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep
                 focus_refs.append((v, name, e.line))
             elif k in ("recruit_character", "promote_character", "retire_character") and not e.is_block:
                 char_refs.append((v, name, e.line))
+                if k == "recruit_character":
+                    recruited.add(v)
             elif k == "load_focus_tree":
                 tid = scalar(v, "tree") if e.is_block else v
                 if tid:
@@ -634,6 +640,9 @@ def check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep
         if cid not in chars:
             rep.error(name, f"{line}행: 정의되지 않은 캐릭터 '{cid}' 를 참조한다")
 
+    for cid in sorted(set(tokens.values()) - recruited):
+        rep.error("common/characters", f"정치고문 영입 누락: {cid}")
+
     for sid, name, line in effect_calls:
         if sid not in scripted:
             rep.error(
@@ -663,23 +672,34 @@ def check_references(trees, focuses, events, ideas, chars, tokens, scripted, rep
             rep.note(f"플래그 '{flag}' 는 설정만 하고 검사하지 않는다 (의도적일 수 있음)")
 
 
-LOC_LINE = re.compile(r'^\s*([\w.\-]+):\s*\d*\s*"(.*)"\s*$')
+LOC_LINE = re.compile(r'^ ([A-Za-z0-9_.-]+):[0-9]*[ \t]+"((?:[^"\\]|\\.)*)"[ \t]*(?:#.*)?$')
 
 
 def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cats, rep: Report):
-    keys = {}
+    # Keys are unique within a language, not across translations.
+    languages = {"english": {}, "korean": {}}
+    values = defaultdict(dict)
     for path in sorted((mod_root / "localisation").rglob("*.yml")):
         name = rel(path, mod_root)
-        text = path.read_bytes().decode("utf-8-sig")
-        lines = text.splitlines()
-        if not lines or not re.match(r"^\s*l_\w+:\s*$", lines[0]):
-            rep.error(name, f"첫 줄이 'l_english:' 형태가 아니다: {lines[0][:40] if lines else '(빈 파일)'}")
-        if not re.search(r"_l_\w+\.yml$", path.name):
-            rep.error(name, "파일명이 '..._l_english.yml' 형식이어야 한다")
+        try:
+            lines = path.read_bytes().decode("utf-8-sig").splitlines()
+        except UnicodeDecodeError:
+            continue  # check_encoding already reports the invalid bytes.
+        header = re.fullmatch(r"l_([a-z_]+):", lines[0]) if lines else None
+        if not header:
+            rep.error(name, "언어 헤더 오류: 첫 줄은 l_english: 또는 l_korean: 형태여야 한다")
+            continue
+        language = header.group(1)
+        if not path.name.endswith(f"_l_{language}.yml"):
+            rep.error(name, "파일명과 언어 헤더 불일치")
+        parent = path.parent.name
+        if parent not in ("localisation", "replace", language):
+            rep.error(name, "언어 폴더와 언어 헤더 불일치")
+        keys = languages.setdefault(language, {})
         for i, line in enumerate(lines[1:], start=2):
             if not line.strip() or line.strip().startswith("#"):
                 continue
-            m = LOC_LINE.match(line)
+            m = LOC_LINE.fullmatch(line)
             if not m:
                 rep.error(name, f"{i}행: 해석 불가. 형식은 ' KEY:0 \"값\"' 이다 -> {line.strip()[:50]}")
                 continue
@@ -687,14 +707,23 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
             if key in keys:
                 rep.error(name, f"{i}행: 로컬라이제이션 키 중복 '{key}' (앞서 {keys[key]})")
             keys[key] = f"{name}:{i}"
+            values[language][key] = val
             if not val.strip():
-                rep.warn(name, f"{i}행: '{key}' 의 값이 비어 있다")
+                rep.error(name, f"{i}행: '{key}' 의 값이 비어 있다")
 
     required = set()
     for fid in focuses:
         required |= {fid, fid + "_desc"}
-    for eid, (_, _, kind) in events.items():
-        required |= {eid + ".t", eid + ".d"}
+    for entries in in_dir(trees, "events/").values():
+        for e in walk(entries):
+            if e.key in ("title", "desc") and not e.is_block:
+                required.add(e.value)
+    for entries in trees.values():
+        for e in walk(entries):
+            if e.key in ("add_tech_bonus", "add_doctrine_cost_reduction") and e.is_block:
+                label = scalar(e.value, "name")
+                if label:
+                    required.add(label)
     for name, entries in trees.items():
         for e in walk(entries):
             if e.key == "option" and e.is_block:
@@ -716,20 +745,24 @@ def check_localisation(mod_root: Path, focuses, events, trees, ideas, chars, cat
             for dec in [e for e in cat.value if e.key and e.is_block]:
                 required |= {dec.key, dec.key + "_desc"}
 
-    missing = sorted(required - set(keys))
-    # localisation/replace/ 는 바닐라 키를 의도적으로 덮어쓰는 곳이라 '미사용' 이 정상이다.
-    unused = sorted(
-        k for k in set(keys) - required
-        if not keys[k].startswith("localisation/replace/")
-    )
-    overrides = sorted(k for k in keys if keys[k].startswith("localisation/replace/"))
-    if overrides:
-        rep.note(f"바닐라 로컬라이제이션 덮어쓰기 {len(overrides)}개: {', '.join(overrides)}")
-    for k in missing:
-        rep.error("localisation", f"키 누락: {k}")
-    for k in unused:
-        rep.warn("localisation", f"쓰이지 않는 키: {k} ({keys[k]})")
-    rep.note(f"로컬라이제이션 키 {len(keys)}개 / 필요 {len(required)}개")
+    for language, keys in sorted(languages.items()):
+        for key in sorted(required - set(keys)):
+            rep.error(f"localisation/{language}", f"키 누락: {key}")
+        for key in sorted(set(keys) - required):
+            if not keys[key].startswith("localisation/replace/"):
+                rep.warn(f"localisation/{language}", f"쓰이지 않는 키: {key} ({keys[key]})")
+        overrides = sorted(k for k in keys if keys[k].startswith("localisation/replace/"))
+        if overrides:
+            rep.warn(f"localisation/{language}", f"다른 모드와 충돌 가능한 replace 키: {', '.join(overrides)}")
+        for key, value in values[language].items():
+            # $KEY$ substitutions are localisable references; dynamic [?var] is not.
+            for reference in re.findall(r"\$([A-Za-z0-9_.-]+)(?:\|[^$]*)?\$", value):
+                if reference not in keys:
+                    rep.warn(f"localisation/{language}", f"외부 또는 미정의 번역 참조: {key} -> {reference}")
+        rep.note(f"{language}: 로컬라이제이션 키 {len(keys)}개 / 필요 {len(required)}개")
+    english, korean = set(languages["english"]), set(languages["korean"])
+    if english != korean:
+        rep.error("localisation", "영어/한국어 키 불일치: " + ", ".join(sorted(english ^ korean)))
 
 
 def collect_gfx(trees, rep: Report):
