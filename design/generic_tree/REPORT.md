@@ -1,5 +1,8 @@
 # 작업 보고서 — 기본 중점 변경 모드 0.4.3
 
+> **이전 안내 (2026-10-17):** 기본 중점 변경 모드는 [`skleton12/Hoi4_focus`](https://github.com/skleton12/Hoi4_focus) 의 `main` 으로 옮겼다.
+> 앞으로의 작업은 그 저장소에서 한다. 이 폴더는 0.4.4 시점 기록으로 남겨 둔다.
+
 - 작성: Claude, 2026-10-12 23:30 (KST)
 - 브랜치: `claude/brave-bardeen-n1yqiz`
 - 대상 게임: HOI4 1.19.3.0.c01a (5632)
